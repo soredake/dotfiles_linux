@@ -1,0 +1,170 @@
+net-nds/openldap
+
+# required by sys-libs/pam-1.2.1::gentoo[berkdb]
+# required by virtual/pam-0-r1::gentoo
+# required by sys-libs/libcap-2.24-r2::gentoo
+# required by kde-frameworks/kinit-5.29.0::gentoo[caps]
+# required by kde-plasma/ksysguard-5.8.6::gentoo
+# required by kde-plasma/plasma-workspace-5.8.6::gentoo
+# required by kde-misc/kdeconnect-1.0.3::gentoo
+# required by @selected
+# required by @world (argument)
+#sys-libs/db abi_x86_32
+
+# required by app-emulation/docker-compose-1.12.0::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/docker-py-2.2.1
+
+=net-news/rssguard-9999 **
+=media-libs/libXcm-0.5.4
+=dev-libs/sway-9999 **
+=dev-libs/wlc-9999 **
+=app-misc/dragon-9999 **
+app-shells/fish
+
+mail-client/mutt
+=app-crypt/gnupg-2.1.21-r1
+
+sys-process/ctop
+app-admin/profile-cleaner
+net-p2p/syncthing
+=dev-libs/wayland-9999 **
+=dev-libs/wayland-protocols-9999 **
+=net-misc/streamlink-9999 **
+
+games-util/esteam
+media-fonts/steamfonts
+=media-sound/pulsemixer-9999 **
+
+games-util/lgogdownloader
+=app-crypt/rhash-1.3.4
+=dev-cpp/htmlcxx-0.86
+
+=sys-devel/gcc-config-1.8*
+media-video/obs-studio
+games-action/minetest_game
+games-action/minetest
+=app-doc/devmanual-9999 **
+#=net-libs/tox-9999 **
+#=net-im/qtox-9999 **
+=sys-devel/gcc-6.3.0*
+
+app-arch/libarchive::libressl
+sys-apps/inxi
+net-fs/btfs
+
+app-emulation/docker-compose
+=dev-python/cached-property-1.3.0
+=dev-python/ipaddress-1.0.18
+=dev-python/docker-py-2.1.0
+=dev-python/docker-pycreds-0.2.1
+=dev-python/dockerpty-0.4.1
+
+# required by app-emulation/docker-compose-1.13.0::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/colorama-0.3*
+
+# streamlink
+=dev-python/pycryptodome-3.4.5
+=dev-python/backports-shutil_which-3.5.1
+
+=media-video/syncplay-9999 **
+
+x11-apps/indicator-kdeconnect
+
+
+# neovim
+app-editors/neovim
+=dev-libs/libvterm-0.0_pre20160305
+=dev-lua/mpack-1.0.4
+=dev-lua/lpeg-1.0.1
+=dev-libs/unibilium-1.1.4
+=dev-libs/libtermkey-0.19
+=dev-libs/msgpack-1.1.0
+
+games-misc/ponysay
+=app-portage/portage-postsyncd-mv-6.0.1
+
+# maim
+media-gfx/maim
+=x11-misc/slop-4.3.21
+
+# for qutebrowser
+www-client/qutebrowser
+dev-python/pygments
+=dev-python/pypeg2-2.15.2
+
+# for youtube-dl cover embed
+media-video/atomicparsley-wez
+
+app-admin/keepassxc
+app-i18n/translate-shell
+
+# for i3blocks
+=media-sound/playerctl-0.5.0
+
+=games-util/lutris-9999 **
+=dev-python/python-evdev-0.6.1
+
+=app-shells/zsh-5.3.1::gentoo
+
+# for ripgrep
+dev-lang/rust
+dev-util/cargo
+sys-apps/ripgrep
+
+# for libressl support
+=dev-db/sqlcipher-3.4.0*
+dev-libs/libressl
+=net-libs/ldns-1.6.17*
+dev-libs/cyrus-sasl
+
+app-emulation/wine-any::gentoo
+virtual/wine
+app-emulation/wine-desktop-common
+app-emulation/wine-mono
+app-eselect/eselect-wine
+app-emulation/wine-gecko
+
+app-admin/eclean-kernel
+=net-p2p/syncthing-gtk-9999 **
+=app-emulation/docker-gc-9999 **
+app-misc/ranger::pinkpieea
+=app-misc/tmux-2.4*::gentoo
+=app-portage/portage-utils-0.63
+=media-libs/openicc-0.1.0
+app-admin/elektra
+app-admin/stow
+app-crypt/veracrypt
+app-doc/zeal
+dev-util/shellcheck
+games-util/steam-games-meta
+games-util/steam-launcher
+games-util/steam-meta
+media-fonts/infinality-ultimate-meta::gentoo
+media-libs/fontconfig-ultimate::gentoo
+media-libs/oyranos
+media-video/mpv
+net-dns/dnscrypt-proxy
+net-im/qtox
+net-libs/tox
+www-client/torbrowser
+www-misc/profile-sync-daemon
+x11-misc/i3blocks
+x11-misc/kbdd
+=x11-misc/i3blocks-contrib-9999 **
+x11-misc/notify-osd
+
+media-fonts/courier-prime
+media-fonts/heuristica
+media-fonts/signika
+media-fonts/tex-gyre
+media-libs/icc-profiles-basiccolor-printing2009
+media-libs/icc-profiles-openicc
+media-fonts/koruri
+x11-themes/notify-osd-icons
+games-util/steam-client-meta
+=net-misc/youtube-dl-99999999 **
+=app-emulation/wine-any-9999 **

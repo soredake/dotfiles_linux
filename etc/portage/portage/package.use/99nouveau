@@ -1,0 +1,5 @@
+# required by media-libs/mesa-17.0.4::gentoo[xvmc]
+# required by media-video/mpv-0.24.0::gentoo[egl]
+# required by @selected
+# required by @world (argument)
+>=x11-libs/libXvMC-1.0.10 abi_x86_32

@@ -1,0 +1,9 @@
+[Unit]
+Description=Nvidia = pain
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash %h/bin/nvidia.sh
+
+[Install]
+WantedBy=graphical.target

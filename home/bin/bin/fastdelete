@@ -1,0 +1,5 @@
+#!/bin/sh
+_tmp=$(mktemp -d /tmp/XXX)
+[ "$2" = "s" ] && s=sudo
+eval "${s}" rsync -a --delete "$_tmp"/ "$1" || exit 1
+rmdir "$1" "$_tmp"

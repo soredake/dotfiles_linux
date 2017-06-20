@@ -1,0 +1,6 @@
+#!/bin/bash
+. "${XDG_DATA_HOME}/local.env"
+export TOR_CONTROL_PORT
+export TOR_CONTROL_HOST
+export TOR_CONTROL_PASSWD
+exec torbrowser --allow-remote "$@"

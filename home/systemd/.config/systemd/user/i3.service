@@ -1,0 +1,13 @@
+[Unit]
+Description=i3 window-manager
+After=xorg.target
+Requires=xorg.target
+
+[Service]
+ExecStart=/usr/bin/i3
+IOSchedulingClass=realtime
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=graphical.target

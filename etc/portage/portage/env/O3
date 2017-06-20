@@ -1,0 +1,2 @@
+CFLAGS="-O3 -pipe -march=westmere -mtune=westmere"
+CXXFLAGS="${CFLAGS}"

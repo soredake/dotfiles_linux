@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/bausch/Documents'
+let g:netrw_dirhist_2='/usr/lib64/systemd/system'
+let g:netrw_dirhist_3='/home/bausch/git/dotfiles_home/home/i3/.config/i3'
+let g:netrw_dirhist_4='/home/bausch/.ssh'
+let g:netrw_dirhist_5='/home/bausch/.parallel'
+let g:netrw_dirhist_6='/etc/portage/package.env'
+let g:netrw_dirhist_7='/tmp'
+let g:netrw_dirhist_8='/home/bausch/.config/i3'
+let g:netrw_dirhist_9='/home/bausch/git/gentoo-overlay/x11-apps/indicator-kdeconnect'

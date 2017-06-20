@@ -1,0 +1,2 @@
+INSTALL_MASK="/etc/xdg/autostart/pulseaudio.desktop pulseaudio.desktop"
+PKG_INSTALL_MASK="${INSTALL_MASK}"

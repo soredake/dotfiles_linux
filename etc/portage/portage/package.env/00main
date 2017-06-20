@@ -1,0 +1,15 @@
+# grub can only be built with disabled distcc
+#sys-boot/grub no-distcc
+sys-devel/binutils gold-linker
+sys-process/htop htop-mask
+sys-libs/db force-bfd
+#sys-devel/llvm minj
+#dev-lang/ghc minj
+#app-emulation/wine minj
+#app-office/libreoffice minj
+# compiling tor-browser with ccache and distcc sometimes lead to errors
+#www-client/torbrowser no-ccache no-distcc
+app-emulation/docker-gc fixed-fork
+x11-drivers/nvidia-drivers force-bfd no-distcc no-ccache
+media-sound/pulseaudio pulseaudio-mask
+#dev-libs/sway sway-non-github 

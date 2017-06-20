@@ -1,0 +1,9 @@
+#!/bin/bash
+SD="$(cd "$(dirname "$0")" > /dev/null || exit 1; pwd)";
+cd "$SD" || exit 1
+
+systemctl enable --now sshd.socket dnscrypt-proxy docker NetworkManager NetworkManager-wait-online systemd-timesyncd tor
+systemctl --user enable --now syncthing rtorrent kbdd
+systemctl link "$SD/../home_cp/units/veracrypt-unmount.service"
+systemctl --user link "$SD/../home_cp/units/kbdd.service"
+systemctl enable veracrypt-unmount

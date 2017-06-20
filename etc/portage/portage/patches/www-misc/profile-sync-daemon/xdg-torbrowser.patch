@@ -1,0 +1,21 @@
+diff --git a/common/browsers/firefox b/common/browsers/firefox
+index 2f0bd4c8d2f7..31625b0f8e92 100644
+--- a/common/browsers/firefox
++++ b/common/browsers/firefox
+@@ -1,5 +1,5 @@
+-if [[ -d $HOME/.mozilla/firefox ]]; then
+-    profileArr=( $(grep '[P,p]'ath= $HOME/.mozilla/firefox/profiles.ini |
++if [[ -d $HOME/.mozilla/torbrowser ]]; then
++    profileArr=( $(grep '[P,p]'ath= $HOME/.mozilla/torbrowser/profiles.ini |
+     sed 's/[P,p]ath=//') )
+     index=0
+     PSNAME="$browser"
+@@ -10,7 +10,7 @@ if [[ -d $HOME/.mozilla/firefox ]]; then
+         else
+             # we need to append the default path to give a
+             # fully qualified path
+-            DIRArr[index]="$HOME/.mozilla/firefox/$profileItem"
++            DIRArr[index]="$XDG_DATA_HOME/firefox/$(basename $profileItem)"
+         fi
+         index=$index+1
+     done

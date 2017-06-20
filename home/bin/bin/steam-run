@@ -1,0 +1,4 @@
+#!/bin/bash
+# 32 bit is for steam client
+# 64 bit is for life is strange
+exec firejail --profile=/etc/firejail/steam.profile -- env LD_PRELOAD='/usr/lib64/gcc/x86_64-pc-linux-gnu/5.4.0/32/libstdc++.so.6:/usr/lib64/gcc/x86_64-pc-linux-gnu/5.4.0/libstdc++.so.6' STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0 LIBGL_DEBUG=verbose steam "$@"

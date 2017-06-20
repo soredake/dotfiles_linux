@@ -1,0 +1,4 @@
+# https://gitweb.gentoo.org/repo/gentoo.git/tree/profiles/base/packages#n47
+# for now openrc is needed for gcc-config
+# Remove OpenRC from the system profile when using systemd
+-*sys-apps/openrc

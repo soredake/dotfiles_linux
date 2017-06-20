@@ -1,0 +1,24 @@
+open_with 
+shell mkdir backup %s
+rename android-file-transfer-3.1.ebuild
+rename variety-0.6.4.ebuild
+rename kernelup
+shell 
+rename sway_wayland.png
+rename sway_x11.png
+rename i3_preloaded_libsdl2.png
+rename i3_no_preload.png
+deleted
+shell mkdir lis-bug %s
+rename lis_wayland_outofmemory_crash_1.dmp
+rename lis_wayland_outofmemory_crash_nosecret.dmp
+open_with mbim
+shell mkdir "Сталкер тени чернобыля" %s
+shell mkdir "Mirrors Edge" %s
+touch 
+open_with nvim
+shell nvim %s
+shell chmod +x %s
+
+rename new-sim.txt
+delete

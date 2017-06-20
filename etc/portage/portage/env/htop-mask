@@ -1,0 +1,2 @@
+INSTALL_MASK="/etc/htoprc"
+PKG_INSTALL_MASK="${INSTALL_MASK}"

@@ -1,0 +1,8 @@
+virtual/wine::gentoo
+app-emulation/wine-any::gentoo
+app-emulation/wine-desktop-common::gentoo
+app-emulation/wine-mono::gentoo
+app-eselect/eselect-wine::gentoo
+app-emulation/wine-gecko::gentoo
+
+app-admin/eclean-kernel

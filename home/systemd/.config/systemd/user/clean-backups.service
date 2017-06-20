@@ -1,0 +1,6 @@
+[Unit]
+Description=Clean system/home backups
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash %h/sync/system-data/clean.sh

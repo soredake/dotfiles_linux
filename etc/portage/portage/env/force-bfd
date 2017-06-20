@@ -1,0 +1,2 @@
+# https://stackoverflow.com/questions/28520166/gentoo-ld-gold-failed-on-sys-libs-db
+LDFLAGS="${LDFLAGS} -Wl,-fuse-ld=bfd"
