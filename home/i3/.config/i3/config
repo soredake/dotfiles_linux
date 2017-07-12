@@ -186,7 +186,7 @@ bar {
 # https://wiki.archlinux.org/index.php/Keyboard_configuration_in_Xorg#Using_xset
 # @TODO: https://askubuntu.com/questions/140255/how-to-override-the-new-limited-keyboard-repeat-rate-limit
 # https://askubuntu.com/questions/765738/how-can-i-increase-the-speed-of-the-cursor-in-gnome-terminal
-exec --no-startup-id systemctl --user restart nm-applet kdeconnect-notifier mouse_accel xsetdpms xautolock xset-kbd-rate kbdd
+exec --no-startup-id systemctl --user restart nm-applet kdeconnect-notifier mouse_accel xsetdpms xautolock xset-kbd-rate kbdd gpg-agent
 #kbdd
 #exec --no-startup-id systemctl --user restart compton-nvidia nvidia-settings xrandr-output
 exec --no-startup-id systemctl --user restart compton-free

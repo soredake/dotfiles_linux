@@ -23,8 +23,16 @@ net-nds/openldap
 =app-misc/dragon-9999 **
 app-shells/fish
 
+# testing kitty terminal
+dev-lang/python:3.5
+media-libs/glew:0/2.0
+
 mail-client/mutt
 =app-crypt/gnupg-2.1.21-r1
+net-im/telegram-desktop-bin::gentoo
+=sys-apps/firejail-9999 **
+=net-vpn/tor-0.3.1.4_alpha
+media-sound/pulseeffects
 
 sys-process/ctop
 app-admin/profile-cleaner
@@ -46,9 +54,8 @@ media-video/obs-studio
 games-action/minetest_game
 games-action/minetest
 =app-doc/devmanual-9999 **
-#=net-libs/tox-9999 **
-#=net-im/qtox-9999 **
 =sys-devel/gcc-6.3.0*
+=net-misc/vde-2.3.2-r3
 
 app-arch/libarchive::libressl
 sys-apps/inxi
@@ -149,6 +156,7 @@ media-libs/oyranos
 media-video/mpv
 net-dns/dnscrypt-proxy
 net-im/qtox
+#=net-im/qtox-9999 **
 net-libs/tox
 www-client/torbrowser
 www-misc/profile-sync-daemon
@@ -156,6 +164,7 @@ x11-misc/i3blocks
 x11-misc/kbdd
 =x11-misc/i3blocks-contrib-9999 **
 x11-misc/notify-osd
+dev-qt/qtnetwork::libressl
 
 media-fonts/courier-prime
 media-fonts/heuristica
@@ -166,5 +175,24 @@ media-libs/icc-profiles-openicc
 media-fonts/koruri
 x11-themes/notify-osd-icons
 games-util/steam-client-meta
+
+=app-emulation/anbox-9999 **
+=dev-libs/dbus-c++-0.9.0-r3
+
 =net-misc/youtube-dl-99999999 **
 =app-emulation/wine-any-9999 **
+
+# required by media-sound/pulseeffects-1.6.6::jorgicio
+# required by @selected
+# required by @world (argument)
+=sci-libs/scipy-0.19.1
+# required by app-emulation/docker-compose-1.14.0::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/docker-py-2.3.0
+
+# required by sci-libs/scipy-0.19.1::gentoo
+# required by media-sound/pulseeffects-2.0.5::jorgicio
+# required by @selected
+# required by @world (argument)
+=dev-python/setuptools-36.0.1

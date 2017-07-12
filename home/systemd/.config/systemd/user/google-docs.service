@@ -4,4 +4,4 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash %h/sync/main/Documents/googledocs/google_download.sh
+ExecStart=/bin/bash %h/sync/main/Documents/googledocs/google_download_wget.sh

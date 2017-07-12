@@ -1,2 +1,13 @@
 # no neonvim https://github.com/gentoo/gentoo/blob/master/eclass/vim-plugin.eclass#L19-L20
 app-editors/vim-7.3
+
+
+# fucking virt-manager [+gtk] deps
+net-misc/x11-ssh-askpass-1.2.4.1-r1
+net-libs/gtk-vnc-0.6.0
+# required by app-emulation/virt-manager-1.4.0-r3::gentoo[gtk]
+# required by app-emulation/virt-manager (argument)
+net-misc/spice-gtk-0.33-r2
+
+# fucking qemu deps
+sys-firmware/ipxe-1.0.0_p20160620

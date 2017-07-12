@@ -34,21 +34,19 @@ export W3MIMGDISPLAY_PATH="/usr/libexec/w3m/w3mimgdisplay"
 # Ranger settings
 export RANGER_LOAD_DEFAULT_RC=false
 
-# ncmpcpp
-export MPD_HOST="$XDG_RUNTIME_DIR/mpd/socket"
-
 # for xdg-open
 export BROWSER="torbrowser --allow-remote"
 
 # gpg-agent-ssh
-export GPG_TTY=$(tty)
-unset SSH_AGENT_PID
-#if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-#  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-#fi
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
+#export GPG_TTY=$(tty)
+#unset SSH_AGENT_PID
+##if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+##  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+##fi
+#export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
 
 # xdg
+export MPD_HOST="$XDG_RUNTIME_DIR/mpd/socket"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export HISTFILE="$XDG_CACHE_HOME/zsh/history"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"

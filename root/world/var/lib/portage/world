@@ -17,6 +17,7 @@ app-editors/neovim
 app-emulation/docker
 app-emulation/docker-compose
 app-emulation/docker-gc
+app-emulation/virt-manager
 app-emulation/winetricks
 app-i18n/translate-shell
 app-misc/dragon
@@ -37,6 +38,7 @@ app-shells/fish
 app-shells/gentoo-zsh-completions
 app-shells/zsh
 app-shells/zsh-completions
+app-text/mupdf
 app-vim/gentoo-syntax
 app-vim/syntastic
 dev-db/sqlitebrowser
@@ -89,6 +91,7 @@ media-libs/oyranos
 media-sound/audacity
 media-sound/mpd
 media-sound/ncmpcpp
+media-sound/pulseeffects
 media-sound/pulsemixer
 media-video/atomicparsley-wez
 media-video/ffmpeg
@@ -107,6 +110,7 @@ net-fs/btfs
 net-fs/sshfs
 net-im/choqok
 net-im/qtox
+net-im/telegram-desktop-bin
 net-misc/android-file-transfer
 net-misc/aria2
 net-misc/arm
@@ -135,6 +139,7 @@ sys-apps/ripgrep
 sys-boot/grub
 sys-devel/crossdev
 sys-devel/distcc
+sys-devel/gdb
 sys-fs/dosfstools
 sys-fs/f2fs-tools
 sys-fs/fuse
