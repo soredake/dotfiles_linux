@@ -127,12 +127,13 @@ wtp() {
 
 # kernel update
 kupdate() {
-	local cur_v="$(sudo eselect kernel show | grep -o [0-9]\.[0-9][0-9]\.[0-9] | sed 's/\./_/g')"
+	local cur_v="$(eselect kernel show | grep -o [0-9]\.[0-9][0-9]\.[0-9] | sed 's/\./_/g')"
 	sudo cp "$HOME/git/dotfiles_home/kernel/.config" /usr/src/linux
 	pushd /usr/src/linux
 	sudo make olddefconfig
 	popd
-	cp /usr/src/linux/.config "$HOME"/git/dotfiles_home/kernel/.config{,_${cur_v}}
+	cp /usr/src/linux/.config "$HOME"/git/dotfiles_home/kernel/.config
+	cp /usr/src/linux/.config "$HOME"/git/dotfiles_home/kernel/.config_${cur_v}
 	kernelup
 	sudo emerge @module-rebuild --usepkg=n
 	kernelup
