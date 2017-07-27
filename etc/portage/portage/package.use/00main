@@ -44,7 +44,8 @@ net-misc/aria2 adns bittorrent jemalloc scripts
 net-libs/webkit-gtk gstreamer
 sys-apps/firejail x11
 dev-qt/qtwayland xcomposite
-x11-base/xorg-server xcsecurity
+# -suid for rootless xorg
+x11-base/xorg-server xcsecurity -suid
 media-sound/audacity -lv2 -midi -portmixer -vst -soundtouch -lame -ladspa
 
 # required by sys-apps/firejail-0.9.44.8::gentoo[x11]
@@ -59,7 +60,10 @@ media-sound/audacity -lv2 -midi -portmixer -vst -soundtouch -lame -ladspa
 dev-qt/qtwebkit printsupport
 dev-python/PyQt5 declarative webkit
 
-# for BFQ
+#sys-fs/cryptsetup
+sys-boot/grub device-mapper efiemu mount libzfs GRUB_PLATFORMS: pc
+
+# for 5010_enable-additional-cpu-optimizations-for-gcc.patch
 sys-kernel/gentoo-sources experimental
 
 # for steam
@@ -111,7 +115,6 @@ dev-libs/libdbusmenu gtk3
 x11-libs/libva abi_x86_32
 
 app-antivirus/clamav clamdtop metadata-analysis-api
-app-emulation/docker hardened
 net-vpn/tor zstd lzma scrypt
 x11-libs/libdrm libkms
 app-crypt/qca qt5
@@ -144,6 +147,7 @@ media-libs/libbluray aacs bdplus utils
 # needed for wayland use flag
 media-libs/cogl gles2
 media-libs/libsdl2 gles
+
 # w3mimgdisplay in ranger works only without transparency patch, so we need +vanilla
 x11-terms/gnome-terminal -gnome-shell -nautilus vanilla
 
@@ -155,10 +159,11 @@ virtual/wine staging
 dev-libs/wayland abi_x86_32
 # +wayland pulling ALL plasma
 kde-misc/kdeconnect app -wayland
-sys-kernel/genkernel-next -cryptsetup -dmraid -gpg -iscsi -mdadm -plymouth
-www-client/torbrowser ffmpeg system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite
+sys-kernel/genkernel-next cryptsetup -dmraid -gpg -iscsi -mdadm -plymouth
+www-client/torbrowser system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite
 dev-db/sqlite secure-delete
 media-libs/harfbuzz fontconfig
+app-emulation/libvirt zfs
 
 sys-apps/busybox static
 games-emulation/retroarch cheevos ffmpeg openal -sdl sdl2 libusb kms
@@ -167,7 +172,7 @@ games-util/steam-games-meta s3tc
 dev-vcs/git tk mediawiki mediawiki-experimental libsecret
 app-emulation/docker overlay -device-mapper
 net-misc/networkmanager resolvconf -wext
-media-libs/mesa -vulkan opencl openmax gles2 -bindist
+media-libs/mesa opencl openmax gles2 -bindist
 dev-lang/python sqlite
 # memory leak with +gtk, upd: memory leak even with -gtk, TODO: report bug to upstream
 www-client/w3m -gtk imlib
@@ -175,7 +180,8 @@ media-libs/libvpx postproc
 app-arch/tar minimal
 dev-db/unixODBC minimal
 net-nds/openldap minimal
-net-misc/curl -curl_ssl_openssl curl_ssl_libressl http2
+net-misc/curl http2 CURL_SSL: -openssl libressl
+#-curl_ssl_openssl curl_ssl_libressl
 net-libs/webkit-gtk gnome-keyring
 app-emulation/wine-any dos openal s3tc staging themes gstreamer
 app-emulation/wine-gecko abi_x86_32

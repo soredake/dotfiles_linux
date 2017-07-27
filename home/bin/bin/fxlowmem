@@ -28,18 +28,20 @@ download() {
     popd
   fi
   LOCATION="/tmp/${AUTODOWNLOAD}-${version}"
-  mkdir "${LOCATION}"
-  # unpack
-  if [[ "$AUTODOWNLOAD" = "esr" ]] || [[ "$AUTODOWNLOAD" = "release" ]] || [[ "$AUTODOWNLOAD" = "beta" ]]; then
-    tar xvjf /tmp/"$_base" --strip-components=1 -C "${LOCATION}"
-  elif [[ "$AUTODOWNLOAD" = "nightly" ]]; then
-    tar xvjf "$nightly_tar" --strip-components=1 -C "${LOCATION}"
-  fi
-  # cleanup
-  if [[ "$AUTODOWNLOAD" = "nightly" ]]; then
-    rm -rf /tmp/"$_dom"
-  else
-    rm -rf -- /tmp/"$_base"
+  if ! test -d "${LOCATION}"; then
+    mkdir "${LOCATION}"
+    # unpack
+    if [[ "$AUTODOWNLOAD" = "esr" ]] || [[ "$AUTODOWNLOAD" = "release" ]] || [[ "$AUTODOWNLOAD" = "beta" ]]; then
+      tar xvjf /tmp/"$_base" --strip-components=1 -C "${LOCATION}"
+    elif [[ "$AUTODOWNLOAD" = "nightly" ]]; then
+      tar xvjf "$nightly_tar" --strip-components=1 -C "${LOCATION}"
+    fi
+    # cleanup
+    if [[ "$AUTODOWNLOAD" = "nightly" ]]; then
+      rm -rf /tmp/"$_dom"
+    else
+      rm -rf -- /tmp/"$_base"
+    fi
   fi
 }
 

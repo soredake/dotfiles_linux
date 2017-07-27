@@ -88,7 +88,6 @@ media-gfx/feh
 media-gfx/gimp
 media-gfx/maim
 media-libs/oyranos
-media-sound/audacity
 media-sound/mpd
 media-sound/ncmpcpp
 media-sound/pulseeffects
@@ -103,6 +102,7 @@ media-video/subliminal
 media-video/syncplay
 net-analyzer/netcat6
 net-analyzer/nmap
+net-analyzer/traceroute
 net-dns/bind-tools
 net-dns/dnscrypt-proxy
 net-dns/update-resolv-conf
@@ -129,6 +129,8 @@ net-p2p/rtorrent
 net-p2p/syncthing
 net-p2p/syncthing-gtk
 net-proxy/torsocks
+net-vpn/haguichi
+net-vpn/logmein-hamachi
 net-vpn/tor
 sys-apps/firejail
 sys-apps/inxi
@@ -140,15 +142,18 @@ sys-boot/grub
 sys-devel/crossdev
 sys-devel/distcc
 sys-devel/gdb
+sys-fs/cryptsetup
 sys-fs/dosfstools
 sys-fs/f2fs-tools
 sys-fs/fuse
 sys-fs/xfsprogs
+sys-fs/zfs
 sys-kernel/genkernel-next
 sys-kernel/gentoo-sources
 sys-process/glances
 sys-process/htop
 virtual/wine
+www-client/links
 www-client/qutebrowser
 www-client/torbrowser
 www-client/w3m
@@ -165,4 +170,5 @@ x11-misc/xautolock
 x11-misc/xclip
 x11-misc/xdg-user-dirs
 x11-misc/xdotool
+x11-terms/alacritty
 x11-terms/gnome-terminal

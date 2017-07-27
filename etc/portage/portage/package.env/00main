@@ -12,4 +12,10 @@ sys-libs/db force-bfd
 app-emulation/docker-gc fixed-fork
 x11-drivers/nvidia-drivers force-bfd no-distcc no-ccache
 media-sound/pulseaudio pulseaudio-mask
-#dev-libs/sway sway-non-github 
+#dev-libs/sway sway-non-github
+
+# cargo 9999
+x11-terms/alacritty nonetsandbox
+
+# in case of patching failing
+app-emulation/wine wine-9999-fixed

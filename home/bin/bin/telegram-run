@@ -1,0 +1,4 @@
+#!/bin/bash
+# 32 bit is for steam client
+# 64 bit is for life is strange
+exec firejail --profile=$XDG_CONFIG_HOME/firejail/Telegram.profile -- proxychains -q "telegram-desktop" -- "$@"

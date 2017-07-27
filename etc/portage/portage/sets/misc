@@ -31,9 +31,11 @@ app-misc/task
 app-misc/timew
 app-misc/tmate
 app-misc/tpipe
+app-misc/trash-cli
 app-misc/vlock
 app-misc/when
 app-portage/cpuid2cpuflags
+app-shells/ccsh
 app-text/csvkit
 app-text/dos2unix
 app-text/tesseract
@@ -60,6 +62,7 @@ media-libs/libsndfile
 media-sound/ardour
 media-sound/guitarix2
 media-sound/paprefs
+media-sound/pasystray
 media-sound/pavucontrol
 media-sound/sonic-visualiser/
 media-video/get_flash_videos

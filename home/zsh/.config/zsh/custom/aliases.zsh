@@ -53,10 +53,13 @@ alias cps='mrsync --update --delete'
 alias fosize='du -sh'
 
 # upgrade currently selected kernel
-alias kernelup='sudo genkernel --install --udev --postclear --no-save-config --clean --no-lvm --no-mdadm --no-dmraid --no-zfs --no-btrfs --no-iscsi --no-luks --no-netboot --mountboot --makeopts=-j$(nproc) --ramdisk-modules --kernel-config=$HOME/git/dotfiles_home/kernel/.config all'
+alias kernelup='sudo genkernel --install --udev --postclear --no-save-config --clean --no-lvm --no-mdadm --no-dmraid --zfs --no-btrfs --no-iscsi --luks --no-netboot --mountboot --makeopts=-j$(nproc) --ramdisk-modules --kernel-config=$HOME/git/dotfiles_home/kernel/.config all'
 
 # similar to ubuntu's update-grub
 alias update-grub='test ! -d /boot/grub && sudo mount /boot; sudo grub-mkconfig -o /boot/grub/grub.cfg && sudo umount /boot'
+
+# clean old kernels
+alias clean-kernels='test ! -d /boot/grub && sudo mount /boot; sudo eclean-kernel -n 1 && sudo umount /boot'
 
 # docker-gc with options
 alias docker-gc='PID_DIR="$XDG_RUNTIME_DIR" STATE_DIR="$XDG_CACHE_HOME/docker-gc" FORCE_IMAGE_REMOVAL=1 FORCE_CONTAINER_REMOVAL=1 EXCLUDE_FROM_GC="" EXCLUDE_CONTAINERS_FROM_GC="" GRACE_PERIOD_SECONDS=300 docker-gc'
@@ -113,4 +116,3 @@ alias flush_caches='sync && sudo sync && sudo sysctl -qw vm.drop_caches=3'
 alias reswap='sudo swapoff -a && sudo swapon -a'
 alias linuxsteamgames='curl --silent "http://store.steampowered.com/search/?category1=998&os=linux" | grep -o "showing 1 - 25 of [0-9]*" | sed "s/showing 1 - 25 of //"'
 alias gogdownload='lgogdownloader --exclude e,c --language ru --download --game'
-alias telegram='firejail --trace --profile=$XDG_CONFIG_HOME/firejail/Telegram.profile -- proxychains -q "telegram-desktop" --'

@@ -1,0 +1,2 @@
+# breaks distcc and cargo 9999 ebuilds
+FEATURES="-network-sandbox"

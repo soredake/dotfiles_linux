@@ -1,2 +1,3 @@
 media-libs/jpeg
 sys-apps/less::mv
+x11-libs/gtk+::mv

@@ -1,5 +1,3 @@
-open_with 
-shell mkdir backup %s
 rename android-file-transfer-3.1.ebuild
 rename variety-0.6.4.ebuild
 rename kernelup
@@ -35,11 +33,18 @@ shell mpv --video-rotate=0 %s
 find s.jpg
 find 1116s
 shell mkdir 11 %s
-shell sudo rm -rf %s
 find 
 shell mpv --profile=image %s
 find F
 shell mkdir new
 
-delete
 shell gimp %s
+rename config.cfg
+rename voice_ban.dt
+shell 7z a -- %s
+shell mkdir 1111 %s
+shell sudo rm -f %s
+shell sudo rm -rf %s
+find tm
+rename cobaka.jpg
+delete
