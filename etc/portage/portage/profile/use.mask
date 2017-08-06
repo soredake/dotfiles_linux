@@ -1,3 +1,4 @@
 -libressl
 -curl_ssl_libressl
 -libzfs
+-zfs

@@ -113,3 +113,4 @@ peer_exchange = yes
 # Set downlad list layout style. ("full", "compact")
 #
 #ui.torrent_list.layout.set = "compact"
+view.collapsed.toggle=main

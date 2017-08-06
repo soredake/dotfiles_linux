@@ -1,3 +1,5 @@
 media-libs/jpeg
 sys-apps/less::mv
 x11-libs/gtk+::mv
+=dev-lang/rust-1.19*
+=dev-util/cargo-0.20*

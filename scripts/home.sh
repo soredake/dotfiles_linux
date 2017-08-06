@@ -72,14 +72,8 @@ main() {
 # Mpv scripts.
 ./mpv-scripts.sh
 
-# Atom.
-./atom.sh
-
 # Docker.
 ./docker.sh
-
-# Install Node packages.
-./node.sh
 
 }
 
@@ -102,9 +96,7 @@ else
   network_setup
   systemctl restart systemd-timesyncd
   emerge --sync
-  ./systemd-desktop-profile.sh
-  eselect profile set default/linux/amd64/17.0/desktop/systemd
-  #ln -sfv /usr/portage/profiles/default/linux/amd64/17.0/desktop/systemd /etc/portage/make.profile
+  eselect profile set pinkpieea:default/linux/amd64/17.0/desktop/systemd
   swap_setup
   emerge --getbinpkg=y --usepkg=y dev-vcs/git || die "git install failed"
   emerge --getbinpkg=y --usepkg=y app-admin/stow app-admin/sudo sys-devel/distcc app-shell/zsh dev-util/ccache net-misc/networkmanager net-misc/tor sys-boot/os-prober sys-kernel/genkernel-next x11-misc/xdg-user-dirs x11-misc/xdg-utils || die "emerge failed"

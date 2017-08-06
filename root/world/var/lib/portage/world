@@ -43,6 +43,7 @@ app-vim/gentoo-syntax
 app-vim/syntastic
 dev-db/sqlitebrowser
 dev-libs/sway
+dev-qt/qtwayland
 dev-util/android-tools
 dev-util/ccache
 dev-util/cloc
@@ -57,7 +58,6 @@ games-util/esteam
 games-util/lgogdownloader
 games-util/lutris
 games-util/steam-meta
-kde-misc/kdeconnect
 mail-client/mutt
 media-fonts/alee-fonts
 media-fonts/arphicfonts
@@ -108,7 +108,6 @@ net-dns/dnscrypt-proxy
 net-dns/update-resolv-conf
 net-fs/btfs
 net-fs/sshfs
-net-im/choqok
 net-im/qtox
 net-im/telegram-desktop-bin
 net-misc/android-file-transfer
@@ -158,7 +157,6 @@ www-client/qutebrowser
 www-client/torbrowser
 www-client/w3m
 www-misc/profile-sync-daemon
-x11-apps/indicator-kdeconnect
 x11-misc/i3blocks
 x11-misc/i3blocks-contrib
 x11-misc/kbdd
@@ -170,5 +168,6 @@ x11-misc/xautolock
 x11-misc/xclip
 x11-misc/xdg-user-dirs
 x11-misc/xdotool
+x11-misc/xembedsniproxy
 x11-terms/alacritty
 x11-terms/gnome-terminal

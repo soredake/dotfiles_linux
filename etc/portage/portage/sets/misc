@@ -32,10 +32,12 @@ app-misc/timew
 app-misc/tmate
 app-misc/tpipe
 app-misc/trash-cli
+app-misc/ttyload
 app-misc/vlock
 app-misc/when
 app-portage/cpuid2cpuflags
 app-shells/ccsh
+app-text/agrep
 app-text/csvkit
 app-text/dos2unix
 app-text/tesseract
@@ -55,6 +57,7 @@ dev-vcs/git-cola
 dev-vcs/gitolite
 games-action/violetland
 games-arcade/blobwars
+games-simulation/openrct2
 kde-apps/kdesu
 media-gfx/opentoonz
 media-libs/exiftool
@@ -71,6 +74,7 @@ net-analyzer/vnstat
 net-dns/coredns
 net-firewall/ferm
 net-firewall/shorewall
+net-im/choqok
 net-mail/courier-imap
 net-mail/mlmmj
 net-mail/offlineimap
@@ -106,3 +110,4 @@ x11-misc/synergy
 x11-misc/xclip
 x11-misc/xiccd
 x11-misc/xmountains
+x11-misc/xsetleds

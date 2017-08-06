@@ -19,3 +19,6 @@ x11-terms/alacritty nonetsandbox
 
 # in case of patching failing
 app-emulation/wine wine-9999-fixed
+
+# https://bugs.gentoo.org/show_bug.cgi?id=618862 
+sys-devel/clang j1

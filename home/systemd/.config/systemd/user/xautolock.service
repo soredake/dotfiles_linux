@@ -2,7 +2,7 @@
 Description=xautolock auto-locker
 
 [Service]
-ExecStart=/usr/bin/xautolock -time 11 -locker "/usr/bin/i3lock -et"
+ExecStart=/usr/bin/xautolock -time 11 -locker "'/usr/bin/i3lock -et'"
 Restart=on-abort
 
 [Install]

@@ -24,4 +24,4 @@ if [[ "$fullwayland" == "1" || "$1" == "f" ]]; then
   export ECORE_EVAS_ENGINE=wayland_egl
   #export ECORE_EVAS_ENGINE=wayland_shm
 fi
-exec sway
+exec sway &>$HOME/.local/share/sway.log

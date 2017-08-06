@@ -1,20 +1,12 @@
+# needed for newer installers
+app-arch/innoextract
+
 net-nds/openldap
-
-# required by sys-libs/pam-1.2.1::gentoo[berkdb]
-# required by virtual/pam-0-r1::gentoo
-# required by sys-libs/libcap-2.24-r2::gentoo
-# required by kde-frameworks/kinit-5.29.0::gentoo[caps]
-# required by kde-plasma/ksysguard-5.8.6::gentoo
-# required by kde-plasma/plasma-workspace-5.8.6::gentoo
-# required by kde-misc/kdeconnect-1.0.3::gentoo
-# required by @selected
-# required by @world (argument)
-#sys-libs/db abi_x86_32
-
 =net-news/rssguard-9999 **
 =media-libs/libXcm-0.5.4
 =dev-libs/sway-9999 **
 =dev-libs/wlc-9999 **
+x11-misc/xembedsniproxy
 =app-misc/dragon-9999 **
 app-shells/fish
 
@@ -23,17 +15,14 @@ dev-lang/python:3.5
 media-libs/glew:0/2.0
 
 mail-client/mutt
-=app-crypt/gnupg-2.1.21-r1
-net-im/telegram-desktop-bin::gentoo
+=app-crypt/gnupg-2.1.22*
+net-im/telegram-desktop-bin
 =sys-apps/firejail-9999 **
-=net-vpn/tor-0.3.1.4_alpha
+=net-vpn/tor-0.3.1.5_alpha
 media-sound/pulseeffects
 
 sys-process/ctop
 app-admin/profile-cleaner
-net-p2p/syncthing
-=dev-libs/wayland-9999 **
-=dev-libs/wayland-protocols-9999 **
 =net-misc/streamlink-9999 **
 
 games-util/esteam
@@ -49,7 +38,7 @@ media-video/obs-studio
 games-action/minetest_game
 games-action/minetest
 =app-doc/devmanual-9999 **
-=sys-devel/gcc-6.3.0*
+=sys-devel/gcc-6.4.0*
 =net-misc/vde-2.3.2-r3
 
 # hamachi
@@ -79,9 +68,6 @@ app-emulation/docker-compose
 
 =media-video/syncplay-9999 **
 
-x11-apps/indicator-kdeconnect
-
-
 # neovim
 app-editors/neovim
 =dev-libs/libvterm-0.0_pre20160305
@@ -106,11 +92,40 @@ dev-python/pygments
 # for youtube-dl cover embed
 media-video/atomicparsley-wez
 
-app-admin/keepassxc
 app-i18n/translate-shell
 
 # for i3blocks
 =media-sound/playerctl-0.5.0
+
+# rpcs3 
+=games-emulation/rpcs3-9999 **
+sys-devel/llvm:4
+# required by sys-devel/llvm-4.0.1::gentoo
+# required by sys-devel/llvmgold-4::gentoo
+=sys-devel/llvm-common-4.0.1
+# required by sys-devel/llvm-4.0.1::gentoo[gold]
+# required by games-emulation/rpcs3-9999::pinkpieea
+# required by games-emulation/rpcs3 (argument)
+=sys-devel/llvmgold-4
+# required by sys-devel/clang-runtime-4.0.1::gentoo[openmp]
+# required by sys-devel/clang-4.0.1::gentoo
+# required by sys-libs/compiler-rt-4.0.1::gentoo[clang]
+=sys-libs/libomp-4.0.1
+# required by sys-devel/clang-runtime-4.0.1::gentoo[compiler-rt]
+# required by sys-devel/clang-4.0.1::gentoo
+# required by dev-libs/libclc-0.2.0_pre20160921::gentoo
+# required by media-libs/mesa-17.1.5::gentoo[opencl]
+# required by app-emulation/wine-any-2.12::gentoo[d3d9]
+# required by @wine
+# required by @selected
+# required by @world (argument)
+=sys-libs/compiler-rt-4.0.1
+# required by sys-devel/clang-runtime-4.0.1::gentoo[sanitize,compiler-rt]
+# required by sys-devel/clang-4.0.1::gentoo
+# required by sys-libs/compiler-rt-4.0.1::gentoo[clang]
+=sys-libs/compiler-rt-sanitizers-4.0.1
+sys-devel/clang-runtime:4.0.1
+sys-devel/clang:4
 
 =games-util/lutris-9999 **
 =dev-python/python-evdev-0.6.1
@@ -128,7 +143,7 @@ sys-apps/ripgrep
 # required by @wine
 # required by @selected
 # required by @world (argument)
-=media-video/ffmpeg-3.3.2 ~amd64
+=media-video/ffmpeg-3.3.2
 
 # for libressl support
 dev-libs/libressl
@@ -148,8 +163,8 @@ app-admin/eclean-kernel
 =net-p2p/syncthing-gtk-9999 **
 =app-emulation/docker-gc-9999 **
 app-misc/ranger::pinkpieea
-=app-misc/tmux-2.4*::gentoo
-=app-portage/portage-utils-0.63
+=app-misc/tmux-2.5*::gentoo
+=app-portage/portage-utils-0.64
 =media-libs/openicc-0.1.0
 app-admin/elektra
 app-admin/stow
@@ -159,7 +174,7 @@ dev-util/shellcheck
 games-util/steam-games-meta
 games-util/steam-launcher
 games-util/steam-meta
-media-fonts/infinality-ultimate-meta::gentoo
+media-fonts/infinality-ultimate-meta
 media-libs/fontconfig-ultimate::gentoo
 media-libs/oyranos
 media-video/mpv
@@ -205,3 +220,8 @@ games-util/steam-client-meta
 # required by @selected
 # required by @world (argument)
 =dev-python/setuptools-36.0.1
+
+# required by app-emulation/docker-compose-1.15.0::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/docker-py-2.4.2

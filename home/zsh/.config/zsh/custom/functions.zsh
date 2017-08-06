@@ -108,6 +108,7 @@ case "$1" in
   s) cd "$HOME/sync" ;;
   rt) cd "$HOME/media/server_torrents" ;;
   t) cd "$HOME/media/torrents" ;;
+  et) cd /media/disk0/torrents ;;
   gd) cd "$HOME/sync/main/Documents/googledocs" ;;
   dch) cd "$HOME/sync/main/Documents/dollchan" ;;
   b) cd "$HOME/sync/system-data" ;;
@@ -117,8 +118,8 @@ esac
 }
 
 #wp() {
-  #if [[ ! -z "$3"]]; then desktop="explorer /desktop=$(basename $1),$3"; fi
-  #WINEPREFIX="$XDG_DATA_HOME/wineprefix/${2:-steam}" wine "$1" "$2" ${desktop}
+#  if [[ ! -z "$3"]]; then desktop="explorer /desktop=$(basename $1),$3"; fi
+#  WINEPREFIX="$XDG_DATA_HOME/wineprefix/${2:-steam}" wine "$1" "$2" ${desktop}
 #}
 
 wtp() {
@@ -132,10 +133,10 @@ kupdate() {
 	pushd /usr/src/linux
 	sudo make olddefconfig
 	popd
-	cp /usr/src/linux/.config "$HOME"/git/dotfiles_home/kernel/.config
-	cp /usr/src/linux/.config "$HOME"/git/dotfiles_home/kernel/.config_${cur_v}
+	cp /usr/src/linux/.config "$HOME/git/dotfiles_home/kernel/.config"
+	cp /usr/src/linux/.config "$HOME/git/dotfiles_home/kernel/.config_${cur_v}"
 	kernelup
 	sudo emerge @module-rebuild --usepkg=n
-	kernelup
+	sudo genkernel --install --udev --postclear --no-save-config --clean --no-lvm --no-mdadm --no-dmraid --zfs --no-btrfs --no-iscsi --luks --no-netboot --mountboot --makeopts=-j$(nproc) --ramdisk-modules --kernel-config=$HOME/git/dotfiles_home/kernel/.config initramfs
 	update-grub
 }
