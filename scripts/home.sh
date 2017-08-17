@@ -97,12 +97,12 @@ else
   systemctl restart systemd-timesyncd
   emerge --sync
   eselect profile set pinkpieea:default/linux/amd64/17.0/desktop/systemd
-  swap_setup
+  #swap_setup
   emerge --getbinpkg=y --usepkg=y dev-vcs/git || die "git install failed"
   emerge --getbinpkg=y --usepkg=y app-admin/stow app-admin/sudo sys-devel/distcc app-shell/zsh dev-util/ccache net-misc/networkmanager net-misc/tor sys-boot/os-prober sys-kernel/genkernel-next x11-misc/xdg-user-dirs x11-misc/xdg-utils || die "emerge failed"
   hostnamectl set-hostname gentoo
   systemd-machine-id-setup
-  ccache -M 10G
+  ccache -M 20G
   echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/00wheel
   echo "$NEWUSER ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper" > /etc/sudoers.d/99psd
   cat > /etc/xdg/user-dirs.defaults <<END

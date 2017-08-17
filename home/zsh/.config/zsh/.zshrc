@@ -117,4 +117,4 @@ zle -N bracketed-paste bracketed-paste-magic
 #if [[ ! -z "$DISPLAY" ]]; then
 #  pgrep kbdd &>/dev/null || nohup kbdd &>/dev/null
 #fi
-echo Hi sempai~
+#echo Hi sempai~

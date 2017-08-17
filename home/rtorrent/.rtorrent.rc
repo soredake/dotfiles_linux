@@ -114,3 +114,8 @@ peer_exchange = yes
 #
 #ui.torrent_list.layout.set = "compact"
 view.collapsed.toggle=main
+
+# Sort the main view by name
+view.sort_current = main,greater=d.get_name=
+view.sort_new = main,greater=d.get_name=
+view.sort = main

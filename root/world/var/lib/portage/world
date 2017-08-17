@@ -1,13 +1,13 @@
 app-admin/eclean-kernel
 app-admin/keepassxc
 app-admin/profile-cleaner
-app-admin/redundant-use
 app-admin/stow
 app-admin/sudo
 app-arch/atool
 app-arch/innoextract
 app-arch/p7zip
 app-arch/unrar
+app-benchmarks/phoronix-test-suite
 app-crypt/veracrypt
 app-doc/dasht
 app-doc/devmanual
@@ -53,7 +53,9 @@ dev-util/strace
 dev-vcs/tig
 games-action/minetest
 games-action/minetest_game
+games-misc/everlasting-summer
 games-misc/ponysay
+games-misc/theherbalist
 games-util/esteam
 games-util/lgogdownloader
 games-util/lutris
@@ -88,8 +90,10 @@ media-gfx/feh
 media-gfx/gimp
 media-gfx/maim
 media-libs/oyranos
+media-sound/alsa-utils
 media-sound/mpd
 media-sound/ncmpcpp
+media-sound/pavucontrol
 media-sound/pulseeffects
 media-sound/pulsemixer
 media-video/atomicparsley-wez
@@ -127,6 +131,7 @@ net-news/rssguard
 net-p2p/rtorrent
 net-p2p/syncthing
 net-p2p/syncthing-gtk
+net-p2p/torrentinfo
 net-proxy/torsocks
 net-vpn/haguichi
 net-vpn/logmein-hamachi
@@ -138,8 +143,10 @@ sys-apps/progress
 sys-apps/pv
 sys-apps/ripgrep
 sys-boot/grub
+sys-boot/syslinux
 sys-devel/crossdev
 sys-devel/distcc
+sys-devel/gcc
 sys-devel/gdb
 sys-fs/cryptsetup
 sys-fs/dosfstools
@@ -149,6 +156,8 @@ sys-fs/xfsprogs
 sys-fs/zfs
 sys-kernel/genkernel-next
 sys-kernel/gentoo-sources
+sys-kernel/git-sources
+sys-kernel/linux-firmware
 sys-process/glances
 sys-process/htop
 virtual/wine

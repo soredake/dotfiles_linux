@@ -20,7 +20,7 @@ ncmpcpp_directory = ~/.config/ncmpcpp
 ## (eg. ncmpc) also use that location.
 ##
 #
-lyrics_directory = ~/.config/ncmpcpp/lyrics
+lyrics_directory = ~/.local/share/lyrics
 #
 ##### connection settings #####
 #
@@ -32,7 +32,7 @@ mpd_connection_timeout = 5
 #
 ## Needed for tag editor and file operations to work.
 ##
-mpd_music_dir = ~/sync/music
+mpd_music_dir = ~/music
 #
 #mpd_crossfade_time = 5
 #
@@ -270,7 +270,7 @@ visualizer_look = ●▮
 ##
 #execute_on_song_change = ""
 #
-#playlist_show_remaining_time = no
+playlist_show_remaining_time = yes
 #
 #playlist_shorten_total_times = no
 #
@@ -349,8 +349,6 @@ visualizer_look = ●▮
 #
 #store_lyrics_in_song_dir = no
 #
-#generate_win32_compatible_filenames = yes
-#
 allow_for_physical_item_deletion = yes
 #
 ##
@@ -378,13 +376,13 @@ allow_for_physical_item_deletion = yes
 ## Screens available for use: help, playlist, browser, search_engine,
 ## media_library, playlist_editor, tag_editor, outputs, visualizer, clock.
 ##
-#screen_switcher_mode = playlist, browser
+screen_switcher_mode = media_library, browser, playlist, search_engine 
 #
 ##
 ## Note: You can define startup screen for ncmpcpp
 ## by choosing screen from the list above.
 ##
-#startup_screen = playlist
+startup_screen = media_library
 #
 ##
 ## Default width of locked screen (in %).

@@ -203,7 +203,7 @@ exec --no-startup-id xrandr --output HDMI-1 --auto --primary
 #exec --no-startup-id kbdd
 
 # set wallpaper
-exec_always feh --bg-scale "$XDG_DATA_HOME/wallpaper-1.jpg" --xinerama-index 0
+#exec_always feh --bg-scale "$XDG_DATA_HOME/wallpaper-1.jpg" --xinerama-index 0
 
 for_window [class="^mpv$"] move up
 for_window [class="explorer.exe"] floating enable

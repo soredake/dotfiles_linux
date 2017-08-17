@@ -7,7 +7,7 @@ mem() { mozilla-extension-manager --user --install "$@"; }
 mem https://addons.mozilla.org/firefox/downloads/latest/3880/addon-3880-latest.xpi
 
 # Bookmark Deduplicator
-mem https://addons.mozilla.org/firefox/downloads/latest/422748/addon-422748-latest.xpi
+#mem https://addons.mozilla.org/firefox/downloads/latest/422748/addon-422748-latest.xpi
 
 # Decentraleyes
 mem https://addons.mozilla.org/firefox/downloads/latest/521554/addon-521554-latest.xpi
@@ -41,9 +41,6 @@ mem https://addons.mozilla.org/firefox/downloads/file/453945/tree_style_tab-0.17
 
 # uBlock Origin
 mem https://addons.mozilla.org/firefox/downloads/latest/607454/addon-607454-latest.xpi
-
-# uMatrix
-mem https://addons.mozilla.org/firefox/downloads/latest/613250/addon-613250-latest.xpi
 
 ### Dictionaries:
 # Russian:

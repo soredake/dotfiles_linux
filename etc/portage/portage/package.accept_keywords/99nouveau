@@ -1,4 +1,4 @@
-media-libs/mesa
+=media-libs/mesa-17.1*
 =sys-kernel/gentoo-sources-4.12*
 =dev-libs/wayland-9999 **
 =dev-libs/wayland-protocols-9999 **

@@ -1,6 +1,7 @@
 [Unit]
 Description=rtorrent
 After=network.target
+RequiresMountsFor=/media/disk0
 
 [Service]
 LimitNOFILE=8192

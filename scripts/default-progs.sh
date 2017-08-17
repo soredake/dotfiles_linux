@@ -15,9 +15,6 @@ xdg-mime default mpv.desktop application/ogg application/x-ogg application/sdp a
 xdg-mime default mvi.desktop image/gif image/jpeg image/png image/bmp image/x-eps image/x-ico image/x-portable-bitmap image/x-portable-graymap image/x-portable-pixmap image/x-xbitmap image/x-xpixmap
 
 # Browser
-# firefox
-# чтобы можно было открывать ссылку в торбраузере через tobrowser --new-tab надо запускать его с --allow-remote
-# sudo sed -e 's/Exec=.*/Exec=torbrowser --allow-remote/g' -e 's/TryExec=.*/TryExec=torbrowser --allow-remote/g' /usr/share/applications/torbrowser-torbrowser.desktop
 xdg-mime default torbrowser-fixed.desktop text/html text/xml application/xhtml+xml application/vnd.mozilla.xul+xml text/mml x-scheme-handler/http x-scheme-handler/https
 
 # Folder opening

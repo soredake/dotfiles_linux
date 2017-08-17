@@ -1,3 +1,28 @@
+# required by virtual/pypy-5.8.0::gentoo
+# required by dev-python/setuptools-36.0.1::gentoo[python_targets_pypy]
+# required by dev-python/pyxattr-0.5.5::gentoo
+# required by sys-apps/portage-2.3.6::gentoo[python_targets_pypy,xattr,-python_targets_python2_7]
+# required by sys-apps/portage (argument)
+#=dev-python/pypy-5.8.0
+# required by sys-apps/portage-2.3.6::gentoo[python_targets_pypy]
+# required by sys-apps/portage (argument)
+#=virtual/pypy-5.8.0
+# required by app-admin/haskell-updater-1.2.10::gentoo
+# required by dev-lang/ghc-7.10.3::gentoo[-ghcbootstrap]
+# required by dev-haskell/random-1.0.1.1-r1::gentoo
+# required by dev-haskell/quickcheck-2.8.1::gentoo
+# required by dev-util/shellcheck-0.4.6::gentoo
+# required by @selected
+# required by @world (argument)
+#=sys-apps/portage-2.3.7
+
+
+# required by media-libs/mesa-17.2.0_rc3::gentoo
+# required by www-client/torbrowser-52.3.0_p704::torbrowser
+# required by @selected
+# required by @world (argument)
+=x11-libs/libdrm-2.4.82
+
 # needed for newer installers
 app-arch/innoextract
 
@@ -10,12 +35,16 @@ x11-misc/xembedsniproxy
 =app-misc/dragon-9999 **
 app-shells/fish
 
+# for album-only sort
+# https://github.com/arybczak/ncmpcpp/pull/240
+=media-sound/ncmpcpp-9999 **
+
 # testing kitty terminal
 dev-lang/python:3.5
 media-libs/glew:0/2.0
 
 mail-client/mutt
-=app-crypt/gnupg-2.1.22*
+=app-crypt/gnupg-2.1.23*
 net-im/telegram-desktop-bin
 =sys-apps/firejail-9999 **
 =net-vpn/tor-0.3.1.5_alpha
@@ -92,7 +121,15 @@ dev-python/pygments
 # for youtube-dl cover embed
 media-video/atomicparsley-wez
 
+media-libs/alsa-lib
+media-sound/alsa-utils
+media-plugins/alsa-plugins
+
+=sys-kernel/git-sources-4.13_rc5
+=app-portage/cpuid2cpuflags-4
 app-i18n/translate-shell
+app-benchmarks/phoronix-test-suite
+=net-p2p/syncthing-0.14.35
 
 # for i3blocks
 =media-sound/playerctl-0.5.0

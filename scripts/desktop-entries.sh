@@ -14,4 +14,4 @@ sed -e 's/Name=Steam/Name=Steam (nouveau fixed)/g' -e 's|Exec=steam|Exec=steam-r
 sed -e 's/^Name=.*/Name=KeePassXC (firejail)/g' -e 's|Exec=keepassxc|Exec=keepassxc-run|g' /usr/share/applications/keepassxc.desktop > keepassxc-firejail.desktop
 
 # qtox firejail
-sed -e 's/^Name=.*/Name=qTox (firejail)/g' -e 's|^Exec=.*|Exec=qtox-run|g' -e 's|^TryExec=.*|Exec=qtox-run|g' /usr/share/applications/qTox.desktop > qTox-firejail.desktop
+sed -e 's/^Name=.*/Name=qTox (firejail)/g' -e 's|^Exec=.*|Exec=qtox-run|g' -e 's|^TryExec=.*|Exec=qtox-run|g' /usr/share/applications/qtox.desktop > qtox-firejail.desktop
