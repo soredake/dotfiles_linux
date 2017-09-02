@@ -91,7 +91,9 @@ else
   rm -r /etc/portage
   cp -r "$SD"/../etc/portage/portage /etc/portage
   rm /etc/portage/repos.conf/*.conf
-  cp /usr/share/portage/config/repos.conf /etc/portage/repos.conf/gentoo.conf
+  cp  "$SD"/../etc/portage/portage/pinkpieea.conf /usr/share/portage/config/repos.conf /etc/portage/repos.conf
+  mkdir -p /var/lib/repos/pinkpieea
+  wget -qO - https://notabug.org/soredake/gentoo-overlay/archive/master.tar.gz | tar xzC /var/lib/repos/pinkpieea --strip-components 1
   timedatectl set-timezone Europe/Kiev
   network_setup
   systemctl restart systemd-timesyncd

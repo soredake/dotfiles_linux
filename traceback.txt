@@ -1,0 +1,35 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+After initialization, but before game start.
+  File "renpy/common/00voice.rpy", line 360, in voice_interact
+    if _menu:
+NameError: global name '_menu' is not defined
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "/usr/lib64/python2.7/site-packages/renpy699/renpy/bootstrap.py", line 295, in bootstrap
+    renpy.main.main()
+  File "/usr/lib64/python2.7/site-packages/renpy699/renpy/main.py", line 430, in main
+    renpy.game.script.report_duplicate_labels()
+  File "/usr/lib64/python2.7/site-packages/renpy699/renpy/script.py", line 890, in report_duplicate_labels
+    if renpy.parser.report_parse_errors():
+  File "/usr/lib64/python2.7/site-packages/renpy699/renpy/parser.py", line 2543, in report_parse_errors
+    renpy.display.error.report_parse_errors(full_text, error_fn)
+  File "/usr/lib64/python2.7/site-packages/renpy699/renpy/display/error.py", line 179, in report_parse_errors
+    error_fn=error_fn,
+  File "/usr/lib64/python2.7/site-packages/renpy699/renpy/game.py", line 280, in invoke_in_new_context
+    return callable(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/renpy699/renpy/display/error.py", line 43, in call_exception_screen
+    return renpy.ui.interact(mouse="screen", type="screen", suppress_overlay=True, suppress_underlay=True)
+  File "/usr/lib64/python2.7/site-packages/renpy699/renpy/ui.py", line 285, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/renpy699/renpy/display/core.py", line 2519, in interact
+    i()
+  File "renpy/common/00voice.rpy", line 360, in voice_interact
+    if _menu:
+NameError: global name '_menu' is not defined
+
+Linux-4.12.8-gentoo-x86_64-AMD_Ryzen_7_1800X_Eight-Core_Processor-with-gentoo-2.3
+Ren'Py 6.99.12.4.2187
+ 

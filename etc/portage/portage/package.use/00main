@@ -3,7 +3,7 @@
 # required by media-video/obs-studio-20.0.1::gentoo[pulseaudio]
 # required by @selected
 # required by @world (argument)
->=media-libs/alsa-lib-1.1.4.1 abi_x86_32
+media-libs/alsa-lib abi_x86_32
 
 
 # required by sys-apps/systemd-233-r4::gentoo
@@ -179,10 +179,16 @@ app-emulation/libvirt zfs
 # required by @world (argument)
 #>=dev-python/setuptools-36.0.1 python_targets_pypy
 
-
 sys-apps/busybox static
-games-emulation/retroarch cheevos ffmpeg openal -sdl sdl2 libusb kms
-games-emulation/libretro-meta -*
+games-emulation/retroarch lakka miniupnpc cheevos ffmpeg openal -sdl sdl2 libusb kms
+# TODO: fix fbalpha2012 in repository
+# cant build: melonds
+# Filesize does not match recorded size: mame2016, mame
+# no such commit: citra
+games-emulation/libretro-meta -* 2048 4do beetle-psx bnes bsnes -bsnes-cpp98 -citra desmume dolphin easyrpg snes9x snes9x2002 snes9x2010 prboom fbalpha fbalpha2012 fceumm gambatte genplus quicknes picodrive pcsx-rearmed parallel-n64 nestopia mrboom mgba yabause vbam vba-next tgbdual stella scummvm sameboy reicast redream px68k prosystem openlara nxengine mupen64plus meteor meowpc98 -melonds handy -mame mame2000 mame2003 -mame2016 mednafen-gba mednafen-ngp mednafen-pce-fast mednafen-saturn mednafen-snes mednafen-supergrafx mednafen-vb mednafen-wswan
+games-emulation/mgba-libretro lto lzma pgo pgopost
+#games-emulation/reicast-libretro naomi
+#games-emulation/bsnes-libretro
 games-util/steam-games-meta s3tc
 dev-vcs/git tk mediawiki mediawiki-experimental libsecret
 app-emulation/docker overlay -device-mapper
@@ -191,6 +197,16 @@ media-libs/mesa opencl openmax gles2 -bindist
 dev-lang/python sqlite
 # memory leak with +gtk, upd: memory leak even with -gtk, TODO: report bug to upstream
 www-client/w3m -gtk imlib
+
+#Cannot find source file: ../libi2pd/stdafx.cpp
+net-vpn/i2pd -pch
+
+# required by app-emulation/wine-any-2.12::gentoo[fontconfig]
+# required by @wine
+# required by @selected
+# required by @world (argument)
+>=media-libs/fontconfig-2.12.4 abi_x86_32
+
 
 media-libs/libvpx postproc
 app-arch/tar minimal
@@ -202,7 +218,7 @@ app-emulation/wine-any dos openal s3tc staging themes gstreamer
 app-emulation/wine-gecko abi_x86_32
 sys-libs/libomp hwloc
 media-video/ffmpeg openssl ssh libass openh264 vpx x265 cpudetection theora webp opus bluray gme libcaca rubberband
-app-emulation/qemu lzo virtfs vde sdl2 -vnc QEMU_USER_TARGETS: x86_64
+app-emulation/qemu lzo virtfs sdl2 -vnc QEMU_USER_TARGETS: x86_64
 
 # wine[themes]
 app-accessibility/at-spi2-atk abi_x86_32

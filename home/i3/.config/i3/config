@@ -134,7 +134,7 @@ bindsym $mod+Shift+KP_1 exec "output-change.sh"
 #bindsym $mod+KP_5 exec "save-special $(xsel -o --logfile $XDG_CACHE_HOME/xsel/xsel.log)"
 #bindsym $mod+Shift+KP_7 exec "maim -s $HOME/mdata/syncthing/main/Screens/$(date +%d.%m.%G-%T).png"
 bindsym $mod+Shift+KP_7 exec "maim -s $HOME/mdata/syncthing/main/Screens/$(xdotool getwindowname $(xdotool getactivewindow))-$(date +%d.%m.%G-%T).png"
-bindsym $mod+Shift+KP_3 exec "scrot"
+bindsym $mod+Shift+KP_3 exec "scr l"
 bindsym $mod+Shift+KP_9 exec "i3lock"
 
 # resize window (you can also use the mouse for that)

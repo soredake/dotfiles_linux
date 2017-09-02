@@ -60,7 +60,7 @@ fi
 pathadd() {
   [[ -d "$1" ]] && [[ ":$PATH:" != *":$1:"* ]] && PATH="${PATH:+"$PATH:"}$1"
 }
-pathadd "$HOME/.gem/ruby/2.1.0/bin"
+pathadd "$HOME/.gem/ruby/2.2.0/bin"
 pathadd "$HOME/bin"
 pathadd /sbin
 pathadd /usr/sbin
@@ -112,9 +112,4 @@ zle -N bracketed-paste bracketed-paste-magic
 #  exec startx -- vt1 &> "$XDG_CACHE_HOME/xorg.log"
 #fi
 
-# can't start dbus service in systemd user instance
-# Failed to restart kbdd.service: Unit dbus.socket not found
-#if [[ ! -z "$DISPLAY" ]]; then
-#  pgrep kbdd &>/dev/null || nohup kbdd &>/dev/null
-#fi
-#echo Hi sempai~
+echo Hi sempai~

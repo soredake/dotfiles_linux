@@ -1,42 +1,11 @@
-open_with mbim
-shell mkdir "Сталкер тени чернобыля" %s
-shell mkdir "Mirrors Edge" %s
-touch 
-shell nvim %s
-rename new-sim.txt
-rename fdfsd.txt
-shell mpv --video-rotate=180 %s
-shell --video-rotate=-180 %s
-shell mpv --video-rotate=-180 %s
-shell --video-rotate=360 %s
-shell mpv --video-rotate=360 %s
-shell mpv --video-rotate=359 %s
-shell --video-rotate=80 %s
-shell mpv --video-rotate=80 %s
-shell mpv  --video-rotate=100 %s
-shell 
-shell mpv --video-rotate=90 %s
-shell mpv --video-rotate=0 %s
-find s.jpg
-find 1116s
-shell mkdir 11 %s
-find 
-shell mpv --profile=image %s
-find F
-shell mkdir new
-
-shell gimp %s
 rename config.cfg
 rename voice_ban.dt
 shell 7z a -- %s
 shell mkdir 1111 %s
 shell sudo rm -f %s
-shell sudo rm -rf %s
 find tm
 rename cobaka.jpg
 shell mkdir "teaching feeling" %s
-open_with nvim
-open_with 
 rename movies
 cd 
 shell mvi %s
@@ -46,5 +15,36 @@ rename ass2mouth1.webm
 rename pissdrink.webm
 rename sounding.webm
 rename trap.webm
-delete
 shell chmod +x %s
+open_with 
+open_with nvim
+shell notify-send $(du -sh %s)
+rename euphoria__.jpg
+shell rm r- %s
+shell rm -r %s
+shell mkdir photo %s
+shell mkdir "Mass Effect 1"
+shell mkdir "Mass Effect 3" %s
+shell mkdir "Euro Truck Simulator 2" %s
+shell mkdir "Half Life: Decay" %s
+shell mkdir "Grand Theft Auto III" %s
+shell mkdir "Left 4 Dead 2" %s
+shell mkdir "Estranged Act I" %s
+shell mkdir "Deus Ex: Human Revolution" %s
+shell mkdir "Half Life 2: Episode 2" %s
+shell mkdir "maddyson streams" %s
+shell mkdir "unruhe" %s
+shell mkdir "2ch" %s
+rename txt1.txt
+rename youtube.txt
+shell sudo rm -rf %s
+rename tmux.conf
+rename custom
+shell mkdir zsh %s
+rename ve.cs
+shell cat %s
+shell nvim %s
+deleteD
+shell rm %s
+rename somelink.txt
+delete

@@ -37,6 +37,10 @@ app-misc/ttyload
 app-misc/vlock
 app-misc/when
 app-portage/cpuid2cpuflags
+app-portage/diffmask
+app-portage/flaggie
+app-portage/install-mask
+app-portage/portpeek
 app-shells/ccsh
 app-text/agrep
 app-text/csvkit
@@ -90,6 +94,7 @@ sci-libs/magma
 sys-apps/bleachbit
 sys-apps/fwupd
 sys-apps/fwupdate
+sys-apps/moreutils
 sys-apps/noexec
 sys-apps/osinfo-db
 sys-apps/osinfo-db-tools

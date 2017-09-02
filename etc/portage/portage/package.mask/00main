@@ -1,5 +1,9 @@
 media-libs/jpeg
 sys-apps/less::mv
 x11-libs/gtk+::mv
+# rust 1.19 fails with libressl-2.6.0
 =dev-lang/rust-1.19*
 =dev-util/cargo-0.20*
+# zfs module fails with 4.12.9
+>=sys-kernel/gentoo-sources-4.12.9
+#>net-misc/curl-7.54.1

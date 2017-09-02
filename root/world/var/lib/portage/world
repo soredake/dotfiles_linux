@@ -30,6 +30,7 @@ app-office/libreoffice
 app-portage/cpuid2cpuflags
 app-portage/eclass-manpages
 app-portage/eix
+app-portage/genlop
 app-portage/gentoolkit
 app-portage/portage-postsyncd-mv
 app-portage/repoman
@@ -53,6 +54,8 @@ dev-util/strace
 dev-vcs/tig
 games-action/minetest
 games-action/minetest_game
+games-emulation/retroarch
+games-engines/xash3d
 games-misc/everlasting-summer
 games-misc/ponysay
 games-misc/theherbalist
@@ -88,6 +91,7 @@ media-fonts/wqy-microhei
 media-fonts/wqy-zenhei
 media-gfx/feh
 media-gfx/gimp
+media-gfx/jpegoptim
 media-gfx/maim
 media-libs/oyranos
 media-sound/alsa-utils
@@ -97,6 +101,7 @@ media-sound/pavucontrol
 media-sound/pulseeffects
 media-sound/pulsemixer
 media-video/atomicparsley-wez
+media-video/bluray_info
 media-video/ffmpeg
 media-video/ffmpegthumbnailer
 media-video/mediainfo
@@ -134,10 +139,12 @@ net-p2p/syncthing-gtk
 net-p2p/torrentinfo
 net-proxy/torsocks
 net-vpn/haguichi
+net-vpn/i2pd
 net-vpn/logmein-hamachi
 net-vpn/tor
 sys-apps/firejail
 sys-apps/inxi
+sys-apps/lsb-release
 sys-apps/lshw
 sys-apps/progress
 sys-apps/pv
@@ -154,10 +161,11 @@ sys-fs/f2fs-tools
 sys-fs/fuse
 sys-fs/xfsprogs
 sys-fs/zfs
+sys-kernel/amdstaging-sources
 sys-kernel/genkernel-next
 sys-kernel/gentoo-sources
-sys-kernel/git-sources
 sys-kernel/linux-firmware
+sys-power/cpupower
 sys-process/glances
 sys-process/htop
 virtual/wine
@@ -166,6 +174,7 @@ www-client/qutebrowser
 www-client/torbrowser
 www-client/w3m
 www-misc/profile-sync-daemon
+www-plugins/freshplayerplugin
 x11-misc/i3blocks
 x11-misc/i3blocks-contrib
 x11-misc/kbdd

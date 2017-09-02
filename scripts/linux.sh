@@ -19,6 +19,7 @@ KEYMAP="us"
 END
 
 # distccd settings
+# TODO: move to old
 #read -p "Main host ip? " Mhost;
 #read -p "Main host threads? " Mthreads;
 #read -p "localhost threads? " Lthreads;
@@ -50,7 +51,7 @@ sudo locale-gen -j "$(nproc)"
 dconf reset -f /org/gnome/terminal/
 dconf load /org/gnome/terminal/ < "$SD"/../home_cp/gnome-terminal/gnome.conf
 
-# ssh and firefox additions, 1) deny root login 2) disable motd 3) no aurora profile
+# 1) deny ssh root login 2) disable tty motd
 sudo sed -i -e "\$a PermitRootLogin no" -e '/PermitRootLogin/d' /etc/ssh/sshd_config
 touch "$HOME/.hushlogin"
 

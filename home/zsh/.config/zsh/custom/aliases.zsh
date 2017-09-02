@@ -14,7 +14,8 @@ alias badlinks='find . -type l -exec test ! -e {} \; -print'
 # xdg
 alias curl='curl -K $XDG_CONFIG_HOME/curlrc'
 alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
-alias xsel='xsel --logfile $XDG_CACHE_HOME/xsel/xsel.log'
+# delete when new version arrives https://github.com/kfish/xsel/issues/10
+#alias xsel='xsel --logfile $XDG_CACHE_HOME/xsel/xsel.log'
 
 # Color ls.
 alias ls='ls --color=auto -ah --quoting-style=escape'
@@ -53,7 +54,7 @@ alias cps='mrsync --update --delete'
 alias fosize='du -sh'
 
 # upgrade currently selected kernel
-alias kernelup='sudo genkernel --install --udev --postclear --no-save-config --clean --no-lvm --no-mdadm --no-dmraid --zfs --no-btrfs --no-iscsi --luks --no-netboot --mountboot --makeopts=-j$(nproc) --ramdisk-modules --kernel-config=$HOME/git/dotfiles_home/kernel/.config all'
+alias kernelup='sudo genkernel --install --udev --postclear --no-save-config --clean --no-lvm --no-mdadm --no-dmraid --zfs --no-btrfs --no-iscsi --no-luks --no-netboot --mountboot --makeopts=-j$(nproc) --ramdisk-modules --kernel-config=$HOME/git/dotfiles_home/kernel/.config all'
 
 # similar to ubuntu's update-grub
 alias update-grub='test ! -d /boot/grub && sudo mount /boot; sudo grub-mkconfig -o /boot/grub/grub.cfg && sudo umount /boot'

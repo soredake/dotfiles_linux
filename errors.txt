@@ -1,0 +1,169 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+The label _console is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00console.rpyc", line 690 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00console.rpyc", line 690.
+
+The label _console_return is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00console.rpyc", line 696 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00console.rpyc", line 696.
+
+The label _enter_game_menu is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 146 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 146.
+
+The label _call_enter_game_menu_1 is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 152 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 152.
+
+The label _game_menu is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 160 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 160.
+
+The label _call__enter_game_menu_0 is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 166 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 166.
+
+The label _game_menu_save is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 178 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 178.
+
+The label _call__enter_game_menu_1 is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 179 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 179.
+
+The label _game_menu_load is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 186 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 186.
+
+The label _call__enter_game_menu_2 is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 187 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 187.
+
+The label _game_menu_preferences is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 194 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 194.
+
+The label _call__enter_game_menu_3 is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 195 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 195.
+
+The label _quit is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 202 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 202.
+
+The label _return_fast_skipping is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 207 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 207.
+
+The label _return_skipping is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 211 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 211.
+
+The label _noisy_return is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 216 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 216.
+
+The label _return is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 220 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 220.
+
+The label _confirm_quit is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gamemenu.rpyc", line 230 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gamemenu.rpyc", line 230.
+
+The label _gl_test is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gltest.rpyc", line 355 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gltest.rpyc", line 355.
+
+The label _directx_update is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gltest.rpyc", line 370 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gltest.rpyc", line 370.
+
+The label _directx_update_main is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gltest.rpyc", line 375 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gltest.rpyc", line 375.
+
+The label _choose_renderer is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00gltest.rpyc", line 389 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00gltest.rpyc", line 389.
+
+The label _hide_windows is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00keymap.rpyc", line 377 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00keymap.rpyc", line 377.
+
+The label _save_reload_game is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00keymap.rpyc", line 395 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00keymap.rpyc", line 395.
+
+The label _load_reload_game is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00keymap.rpyc", line 422 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00keymap.rpyc", line 422.
+
+The label _quit_prompt is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00layout.rpyc", line 75 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00layout.rpyc", line 75.
+
+The label _main_menu_prompt is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00layout.rpyc", line 84 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00layout.rpyc", line 84.
+
+The label _renpy_return is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00library.rpyc", line 298 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00library.rpyc", line 298.
+
+The label _developer is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00library.rpyc", line 303 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00library.rpyc", line 303.
+
+The label _after_load is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00start.rpyc", line 80 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00start.rpyc", line 80.
+
+The label _after_warp is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00start.rpyc", line 110 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00start.rpyc", line 110.
+
+The label _start_store is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00start.rpyc", line 126 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00start.rpyc", line 126.
+
+The label _start_replay is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00start.rpyc", line 142 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00start.rpyc", line 142.
+
+The label _splashscreen is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00start.rpyc", line 160 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00start.rpyc", line 160.
+
+The label _start is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00start.rpyc", line 174 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00start.rpyc", line 174.
+
+The label _call__load_reload_game_1 is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00start.rpyc", line 189 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00start.rpyc", line 189.
+
+The label _call_splashscreen_1 is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00start.rpyc", line 212 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00start.rpyc", line 212.
+
+The label _invoke_main_menu is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00start.rpyc", line 253 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00start.rpyc", line 253.
+
+The label _main_menu is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00start.rpyc", line 271 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00start.rpyc", line 271.
+
+The label _main_menu_screen is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00start.rpyc", line 285 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00start.rpyc", line 285.
+
+The label _style_reset is defined twice, at
+  File "/home/bausch/git/dotfiles_home/00style.rpyc", line 381 and
+  File "/home/bausch/git/dotfiles_home/renpy/common/00style.rpyc", line 381.
+
+Ren'Py Version: Ren'Py 6.99.12.4.2187

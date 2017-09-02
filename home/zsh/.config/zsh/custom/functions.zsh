@@ -59,11 +59,11 @@ ppicalc() {
 
 # 5gb max
 # stores for 90 days
-lewdse() {
-   if [[ "$1" =~ ^https?://.*$ ]]; then local prefix="curl --fail -L --progress-bar --socks5-hostname 127.0.0.1:9250 ${1} || exit 1"; else local suffix="${1}"; fi
+#lewdse() {
+#   if [[ "$1" =~ ^https?://.*$ ]]; then local prefix="curl --fail -L --progress-bar --socks5-hostname 127.0.0.1:9250 ${1} || exit 1"; else local suffix="${1}"; fi
    # eval or sh -c
-   eval "${prefix:-true}" | curl --fail -L --progress-bar --socks5-hostname 127.0.0.1:9250 -F name="${2:-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 20 | head -n 1 | grep -i '[a-zA-Z0-9]').${1##*.}}" -F file=@"${suffix:--}" https://lewd.se/api.php?d=upload-tool
-}
+#   eval "${prefix:-true}" | curl --fail -L --progress-bar --socks5-hostname 127.0.0.1:9250 -F name="${2:-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 20 | head -n 1 | grep -i '[a-zA-Z0-9]').${1##*.}}" -F file=@"${suffix:--}" https://lewd.se/api.php?d=upload-tool
+#}
 
 # Validate tar archives
 tarval() {
@@ -137,6 +137,10 @@ kupdate() {
 	cp /usr/src/linux/.config "$HOME/git/dotfiles_home/kernel/.config_${cur_v}"
 	kernelup
 	sudo emerge @module-rebuild --usepkg=n
-	sudo genkernel --install --udev --postclear --no-save-config --clean --no-lvm --no-mdadm --no-dmraid --zfs --no-btrfs --no-iscsi --luks --no-netboot --mountboot --makeopts=-j$(nproc) --ramdisk-modules --kernel-config=$HOME/git/dotfiles_home/kernel/.config initramfs
+	sudo genkernel --install --udev --postclear --no-save-config --clean --no-lvm --no-mdadm --no-dmraid --zfs --no-btrfs --no-iscsi --no-luks --no-netboot --mountboot --makeopts=-j$(nproc) --ramdisk-modules --kernel-config=$HOME/git/dotfiles_home/kernel/.config initramfs
 	update-grub
+}
+
+random() {
+  shuf -i "${1}-${2}" -n "${3:-1}"
 }
