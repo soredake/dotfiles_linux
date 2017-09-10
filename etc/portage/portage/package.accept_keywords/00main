@@ -48,7 +48,7 @@ mail-client/mutt
 =app-crypt/gnupg-2.1.23*
 net-im/telegram-desktop-bin
 =sys-apps/firejail-9999 **
-=net-vpn/tor-0.3.1.5_alpha
+=net-vpn/tor-0.3.1*
 media-sound/pulseeffects
 
 sys-process/ctop
@@ -124,7 +124,8 @@ dev-python/pygments
 media-video/atomicparsley-wez
 
 # radeon vega
-=sys-kernel/amdstaging-sources-4.12.8*
+=sys-kernel/amdstaging-sources-4.12*
+=sys-devel/gcc-7.2.0 **
 
 # libretro
 # required by games-emulation/libretro-meta-1-r4::abendbrot[redream]
@@ -142,17 +143,21 @@ app-benchmarks/phoronix-test-suite
 # rpcs3 
 =games-emulation/rpcs3-9999 **
 sys-devel/llvm:4
+sys-devel/llvm:5
 # required by sys-devel/llvm-4.0.1::gentoo
 # required by sys-devel/llvmgold-4::gentoo
 =sys-devel/llvm-common-4.0.1
+=sys-devel/llvm-common-5.0.0
 # required by sys-devel/llvm-4.0.1::gentoo[gold]
 # required by games-emulation/rpcs3-9999::pinkpieea
 # required by games-emulation/rpcs3 (argument)
 =sys-devel/llvmgold-4
+=sys-devel/llvmgold-5
 # required by sys-devel/clang-runtime-4.0.1::gentoo[openmp]
 # required by sys-devel/clang-4.0.1::gentoo
 # required by sys-libs/compiler-rt-4.0.1::gentoo[clang]
 =sys-libs/libomp-4.0.1
+=sys-libs/libomp-5.0.0
 # required by sys-devel/clang-runtime-4.0.1::gentoo[compiler-rt]
 # required by sys-devel/clang-4.0.1::gentoo
 # required by dev-libs/libclc-0.2.0_pre20160921::gentoo
@@ -162,20 +167,27 @@ sys-devel/llvm:4
 # required by @selected
 # required by @world (argument)
 =sys-libs/compiler-rt-4.0.1
+=sys-libs/compiler-rt-5.0.0
 # required by sys-devel/clang-runtime-4.0.1::gentoo[sanitize,compiler-rt]
 # required by sys-devel/clang-4.0.1::gentoo
 # required by sys-libs/compiler-rt-4.0.1::gentoo[clang]
 =sys-libs/compiler-rt-sanitizers-4.0.1
+=sys-libs/compiler-rt-sanitizers-5.0.0
 sys-devel/clang-runtime:4.0.1
+sys-devel/clang-runtime:5.0.0
 sys-devel/clang:4
+sys-devel/clang:5
 
 =games-util/lutris-9999 **
 =dev-python/python-evdev-0.6.1
 
 # for ripgrep
 dev-lang/rust
+virtual/rust
 dev-util/cargo
 sys-apps/ripgrep
+
+=app-eselect/eselect-repository-9999 **
 
 # required by media-plugins/gst-plugins-libav-1.10.5::gentoo
 # required by media-plugins/gst-plugins-meta-1.10.5::gentoo[ffmpeg]
@@ -183,16 +195,37 @@ sys-apps/ripgrep
 # required by @wine
 # required by @selected
 # required by @world (argument)
-=media-video/ffmpeg-3.3.2
+media-video/ffmpeg::libressl
 
 =games-engines/xash3d-9999 **
 =x11-misc/xsel-9999 **
-=net-misc/curl-7.55.1::gentoo
+=media-gfx/gimp-2.9.6
 
 media-video/bluray_info
 # required by media-video/bluray_info-1.0.0::gentoo
 # required by media-video/bluray_info (argument)
 =media-libs/libbluray-1.0.1
+
+# required by media-libs/libmypaint-1.3.0::gentoo[gegl]
+# required by media-gfx/gimp-2.9.6::gentoo
+# required by @selected
+# required by @world (argument)
+=media-libs/gegl-0.3.20
+# required by media-gfx/gimp-2.9.6::gentoo
+# required by @selected
+# required by @world (argument)
+=media-libs/libmypaint-1.3.0
+# required by media-gfx/gimp-2.9.6::gentoo
+# required by @selected
+# required by @world (argument)
+=media-libs/babl-0.1.30
+# required by media-gfx/gimp-2.9.6::gentoo
+# required by @selected
+# required by @world (argument)
+=media-libs/gexiv2-0.10.6
+# required by media-gfx/gimp-2.9.6::gentoo[webp]
+# required by gimp (argument)
+=media-libs/libwebp-0.6.0
 
 # for libressl support
 =net-libs/ldns-1.6.17*
@@ -201,11 +234,14 @@ dev-libs/cyrus-sasl
 =x11-terms/alacritty-9999 **
 
 app-emulation/wine-any::gentoo
-virtual/wine
-app-emulation/wine-mono
-app-eselect/eselect-wine
-app-emulation/wine-gecko
+virtual/wine::gentoo
+app-emulation/wine-desktop-common::gentoo
+app-emulation/wine-mono::gentoo
+app-eselect/eselect-wine::gentoo
+app-emulation/wine-gecko::gentoo
 
+=sys-kernel/linux-firmware-99999999 **
+media-gfx/mypaint
 app-admin/eclean-kernel
 =net-p2p/syncthing-gtk-9999 **
 =app-emulation/docker-gc-9999 **

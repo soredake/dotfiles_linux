@@ -29,6 +29,10 @@ media-libs/alsa-lib abi_x86_32
 # required by app-benchmarks/phoronix-test-suite-7.2.1::stefantalpalaru
 # required by app-benchmarks/phoronix-test-suite (argument)
 >=dev-lang/php-7.0.21 pcntl zip gd curl truetype
+# required by media-gfx/mypaint-1.1.0-r2::gentoo
+# required by mypaint (argument)
+>=dev-libs/protobuf-2.6.1-r3 python
+
 
 app-arch/innoextract c++0x
 net-news/rssguard -webengine
@@ -40,6 +44,9 @@ dev-libs/libpcre2 pcre32
 mail-client/mutt gpg imap pop sasl sidebar smime smtp mbox -berkdb
 app-admin/sudo openssl
 app-doc/pms html
+media-gfx/gimp vector-icons
+#webp
+media-libs/libmypaint gegl
 app-emulation/lxc cgmanager
 app-misc/ca-certificates cacert
 x11-misc/rofi windowmode
@@ -127,6 +134,8 @@ app-office/libreoffice gtk3 jemalloc
 media-video/mediainfo -wxwidgets
 app-crypt/pinentry gnome-keyring -qt5
 sys-process/htop taskstats
+dev-lang/rust system-llvm
+sys-kernel/linux-firmware savedconfig
 sys-devel/clang -llvm_targets_*
 sys-devel/llvm gold clang -llvm_targets_*
 app-misc/task gnutls

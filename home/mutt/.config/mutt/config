@@ -13,6 +13,9 @@ set sidebar_indent_string="  "          # Indent with two spaces
 # If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more.
 set header_cache = ~/.cache/mutt
 
+set ssl_verify_partial_chains = yes
+set certificate_file = ~/.cache/mutt/certificates
+
 set tmpdir = `echo \$XDG_RUNTIME_DIR`
 
 # Store messages locally to speed things up, like searching message bodies.

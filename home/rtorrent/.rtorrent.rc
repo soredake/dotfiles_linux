@@ -69,7 +69,7 @@ session = ~/.local/share/rtorrent/session
 # fixed that causes lack of diskspace not to be properly reported.
 #
 #pieces.hash.on_completion.set = yes
-check_hash = no
+check_hash = yes
 
 # Set whether the client should try to connect to UDP trackers.
 #

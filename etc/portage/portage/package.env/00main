@@ -9,6 +9,7 @@ sys-libs/db force-bfd
 #app-office/libreoffice minj
 # compiling tor-browser with ccache and distcc sometimes lead to errors
 #www-client/torbrowser no-ccache no-distcc
+games-emulation/rpcs3 no-ccache force-bfd
 app-emulation/docker-gc fixed-fork
 #games-emulation/rpcs3 no-ccache
 x11-drivers/nvidia-drivers force-bfd no-distcc no-ccache
@@ -20,7 +21,7 @@ x11-terms/alacritty nonetsandbox
 media-sound/pms nonetsandbox
 
 # in case of patching failing
-app-emulation/wine wine-9999-fixed
+app-emulation/wine-any wine-9999-fixed
 
 # https://bugs.gentoo.org/show_bug.cgi?id=618862 
 #sys-devel/clang j1

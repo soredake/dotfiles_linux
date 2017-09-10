@@ -1,10 +1,3 @@
-rename config.cfg
-rename voice_ban.dt
-shell 7z a -- %s
-shell mkdir 1111 %s
-shell sudo rm -f %s
-find tm
-rename cobaka.jpg
 shell mkdir "teaching feeling" %s
 rename movies
 cd 
@@ -47,4 +40,11 @@ shell nvim %s
 deleteD
 shell rm %s
 rename somelink.txt
+touch 
+find sticker
+rename jpgggggggggg.jpf
+rename jpggggggggg.jpg
+find 
+find life i
+find 5
 delete

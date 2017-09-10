@@ -18,7 +18,9 @@ app-emulation/docker
 app-emulation/docker-compose
 app-emulation/docker-gc
 app-emulation/virt-manager
+app-emulation/wine-mono
 app-emulation/winetricks
+app-eselect/eselect-repository
 app-i18n/translate-shell
 app-misc/dragon
 app-misc/dupeguru
@@ -55,6 +57,7 @@ dev-vcs/tig
 games-action/minetest
 games-action/minetest_game
 games-emulation/retroarch
+games-emulation/rpcs3
 games-engines/xash3d
 games-misc/everlasting-summer
 games-misc/ponysay
@@ -93,6 +96,7 @@ media-gfx/feh
 media-gfx/gimp
 media-gfx/jpegoptim
 media-gfx/maim
+media-gfx/mypaint
 media-libs/oyranos
 media-sound/alsa-utils
 media-sound/mpd
@@ -130,7 +134,6 @@ net-misc/ssh-askpass-fullscreen
 net-misc/streamlink
 net-misc/trackma
 net-misc/whois
-net-misc/x11-ssh-askpass
 net-misc/youtube-dl
 net-news/rssguard
 net-p2p/rtorrent
