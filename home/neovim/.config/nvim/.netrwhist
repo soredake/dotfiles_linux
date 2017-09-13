@@ -1,7 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/etc/portage'
 let g:netrw_dirhist_2='/etc/portage/package.accept_keywords'
 let g:netrw_dirhist_3='/home/bausch/git/dotfiles_home/home/neomutt/.config/neomutt'
 let g:netrw_dirhist_4='/home/bausch/git/dotfiles_home/etc/portage/portage/package.env'
 let g:netrw_dirhist_5='/home/bausch/.private'
+let g:netrw_dirhist_6='/etc/portage'
+let g:netrw_dirhist_7='/etc/portage/package.env'

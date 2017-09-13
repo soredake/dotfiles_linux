@@ -23,6 +23,16 @@
 # required by @world (argument)
 =x11-libs/libdrm-2.4.82
 
+# required by app-emulation/docker-compose-1.16.1::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/docker-py-2.5.1
+
+# required by app-emulation/docker-compose-1.16.1-r1::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/texttable-0.9.1
+
 # needed for newer installers
 app-arch/innoextract
 
@@ -143,21 +153,21 @@ app-benchmarks/phoronix-test-suite
 # rpcs3 
 =games-emulation/rpcs3-9999 **
 sys-devel/llvm:4
-sys-devel/llvm:5
+#sys-devel/llvm:5
 # required by sys-devel/llvm-4.0.1::gentoo
 # required by sys-devel/llvmgold-4::gentoo
 =sys-devel/llvm-common-4.0.1
-=sys-devel/llvm-common-5.0.0
+#=sys-devel/llvm-common-5.0.0
 # required by sys-devel/llvm-4.0.1::gentoo[gold]
 # required by games-emulation/rpcs3-9999::pinkpieea
 # required by games-emulation/rpcs3 (argument)
 =sys-devel/llvmgold-4
-=sys-devel/llvmgold-5
+#=sys-devel/llvmgold-5
 # required by sys-devel/clang-runtime-4.0.1::gentoo[openmp]
 # required by sys-devel/clang-4.0.1::gentoo
 # required by sys-libs/compiler-rt-4.0.1::gentoo[clang]
 =sys-libs/libomp-4.0.1
-=sys-libs/libomp-5.0.0
+#=sys-libs/libomp-5.0.0
 # required by sys-devel/clang-runtime-4.0.1::gentoo[compiler-rt]
 # required by sys-devel/clang-4.0.1::gentoo
 # required by dev-libs/libclc-0.2.0_pre20160921::gentoo
@@ -167,22 +177,22 @@ sys-devel/llvm:5
 # required by @selected
 # required by @world (argument)
 =sys-libs/compiler-rt-4.0.1
-=sys-libs/compiler-rt-5.0.0
+#=sys-libs/compiler-rt-5.0.0
 # required by sys-devel/clang-runtime-4.0.1::gentoo[sanitize,compiler-rt]
 # required by sys-devel/clang-4.0.1::gentoo
 # required by sys-libs/compiler-rt-4.0.1::gentoo[clang]
 =sys-libs/compiler-rt-sanitizers-4.0.1
-=sys-libs/compiler-rt-sanitizers-5.0.0
+#=sys-libs/compiler-rt-sanitizers-5.0.0
 sys-devel/clang-runtime:4.0.1
-sys-devel/clang-runtime:5.0.0
+#sys-devel/clang-runtime:5.0.0
 sys-devel/clang:4
-sys-devel/clang:5
+#sys-devel/clang:5
 
 =games-util/lutris-9999 **
 =dev-python/python-evdev-0.6.1
 
 # for ripgrep
-dev-lang/rust
+dev-lang/rust-bin
 virtual/rust
 dev-util/cargo
 sys-apps/ripgrep
@@ -240,7 +250,7 @@ app-emulation/wine-mono::gentoo
 app-eselect/eselect-wine::gentoo
 app-emulation/wine-gecko::gentoo
 
-=sys-kernel/linux-firmware-99999999 **
+sys-kernel/linux-firmware
 media-gfx/mypaint
 app-admin/eclean-kernel
 =net-p2p/syncthing-gtk-9999 **

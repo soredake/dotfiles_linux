@@ -1,1 +1,0 @@
-zplug "zplug/zplug"

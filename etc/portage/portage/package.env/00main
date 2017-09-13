@@ -28,3 +28,6 @@ app-emulation/wine-any wine-9999-fixed
 
 # album-only view
 media-sound/ncmpcpp albumonly
+
+# try to mitigate ryzen segfault
+media-libs/mesa no-ryzen-segfault

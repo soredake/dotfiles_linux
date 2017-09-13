@@ -24,6 +24,7 @@ app-eselect/eselect-repository
 app-i18n/translate-shell
 app-misc/dragon
 app-misc/dupeguru
+app-misc/jq
 app-misc/mc
 app-misc/neofetch
 app-misc/ranger

@@ -4,4 +4,10 @@ export TOR_CONTROL_PORT
 export TOR_CONTROL_HOST
 export TOR_CONTROL_PASSWD
 #exec firejail --profile="$XDG_CONFIG_HOME/firejail/torbrowser.profile" -- torbrowser --allow-remote "$@" 
-exec torbrowser --allow-remote --ProfileManager "$@"
+if [[ ! $(pidof torbrowser) ]]; then
+  exec torbrowser --allow-remote --ProfileManager "$@"
+elif [[ "$@" =~ http[s]?:// ]]; then
+  exec torbrowser --allow-remote "$@" 
+else
+  exec torbrowser --ProfileManager "$@"
+fi
