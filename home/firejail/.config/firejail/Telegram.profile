@@ -11,7 +11,7 @@ whitelist ${HOME}/.config/proxychains.conf
 noblacklist ${HOME}/.local/share/TelegramDesktop
 noblacklist ${HOME}/.config/proxychains.conf
 whitelist ${HOME}/tmp/Telegram
-no3d
+#no3d
 #nosound
 nogroups
 private-tmp

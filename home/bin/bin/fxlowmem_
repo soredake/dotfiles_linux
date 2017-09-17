@@ -11,15 +11,12 @@ download() {
     beta) URL=-beta ;;
     *) URL=
   esac
-  cdir="$XDG_CACHE_HOME/fxlowmem"
   _base="$AUTODOWNLOAD-latest.tar.bz2"
   _dom="archive.mozilla.org"
   _rel="pub/firefox/nightly/latest-mozilla-central"
   _narch="firefox-*.en-US.linux-x86_64.tar.bz2"
-  [[ ! -d "$cdir" ]] && mkdir -p "${cdir}/normal"
   # download
   if [[ "$AUTODOWNLOAD" = "esr" ]] || [[ "$AUTODOWNLOAD" = "release" ]] || [[ "$AUTODOWNLOAD" = "beta" ]]; then
-     
     wget -O /tmp/"$_base" "https://download.mozilla.org/?product=firefox${URL}-latest&os=linux64&lang=en-US"
     version=$(tar xvf /tmp/"$_base" firefox/application.ini -O | grep -Po '(?<=^Version=).*')
   elif [[ "$AUTODOWNLOAD" = "nightly" ]]; then

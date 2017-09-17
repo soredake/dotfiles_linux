@@ -8,6 +8,7 @@ app-arch/innoextract
 app-arch/p7zip
 app-arch/unrar
 app-benchmarks/phoronix-test-suite
+app-cdr/nrg2iso
 app-crypt/veracrypt
 app-doc/dasht
 app-doc/devmanual

@@ -52,8 +52,10 @@ dev-libs/ferrisloki
 dev-libs/hyperscan
 dev-perl/Unicode-EastAsianWidth
 dev-python/agate
+dev-python/colorama
 dev-python/graphviz
 dev-python/python-ctags
+dev-util/gource
 dev-util/repo
 dev-util/rustfmt
 dev-util/source-highlight
@@ -84,6 +86,7 @@ net-mail/courier-imap
 net-mail/mlmmj
 net-mail/offlineimap
 net-misc/mobile-broadband-provider-info
+net-misc/quagga
 net-misc/r8168
 net-misc/you-get
 net-proxy/redsocks

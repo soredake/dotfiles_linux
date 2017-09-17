@@ -1,15 +1,4 @@
-shell mkdir "teaching feeling" %s
-rename movies
-cd 
-shell mvi %s
-deleted
-rename ass2mouth.webm
-rename ass2mouth1.webm
-rename pissdrink.webm
-rename sounding.webm
-rename trap.webm
 shell chmod +x %s
-open_with 
 open_with nvim
 shell notify-send $(du -sh %s)
 rename euphoria__.jpg
@@ -47,4 +36,15 @@ rename jpggggggggg.jpg
 find 
 find life i
 find 5
+rename yandere_simulator_latest.zip
+rename lifeisstrange_rusik
+rename lifeisstrange
+shell mkdir "RSS Guard"
+rename database.db
+open_with 
+shell mkdir mailcap %s
+deleted
+rename functions.fish
+rename exports.fish
+rename aliases.fish
 delete

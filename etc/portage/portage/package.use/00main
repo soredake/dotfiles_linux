@@ -40,6 +40,8 @@ net-news/rssguard -webengine
 >=sys-devel/clang-3.9.1-r100 abi_x86_32
 
 games-emulation/ppsspp -sdl qt5
+www-plugins/adobe-flash -nsplugin
+www-plugins/freshplayerplugin gtk3
 dev-libs/libpcre2 pcre32
 mail-client/mutt gpg imap pop sasl sidebar smime smtp mbox -berkdb
 app-admin/sudo openssl
@@ -57,7 +59,10 @@ media-libs/freetype -bindist harfbuzz
 
 media-sound/mpd -alsa gme libmpdclient -mikmod modplug opus pipe -sid recorder soundcloud upnp wildmidi expat
 media-sound/ncmpcpp clock curl outputs taglib visualizer
+
 media-video/syncplay gui
+#dev-python/pyside:2 widgets gui
+
 dev-lang/perl ithreads
 net-misc/aria2 adns bittorrent jemalloc scripts
 net-libs/webkit-gtk gstreamer
@@ -242,7 +247,6 @@ dev-libs/libgusb abi_x86_32
 x11-libs/gtk+ abi_x86_32
 
 # wine
-media-libs/jpeg abi_x86_32
 virtual/jpeg:0 abi_x86_32
 sys-devel/gettext abi_x86_32
 media-libs/openal abi_x86_32

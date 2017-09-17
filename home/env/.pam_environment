@@ -16,17 +16,11 @@ XDG_CACHE_HOME			DEFAULT=@{HOME}/.cache
 
 # XDG's
 DVDCSS_CACHE			DEFAULT=${XDG_CACHE_HOME}/dvdcss
-#__GL_SHADER_DISK_CACHE_PATH	DEFAULT=${XDG_CACHE_HOME}/nv
-#CUDA_CACHE_PATH			DEFAULT=${XDG_CACHE_HOME}/nv
 TMUX_TMPDIR			DEFAULT=${XDG_RUNTIME_DIR}
-GIMP2_DIRECTORY			DEFAULT=${XDG_CONFIG_HOME}/gimp
 #https://github.com/grawity/dotfiles/blob/master/.dotfiles.notes#L352
 PUTTYDIR			DEFAULT=${XDG_CACHE_HOME}/putty
 WGETRC				DEFAULT=${XDG_CONFIG_HOME}/wgetrc
 XAUTHORITY			DEFAULT=${XDG_RUNTIME_DIR}/Xauthority
-
-# Set disccdir for distccmon
-DISTCC_DIR=/var/tmp/portage/.distcc/
 
 # Enable qt5ct for all qt programs
 QT_QPA_PLATFORMTHEME=qt5ct

@@ -106,12 +106,11 @@ j() {
 case "$1" in
   g) cd "$HOME/git" ;;
   s) cd "$HOME/sync" ;;
-  rt) cd "$HOME/media/server_torrents" ;;
-  t) cd "$HOME/media/torrents" ;;
-  et) cd /media/disk0/torrents ;;
+  t) cd /media/disk0/torrents ;;
   gd) cd "$HOME/sync/main/Documents/googledocs" ;;
   dch) cd "$HOME/sync/main/Documents/dollchan" ;;
-  b) cd "$HOME/sync/system-data" ;;
+  b) cd "$HOME/sync/main/Documents/bookmarks" ;;
+  bak) cd "$HOME/sync/system-data" ;;
   m) cd "$HOME/media" ;;
   *) echo "No folder defined for this alias." ;;
 esac
@@ -128,7 +127,7 @@ wtp() {
 
 # kernel update
 kupdate() {
-	local cur_v="$(eselect kernel show | grep -o [0-9]\.[0-9][0-9]\.[0-9] | sed 's/\./_/g')"
+	local cur_v="$(eselect kernel show | grep -o [0-9]\.[0-9][0-9]?\.[0-9][0-9]? | sed 's/\./_/g')"
 	sudo cp "$HOME/git/dotfiles_home/kernel/.config" /usr/src/linux
 	pushd /usr/src/linux
 	sudo make olddefconfig

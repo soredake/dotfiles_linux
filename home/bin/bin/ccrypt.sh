@@ -8,7 +8,7 @@ export dns4="${dns4c:-127.0.0.1}"
 export dns6="${dns6c:-::1}"
 sysd() { ov="/etc/openvpn/client"
   [[ ! -d $ov ]] && sudo mkdir -p $ov
-  sed -i "\$adhcp-option DNS $dns4" ${1} >"${n}.conf"
+  sed -i "\$adhcp-option DNS $dns4 ${1}" >"${n}.conf"
   sudo mv "${1}.conf" "${ov}"
 }
 netm() { nmcli c import type openvpn file "${file}"
