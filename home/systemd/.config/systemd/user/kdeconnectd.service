@@ -1,0 +1,10 @@
+[Unit]
+Description=Kde connect daemon
+
+[Service]
+Environment=BROWSER="torbrowser --allow-remote"
+ExecStart=/usr/lib64/libexec/kdeconnectd
+Restart=on-abort
+
+[Install]
+WantedBy=default.target

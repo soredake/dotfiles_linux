@@ -14,7 +14,6 @@ whitelist ${HOME}/tmp/Telegram
 #no3d
 #nosound
 nogroups
-private-tmp
 shell none
 tracelog
 #private-bin proxychains telegram-desktop

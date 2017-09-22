@@ -2,9 +2,10 @@
 file="/tmp/mpv-input"
 if [[ ! -e "${file}" ]]; then
   touch "${file}"
-  mkfifo /tmp/mpv-input-file
-  exec nohup env PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains.conf" proxychains -q mpv --force-window=immediate --idle=yes --input-file=/tmp/mpv-input-file &>/dev/null
+  mkfifo "${file}-file"
+  # shellcheck disable=SC2093
+  exec nohup env PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains.conf" proxychains -q mpv --profile=input-mode &>/dev/null
   sleep 5
 fi
 
-exec echo "loadfile ${1}" > /tmp/mpv-input-file
+exec echo "loadfile ${1}" >"${file}-file"

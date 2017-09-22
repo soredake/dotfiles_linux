@@ -1,6 +1,8 @@
 #!/bin/bash
-# libgcc_s is for steam client
+# libgcc_s is for steam client (CXXABI)
 # libdbus-1 to fix tray icon under newer dbus
-# 32 bit libstdc++ is for steam client
+# 32 bit libstdc++ is for steam client (nouveau driver)
 # 64 bit libstdc++ is for life is strange
-exec firejail --profile="$XDG_CONFIG_HOME/firejail/steam.profile" -- env LD_PRELOAD='/usr/lib64/libdbus-1.so.3:/usr/lib64/gcc/x86_64-pc-linux-gnu/7.2.0/32/libgcc_s.so.1:/usr/lib64/gcc/x86_64-pc-linux-gnu/7.2.0/32/libstdc++.so.6:/usr/lib64/gcc/x86_64-pc-linux-gnu/7.2.0/libstdc++.so.6' STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0 LIBGL_DEBUG=verbose steam -tcp -language "russian" "$@"
+#exec firejail --profile="$XDG_CONFIG_HOME/firejail/steam.profile" -- env LD_PRELOAD='/usr/lib64/libdbus-1.so.3:/usr/lib64/gcc/x86_64-pc-linux-gnu/7.2.0/32/libgcc_s.so.1:/usr/lib64/gcc/x86_64-pc-linux-gnu/7.2.0/32/libstdc++.so.6:/usr/lib64/gcc/x86_64-pc-linux-gnu/7.2.0/libstdc++.so.6' STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0 LIBGL_DEBUG=verbose steam -tcp -language "russian" "$@"
+
+exec firejail --profile="$XDG_CONFIG_HOME/firejail/steam.profile" -- env LD_PRELOAD='/usr/lib64/gcc/x86_64-pc-linux-gnu/7.2.0/libstdc++.so.6' steam -tcp -language "russian" "$@"

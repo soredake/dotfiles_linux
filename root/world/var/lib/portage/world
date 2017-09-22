@@ -44,6 +44,7 @@ app-shells/gentoo-zsh-completions
 app-shells/zsh
 app-shells/zsh-completions
 app-text/mupdf
+app-vim/editorconfig-vim
 app-vim/gentoo-syntax
 app-vim/syntastic
 dev-db/sqlitebrowser
@@ -68,6 +69,7 @@ games-util/esteam
 games-util/lgogdownloader
 games-util/lutris
 games-util/steam-meta
+kde-misc/kdeconnect
 mail-client/mutt
 media-fonts/alee-fonts
 media-fonts/arphicfonts
@@ -191,6 +193,5 @@ x11-misc/xautolock
 x11-misc/xclip
 x11-misc/xdg-user-dirs
 x11-misc/xdotool
-x11-misc/xembedsniproxy
 x11-terms/alacritty
 x11-terms/gnome-terminal

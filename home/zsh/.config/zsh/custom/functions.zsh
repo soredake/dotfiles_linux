@@ -43,7 +43,7 @@ wttr() {
   curl -A curl -k https://wttr.in/"${1:-moon}"?lang=ru
 }
 
-# Calculate actual size of {HD,SD}; actualsize {size} {gb}[optional, use gigabytes instead of terabytes]
+# Calculate actual size of {HD,SS}D; actualsize {size} {gb}[optional, use gigabytes instead of terabytes]
 # http://www.sevenforums.com/hardware-devices/23890-hdds-advertized-size-vs-actual-size.html
 actualsize() {
   if [[ "$2" == gb ]]; then a="0.9313226"; else a="0.9094947"; fi

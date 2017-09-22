@@ -7,7 +7,7 @@ set listchars=tab:▸\ ,eol:¬  " https://git.sr.ht/~sircmpwn/dotfiles/tree/.vim
 " https://neovim.io/doc/user/provider.html#provider-clipboard
 set clipboard+=unnamedplus
 
-" load plugin from portage
+" load plugins from portage
 let &runtimepath.=',/usr/share/vim/vimfiles/'
 
 set statusline+=%#warningmsg#

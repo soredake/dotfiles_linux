@@ -8,3 +8,20 @@ net-misc/spice-gtk-0.33-r2
 
 # fucking qemu deps
 sys-firmware/ipxe-1.0.0_p20160620
+
+
+kde-plasma/plasma-workspace-5.10.5-r1
+#media-libs/phonon-4.9.1-r1
+#kde-plasma/kwin-5.10.5
+#kde-plasma/kscreenlocker-5.10.5.1
+#kde-frameworks/kwayland-5.37.0
+#kde-frameworks/kjsembed-5.37.0
+#kde-plasma/libksysguard-5.10.5
+#kde-plasma/ksysguard-5.10.5
+#kde-frameworks/kdelibs4support-5.37.0
+#kde-plasma/milou-5.10.5
+#kde-frameworks/krunner-5.37.0
+#kde-frameworks/ktexteditor-5.37.0
+#kde-frameworks/frameworkintegration-5.37.0
+#kde-frameworks/kjs-5.37.0
+#kde-frameworks/kdnssd-5.37.0

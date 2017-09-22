@@ -1,3 +1,4 @@
 #!/bin/bash
-# @TODO: add link to -platfrom xcb from tdesktop repo
-exec firejail --profile=$XDG_CONFIG_HOME/firejail/Telegram.profile -- proxychains -q "telegram-desktop" -platform xcb -- "$@"
+# https://github.com/telegramdesktop/tdesktop/issues/2353
+# https://github.com/telegramdesktop/tdesktop/issues/2255
+exec firejail --profile="$XDG_CONFIG_HOME/firejail/Telegram.profile" -- proxychains -q "telegram-desktop" -platform xcb -- "$@"

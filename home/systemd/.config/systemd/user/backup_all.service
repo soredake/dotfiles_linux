@@ -1,0 +1,13 @@
+# https://unix.stackexchange.com/questions/39226/how-to-run-a-script-with-systemd-right-before-shutdown
+[Unit]
+Description=backup all things
+Before=sleep.target shutdown.target reboot.target
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+#RemainAfterExit=yes
+ExecStart=/bin/bash %h/sync/system-data/backup.sh -f
+
+[Install]
+WantedBy=sleep.target shutdown.target reboot.target

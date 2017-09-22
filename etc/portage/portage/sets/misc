@@ -47,6 +47,7 @@ app-text/csvkit
 app-text/dos2unix
 app-text/tesseract
 app-text/texlive 
+app-vim/pydiction
 dev-ada/asis
 dev-libs/ferrisloki
 dev-libs/hyperscan

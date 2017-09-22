@@ -2,7 +2,5 @@ net-misc/youtube-dl::rindeal
 media-libs/jpeg
 sys-apps/less::mv
 x11-libs/gtk+::mv
-# zfs module fails with 4.12.9
-#>=sys-kernel/gentoo-sources-4.12.9
 app-eselect/eselect-wine::bobwya
 app-emulation/wine-desktop-common::bobwya

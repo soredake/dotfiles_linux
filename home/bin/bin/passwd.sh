@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
-
+# shellcheck disable=SC2002
 pass1() { time cat /dev/urandom | tr -dc 'a-zA-Z0-9-_!@#$%^&*()_+{}|:<>?=' \
 | fold -w 60 | head -n 1 | grep -i '[!@#$%^&*()_+{}|:<>?=]'; }
 pass2() { strings /dev/urandom|head -15|shuf|paste -s|tr -d '[:space:]'|cut -b-59; }

@@ -58,11 +58,31 @@ mail-client/mutt
 =app-crypt/gnupg-2.2*
 net-im/telegram-desktop-bin
 =sys-apps/firejail-9999 **
-=net-vpn/tor-0.3.1*
+=net-vpn/tor-0.3.2*
 media-sound/pulseeffects
+media-plugins/gst-plugins-ladspa
+# required by media-plugins/gst-plugins-vaapi-1.10.5::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.5::gentoo[vaapi]
+# required by app-emulation/wine-any-9999::gentoo[gstreamer]
+# required by @wine
+# required by @selected
+# required by @world (argument)
+=media-libs/gst-plugins-bad-1.12.3
+# required by dev-python/gst-python-1.10.5::gentoo
+# required by media-sound/pulseeffects-2.3.5::jorgicio
+# required by @selected
+# required by @world (argument)
+=media-libs/gst-plugins-base-1.12.3
+
 
 app-admin/profile-cleaner
 =net-misc/streamlink-9999 **
+=net-misc/youtube-dl-99999999 **
+
+app-vim/editorconfig-vim
+# required by app-vim/editorconfig-vim-0.3.3-r2::gentoo
+# required by app-vim/editorconfig-vim (argument)
+=dev-python/editorconfig-core-py-0.12.0 
 
 games-util/esteam
 media-fonts/steamfonts
@@ -78,6 +98,9 @@ games-action/minetest_game
 games-action/minetest
 =app-doc/devmanual-9999 **
 =sys-devel/gcc-6.4.0*
+dev-libs/libclc
+
+kde-misc/kdeconnect
 
 # hamachi
 net-vpn/logmein-hamachi
@@ -239,6 +262,11 @@ media-video/bluray_info
 # required by media-gfx/gimp-2.9.6::gentoo[webp]
 # required by gimp (argument)
 =media-libs/libwebp-0.6.0
+# required by dev-python/gst-python-1.10.5::gentoo
+# required by media-sound/pulseeffects-2.3.5::jorgicio
+# required by @selected
+# required by @world (argument)
+=media-libs/gstreamer-1.12.3
 
 # for libressl support
 =net-libs/ldns-1.6.17*
