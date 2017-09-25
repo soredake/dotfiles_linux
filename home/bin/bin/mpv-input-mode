@@ -7,5 +7,5 @@ if [[ ! -e "${file}" ]]; then
   exec nohup env PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains.conf" proxychains -q mpv --profile=input-mode &>/dev/null
   sleep 5
 fi
-
+# TODO: trap cleanup to mpv process dead
 exec echo "loadfile ${1}" >"${file}-file"

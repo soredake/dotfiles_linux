@@ -47,6 +47,12 @@ portage_git_init() {
   popd
 }
 
+create_notmpfs_folder() {
+  mkdir /var/tmp/notmpfs
+  chown portage:portage /var/tmp/notmpfs
+  chmod 775 /var/tmp/notmpfs
+}
+
 main() {
 # Link Portage stuff.
 ./setup-portage.sh
@@ -100,6 +106,7 @@ else
   emerge --sync
   eselect profile set pinkpieea:default/linux/amd64/17.0/desktop/systemd
   #swap_setup
+  create_notmpfs_folder
   emerge --getbinpkg=y --usepkg=y dev-vcs/git || die "git install failed"
   emerge --getbinpkg=y --usepkg=y app-admin/stow app-admin/sudo app-shell/zsh dev-util/ccache net-misc/networkmanager net-vpn/tor sys-kernel/genkernel-next x11-misc/xdg-user-dirs x11-misc/xdg-utils || die "emerge failed"
   hostnamectl set-hostname gentoo

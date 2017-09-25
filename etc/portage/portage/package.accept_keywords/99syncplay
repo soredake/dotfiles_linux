@@ -1,0 +1,8 @@
+#=media-video/syncplay-9999*::pinkpieea **
+# required by dev-python/pyside-9999::qt
+# required by media-video/syncplay-9999-r1::pinkpieea[gui]
+# required by media-video/syncplay::pinkpieea (argument)
+#=dev-python/shiboken-9999::pinkpieea **
+# required by media-video/syncplay-9999-r1::pinkpieea[gui]
+# required by media-video/syncplay::pinkpieea (argument)
+#=dev-python/pyside-9999::pinkpieea **

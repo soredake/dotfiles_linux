@@ -110,6 +110,7 @@ media-sound/pulseeffects
 media-sound/pulsemixer
 media-video/atomicparsley-wez
 media-video/bluray_info
+media-video/dvd_info
 media-video/ffmpeg
 media-video/ffmpegthumbnailer
 media-video/mediainfo

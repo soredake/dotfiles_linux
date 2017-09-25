@@ -65,6 +65,7 @@ dev-vcs/git-cola
 dev-vcs/gitolite
 games-action/violetland
 games-arcade/blobwars
+games-misc/lolcat
 games-simulation/openrct2
 kde-apps/kdesu
 media-gfx/opentoonz

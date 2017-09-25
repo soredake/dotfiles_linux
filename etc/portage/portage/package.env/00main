@@ -3,31 +3,23 @@
 sys-devel/binutils gold-linker
 sys-process/htop htop-mask
 sys-libs/db force-bfd
-#sys-devel/llvm minj
-#dev-lang/ghc minj
-#app-emulation/wine minj
-#app-office/libreoffice minj
-# compiling tor-browser with ccache and distcc sometimes lead to errors
-#www-client/torbrowser no-ccache no-distcc
-games-emulation/rpcs3 no-ccache force-bfd
 app-emulation/docker-gc fixed-fork
-#games-emulation/rpcs3 no-ccache
-x11-drivers/nvidia-drivers force-bfd no-distcc no-ccache
 media-sound/pulseaudio pulseaudio-mask
-#dev-libs/sway sway-non-github
 
 # cargo 9999
 x11-terms/alacritty nonetsandbox
-media-sound/pms nonetsandbox
 
 # in case of patching failing
 app-emulation/wine-any wine-9999-fixed
-
-# https://bugs.gentoo.org/show_bug.cgi?id=618862 
-#sys-devel/clang j1
 
 # album-only view
 media-sound/ncmpcpp albumonly
 
 # try to mitigate ryzen segfault
 media-libs/mesa no-ryzen-segfault
+
+# https://github.com/rg3/youtube-dl/issues/13889#issuecomment-326045140
+#net-misc/youtube-dl googlephoto
+
+# too large for tmpfs
+#dev-lang/ghc notmpfs

@@ -1,6 +1,3 @@
-shell mkdir "maddyson streams" %s
-shell mkdir "unruhe" %s
-shell mkdir "2ch" %s
 rename txt1.txt
 rename youtube.txt
 shell sudo rm -rf %s
@@ -25,7 +22,6 @@ rename lifeisstrange_rusik
 rename lifeisstrange
 shell mkdir "RSS Guard"
 rename database.db
-open_with 
 shell mkdir mailcap %s
 deleted
 rename functions.fish
@@ -46,5 +42,9 @@ shell mkdir twd1 %s
 shell  %s
 rename backup_old
 shell mkdir new %s
-delete
 shell mkdir "Mass Effect 2"
+open_with 
+rename no_w3m_memory_leak.patch
+shell nvim 99syncplay
+shell
+delete

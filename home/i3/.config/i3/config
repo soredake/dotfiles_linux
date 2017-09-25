@@ -187,6 +187,7 @@ bar {
 # @TODO: https://askubuntu.com/questions/140255/how-to-override-the-new-limited-keyboard-repeat-rate-limit
 # https://askubuntu.com/questions/765738/how-can-i-increase-the-speed-of-the-cursor-in-gnome-terminal
 exec --no-startup-id systemctl --user restart nm-applet mouse_accel xsetdpms xautolock xset-kbd-rate
+exec --no-startup-id sleep 10 && systemctl --user restart kbdd kdeconnectd
 #kbdd
 #exec --no-startup-id systemctl --user restart compton-nvidia nvidia-settings xrandr-output
 exec --no-startup-id systemctl --user restart compton-free

@@ -1,0 +1,2 @@
+youtube_dl_LIVE_REPO="https://github.com/tokune/youtube-dl.git"
+#youtube_dl_LIVE_BRANCH="fix-shasum"
