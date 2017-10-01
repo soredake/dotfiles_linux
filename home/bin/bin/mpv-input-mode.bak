@@ -1,0 +1,11 @@
+#!/bin/bash
+file="/tmp/mpv-input"
+if [[ ! -e "${file}" ]]; then
+  touch "${file}"
+  mkfifo "${file}-file"
+  # shellcheck disable=SC2093
+  exec nohup env PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains.conf" proxychains -q mpv --profile=input-mode &>/dev/null
+  sleep 5
+fi
+# TODO: trap cleanup to mpv process dead
+exec echo "loadfile ${1}" >"${file}-file"

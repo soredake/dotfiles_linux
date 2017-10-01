@@ -31,3 +31,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" fix windows-1251 encoding in files
+set fencs=ucs-bom,utf-8,windows-1251,default,latin1
+" XDG
+let g:netrw_home=$XDG_DATA_HOME.'/nvim'

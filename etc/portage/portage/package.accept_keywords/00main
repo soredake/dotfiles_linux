@@ -160,7 +160,7 @@ dev-python/pygments
 media-video/atomicparsley-wez
 
 # radeon vega
-=sys-kernel/amdstaging-sources-4.12*
+=sys-kernel/amdstaging-sources-4.13*
 =sys-devel/gcc-7.2.0 **
 
 # libretro
@@ -277,12 +277,8 @@ dev-libs/cyrus-sasl
 =x11-terms/alacritty-9999 **
 
 app-emulation/wine-any::gentoo
-virtual/wine::gentoo
-app-emulation/wine-desktop-common::gentoo
-app-emulation/wine-mono::gentoo
-app-eselect/eselect-wine::gentoo
-app-emulation/wine-gecko::gentoo
 
+x11-misc/rofi
 sys-kernel/linux-firmware
 media-gfx/mypaint
 app-admin/eclean-kernel
@@ -309,6 +305,7 @@ net-libs/tox
 www-client/torbrowser
 www-misc/profile-sync-daemon
 x11-misc/i3blocks
+app-misc/jdupes
 x11-misc/kbdd
 =x11-misc/i3blocks-contrib-9999 **
 x11-misc/notify-osd

@@ -4,22 +4,22 @@ sys-devel/binutils gold-linker
 sys-process/htop htop-mask
 sys-libs/db force-bfd
 app-emulation/docker-gc fixed-fork
-media-sound/pulseaudio pulseaudio-mask
 
 # cargo 9999
 x11-terms/alacritty nonetsandbox
 
-# in case of patching failing
+# in case of staging patches failing to apply
 app-emulation/wine-any wine-9999-fixed
 
 # album-only view
 media-sound/ncmpcpp albumonly
 
 # try to mitigate ryzen segfault
-media-libs/mesa no-ryzen-segfault
+#media-libs/mesa no-ryzen-segfault
 
 # https://github.com/rg3/youtube-dl/issues/13889#issuecomment-326045140
 #net-misc/youtube-dl googlephoto
 
-# too large for tmpfs
-#dev-lang/ghc notmpfs
+
+# official binaries build with -O3, so i'll try
+www-client/torbrowser O3

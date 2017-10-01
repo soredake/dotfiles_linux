@@ -1,10 +1,3 @@
-rename txt1.txt
-rename youtube.txt
-shell sudo rm -rf %s
-rename tmux.conf
-rename custom
-shell mkdir zsh %s
-rename ve.cs
 shell cat %s
 shell nvim %s
 deleteD
@@ -47,4 +40,11 @@ open_with
 rename no_w3m_memory_leak.patch
 shell nvim 99syncplay
 shell
+shell mkdir karna %s
+shell nvim text.txt %s
+shell wget https://a.safe.moe/TvRBF.zip
+shell echo %s|xsel -ib
+open_with nvim
+shell sqlitebrowser %s
+shell mkdir nvim %s
 delete

@@ -1,5 +1,12 @@
+# delete when https://github.com/gentoo/gentoo/commit/2ed5f5c748bbcc0587c6113df802bc0f604a09ec is reverted
+-d3d9
+-staging
+
 -libressl
 -curl_ssl_libressl
 -libzfs
 -zfs
 -python_targets_pypy
+-python_single_target_pypy
+-python_targets_pypy3
+-python_single_target_pypy3
