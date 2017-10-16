@@ -2,7 +2,7 @@
 Description=Set mouse acceleration
 
 [Service]
-ExecStart=/bin/bash %h/bin/mouse-acceleration-disable_logitech_libinput.sh
+ExecStart=/bin/bash %h/bin/mouse-acceleration-disable_rival310_libinput.sh
 Type=oneshot
 
 [Install]

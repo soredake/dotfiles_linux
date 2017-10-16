@@ -208,6 +208,7 @@ exec_always feh --no-fehbg --bg-scale "$XDG_DATA_HOME/wallpaper-1.jpg" --xineram
 
 #for_window [class="^mpv$"] move up
 for_window [class="explorer.exe"] floating enable
+for_window [title="The Escapists 2"] floating enable
 #for_window [class="^plasmawindowed$"] kill
 #for_window [class="^Firefox$"] border pixel 1
 # https://gist.github.com/lirenlin/9892945

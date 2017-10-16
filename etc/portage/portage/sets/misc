@@ -16,6 +16,7 @@ app-emacs/lyskom-elisp-client
 app-emulation/libvirt
 app-emulation/q4wine
 app-emulation/xtrs
+app-i18n/ibus-typing-booster
 app-misc/asciinema
 app-misc/bb
 app-misc/calendar

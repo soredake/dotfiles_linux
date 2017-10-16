@@ -1,3 +1,7 @@
-#WINE_COMMIT="0b1d7ff7655c5aa7ff073f67400bd4401727183f"
+# fatal: dumb http transport does not support shallow capabilities
+wine_any_LIVE_REPO=https://github.com/wine-mirror/wine.git
+#EGIT_CLONE_TYPE=single
+# 2.18
+WINE_COMMIT="4a2505a93a699baf9668af2cdfdd7b662d13c976"
 #STAGING_COMMIT=""
 #D3D9_COMMIT

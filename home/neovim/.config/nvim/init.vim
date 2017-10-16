@@ -36,3 +36,5 @@ let g:syntastic_check_on_wq = 0
 set fencs=ucs-bom,utf-8,windows-1251,default,latin1
 " XDG
 let g:netrw_home=$XDG_DATA_HOME.'/nvim'
+" end line on 9999
+set textwidth=9999

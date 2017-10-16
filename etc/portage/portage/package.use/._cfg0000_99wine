@@ -1,0 +1,298 @@
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[mp3]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-plugins/gst-plugins-mad-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[vaapi]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-plugins/gst-plugins-vaapi-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[v4l]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-plugins/gst-plugins-v4l2-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[aac]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-plugins/gst-plugins-faad-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-mad-1.10.3::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[mp3]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/libmad-0.15.1b-r8 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[pulseaudio]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-plugins/gst-plugins-pulse-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-a52dec-1.10.3::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[-dvd,a52]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/a52dec-0.7.4-r7 abi_x86_32
+# required by media-plugins/gst-plugins-v4l2-1.10.3::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[v4l]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/gst-plugins-base-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[flac]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-plugins/gst-plugins-flac-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-mad-1.10.3::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[mp3]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/gst-plugins-ugly-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-x264-1.10.3::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[x264]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/x264-0.0.20160712 abi_x86_32
+# required by media-plugins/gst-plugins-v4l2-1.10.3::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[v4l]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/gst-plugins-good-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[x264]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-plugins/gst-plugins-x264-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-vaapi-1.10.3::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[vaapi]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/gst-plugins-bad-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[-dvd,a52]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-plugins/gst-plugins-a52dec-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-dts-1.10.3::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[dts]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/libdca-0.0.5-r3 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[dts]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-plugins/gst-plugins-dts-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[mpeg,-dvd,-vcd]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-plugins/gst-plugins-mpeg2dec-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-mpeg2dec-1.10.3::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[mpeg,-dvd,-vcd]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/libmpeg2-0.5.1-r2 abi_x86_32
+# required by media-libs/gst-plugins-base-1.10.3::gentoo[orc]
+# required by media-plugins/gst-plugins-v4l2-1.10.3::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[v4l]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-lang/orc-0.4.26-r1 abi_x86_32
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-plugins/gst-plugins-meta-1.10.3 abi_x86_32
+# required by media-plugins/gst-plugins-faad-1.10.3::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[aac]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/faad2-2.7-r3 abi_x86_32
+# required by media-plugins/gst-plugins-vaapi-1.10.3::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[vaapi]
+# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
+# required by virtual/wine-0-r4::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/gstreamer-1.10.3 abi_x86_32
+
+media-plugins/gst-plugins-libav abi_x86_32
+media-plugins/gst-plugins-meta ffmpeg
+media-plugins/gst-plugins-xvid abi_x86_32
+
+# required by media-video/ffmpeg-3.2.4::libressl[libcaca]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/libcaca-0.99_beta19 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[sdl]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/libsdl2-2.0.4 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[ssh]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=net-libs/libssh-0.7.3-r1 abi_x86_32
+# required by media-libs/libbluray-0.9.3::gentoo[bdplus]
+# required by media-video/ffmpeg-3.2.4::libressl[bluray]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/libbdplus-0.1.2 abi_x86_32
+# required by x11-libs/libXScrnSaver-1.2.2-r1::gentoo
+# required by media-libs/libsdl2-2.0.4::gentoo[X,xscreensaver]
+# required by media-video/ffmpeg-3.2.4::libressl[sdl]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=x11-proto/scrnsaverproto-1.2.2-r1 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[encode,xvid]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/xvid-1.3.3 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[encode,openh264]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/openh264-1.5.0 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[rubberband]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/rubberband-1.8.1-r1 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[opus]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/opus-1.1.3-r1 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[webp,encode]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/libwebp-0.5.2 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[encode,theora]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/libtheora-1.1.1-r1 abi_x86_32
+# required by media-libs/libbluray-0.9.3::gentoo[aacs]
+# required by media-video/ffmpeg-3.2.4::libressl[bluray]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/libaacs-0.7.1 abi_x86_32
+# required by media-libs/libass-0.13.6::gentoo
+# required by media-video/ffmpeg-3.2.4::libressl[libass]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=dev-libs/fribidi-0.19.6 abi_x86_32
+# required by media-libs/libsdl2-2.0.4::gentoo[X,xscreensaver]
+# required by media-video/ffmpeg-3.2.4::libressl[sdl]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=x11-libs/libXScrnSaver-1.2.2-r1 abi_x86_32
+# required by media-libs/rubberband-1.8.1-r1::gentoo
+# required by media-video/ffmpeg-3.2.4::libressl[rubberband]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/libsamplerate-0.1.9 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[libass]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/libass-0.13.6 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[vpx]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/libvpx-1.5.0 abi_x86_32
+# required by media-libs/libsdl2-2.0.4::gentoo[X]
+# required by media-video/ffmpeg-3.2.4::libressl[sdl]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=x11-libs/libXt-1.1.5 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[encode,x265]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/x265-2.2 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[encode,mp3]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-sound/lame-3.99.5-r1 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[gme]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/game-music-emu-0.6.1 abi_x86_32
+# required by media-video/ffmpeg-3.2.4::libressl[bluray]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/libbluray-0.9.3 abi_x86_32
+# required by media-libs/rubberband-1.8.1-r1::gentoo
+# required by media-video/ffmpeg-3.2.4::libressl[rubberband]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=sci-libs/fftw-3.3.4 abi_x86_32
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-video/ffmpeg-3.2.4 abi_x86_32
+# required by media-libs/rubberband-1.8.1-r1::gentoo
+# required by media-video/ffmpeg-3.2.4::libressl[rubberband]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/vamp-plugin-sdk-2.6-r1 abi_x86_32
+# required by media-libs/libcaca-0.99_beta19::gentoo[opengl]
+# required by media-video/ffmpeg-3.2.4::libressl[libcaca]
+# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
+# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
+# required by gst-plugins-meta (argument)
+>=media-libs/freeglut-3.0.0 abi_x86_32
+# required by app-emulation/virt-manager-1.4.3::gentoo[gtk]
+# required by app-emulation/virt-manager (argument)
+>=net-misc/spice-gtk-0.33-r2 gtk3 usbredir

@@ -70,8 +70,10 @@ games-util/esteam
 games-util/lgogdownloader
 games-util/lutris
 games-util/steam-meta
+kde-apps/k3b
 kde-misc/kdeconnect
 mail-client/mutt
+mail-client/neomutt
 media-fonts/alee-fonts
 media-fonts/arphicfonts
 media-fonts/baekmuk-fonts
@@ -151,6 +153,7 @@ net-vpn/haguichi
 net-vpn/i2pd
 net-vpn/logmein-hamachi
 net-vpn/tor
+sys-apps/fd
 sys-apps/firejail
 sys-apps/inxi
 sys-apps/lsb-release
@@ -160,6 +163,7 @@ sys-apps/pv
 sys-apps/ripgrep
 sys-boot/grub
 sys-boot/syslinux
+sys-config/ltoize
 sys-devel/crossdev
 sys-devel/distcc
 sys-devel/gcc

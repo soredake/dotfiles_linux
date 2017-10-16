@@ -37,6 +37,14 @@ swap_setup() {
   printf "/swapfile none swap defaults 0 0" >> /etc/fstab
 }
 
+resume_swap_file_setup() {
+  red "Creating swapfile for hibernation"
+  # https://wiki.archlinux.org/index.php/ZFS#Swap_volume
+  # ZFS does not allow to use swapfiles
+  # https://aaronlauterer.com/blog/2017/04/arch-linux-on-an-encrypted-zfs-root-system/
+  # It is possible to have the swap in a ZVOL but currently you cannot resume from hibernation with that
+}
+
 portage_git_init() {
   red "Switching portage tree to git in /usr/portage"
   pushd /usr/portage

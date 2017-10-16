@@ -65,3 +65,6 @@ sudo tee /etc/security/limits.conf >/dev/null <<END
 # disable coredumps entierly
 * hard core 0
 END
+
+# https://github.com/InBetweenNames/gentooLTO#a-note-about-the-gcc-lto-plugin
+sudo ln -sfv /usr/libexec/gcc/x86_64-pc-linux-gnu/7.2.0/liblto_plugin.so /usr/x86_64-pc-linux-gnu/binutils-bin/lib/bfd-plugins/liblto_plugin.so

@@ -203,7 +203,7 @@ bar {
     }
 }
 
-input "1133:50479:Logitech_USB_Re" {
+input "4152:5920:SteelSeries_SteelSeries_Rival_310_eSports_" {
   accel_profile flat
 }
 

@@ -44,6 +44,7 @@ www-plugins/adobe-flash -nsplugin
 www-plugins/freshplayerplugin gtk3
 dev-libs/libpcre2 pcre32
 mail-client/mutt gpg imap pop sasl sidebar smime smtp mbox -berkdb
+mail-client/neomutt gpg imap pop sasl sidebar smime smtp mbox -berkdb
 app-admin/sudo openssl
 app-doc/pms html
 media-gfx/gimp vector-icons
@@ -171,7 +172,7 @@ app-emulation/winetricks rar
 virtual/wine staging
 dev-libs/wayland abi_x86_32
 sys-kernel/genkernel-next -* 
-#www-client/torbrowser system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite custom-cflags custom-optimization
+www-client/torbrowser system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite custom-cflags custom-optimization
 dev-db/sqlite secure-delete
 media-libs/harfbuzz fontconfig
 app-emulation/libvirt zfs
@@ -223,12 +224,14 @@ app-arch/tar minimal
 dev-db/unixODBC minimal
 net-nds/openldap minimal
 net-misc/curl http2 CURL_SSL: -openssl libressl
-#-curl_ssl_openssl curl_ssl_libressl
-app-emulation/wine-any dos openal s3tc staging themes gstreamer
-app-emulation/wine-gecko abi_x86_32
 sys-libs/libomp hwloc
 media-video/ffmpeg openssl ssh libass openh264 vpx x265 cpudetection theora webp opus bluray gme libcaca rubberband
-app-emulation/qemu lzo virtfs sdl2 virgl -vnc QEMU_USER_TARGETS: x86_64
+app-emulation/qemu usbredir spice lzo virtfs sdl2 virgl -vnc QEMU_USER_TARGETS: x86_64
+# required by app-emulation/virt-manager-1.4.3::gentoo[gtk]
+# required by app-emulation/virt-manager (argument)
+>=net-misc/spice-gtk-0.33-r2 gtk3 usbredir
+app-emulation/spice lz4
+net-misc/spice-gtk lz4
 
 # wine[themes]
 app-accessibility/at-spi2-atk abi_x86_32
@@ -251,6 +254,8 @@ media-sound/pulseaudio abi_x86_32
 media-libs/libv4l abi_x86_32
 media-libs/lcms abi_x86_32
 net-libs/gnutls abi_x86_32
+app-emulation/wine-any dos openal s3tc staging themes gstreamer
+app-emulation/wine-gecko abi_x86_32
 
 # winetricks[gtk]
 media-libs/freetype abi_x86_32
@@ -406,3 +411,13 @@ x11-libs/qscintilla qt5
 # required by app-crypt/libsecret-0.18.5::gentoo
 # required by app-crypt/pinentry-0.9.7-r1::gentoo[gnome-keyring]
 >=net-dns/libidn2-2.0.2 abi_x86_32
+
+# required by app-emulation/virt-manager-1.4.3::gentoo[gtk]
+# required by @selected
+# required by @world (argument)
+>=net-libs/gtk-vnc-0.6.0 python
+
+# required by kde-frameworks/kfilemetadata-5.38.0::gentoo[pdf]
+# required by kde-apps/k3b-17.04.3-r1::gentoo
+# required by kde-apps/k3b (argument)
+>=app-text/poppler-0.57.0 qt5

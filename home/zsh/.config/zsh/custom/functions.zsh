@@ -125,6 +125,11 @@ wtp() {
   winetricks prefix="$XDG_DATA_HOME/wineprefix/$@"
 }
 
+# upgrade currently selected kernel
+kernelup() { 
+  sudo genkernel --cachedir=/var/tmp/portage --tempdir=/var/tmp/portage --install --udev --virtio --postclear --no-save-config --clean --no-lvm --no-mdadm --no-dmraid --zfs --no-btrfs --no-iscsi --no-luks --no-netboot --mountboot --makeopts=-j$(nproc) --ramdisk-modules --kernel-config="$HOME/git/dotfiles_home/kernel/.config" "${@:-all}" 
+}
+
 # kernel update
 kupdate() {
 	local cur_v="$(eselect kernel show | grep -o [0-9]\.[0-9][0-9]?\.[0-9][0-9]? | sed 's/\./_/g')"
@@ -136,7 +141,7 @@ kupdate() {
 	cp /usr/src/linux/.config "$HOME/git/dotfiles_home/kernel/.config_${cur_v}"
 	kernelup
 	sudo emerge @module-rebuild --usepkg=n
-	sudo genkernel --install --udev --postclear --no-save-config --clean --no-lvm --no-mdadm --no-dmraid --zfs --no-btrfs --no-iscsi --no-luks --no-netboot --mountboot --makeopts=-j$(nproc) --ramdisk-modules --kernel-config=$HOME/git/dotfiles_home/kernel/.config initramfs
+	kernelup initramfs
 	update-grub
 }
 

@@ -53,9 +53,6 @@ alias cps='mrsync --update --delete'
 # Folder size
 alias fosize='du -sh'
 
-# upgrade currently selected kernel
-alias kernelup='sudo genkernel --cachedir=/var/tmp/portage --tempdir=/var/tmp/portage --install --udev --postclear --no-save-config --clean --no-lvm --no-mdadm --no-dmraid --zfs --no-btrfs --no-iscsi --no-luks --no-netboot --mountboot --makeopts=-j$(nproc) --ramdisk-modules --kernel-config=$HOME/git/dotfiles_home/kernel/.config all'
-
 # similar to ubuntu's update-grub
 alias update-grub='test ! -d /boot/grub && sudo mount /boot; sudo grub-mkconfig -o /boot/grub/grub.cfg && sudo umount /boot'
 
@@ -100,6 +97,7 @@ alias goodnight='veracrypt -t -d && sc poweroff -i'
 alias grep='grep --color'
 alias mus='mpv --profile=novid'
 alias mutt='proxychains -q mutt -F ~/.config/mutt/config'
+alias neomutt='proxychains -q neomutt -F ~/.config/mutt/config'
 alias o='open'
 alias ob='bkg xdg-open'
 alias open='xdg-open'
