@@ -33,10 +33,37 @@
 # required by @world (argument)
 =dev-python/texttable-0.9.1
 
-# needed for newer installers
+# needed for newer gog installers
 app-arch/innoextract
 
 net-news/rssguard
+# rssguard needs >=qt-5.8
+# no qtnetwork ebuild in libressl repository yet
+=dev-qt/qtnetwork-5.9.2::pinkpieea
+=dev-qt/qtxml-5.9.2
+=dev-qt/qtsql-5.9.2
+=dev-qt/qtgui-5.9.2
+=dev-qt/qtcore-5.9.2
+=dev-qt/qtdbus-5.9.2
+=dev-qt/qtwidgets-5.9.2
+=dev-qt/linguist-tools-5.9.2
+=dev-qt/qtconcurrent-5.9.2
+=dev-qt/qtdeclarative-5.9.2
+=dev-qt/qtgraphicaleffects-5.9.2
+=dev-qt/qtmultimedia-5.9.2
+=dev-qt/qtopengl-5.9.2
+=dev-qt/qtprintsupport-5.9.2
+=dev-qt/qtquickcontrols-5.9.2
+=dev-qt/qtquickcontrols2-5.9.2
+=dev-qt/qtscript-5.9.2
+=dev-qt/qtsvg-5.9.2
+=dev-qt/qttest-5.9.2
+=dev-qt/qttranslations-5.9.2
+=dev-qt/qtwayland-5.9.2
+=dev-qt/qtx11extras-5.9.2
+=dev-qt/qtxmlpatterns-5.9.2
+=dev-qt/qtwebkit-5.9.1
+
 net-misc/trackma
 net-nds/openldap
 =media-libs/libXcm-0.5.4
@@ -44,24 +71,24 @@ net-nds/openldap
 =dev-libs/wlc-9999 **
 =app-misc/dragon-9999 **
 app-shells/fish
+dev-libs/libratbag
 
 # for album-only sort
 # https://github.com/arybczak/ncmpcpp/pull/240
 =media-sound/ncmpcpp-9999 **
 
 # testing kitty terminal
-dev-lang/python:3.5
 media-libs/glew:0/2.0
 
+=app-misc/piper-9999 **
+=dev-libs/libratbag-9999 **
 mail-client/mutt
 mail-client/neomutt
+=x11-misc/compton-9999 **
 =media-video/dvd_info-9999 **
 =app-crypt/gnupg-2.2*
 net-im/telegram-desktop-bin
 =sys-apps/firejail-9999 **
-=net-vpn/tor-0.3.1*
-media-sound/pulseeffects
-media-plugins/gst-plugins-ladspa
 # required by media-plugins/gst-plugins-vaapi-1.10.5::gentoo
 # required by media-plugins/gst-plugins-meta-1.10.5::gentoo[vaapi]
 # required by app-emulation/wine-any-9999::gentoo[gstreamer]
@@ -69,16 +96,11 @@ media-plugins/gst-plugins-ladspa
 # required by @selected
 # required by @world (argument)
 =media-libs/gst-plugins-bad-1.12.3
-# required by dev-python/gst-python-1.10.5::gentoo
-# required by media-sound/pulseeffects-2.3.5::jorgicio
-# required by @selected
-# required by @world (argument)
-=media-libs/gst-plugins-base-1.12.3
-
 
 app-admin/profile-cleaner
 =net-misc/streamlink-9999 **
 =net-misc/youtube-dl-99999999 **
+sys-devel/gcc-config::lto-overlay
 
 app-vim/editorconfig-vim
 # required by app-vim/editorconfig-vim-0.3.3-r2::gentoo
@@ -90,7 +112,6 @@ media-fonts/steamfonts
 =media-sound/pulsemixer-9999 **
 
 games-util/lgogdownloader
-=app-crypt/rhash-1.3.4
 =dev-cpp/htmlcxx-0.86
 
 sys-config/ltoize
@@ -108,7 +129,6 @@ media-video/obs-studio
 games-action/minetest_game
 games-action/minetest
 =app-doc/devmanual-9999 **
-=sys-devel/gcc-6.4.0*
 dev-libs/libclc
 
 kde-misc/kdeconnect
@@ -275,11 +295,6 @@ media-video/bluray_info
 # required by media-gfx/gimp-2.9.6::gentoo[webp]
 # required by gimp (argument)
 =media-libs/libwebp-0.6.0
-# required by dev-python/gst-python-1.10.5::gentoo
-# required by media-sound/pulseeffects-2.3.5::jorgicio
-# required by @selected
-# required by @world (argument)
-=media-libs/gstreamer-1.12.3
 # required by dev-libs/boost-1.65.0::gentoo
 # required by net-vpn/i2pd-2.15.0::gentoo[libressl,-static]
 # required by @selected
@@ -296,14 +311,28 @@ dev-libs/cyrus-sasl
 
 =x11-terms/alacritty-9999 **
 
+# can't compile glibc-2.23-r3 with binutils{,-libs}-2.29.1
+# see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=869717
+# https://bugs.gentoo.org/627164
+=sys-libs/glibc-2.25-r7
+
 app-emulation/wine-any::gentoo
 
 app-emulation/libvirt
 dev-python/libvirt-python
 app-emulation/virt-manager
 x11-misc/rofi
+app-shells/skim
+
+# awesome_bot deps
+dev-ruby/parallel
+
 sys-kernel/linux-firmware
 media-gfx/mypaint
+games-strategy/colobot*
+=games-engines/openrw-9999 **
+games-strategy/openra
+=dev-lang/mono-4.8.0.524
 app-admin/eclean-kernel
 net-p2p/syncthing-gtk
 =app-emulation/docker-gc-9999 **
@@ -349,20 +378,10 @@ net-misc/youtube-dl
 sys-process/glances
 =app-emulation/wine-any-9999 **
 
-# required by media-sound/pulseeffects-1.6.6::jorgicio
-# required by @selected
-# required by @world (argument)
-=sci-libs/scipy-0.19.1
 # required by app-emulation/docker-compose-1.14.0::gentoo
 # required by @selected
 # required by @world (argument)
 =dev-python/docker-py-2.3.0
-
-# required by sci-libs/scipy-0.19.1::gentoo
-# required by media-sound/pulseeffects-2.0.5::jorgicio
-# required by @selected
-# required by @world (argument)
-=dev-python/setuptools-36.0.1
 
 # required by app-emulation/docker-compose-1.15.0::gentoo
 # required by @selected

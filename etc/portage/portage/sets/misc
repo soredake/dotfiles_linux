@@ -50,6 +50,7 @@ app-text/tesseract
 app-text/texlive 
 app-vim/pydiction
 dev-ada/asis
+dev-db/sqliteman
 dev-libs/ferrisloki
 dev-libs/hyperscan
 dev-perl/Unicode-EastAsianWidth

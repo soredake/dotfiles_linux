@@ -1,5 +1,9 @@
 #!/bin/bash
 
+_os="linux64"
+_lang="en-US"
+AUTODOWNLOAD="release"
+
 die() {
   echo "$1"
   exit 1
@@ -9,42 +13,23 @@ download() {
   case $AUTODOWNLOAD in
     esr) URL=-esr ;;
     beta) URL=-beta ;;
+    devedition) URL=-devedition ;;
+    nightly) URL=-nightly ;;
     *) URL=
   esac
-  cdir="$XDG_CACHE_HOME/fxlowmem"
+  #cdir="$XDG_CACHE_HOME/fxlowmem"
   _base="$AUTODOWNLOAD-latest.tar.bz2"
-  _dom="archive.mozilla.org"
-  _rel="pub/firefox/nightly/latest-mozilla-central"
-  _narch="firefox-*.en-US.linux-x86_64.tar.bz2"
-  [[ ! -d "$cdir" ]] && mkdir -p "${cdir}/normal"
+  #[[ ! -d "$cdir" ]] && mkdir -p "${cdir}/normal"
+  # cleanup
+  [[ ! -z "$CLEAN" ]] && rm -f /tmp/"$_base"
   # download
-  if [[ "$AUTODOWNLOAD" = "esr" ]] || [[ "$AUTODOWNLOAD" = "release" ]] || [[ "$AUTODOWNLOAD" = "beta" ]]; then
-     
-    wget -O /tmp/"$_base" "https://download.mozilla.org/?product=firefox${URL}-latest&os=linux64&lang=en-US"
-    version=$(tar xvf /tmp/"$_base" firefox/application.ini -O | grep -Po '(?<=^Version=).*')
-  elif [[ "$AUTODOWNLOAD" = "nightly" ]]; then
-    pushd /tmp
-    wget -r --no-parent -A "$_narch" -X /"$_rel"/mar-tools https://"$_dom"/"$_rel"/
-    nightly_tar="$(find "/tmp/$_dom/$_rel" -name "$_narch" -print)"
-    # version=$(tar xvf "$nightly_tar" firefox/application.ini -o | grep '^version=.*' | sed 's/version=//g')
-    version=$(tar xvf "$nightly_tar" firefox/application.ini -o | grep -Po '(?<=^Version=).*')
-    popd
-  fi
+  [[ ! -e "/tmp/$_base" ]] && wget -O /tmp/"$_base" "https://download.mozilla.org/?product=firefox${URL}-latest-ssl&os=${_os}&lang=${_lang}"
+  version=$(tar xvf /tmp/"$_base" firefox/application.ini -O | grep -Po '(?<=^Version=).*')
   LOCATION="/tmp/${AUTODOWNLOAD}-${version}"
   if ! test -d "${LOCATION}"; then
     mkdir "${LOCATION}"
     # unpack
-    if [[ "$AUTODOWNLOAD" = "esr" ]] || [[ "$AUTODOWNLOAD" = "release" ]] || [[ "$AUTODOWNLOAD" = "beta" ]]; then
-      tar xvjf /tmp/"$_base" --strip-components=1 -C "${LOCATION}"
-    elif [[ "$AUTODOWNLOAD" = "nightly" ]]; then
-      tar xvjf "$nightly_tar" --strip-components=1 -C "${LOCATION}"
-    fi
-    # cleanup
-    if [[ "$AUTODOWNLOAD" = "nightly" ]]; then
-      rm -rf /tmp/"$_dom"
-    else
-      rm -rf -- /tmp/"$_base"
-    fi
+    tar xvjf /tmp/"$_base" --strip-components=1 -C "${LOCATION}"
   fi
 }
 
@@ -74,12 +59,13 @@ END
   nohup "$location"/firefox --new-instance -profile "$profile" about:blank &>"$logfile" &
 }
 
-while getopts "p:l:lg:a:ih" opt; do
+while getopts "p:l:lg:a:ihc" opt; do
   case $opt in
     p) PROFILE="${OPTARG}" ;;
     l) LOCATION="${OPTARG}" ;;
     lg) LOGFILE="${OPTARG}" ;;
     a) AUTODOWNLOAD=${OPTARG} ;;
+    c) CLEAN=true ;;
     i) INFO=true ;;
     h) ACTION="help"
   esac
@@ -97,7 +83,7 @@ case "${ACTION}" in
     -p use custom path
     -l use custom firefox location (such as firefox from your package manager or other)
     -lg use custom log location
-    -a autodownload one of this versions: esr, release, beta, nightly
+    -a autodownload one of this versions: esr, release, beta, devedition, nightly
     -i output some info
     -h help" ;;
     *) die "invalid action '${ACTION}'" ;;

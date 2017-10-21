@@ -18,7 +18,7 @@ alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 #alias xsel='xsel --logfile $XDG_CACHE_HOME/xsel/xsel.log'
 
 # Color ls.
-alias ls='ls --color=auto -ah --quoting-style=escape'
+alias ls='ls --color=auto -ah --quoting-style=escape --group-directories-first'
 
 # Timer.
 alias timer="echo 'Timer started. Stop with Ctrl-D.' && date && time cat && date"
@@ -112,7 +112,8 @@ alias jcu='jc --user'
 
 alias clearterm='printf "\033c"'
 alias back='cd $OLDPWD'
+alias syncplay='QT_PREFERRED_BINDING=PySide syncplay'
 alias flush_caches='sync && sudo sync && sudo sysctl -qw vm.drop_caches=3'
 alias reswap='sudo swapoff -a && sudo swapon -a'
-alias linuxsteamgames='curl --silent "http://store.steampowered.com/search/?category1=998&os=linux" | grep -o "showing 1 - 25 of [0-9]*" | sed "s/showing 1 - 25 of //"'
+alias linuxsteamgames='curl --silent "https://store.steampowered.com/search/?category1=998&os=linux" | grep -o "showing 1 - 25 of [0-9]*" | sed "s/showing 1 - 25 of //"'
 alias gogdownload='lgogdownloader --exclude e,c --platform lin,win --use-cache --language ru,en --download --game'

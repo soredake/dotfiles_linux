@@ -1,3 +1,56 @@
+x11-libs/libva abi_x86_32
+>=media-sound/mpg123-1.24.0 abi_x86_32
+>=app-arch/lz4-1.7.5-r1 abi_x86_32
+>=x11-libs/pango-1.40.4 abi_x86_32
+virtual/wine staging
+app-emulation/winetricks rar
+virtual/jpeg:0 abi_x86_32
+sys-devel/gettext abi_x86_32
+media-libs/openal abi_x86_32
+dev-libs/nettle abi_x86_32
+media-sound/pulseaudio abi_x86_32
+media-libs/libv4l abi_x86_32
+media-libs/lcms abi_x86_32
+net-libs/gnutls abi_x86_32
+app-emulation/wine-* dos openal s3tc staging themes gstreamer custom-cflags
+app-emulation/wine-gecko abi_x86_32
+
+# winetricks[gtk]
+media-libs/freetype abi_x86_32
+sys-apps/dbus abi_x86_32
+dev-libs/atk abi_x86_32
+media-libs/libpng abi_x86_32
+x11-libs/cairo abi_x86_32
+
+# wine[themes]
+app-accessibility/at-spi2-atk abi_x86_32
+dev-libs/libusb abi_x86_32
+app-accessibility/at-spi2-core abi_x86_32
+x11-misc/colord abi_x86_32
+virtual/libusb abi_x86_32
+media-libs/libepoxy abi_x86_32
+virtual/libgudev abi_x86_32
+dev-libs/libgudev abi_x86_32
+dev-libs/libgusb abi_x86_32
+x11-libs/gtk+ abi_x86_32
+
+
+# required by app-emulation/wine-any-2.9::gentoo[xml]
+# required by @wine
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libxslt-1.1.29-r1 abi_x86_32
+# required by net-libs/gnutls-3.5.12::gentoo
+# required by app-emulation/wine-any-2.7::gentoo
+# required by @wine
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libtasn1-4.10-r2 abi_x86_32
+# required by app-emulation/wine-any-2.12::gentoo[fontconfig]
+# required by @wine
+# required by @selected
+# required by @world (argument)
+>=media-libs/fontconfig-2.12.4 abi_x86_32
 # required by media-plugins/gst-plugins-meta-1.10.3::gentoo[mp3]
 # required by app-emulation/wine-any-2.7::gentoo[gstreamer]
 # required by virtual/wine-0-r4::gentoo
@@ -10,12 +63,6 @@
 # required by @selected
 # required by @world (argument)
 >=media-plugins/gst-plugins-vaapi-1.10.3 abi_x86_32
-# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[v4l]
-# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
-# required by virtual/wine-0-r4::gentoo
-# required by @selected
-# required by @world (argument)
->=media-plugins/gst-plugins-v4l2-1.10.3 abi_x86_32
 # required by media-plugins/gst-plugins-meta-1.10.3::gentoo[aac]
 # required by app-emulation/wine-any-2.7::gentoo[gstreamer]
 # required by virtual/wine-0-r4::gentoo
@@ -35,20 +82,6 @@
 # required by @selected
 # required by @world (argument)
 >=media-plugins/gst-plugins-pulse-1.10.3 abi_x86_32
-# required by media-plugins/gst-plugins-a52dec-1.10.3::gentoo
-# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[-dvd,a52]
-# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
-# required by virtual/wine-0-r4::gentoo
-# required by @selected
-# required by @world (argument)
->=media-libs/a52dec-0.7.4-r7 abi_x86_32
-# required by media-plugins/gst-plugins-v4l2-1.10.3::gentoo
-# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[v4l]
-# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
-# required by virtual/wine-0-r4::gentoo
-# required by @selected
-# required by @world (argument)
->=media-libs/gst-plugins-base-1.10.3 abi_x86_32
 # required by media-plugins/gst-plugins-meta-1.10.3::gentoo[flac]
 # required by app-emulation/wine-any-2.7::gentoo[gstreamer]
 # required by virtual/wine-0-r4::gentoo
@@ -69,13 +102,6 @@
 # required by @selected
 # required by @world (argument)
 >=media-libs/x264-0.0.20160712 abi_x86_32
-# required by media-plugins/gst-plugins-v4l2-1.10.3::gentoo
-# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[v4l]
-# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
-# required by virtual/wine-0-r4::gentoo
-# required by @selected
-# required by @world (argument)
->=media-libs/gst-plugins-good-1.10.3 abi_x86_32
 # required by media-plugins/gst-plugins-meta-1.10.3::gentoo[x264]
 # required by app-emulation/wine-any-2.7::gentoo[gstreamer]
 # required by virtual/wine-0-r4::gentoo
@@ -121,14 +147,6 @@
 # required by @selected
 # required by @world (argument)
 >=media-libs/libmpeg2-0.5.1-r2 abi_x86_32
-# required by media-libs/gst-plugins-base-1.10.3::gentoo[orc]
-# required by media-plugins/gst-plugins-v4l2-1.10.3::gentoo
-# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[v4l]
-# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
-# required by virtual/wine-0-r4::gentoo
-# required by @selected
-# required by @world (argument)
->=dev-lang/orc-0.4.26-r1 abi_x86_32
 # required by app-emulation/wine-any-2.7::gentoo[gstreamer]
 # required by virtual/wine-0-r4::gentoo
 # required by @selected
@@ -150,7 +168,7 @@
 >=media-libs/gstreamer-1.10.3 abi_x86_32
 
 media-plugins/gst-plugins-libav abi_x86_32
-media-plugins/gst-plugins-meta ffmpeg
+media-plugins/gst-plugins-meta ffmpeg -v4l -a52
 media-plugins/gst-plugins-xvid abi_x86_32
 
 # required by media-video/ffmpeg-3.2.4::libressl[libcaca]
@@ -168,12 +186,6 @@ media-plugins/gst-plugins-xvid abi_x86_32
 # required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
 # required by gst-plugins-meta (argument)
 >=net-libs/libssh-0.7.3-r1 abi_x86_32
-# required by media-libs/libbluray-0.9.3::gentoo[bdplus]
-# required by media-video/ffmpeg-3.2.4::libressl[bluray]
-# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
-# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
-# required by gst-plugins-meta (argument)
->=media-libs/libbdplus-0.1.2 abi_x86_32
 # required by x11-libs/libXScrnSaver-1.2.2-r1::gentoo
 # required by media-libs/libsdl2-2.0.4::gentoo[X,xscreensaver]
 # required by media-video/ffmpeg-3.2.4::libressl[sdl]

@@ -35,7 +35,7 @@ TOR_HIDE_UPDATE_CHECK_UI=1
 
 # Steam is not quiting while you press quit, istead it just RE-LAUNCHES, so force the Steam window to close instead of minimize
 # https://wiki.gentoo.org/wiki/Steam/Client_troubleshooting#Taskbar_button_persists_even_when_closed_or_minimzed
-STEAM_FRAME_FORCE_CLOSE=1
+#STEAM_FRAME_FORCE_CLOSE=1
 
 # not needed
 LUTRIS_RUNTIME=0

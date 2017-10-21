@@ -42,9 +42,8 @@ net-news/rssguard -webengine
 games-emulation/ppsspp -sdl qt5
 www-plugins/adobe-flash -nsplugin
 www-plugins/freshplayerplugin gtk3
-dev-libs/libpcre2 pcre32
-mail-client/mutt gpg imap pop sasl sidebar smime smtp mbox -berkdb
-mail-client/neomutt gpg imap pop sasl sidebar smime smtp mbox -berkdb
+dev-libs/libpcre2 pcre32 pcre16
+mail-client/*mutt gpg imap pop sasl sidebar smime smtp mbox -berkdb
 app-admin/sudo openssl
 app-doc/pms html
 media-gfx/gimp vector-icons
@@ -101,10 +100,8 @@ x11-proto/videoproto abi_x86_32
 x11-misc/redshift geoclue
 dev-libs/libdbusmenu gtk3
 
-# required by app-emulation/docker-17.03.1::gentoo[container-init]
-# required by @selected
-# required by @world (argument)
->=sys-process/tini-0.13.2 static
+# docker[container-init]
+sys-process/tini static
 
 # required by gnome-base/librsvg-2.40.17::gentoo
 # required by x11-libs/gtk+-3.22.12::gentoo
@@ -122,13 +119,6 @@ dev-libs/libdbusmenu gtk3
 # required by @world (argument)
 >=net-libs/nghttp2-1.19.0 abi_x86_32
 
-# wine
-x11-libs/libva abi_x86_32
->=media-sound/mpg123-1.24.0 abi_x86_32
->=app-arch/lz4-1.7.5-r1 abi_x86_32
->=x11-libs/pango-1.40.4 abi_x86_32
-
-
 app-antivirus/clamav clamdtop metadata-analysis-api
 net-vpn/tor zstd lzma scrypt
 x11-libs/libdrm libkms
@@ -140,12 +130,12 @@ app-office/libreoffice gtk3 jemalloc
 media-video/mediainfo -wxwidgets
 app-crypt/pinentry gnome-keyring -qt5
 sys-process/htop taskstats
-dev-lang/rust system-llvm
 sys-kernel/linux-firmware savedconfig
 sys-devel/clang -llvm_targets_*
 sys-devel/llvm gold clang -llvm_targets_*
 app-misc/task gnutls
 sys-devel/gcc graphite
+games-strategy/openra -debug -nuget
 net-misc/youtube-dl offensive
 app-arch/p7zip rar
 
@@ -160,40 +150,20 @@ media-libs/glfw -wayland
 
 media-video/mpv libcaca dvd rubberband bluray
 media-libs/libbluray aacs bdplus utils
-# needed for wayland use flag
+# gles/gles2 needed for wayland use flag
 media-libs/cogl gles2
-media-libs/libsdl2 gles
+media-libs/libsdl2 gles custom-cflags
 
 # w3mimgdisplay in ranger works only without transparency patch, so we need +vanilla
 x11-terms/gnome-terminal -gnome-shell -nautilus vanilla
 
 dev-libs/sway swaygrab swaylock
-app-emulation/winetricks rar
-virtual/wine staging
 dev-libs/wayland abi_x86_32
-sys-kernel/genkernel-next -* 
+sys-kernel/genkernel-next -*
 www-client/torbrowser system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite custom-cflags custom-optimization
 dev-db/sqlite secure-delete
 media-libs/harfbuzz fontconfig
 app-emulation/libvirt zfs
-
-#sys-apps/portage PYTHON_TARGETS: -* pypy
-# required by sys-apps/portage-2.3.6::gentoo[python_targets_pypy,xattr,-python_targets_python2_7]
-# required by sys-apps/portage (argument)
-#>=dev-python/pyxattr-0.5.5 python_targets_pypy
-# required by dev-python/setuptools-36.0.1::gentoo
-# required by dev-python/pyxattr-0.5.5::gentoo
-# required by sys-apps/portage-2.3.6::gentoo[python_targets_pypy,xattr,-python_targets_python2_7]
-# required by sys-apps/portage (argument)
-#>=dev-python/certifi-2017.4.17 python_targets_pypy
-# required by dev-python/certifi-2017.4.17::gentoo
-# required by dev-python/urllib3-1.16::gentoo
-# required by dev-python/requests-2.11.1::gentoo
-# required by app-emulation/docker-compose-1.15.0::gentoo
-# required by @selected
-# required by @world (argument)
-#>=dev-python/setuptools-36.0.1 python_targets_pypy
-
 sys-apps/busybox static
 games-emulation/retroarch lakka miniupnpc cheevos ffmpeg openal -sdl sdl2 libusb kms
 # cant build: melonds
@@ -212,13 +182,6 @@ dev-lang/python sqlite
 # memory leak with +gtk, upd: memory leak even with -gtk, TODO: report bug to upstream
 www-client/w3m -gtk imlib
 
-# required by app-emulation/wine-any-2.12::gentoo[fontconfig]
-# required by @wine
-# required by @selected
-# required by @world (argument)
->=media-libs/fontconfig-2.12.4 abi_x86_32
-
-
 media-libs/libvpx postproc
 app-arch/tar minimal
 dev-db/unixODBC minimal
@@ -232,40 +195,6 @@ app-emulation/qemu usbredir spice lzo virtfs sdl2 virgl -vnc QEMU_USER_TARGETS: 
 >=net-misc/spice-gtk-0.33-r2 gtk3 usbredir
 app-emulation/spice lz4
 net-misc/spice-gtk lz4
-
-# wine[themes]
-app-accessibility/at-spi2-atk abi_x86_32
-dev-libs/libusb abi_x86_32
-app-accessibility/at-spi2-core abi_x86_32
-x11-misc/colord abi_x86_32
-virtual/libusb abi_x86_32
-media-libs/libepoxy abi_x86_32
-virtual/libgudev abi_x86_32
-dev-libs/libgudev abi_x86_32
-dev-libs/libgusb abi_x86_32
-x11-libs/gtk+ abi_x86_32
-
-# wine
-virtual/jpeg:0 abi_x86_32
-sys-devel/gettext abi_x86_32
-media-libs/openal abi_x86_32
-dev-libs/nettle abi_x86_32
-media-sound/pulseaudio abi_x86_32
-media-libs/libv4l abi_x86_32
-media-libs/lcms abi_x86_32
-net-libs/gnutls abi_x86_32
-app-emulation/wine-any dos openal s3tc staging themes gstreamer
-app-emulation/wine-gecko abi_x86_32
-
-# winetricks[gtk]
-media-libs/freetype abi_x86_32
-sys-apps/dbus abi_x86_32
-dev-libs/atk abi_x86_32
-media-libs/libpng abi_x86_32
-x11-libs/cairo abi_x86_32
-
-# torbrowser
-net-libs/libasyncns abi_x86_32
 
 # required by net-misc/curl-7.53.0::gentoo[curl_ssl_libressl,ssl]
 # required by dev-vcs/git-2.10.2::gentoo[curl]
@@ -332,33 +261,9 @@ dev-libs/boost abi_x86_32
 # required by @world (argument)
 >=media-libs/flac-1.3.2-r1 abi_x86_32
 
-# required by virtual/jpeg-0-r2::gentoo
-# required by media-gfx/fontforge-20160404::gentoo[jpeg]
-# required by media-fonts/arphicfonts-0.2.20080216.1-r2::gentoo
-# required by @selected
-# required by @world (argument)
->=media-libs/libjpeg-turbo-1.5.0 abi_x86_32
-
-# required by media-sound/pulseaudio-10.0::gentoo
-# required by media-sound/pulsemixer-9999::pinkpieea
-# required by @selected
-# required by @world (argument)
->=media-libs/libsndfile-1.0.28 abi_x86_32
-
-# required by media-sound/pulseaudio-10.0::gentoo[alsa,alsa-plugin]
-# required by media-sound/pulsemixer-9999::pinkpieea
-# required by @selected
-# required by @world (argument)
->=media-plugins/alsa-plugins-1.1.1-r1 abi_x86_32
-
 x11-libs/qscintilla qt5
 
-# required by net-libs/gnutls-3.5.12::gentoo
-# required by app-emulation/wine-any-2.7::gentoo
-# required by @wine
-# required by @selected
-# required by @world (argument)
->=dev-libs/libtasn1-4.10-r2 abi_x86_32
+
 
 # required by media-libs/libsdl2-2.0.4::gentoo[wayland]
 # required by media-video/ffmpeg-3.2.4::libressl[sdl]
@@ -371,18 +276,6 @@ x11-libs/qscintilla qt5
 # required by @world (argument)
 >=app-arch/bzip2-1.0.6-r8 abi_x86_32
 
-# required by media-libs/libbdplus-0.1.2::gentoo
-# required by media-libs/libbluray-0.9.3::gentoo[bdplus]
-# required by media-video/mpv-0.25.0::gentoo[bluray]
-# required by @selected
-# required by @world (argument)
->=dev-libs/libgcrypt-1.7.7 abi_x86_32
-# required by app-emulation/wine-any-2.9::gentoo[xml]
-# required by @wine
-# required by @selected
-# required by @world (argument)
->=dev-libs/libxslt-1.1.29-r1 abi_x86_32
-
 # required by dev-libs/libxml2-2.9.4-r1::gentoo[icu]
 # required by app-office/libreoffice-5.2.7.2::gentoo
 # required by @selected
@@ -394,16 +287,6 @@ x11-libs/qscintilla qt5
 # required by media-libs/raptor-2.0.14::gentoo[curl]
 # required by @__auto_slot_operator_replace_installed__ (argument)
 >=dev-libs/libxml2-2.9.4-r1 abi_x86_32
-
-# required by sci-libs/scipy-0.19.1::gentoo
-# required by media-sound/pulseeffects-1.6.6::jorgicio
-# required by @selected
-# required by @world (argument)
->=dev-python/numpy-1.10.4 lapack
-# required by media-sound/pulseeffects-1.6.6::jorgicio
-# required by @selected
-# required by @world (argument)
->=media-sound/pulseaudio-10.0 equalizer
 
 # required by net-misc/curl-7.54.1::gentoo[idn]
 # required by app-crypt/gnupg-2.1.20-r1::gentoo

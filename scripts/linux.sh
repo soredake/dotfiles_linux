@@ -67,4 +67,8 @@ sudo tee /etc/security/limits.conf >/dev/null <<END
 END
 
 # https://github.com/InBetweenNames/gentooLTO#a-note-about-the-gcc-lto-plugin
-sudo ln -sfv /usr/libexec/gcc/x86_64-pc-linux-gnu/7.2.0/liblto_plugin.so /usr/x86_64-pc-linux-gnu/binutils-bin/lib/bfd-plugins/liblto_plugin.so
+# not needed after https://github.com/InBetweenNames/gentooLTO/commit/5c779278767c2098e50bc9d3ab4735589309ad0a
+#sudo ln -sfv /usr/libexec/gcc/x86_64-pc-linux-gnu/7.2.0/liblto_plugin.so /usr/x86_64-pc-linux-gnu/binutils-bin/lib/bfd-plugins/liblto_plugin.so
+
+# https://aspiceodyssey.wordpress.com/2017/04/28/fedora25-3d-accelerated-guest/
+sudo gpasswd -a qemu video

@@ -2,6 +2,7 @@
 -d3d9
 -staging
 
+-custom-cflags
 -libressl
 -curl_ssl_libressl
 -libzfs

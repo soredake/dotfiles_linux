@@ -9,7 +9,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 sudo emerge --sync || exit 1
 sudo emerge --changed-use --newuse -uDU @world || exit 1
 sudo emerge --usepkg=n @preserved-rebuild || exit 1
-sudo smart-live-rebuild -f '!games-emulation/rpcs3' -- --usepkg=n
+sudo smart-live-rebuild -- --usepkg=n
 sudo emerge -v --depclean || exit 1
 #sudo env-update
 #sudo python-updater

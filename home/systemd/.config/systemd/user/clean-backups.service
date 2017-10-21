@@ -1,5 +1,6 @@
 [Unit]
 Description=Clean system/home backups
+Conflicts=backup_all.service
 
 [Service]
 Type=oneshot

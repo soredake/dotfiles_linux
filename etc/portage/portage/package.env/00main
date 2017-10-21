@@ -20,6 +20,13 @@ media-sound/ncmpcpp albumonly
 # https://github.com/rg3/youtube-dl/issues/13889#issuecomment-326045140
 #net-misc/youtube-dl googlephoto
 
+#* Valgrind will not work if glibc does not have debug symbols.
+#* To fix this you can add splitdebug to FEATURES in make.conf
+#* and remerge glibc.  See:
+#* https://bugs.gentoo.org/show_bug.cgi?id=214065
+#* https://bugs.gentoo.org/show_bug.cgi?id=274771
+#* https://bugs.gentoo.org/show_bug.cgi?id=388703
+sys-libs/glibc splitdebug
 
-# official binaries build with -O3, so i'll try
-www-client/torbrowser O3
+# fetches deps in src_compile
+games-strategy/openra nonetsandbox

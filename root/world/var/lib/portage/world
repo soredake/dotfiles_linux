@@ -1,3 +1,4 @@
+app-admin/awesome_bot
 app-admin/eclean-kernel
 app-admin/keepassxc
 app-admin/profile-cleaner
@@ -19,7 +20,6 @@ app-emulation/docker
 app-emulation/docker-compose
 app-emulation/docker-gc
 app-emulation/virt-manager
-app-emulation/wine-mono
 app-emulation/winetricks
 app-eselect/eselect-repository
 app-i18n/translate-shell
@@ -29,6 +29,7 @@ app-misc/jdupes
 app-misc/jq
 app-misc/mc
 app-misc/neofetch
+app-misc/piper
 app-misc/ranger
 app-misc/tmux
 app-office/libreoffice
@@ -42,6 +43,7 @@ app-portage/repoman
 app-portage/smart-live-rebuild
 app-shells/fish
 app-shells/gentoo-zsh-completions
+app-shells/skim
 app-shells/zsh
 app-shells/zsh-completions
 app-text/mupdf
@@ -57,21 +59,26 @@ dev-util/cloc
 dev-util/d-feet
 dev-util/shellcheck
 dev-util/strace
+dev-util/valgrind
 dev-vcs/tig
 games-action/minetest
 games-action/minetest_game
 games-emulation/retroarch
 games-emulation/rpcs3
+games-engines/openrw
 games-engines/xash3d
 games-misc/everlasting-summer
 games-misc/ponysay
 games-misc/theherbalist
+games-strategy/colobot
+games-strategy/openra
 games-util/esteam
 games-util/lgogdownloader
 games-util/lutris
 games-util/steam-meta
 kde-apps/k3b
 kde-misc/kdeconnect
+kde-plasma/kde-cli-tools
 mail-client/mutt
 mail-client/neomutt
 media-fonts/alee-fonts
@@ -109,12 +116,10 @@ media-sound/alsa-utils
 media-sound/mpd
 media-sound/ncmpcpp
 media-sound/pavucontrol
-media-sound/pulseeffects
 media-sound/pulsemixer
 media-video/atomicparsley-wez
 media-video/bluray_info
 media-video/dvd_info
-media-video/ffmpeg
 media-video/ffmpegthumbnailer
 media-video/mediainfo
 media-video/mpv
@@ -166,7 +171,6 @@ sys-boot/syslinux
 sys-config/ltoize
 sys-devel/crossdev
 sys-devel/distcc
-sys-devel/gcc
 sys-devel/gdb
 sys-fs/cryptsetup
 sys-fs/dosfstools

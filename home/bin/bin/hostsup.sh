@@ -1,6 +1,5 @@
 #!/bin/bash
 hf="$HOME/git/hosts"
-#cd "$HOME/git/hosts"
 SD="$(cd "$hf" > /dev/null || exit 1; pwd)";
 cd "$SD" || exit 1
 addsource() {
@@ -27,8 +26,7 @@ gh='https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/ho
 for v in 7 81 10; do
   for w in extra spy update; do addsource "${v}-${w}" "${gh}${v}/${w}.txt"; done
 done
-addsource sysctl http://sysctl.org/cameleon/hosts
-addsource malwaredomains http://mirror1.malwaredomains.com/files/justdomains
+addsource malwaredomains https://mirror1.malwaredomains.com/files/justdomains
 addsource zeustracker https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist
 addsource disconnect1 https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
 addsource disconnect2 https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
