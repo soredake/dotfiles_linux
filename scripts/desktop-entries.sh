@@ -2,7 +2,7 @@
 ush='/usr/share/applications'
 cd "$XDG_DATA_HOME/applications/custom" || exit 1
 sed -e '15,24d' -e '11,13d' -e '4,9d' -e "s/pseudo-gui/pseudo-gui --profile=image/g" -e "s/Play movies and songs/View images/g" -e "s/Media Player/Image Viewer/g" -e "s/Multimedia player/Image Viewer/g" $ush/mpv.desktop >mvi.desktop
-sed -e '/^Name=/s/=.*/=Htop (root)/' -e '/^Exec=/s/=.*/=sudo htop/' $ush/htop.desktop >htop-root.desktop
+sed -e '/^Name=/s/=.*/=Htop (root)/' -e '/^Exec=/s/=.*/="sudo htop"/' $ush/htop.desktop >htop-root.desktop
 
 # torbrowser firejail
 sed -e '/^Name=/s/=.*/=Tor Browser (firejail)/' -e 's/Exec=.*/Exec=torbrowser-run/g' -e 's/TryExec=.*/TryExec=torbrowser-run/g' /usr/share/applications/torbrowser-torbrowser.desktop > torbrowser-fixed.desktop

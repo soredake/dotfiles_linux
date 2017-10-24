@@ -58,7 +58,7 @@ touch "$HOME/.hushlogin"
 # legacy settings for x11
 localectl set-x11-keymap us,ru pc104 qwerty grp:rctrl_toggle
 sudo sed -i -e "\$a exec i3" -e '57,65d' /etc/X11/xinit/xinitrc
-sudo sed -i -e '|\$HOME/.serverauth.\$\$|$XDG_RUNTIME_DIR/.serverauth.$$' /usr/bin/startx
+sudo sed -i -e 's|\$HOME/.serverauth.\$\$|$XDG_RUNTIME_DIR/.serverauth.$$|' /usr/bin/startx
 
 # for no reason, when systemd-coredump is disabled, my system instead creates coredump files EVERYWHERE, so disable them entierly
 sudo tee /etc/security/limits.conf >/dev/null <<END

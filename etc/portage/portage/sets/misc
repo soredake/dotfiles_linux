@@ -70,6 +70,7 @@ games-arcade/blobwars
 games-misc/lolcat
 games-simulation/openrct2
 kde-apps/kdesu
+lxqt-base/lxqt-sudo
 media-gfx/opentoonz
 media-libs/exiftool
 media-libs/libsndfile

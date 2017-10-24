@@ -61,7 +61,7 @@ media-sound/mpd -alsa gme libmpdclient -mikmod modplug opus pipe -sid recorder s
 media-sound/ncmpcpp clock curl outputs taglib visualizer
 
 media-video/syncplay gui
-#dev-python/pyside:2 widgets gui
+dev-python/pyside:2 widgets gui
 
 dev-lang/perl ithreads
 net-misc/aria2 adns bittorrent jemalloc scripts
@@ -196,6 +196,12 @@ app-emulation/qemu usbredir spice lzo virtfs sdl2 virgl -vnc QEMU_USER_TARGETS: 
 app-emulation/spice lz4
 net-misc/spice-gtk lz4
 
+
+# required by sys-libs/pam-1.2.1::gentoo
+# required by sys-apps/util-linux-2.30.2::gentoo[pam]
+# required by @system
+# required by @world (argument)
+>=sys-libs/db-5.3.28-r3 abi_x86_32
 # required by net-misc/curl-7.53.0::gentoo[curl_ssl_libressl,ssl]
 # required by dev-vcs/git-2.10.2::gentoo[curl]
 # required by @__auto_slot_operator_replace_installed__ (argument)

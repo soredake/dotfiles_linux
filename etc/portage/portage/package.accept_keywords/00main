@@ -96,6 +96,25 @@ net-im/telegram-desktop-bin
 # required by @selected
 # required by @world (argument)
 =media-libs/gst-plugins-bad-1.12.3
+# required by dev-libs/cyrus-sasl-2.1.26-r11::gentoo[berkdb]
+# required by mail-client/mutt-1.9.1-r1::gentoo[sasl]
+# required by @selected
+# required by @world (argument)
+=sys-libs/db-5.3.28-r3
+# required by media-libs/mesa-17.2.3::gentoo[wayland]
+# required by app-emulation/wine-any-9999::gentoo[d3d9]
+# required by @wine
+# required by @selected
+# required by @world (argument)
+=dev-libs/wayland-protocols-1.11
+
+=games-puzzle/glportal-9999 **
+=games-engines/radix-9999 **
+media-sound/mpdas
+
+# zulucrypt test
+app-crypt/zuluCrypt
+app-crypt/zuluplay
 
 app-admin/profile-cleaner
 =net-misc/streamlink-9999 **
@@ -314,7 +333,7 @@ dev-libs/cyrus-sasl
 # can't compile glibc-2.23-r3 with binutils{,-libs}-2.29.1
 # see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=869717
 # https://bugs.gentoo.org/627164
-=sys-libs/glibc-2.25-r7
+=sys-libs/glibc-2.25*
 
 app-emulation/wine-any::gentoo
 

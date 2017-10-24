@@ -5,3 +5,4 @@ sys-apps/less::mv
 x11-libs/gtk+::mv
 app-eselect/eselect-wine::bobwya
 app-emulation/wine-desktop-common::bobwya
+app-emulation/wine-mono::bobwya
