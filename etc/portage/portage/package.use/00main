@@ -182,12 +182,14 @@ dev-lang/python sqlite
 # memory leak with +gtk, upd: memory leak even with -gtk, TODO: report bug to upstream
 www-client/w3m -gtk imlib
 
+x11-terms/kitty python_targets_python3_5
 media-libs/libvpx postproc
 app-arch/tar minimal
 dev-db/unixODBC minimal
 net-nds/openldap minimal
 net-misc/curl http2 CURL_SSL: -openssl libressl
 sys-libs/libomp hwloc
+sys-libs/pam abi_x86_32
 media-video/ffmpeg openssl ssh libass openh264 vpx x265 cpudetection theora webp opus bluray gme libcaca rubberband
 app-emulation/qemu usbredir spice lzo virtfs sdl2 virgl -vnc QEMU_USER_TARGETS: x86_64
 # required by app-emulation/virt-manager-1.4.3::gentoo[gtk]
@@ -202,6 +204,13 @@ net-misc/spice-gtk lz4
 # required by @system
 # required by @world (argument)
 >=sys-libs/db-5.3.28-r3 abi_x86_32
+# required by sys-apps/systemd-233-r6::gentoo
+# required by x11-base/xorg-server-1.19.5::gentoo[systemd]
+# required by dev-libs/wlc-9999::gentoo[xwayland]
+# required by dev-libs/sway-9999::gentoo
+# required by @selected
+# required by @world (argument)
+>=sys-libs/libcap-2.24-r2 abi_x86_32
 # required by net-misc/curl-7.53.0::gentoo[curl_ssl_libressl,ssl]
 # required by dev-vcs/git-2.10.2::gentoo[curl]
 # required by @__auto_slot_operator_replace_installed__ (argument)

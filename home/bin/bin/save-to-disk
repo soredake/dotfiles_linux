@@ -4,4 +4,4 @@ notify-send "Downloading ${1}"
 cd "$HOME/Downloads" || die "Error at cd"
 do1() { PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains.conf" proxychains -q wget "${1}" || die "Error downloading ${1}"; }
 do2() { PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains.conf" proxychains -q aria2c -x 14 -s 6 -m 3 "${1}" || die "Error downloading ${1}"; } 
-do2 "${1}"
+do1 "${1}"

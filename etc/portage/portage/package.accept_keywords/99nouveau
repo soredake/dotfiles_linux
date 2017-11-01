@@ -1,3 +1,2 @@
 # big freezes on new versions
-#=media-libs/mesa-17.1.9
-media-libs/mesa
+=media-libs/mesa-17.2*

@@ -112,8 +112,9 @@ alias jcu='jc --user'
 
 alias clearterm='printf "\033c"'
 alias back='cd $OLDPWD'
+# https://github.com/Syncplay/syncplay/issues/147#issuecomment-336957986
 alias syncplay='QT_PREFERRED_BINDING=PySide syncplay'
 alias flush_caches='sync && sudo sync && sudo sysctl -qw vm.drop_caches=3'
 alias reswap='sudo swapoff -a && sudo swapon -a'
-alias linuxsteamgames='curl --silent "https://store.steampowered.com/search/?category1=998&os=linux" | grep -o "showing 1 - 25 of [0-9]*" | sed "s/showing 1 - 25 of //"'
+alias linuxsteamgames='curl --http2 -s "https://store.steampowered.com/search/?category1=998&os=linux" | grep -o "showing 1 - 25 of [0-9]*" | sed "s/showing 1 - 25 of //"'
 alias gogdownload='lgogdownloader --exclude e,c --platform lin,win --use-cache --language ru,en --download --game'

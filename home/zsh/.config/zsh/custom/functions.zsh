@@ -54,7 +54,7 @@ actualsize() {
 # http://isthisretina.com/
 # https://en.wikipedia.org/wiki/Pixel_density#Calculation_of_monitor_PPI
 ppicalc() {
-  echo 'PPI is:' "$(bc <<< "sqrt($1^2+$2^2)/$3")"
+  echo 'DPI/PPI is:' "$(bc <<< "sqrt($1^2+$2^2)/$3")"
 }
 
 # 5gb max

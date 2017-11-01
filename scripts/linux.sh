@@ -18,18 +18,6 @@ FONT="ter-v16v"
 KEYMAP="us"
 END
 
-# distccd settings
-# TODO: move to old
-#read -p "Main host ip? " Mhost;
-#read -p "Main host threads? " Mthreads;
-#read -p "localhost threads? " Lthreads;
-#locthrd=${Lthreads:-$(nproc)}
-#sudo tee /etc/distcc/hosts >/dev/null <<END
-#$Mhost/$Mthreads
-#127.0.0.1/$locthrd
-#END
-#sudo sed -i "s/127.0.0.1/$Mhost/g" /etc/systemd/system/distccd.service.d/00gentoo.conf
-
 # xdg zsh
 sudo tee /etc/zsh/zshenv >/dev/null <<< 'ZDOTDIR=$XDG_CONFIG_HOME/zsh'
 
@@ -51,8 +39,9 @@ sudo locale-gen -j "$(nproc)"
 dconf reset -f /org/gnome/terminal/
 dconf load /org/gnome/terminal/ < "$SD"/../home_cp/gnome-terminal/gnome.conf
 
-# 1) deny ssh root login 2) disable tty motd
+# deny ssh root login
 sudo sed -i -e "\$a PermitRootLogin no" -e '/PermitRootLogin/d' /etc/ssh/sshd_config
+# disable tty motd
 touch "$HOME/.hushlogin"
 
 # legacy settings for x11
@@ -65,10 +54,6 @@ sudo tee /etc/security/limits.conf >/dev/null <<END
 # disable coredumps entierly
 * hard core 0
 END
-
-# https://github.com/InBetweenNames/gentooLTO#a-note-about-the-gcc-lto-plugin
-# not needed after https://github.com/InBetweenNames/gentooLTO/commit/5c779278767c2098e50bc9d3ab4735589309ad0a
-#sudo ln -sfv /usr/libexec/gcc/x86_64-pc-linux-gnu/7.2.0/liblto_plugin.so /usr/x86_64-pc-linux-gnu/binutils-bin/lib/bfd-plugins/liblto_plugin.so
 
 # https://aspiceodyssey.wordpress.com/2017/04/28/fedora25-3d-accelerated-guest/
 sudo gpasswd -a qemu video

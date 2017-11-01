@@ -39,7 +39,7 @@ app-arch/innoextract
 net-news/rssguard
 # rssguard needs >=qt-5.8
 # no qtnetwork ebuild in libressl repository yet
-=dev-qt/qtnetwork-5.9.2::pinkpieea
+=dev-qt/qtnetwork-5.9.2::libressl
 =dev-qt/qtxml-5.9.2
 =dev-qt/qtsql-5.9.2
 =dev-qt/qtgui-5.9.2
@@ -79,14 +79,15 @@ dev-libs/libratbag
 
 # testing kitty terminal
 media-libs/glew:0/2.0
+=x11-terms/kitty-9999 **
 
 =app-misc/piper-9999 **
 =dev-libs/libratbag-9999 **
 mail-client/mutt
+sys-auth/pambase
 mail-client/neomutt
 =x11-misc/compton-9999 **
 =media-video/dvd_info-9999 **
-=app-crypt/gnupg-2.2*
 net-im/telegram-desktop-bin
 =sys-apps/firejail-9999 **
 # required by media-plugins/gst-plugins-vaapi-1.10.5::gentoo
@@ -166,13 +167,12 @@ sys-fs/zfs
 sys-apps/inxi
 net-vpn/i2pd
 net-fs/btfs
+app-misc/neofetch
+media-libs/libsdl2
 
 app-emulation/docker-compose
 =dev-python/cached-property-1.3.1
 =dev-python/dockerpty-0.4.1
-
-app-misc/neofetch
-media-libs/libsdl2
 
 # streamlink
 =dev-python/pycryptodome-3.4.5
@@ -217,12 +217,14 @@ media-video/atomicparsley-wez
 =app-portage/cpuid2cpuflags-4
 app-i18n/translate-shell
 app-benchmarks/phoronix-test-suite
-=net-p2p/syncthing-0.14.35
 
 # for i3blocks
 =media-sound/playerctl-0.5.0
 
-=sys-apps/util-linux-2.30.2::gentoo
+# "System error" that i get is pam fault, so i'm tryint new versions...
+# https://github.com/linux-pam/linux-pam/blob/dbd1ae9516e2ff9793cf8957111d526a90716862/libpam/pam_strerror.c#L49-L50
+sys-libs/pam
+
 net-libs/libtorrent-rasterbar::gentoo
 sys-apps/fd
 
@@ -268,11 +270,16 @@ sys-devel/clang:4
 =dev-python/python-evdev-0.6.1
 
 =sys-kernel/genkernel-next-68
+=dev-util/clinfo-9999 **
+=sys-libs/glibc-2.26* **
+=app-emulation/virt-manager-9999 **
+=app-admin/ps_mem-9999 **
+app-emulation/virtio-win
 
 # for ripgrep
 dev-lang/rust-bin
 virtual/rust
-dev-util/cargo
+dev-util/cargo::gentoo
 sys-apps/ripgrep
 
 =app-eselect/eselect-repository-9999 **
@@ -328,12 +335,11 @@ media-video/bluray_info
 =net-libs/ldns-1.6.17*
 dev-libs/cyrus-sasl
 
-=x11-terms/alacritty-9999 **
+# for qt-5.9
+=dev-python/PyQt5-5.9*
+=dev-python/sip-4.19.3
 
-# can't compile glibc-2.23-r3 with binutils{,-libs}-2.29.1
-# see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=869717
-# https://bugs.gentoo.org/627164
-=sys-libs/glibc-2.25*
+=x11-terms/alacritty-9999 **
 
 app-emulation/wine-any::gentoo
 
@@ -379,7 +385,6 @@ app-misc/jdupes
 x11-misc/kbdd
 =x11-misc/i3blocks-contrib-9999 **
 x11-misc/notify-osd
-dev-qt/qtnetwork::libressl
 
 media-fonts/courier-prime
 media-fonts/heuristica
@@ -396,6 +401,7 @@ games-util/steam-client-meta
 net-misc/youtube-dl
 sys-process/glances
 =app-emulation/wine-any-9999 **
+app-admin/keepassxc
 
 # required by app-emulation/docker-compose-1.14.0::gentoo
 # required by @selected

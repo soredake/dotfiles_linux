@@ -68,27 +68,23 @@ main() {
 # Install packages from portage.
 ./portage.sh
 
-# Stow work.
+# stow work
 ../etc/install.sh
 ../home/install.sh
 ../root/install.sh
 ../service.conf/install.sh
 
-# Systemd.
+# systemd
 ./systemd.sh
 
 # default progs
 ./other/default-progs.sh
 
-# Setup linux.
+# Setup linux
 ./linux.sh
 
-# Mpv scripts.
+# mpv scripts
 ./mpv-scripts.sh
-
-# Docker.
-./docker.sh
-
 }
 
 export -f main

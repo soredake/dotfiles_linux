@@ -5,6 +5,6 @@ if [[ ! $(pgrep -f "mpv --profile=input-mode") ]]; then
   [[ ! -e "${file}" ]] && mkfifo "${file}"
   # shellcheck disable=SC2093
   # env PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains.conf" proxychains -q 
-  nohup mpv --profile=input-mode &>/dev/null &
+  nohup env PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains.conf" proxychains -q mpv --profile=input-mode &>/dev/null &
 fi
 load "${1}"

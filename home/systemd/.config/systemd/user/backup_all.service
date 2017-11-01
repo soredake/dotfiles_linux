@@ -8,6 +8,10 @@ DefaultDependencies=no
 Type=oneshot
 #RemainAfterExit=yes
 ExecStart=/bin/bash %h/sync/system-data/backup.sh -f
+# https://unix.stackexchange.com/a/276785
+TimeoutSec=5min
+TimeoutStopSec=5min
+TimeoutStartSec=5min
 
 [Install]
 WantedBy=sleep.target shutdown.target reboot.target

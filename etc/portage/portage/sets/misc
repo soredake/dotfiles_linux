@@ -69,7 +69,7 @@ games-action/violetland
 games-arcade/blobwars
 games-misc/lolcat
 games-simulation/openrct2
-kde-apps/kdesu
+kde-plasma/kde-cli-tools[kdesu]
 lxqt-base/lxqt-sudo
 media-gfx/opentoonz
 media-libs/exiftool
@@ -111,7 +111,7 @@ sys-apps/usb_modeswitch
 sys-block/ms-sys
 sys-block/nbd
 sys-boot/multibootusb
-sys-boot/os-probersys-boot/os-prober
+sys-boot/os-prober
 sys-fs/etcd-fs
 sys-process/ctop
 sys-process/nmon
