@@ -118,7 +118,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # toogle i3bar
-bindsym $mod+F11 exec "i3-msg bar mode toggle" 
+bindsym $mod+F11 exec "i3-msg bar mode toggle"
 bindsym F12 exec "maim -i $(xdotool getactivewindow) --format png $HOME/mdata/syncthing/main/Screens/$(date +%d.%m.%G-%T).png"
 # toogle microphone input
 bindsym $mod+o exec "pactl set-source-mute alsa_input.usb-RODE_Microphones_RODE_NT-USB-00.analog-stereo toggle"
@@ -189,7 +189,8 @@ bar {
 exec --no-startup-id systemctl --user restart nm-applet mouse_accel xsetdpms xautolock xset-kbd-rate
 exec --no-startup-id sleep 10 && systemctl --user restart kbdd kdeconnectd
 #kbdd
-#exec --no-startup-id systemctl --user restart compton-nvidia nvidia-settings xrandr-output
+#exec --no-startup-id systemctl --user restart compton-nvidia
+##nvidia-settings xrandr-output
 exec --no-startup-id systemctl --user restart compton-free
 
 #### nouveau:

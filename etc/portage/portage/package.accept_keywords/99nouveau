@@ -1,2 +1,5 @@
-# big freezes on new versions
-=media-libs/mesa-17.2*
+=media-libs/mesa-17.3*
+# required by www-plugins/freshplayerplugin-0.3.7::gentoo
+# required by @selected
+# required by @world (argument)
+=x11-libs/libdrm-2.4.88

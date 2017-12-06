@@ -1,6 +1,12 @@
 # about this file: https://github.com/linux-pam/linux-pam/issues/7
 # https://github.com/ayekat/dotfiles/issues/7
 
+# mesa env
+# https://www.mesa3d.org/envvars.html
+# https://www.phoronix.com/scan.php?page=article&item=intel-glsl-cache
+MESA_GLSL_CACHE_DISABLE=0
+VAAPI_MPEG4_ENABLED=1
+
 # https://github.com/ValveSoftware/steam-for-linux/issues/4161#issuecomment-220813769
 #force_s3tc_enable=true
 
@@ -24,7 +30,14 @@ TMUX_TMPDIR			DEFAULT=${XDG_RUNTIME_DIR}
 PUTTYDIR			DEFAULT=${XDG_CACHE_HOME}/putty
 WGETRC				DEFAULT=${XDG_CONFIG_HOME}/wgetrc
 XAUTHORITY			DEFAULT=${XDG_RUNTIME_DIR}/Xauthority
+# shitty driver
+#__GL_SHADER_DISK_CACHE_PATH	DEFAULT=${XDG_CACHE_HOME}/nv
+#CUDA_CACHE_PATH			DEFAULT=${XDG_CACHE_HOME}/nv
 
+# https://github.com/grawity/dotfiles/blob/master/.dotfiles.notes#L64
+# /run/dbus/system_bus_socket 
+# /run/user/1000/bus
+#DBUS_SESSION_BUS_ADDRESS	DEFAULT=unix:path=${XDG_RUNTIME_DIR}/bus
 # Enable qt5ct for all qt programs
 QT_QPA_PLATFORMTHEME=qt5ct
 

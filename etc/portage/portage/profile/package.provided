@@ -1,6 +1,9 @@
 # no neonvim in list https://github.com/gentoo/gentoo/blob/master/eclass/vim-plugin.eclass#L19-L20
 app-editors/vim-7.3
 
+# wine 2.19 pull this
+#media-libs/libtxc_dxtn-1.0.1-r1
+
 # fucking virt-manager [+gtk] deps
 net-misc/x11-ssh-askpass-1.2.4.1-r1
 

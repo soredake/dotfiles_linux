@@ -32,15 +32,33 @@ ja_JP.UTF-8 UTF-8
 ru_RU.UTF-8 UTF-8
 END
 
+# fill /etc/locale.nopurge
+sudo tee /etc/locale.nopurge >/dev/null <<END
+MANDELETE
+SHOWFREEDSPACE
+VERBOSE
+en
+en_US
+en_US.UTF-8
+ja
+ja_JP
+ja_JP.EUC-JP
+ja_JP.UTF-8
+ru
+ru_RU
+ru_RU.UTF-8
+END
+
 # generate locales
 sudo locale-gen -j "$(nproc)"
+
+# clean unneded locales and localized manpages
+sudo localepurge
 
 # restore gnome-terminal config
 dconf reset -f /org/gnome/terminal/
 dconf load /org/gnome/terminal/ < "$SD"/../home_cp/gnome-terminal/gnome.conf
 
-# deny ssh root login
-sudo sed -i -e "\$a PermitRootLogin no" -e '/PermitRootLogin/d' /etc/ssh/sshd_config
 # disable tty motd
 touch "$HOME/.hushlogin"
 
@@ -49,11 +67,21 @@ localectl set-x11-keymap us,ru pc104 qwerty grp:rctrl_toggle
 sudo sed -i -e "\$a exec i3" -e '57,65d' /etc/X11/xinit/xinitrc
 sudo sed -i -e 's|\$HOME/.serverauth.\$\$|$XDG_RUNTIME_DIR/.serverauth.$$|' /usr/bin/startx
 
-# for no reason, when systemd-coredump is disabled, my system instead creates coredump files EVERYWHERE, so disable them entierly
-sudo tee /etc/security/limits.conf >/dev/null <<END
+# for no reason, when systemd-coredump is disabled, my system instead creates large coredump files EVERYWHERE, so disable them entierly
+sudo tee -a /etc/security/limits.conf >/dev/null <<END
 # disable coredumps entierly
 * hard core 0
 END
 
 # https://aspiceodyssey.wordpress.com/2017/04/28/fedora25-3d-accelerated-guest/
 sudo gpasswd -a qemu video
+# generating manifests without root
+sudo gpasswd -a bausch portage
+
+# fix `warning: failed to load external entity "http://www.gentoo.org/dtd/metadata.dtd"`
+# and speedup metadata.xml parsing
+# https://github.com/vim-syntastic/syntastic/blob/3.8.0/doc/syntastic-checkers.txt#L2175-L2180
+sudo tee /etc/xml/catalog >/dev/null <<< "$(xmlcatalog --add rewriteURI http://www.gentoo.org/dtd/ /usr/portage/metadata/dtd/ /etc/xml/catalog)"
+
+# symlink to fix programs wanting xlocale.h
+sudo ln -s /usr/include/xlocale.h locale.h

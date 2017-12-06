@@ -1,12 +1,9 @@
 [Unit]
-Description=Compton compositor
+Description=Compton compositor (Nvidia driver)
 
 [Service]
-#https://github.com/zoqaeski/systemd-user-units/blob/master/user/compton.service#L6
-# only need when -b option is supplied
-#Type=forking
 ExecStart=/usr/bin/compton --config /dev/null --backend xrender --unredir-if-possible
 Restart=on-abort
 
 [Install]
-WantedBy=graphical.target
+WantedBy=default.target

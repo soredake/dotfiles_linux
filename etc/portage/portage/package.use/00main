@@ -5,6 +5,20 @@
 # required by @world (argument)
 media-libs/alsa-lib abi_x86_32
 
+# required by net-libs/gnutls-3.5.15::gentoo
+# required by net-misc/aria2-1.30.0::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/gmp-6.1.2 abi_x86_32
+
+# required by x11-libs/pango-1.40.6::gentoo
+# required by dev-python/wxpython-3.0.2.0::gentoo
+# required by dev-python/ipython-3.2.1-r1::gentoo[wxwidgets,python_targets_python2_7]
+# required by x11-wm/xpra-2.0.2::gentoo
+# required by sys-apps/firejail-9999::pinkpieea[x11]
+# required by @selected
+# required by @world (argument)
+>=media-libs/harfbuzz-1.7.1 abi_x86_32
 
 # required by sys-apps/systemd-233-r4::gentoo
 # required by virtual/libudev-232::gentoo
@@ -24,7 +38,13 @@ media-libs/alsa-lib abi_x86_32
 # required by @selected
 # required by @world (argument)
 >=sys-apps/util-linux-2.28.2 abi_x86_32
-
+# required by media-plugins/gst-plugins-flac-1.10.5::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.5::gentoo[flac]
+# required by app-emulation/wine-any-2.19::gentoo[gstreamer]
+# required by @wine
+# required by @selected
+# required by @world (argument)
+>=media-libs/gst-plugins-good-1.12.3 abi_x86_32
 
 # required by app-benchmarks/phoronix-test-suite-7.2.1::stefantalpalaru
 # required by app-benchmarks/phoronix-test-suite (argument)
@@ -39,30 +59,47 @@ net-news/rssguard -webengine
 
 >=sys-devel/clang-3.9.1-r100 abi_x86_32
 
-games-emulation/ppsspp -sdl qt5
+# required by app-office/libreoffice-5.4.2.2::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/xmlsec-1.2.24-r1 nss
+
+# required by sci-libs/scipy-0.19.1::gentoo
+# required by media-sound/pulseeffects-3.0.8::gentoo
+# required by media-sound/pulseeffects (argument)
+>=dev-python/numpy-1.10.4 lapack
+# required by media-sound/pulseeffects-3.0.8::gentoo
+# required by media-sound/pulseeffects (argument)
+>=media-sound/pulseaudio-10.0 equalizer
+
+# needed for https://github.com/LordAro/Magnet2Torrent
+net-libs/libtorrent-rasterbar python
+dev-libs/boost python
+
+games-emulation/ppsspp -sdl
 www-plugins/adobe-flash -nsplugin
 www-plugins/freshplayerplugin gtk3
-dev-libs/libpcre2 pcre32 pcre16
+dev-libs/libpcre2 pcre32
 mail-client/*mutt gpg imap pop sasl sidebar smime smtp mbox -berkdb
-app-admin/sudo openssl
 app-doc/pms html
+app-misc/jdupes custom-optimization
 media-gfx/gimp vector-icons
-#webp
 media-libs/libmypaint gegl
-app-emulation/lxc cgmanager
 app-misc/ca-certificates cacert
 x11-misc/rofi windowmode
 app-admin/keepassxc autotype -http
+sys-libs/glibc nscd
 
 # fonts are looking much better with cleartype rendering engine (-bindist)
 media-libs/freetype -bindist harfbuzz
 
-media-sound/mpd -alsa gme libmpdclient -mikmod modplug opus pipe -sid recorder soundcloud upnp wildmidi expat
+dev-python/pyside:2 widgets gui
+
+media-sound/cantata taglib musicbrainz cdio cddb
+media-sound/mpd -alsa cdio gme libmpdclient -mikmod modplug opus pipe -sid recorder soundcloud upnp wildmidi expat
 media-sound/ncmpcpp clock curl outputs taglib visualizer
 
 media-video/syncplay gui
-dev-python/pyside:2 widgets gui
-
 dev-lang/perl ithreads
 net-misc/aria2 adns bittorrent jemalloc scripts
 net-libs/webkit-gtk gstreamer
@@ -82,9 +119,25 @@ x11-base/xorg-server xcsecurity -suid
 
 # for qutebrowser
 dev-qt/qtwebkit printsupport
-dev-python/PyQt5 declarative webkit
+dev-python/PyQt5 declarative webkit webchannel sql webengine
+# required by dev-qt/qtwebengine-5.7.1-r2::gentoo
+# required by dev-python/PyQt5-5.9.1::gentoo[webengine]
+# required by www-client/qutebrowser-1.0.3::gentoo
+# required by @selected
+# required by @world (argument)
+>=sys-libs/zlib-1.2.11-r1 minizip
+# required by dev-python/PyQt5-5.9.1::gentoo[webengine]
+# required by www-client/qutebrowser-1.0.3::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtwebengine-5.7.1-r2 widgets
+# required by dev-qt/qtwebengine-5.7.1-r2::gentoo
+# required by dev-python/PyQt5-5.9.1::gentoo[webengine]
+# required by www-client/qutebrowser-1.0.3::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtwebchannel-5.7.1 qml
 
-#sys-fs/cryptsetup
 sys-boot/grub device-mapper efiemu mount libzfs GRUB_PLATFORMS: pc
 
 # for 5010_enable-additional-cpu-optimizations-for-gcc.patch
@@ -122,28 +175,29 @@ sys-process/tini static
 app-antivirus/clamav clamdtop metadata-analysis-api
 net-vpn/tor zstd lzma scrypt
 x11-libs/libdrm libkms
-app-crypt/qca qt5
 # i need dbus.socket in user/ for kbdd service
 sys-apps/dbus user-session
 sys-apps/coreutils multicall
 app-office/libreoffice gtk3 jemalloc
 media-video/mediainfo -wxwidgets
-app-crypt/pinentry gnome-keyring -qt5
+app-crypt/pinentry gnome-keyring
+net-misc/android-file-transfer -qt5
 sys-process/htop taskstats
 sys-kernel/linux-firmware savedconfig
 sys-devel/clang -llvm_targets_*
 sys-devel/llvm gold clang -llvm_targets_*
 app-misc/task gnutls
-sys-devel/gcc graphite
+# Files matching a file type that is not allowed: usr/lib/libgccjit.so.0.0.1
+# ERROR: multilib-strict check failed!
+sys-devel/gcc -jit graphite
+net-wireless/bluez user-session
+app-misc/vifm vim-syntax
 games-strategy/openra -debug -nuget
 net-misc/youtube-dl offensive
 app-arch/p7zip rar
 
 # try to drop pygtk dep
 dev-python/twisted-core -gtk
-
-dev-db/sqlitebrowser qt5
->=dev-libs/qcustomplot-1.3.2 qt5
 
 # https://bugs.gentoo.org/show_bug.cgi?id=616968
 media-libs/glfw -wayland
@@ -167,30 +221,30 @@ app-emulation/libvirt zfs
 sys-apps/busybox static
 games-emulation/retroarch lakka miniupnpc cheevos ffmpeg openal -sdl sdl2 libusb kms
 # cant build: melonds
-# Filesize does not match recorded size: mame2016, mame
+# Filesize does not match recorded size:
 # no such commit: citra
-games-emulation/libretro-meta -* melonds mame2016 mame citra 2048 4do beetle-psx bnes bsnes -bsnes-cpp98 -citra desmume dolphin easyrpg snes9x snes9x2002 snes9x2010 prboom fbalpha fbalpha2012 fceumm gambatte genplus quicknes picodrive pcsx-rearmed parallel-n64 nestopia mrboom mgba yabause vbam vba-next tgbdual stella scummvm sameboy reicast redream px68k prosystem openlara nxengine mupen64plus meteor meowpc98 -melonds handy -mame mame2000 mame2003 -mame2016 mednafen-gba mednafen-ngp mednafen-pce-fast mednafen-saturn mednafen-snes mednafen-supergrafx mednafen-vb mednafen-wswan
+# compiles TOO LONG: bsnes-cpp98
+# switch to no-tmpfs: mame2016 (6.5gb minimum)
+games-emulation/libretro-meta -* 2048 4do beetle-psx bnes bsnes desmume dolphin easyrpg snes9x prboom fbalpha fceumm gambatte genplus quicknes picodrive pcsx-rearmed parallel-n64 nestopia mrboom mgba yabause vbam vba-next tgbdual stella scummvm sameboy reicast redream px68k prosystem openlara nxengine mupen64plus meteor meowpc98 handy mednafen-gba mednafen-ngp mednafen-pce-fast mednafen-saturn mednafen-snes mednafen-supergrafx mednafen-vb mednafen-wswan
 games-emulation/mgba-libretro lto lzma pgo pgopost
-#games-emulation/reicast-libretro naomi
-#games-emulation/bsnes-libretro
-games-util/steam-games-meta s3tc
+# fails with +naomi
+# core/hw/naomi/naomi.cpp:5:10: fatal error: hw/holly/sb.h: No such file or directory
+games-emulation/reicast-libretro -naomi
 dev-vcs/git tk mediawiki mediawiki-experimental libsecret
 app-emulation/docker overlay -device-mapper
 net-misc/networkmanager resolvconf -wext
-media-libs/mesa video_cards_virgl opencl openmax gles2 -bindist
+media-libs/mesa gles2 -bindist
 dev-lang/python sqlite
 # memory leak with +gtk, upd: memory leak even with -gtk, TODO: report bug to upstream
 www-client/w3m -gtk imlib
 
-x11-terms/kitty python_targets_python3_5
 media-libs/libvpx postproc
 app-arch/tar minimal
 dev-db/unixODBC minimal
-net-nds/openldap minimal
 net-misc/curl http2 CURL_SSL: -openssl libressl
 sys-libs/libomp hwloc
 sys-libs/pam abi_x86_32
-media-video/ffmpeg openssl ssh libass openh264 vpx x265 cpudetection theora webp opus bluray gme libcaca rubberband
+media-video/ffmpeg openssl ssh libass openh264 vpx x265 cpudetection theora opus bluray gme libcaca rubberband
 app-emulation/qemu usbredir spice lzo virtfs sdl2 virgl -vnc QEMU_USER_TARGETS: x86_64
 # required by app-emulation/virt-manager-1.4.3::gentoo[gtk]
 # required by app-emulation/virt-manager (argument)
@@ -198,12 +252,26 @@ app-emulation/qemu usbredir spice lzo virtfs sdl2 virgl -vnc QEMU_USER_TARGETS: 
 app-emulation/spice lz4
 net-misc/spice-gtk lz4
 
-
 # required by sys-libs/pam-1.2.1::gentoo
 # required by sys-apps/util-linux-2.30.2::gentoo[pam]
 # required by @system
 # required by @world (argument)
 >=sys-libs/db-5.3.28-r3 abi_x86_32
+# required by media-libs/libsdl2-2.0.7::gentoo[X]
+# required by games-emulation/citra-libretro-1.0_pre20170916::abendbrot
+# required by games-emulation/libretro-meta-1-r4::abendbrot[citra]
+# required by games-emulation/retroarch-1.6.9::abendbrot
+# required by @selected
+# required by @world (argument)
+>=x11-libs/libXcursor-1.1.15 abi_x86_32
+# required by media-libs/x264-0.0.20160712::gentoo[opencl]
+# required by media-plugins/gst-plugins-x264-1.10.5::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.5::gentoo[x264]
+# required by app-emulation/wine-any-9999::gentoo[gstreamer]
+# required by @wine
+# required by @selected
+# required by @world (argument)
+>=virtual/opencl-0-r4 abi_x86_32
 # required by sys-apps/systemd-233-r6::gentoo
 # required by x11-base/xorg-server-1.19.5::gentoo[systemd]
 # required by dev-libs/wlc-9999::gentoo[xwayland]
@@ -249,11 +317,6 @@ net-misc/spice-gtk lz4
 # required by x11-libs/libwnck-3.20.1::gentoo
 # required by @__auto_rebuild__ (argument)
 >=sys-libs/binutils-libs-2.27 abi_x86_32
-# required by dev-libs/glib-2.48.2::gentoo
-# required by dev-qt/qtcore-4.8.6-r2::libressl[glib]
-# required by dev-qt/qtsql-4.8.6-r1::gentoo
-# required by @__auto_rebuild__ (argument)
->=dev-libs/libpcre-8.40-r1 abi_x86_32 pcre16
 # required by net-libs/nghttp2-1.10.0::gentoo[cxx]
 # required by net-misc/curl-7.53.0::gentoo[http2]
 # required by media-libs/raptor-2.0.14::gentoo[curl]
@@ -275,10 +338,6 @@ dev-libs/boost abi_x86_32
 # required by @selected
 # required by @world (argument)
 >=media-libs/flac-1.3.2-r1 abi_x86_32
-
-x11-libs/qscintilla qt5
-
-
 
 # required by media-libs/libsdl2-2.0.4::gentoo[wayland]
 # required by media-video/ffmpeg-3.2.4::libressl[sdl]
@@ -314,8 +373,3 @@ x11-libs/qscintilla qt5
 # required by @selected
 # required by @world (argument)
 >=net-libs/gtk-vnc-0.6.0 python
-
-# required by kde-frameworks/kfilemetadata-5.38.0::gentoo[pdf]
-# required by kde-apps/k3b-17.04.3-r1::gentoo
-# required by kde-apps/k3b (argument)
->=app-text/poppler-0.57.0 qt5

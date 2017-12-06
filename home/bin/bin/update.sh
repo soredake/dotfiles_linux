@@ -10,10 +10,9 @@ sudo emerge --sync || exit 1
 sudo emerge --changed-use --newuse -uDU @world || exit 1
 #sudo emerge --changed-use --newuse --ignore-built-slot-operator-deps=y --rebuild-if-new-slot=y --rebuild-if-new-rev=y --rebuild-if-new-ver=y --rebuild-if-unbuilt=y -uDU @world
 sudo emerge --usepkg=n @preserved-rebuild || exit 1
-sudo smart-live-rebuild -f '!www-client/torbrowser' -f '!app-emulation/wine-any' -f '!x11-terms/alacritty' -f '!sys-kernel/amdstaging-sources' -f '!games-emulation/retroarch' -- --usepkg=n
+sudo smart-live-rebuild -f '!www-client/torbrowser' -f '!app-emulation/wine-any' -f '!x11-terms/alacritty' -f '!games-emulation/retroarch' -f '!x11-misc/xsel' -- --usepkg=n
 sudo emerge -v --depclean || exit 1
 #sudo env-update
-#sudo python-updater
 #sudo haskell-updater -c -u -- --usepkg=n
 #sudo perl-cleaner --all -- --usepkg=n
 glsa-check -l affected

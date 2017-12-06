@@ -1,10 +1,8 @@
-games-action/supermariowar
-games-rpg/comi
 games-action/btanks
 games-action/chromium-bsu
 games-action/descent2-data
 games-action/heroes
-games-action/supertuxkart
+games-action/supermariowar
 games-action/supertuxkart-speedhack
 games-action/teeworlds
 games-action/tuxkart
@@ -23,6 +21,7 @@ games-fps/doom3-cdoom
 games-fps/doom3-inhell
 games-fps/nexuiz
 games-fps/quake1-teamfortress
+games-fps/urbanterror
 games-fps/ut2004-hamsterbash
 games-fps/xonotic
 games-kids/crayon-physics
@@ -35,6 +34,7 @@ games-puzzle/sgt-puzzles
 games-roguelike/scourge
 games-roguelike/tome
 games-roguelike/unreal-world
+games-rpg/comi
 games-rpg/draci-historie
 games-rpg/dragonhunt
 games-rpg/manaplus
@@ -48,5 +48,6 @@ games-strategy/dunelegacy
 games-strategy/endless-sky
 games-strategy/freeciv
 games-strategy/freeorion
+games-strategy/hedgewars
 games-strategy/warzone2100
 games-strategy/widelands

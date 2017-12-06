@@ -25,7 +25,7 @@ tre() {
 
 # Convert currencies; cconv {amount} {from} {to}
 cconv() {
-  curl --socks5-hostname 127.0.0.1:9250 -s "https://www.google.com/finance/converter?a=$1&from=$2&to=$3&hl=es" | sed '/res/!d;s/<[^>]*>//g';
+  curl --socks5-hostname 127.0.0.1:9250 -s "https://finance.google.com/finance/converter?a=$1&from=$2&to=$3&hl=es" | sed '/res/!d;s/<[^>]*>//g';
 }
 
 # Upload to transfer.sh
@@ -99,7 +99,8 @@ px() {
   # https://stackoverflow.com/questions/23258413/expand-aliases-in-non-interactive-shells/23259088#23259088
   setopt aliases
   _command="$(which "$1" | sed 's/.*: aliased to //g' )"
-  eval proxychains -q "$_command" $2 $3 $4 $5 $6 $7 $8 $9 $10 $11 $12 $13 $14 $15 $16 $17 $18 $19 $20 $21 $22 $23 $24 $25 $26 $27 $28 $29 $30 $31 $32 $33 $34 $35 $36 $37 $38 $39 $40 $41 $42 $43 $44 $45 $46 $47 $48 $49 $50
+  # http://wiki.bash-hackers.org/syntax/pe#substring_expansion
+  eval proxychains -q "$_command" ${@:2}
 }
 
 j() {
@@ -126,8 +127,8 @@ wtp() {
 }
 
 # upgrade currently selected kernel
-kernelup() { 
-  sudo genkernel --cachedir=/var/tmp/portage --tempdir=/var/tmp/portage --install --udev --virtio --postclear --no-save-config --clean --no-lvm --no-mdadm --no-dmraid --zfs --no-btrfs --no-iscsi --no-luks --no-netboot --mountboot --makeopts=-j$(nproc) --ramdisk-modules --kernel-config="$HOME/git/dotfiles_home/kernel/.config" "${@:-all}" 
+kernelup() {
+  sudo genkernel --cachedir=/var/tmp/portage --tempdir=/var/tmp/portage --install --udev --virtio --postclear --no-save-config --clean --no-lvm --no-mdadm --no-dmraid --zfs --no-btrfs --no-iscsi --no-luks --no-netboot --mountboot --makeopts=-j$(nproc) --ramdisk-modules --kernel-config="$HOME/git/dotfiles_home/kernel/.config" "${@:-all}"
 }
 
 # kernel update
@@ -147,4 +148,15 @@ kupdate() {
 
 random() {
   shuf -i "${1}-${2}" -n "${3:-1}"
+}
+
+linuxsteamgames() {
+  _url="https://store.steampowered.com/search/?category1=998&os="
+  for os in win linux; do
+    local ${os}games="$(curl --http2 -s "${_url}${os}" | grep -o "showing 1 - 25 of [0-9]*" | sed "s/showing 1 - 25 of //")"
+  done
+  echo "Windows steam games: ${wingames}"
+  echo "Linux steam games: ${linuxgames}"
+  # https://stackoverflow.com/a/41265735
+  echo "Percentage of linux games:" $(echo "scale = 2; ($linuxgames / $wingames)" | bc -l | awk -F '.' '{print $2}')%
 }

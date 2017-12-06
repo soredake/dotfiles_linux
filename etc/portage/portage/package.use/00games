@@ -1,0 +1,4 @@
+# witcher 2 gog dep
+media-libs/sdl2-image abi_x86_32
+# witcher 2 requires haptic use flag
+media-libs/libsdl2 haptic

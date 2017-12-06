@@ -92,7 +92,6 @@ alias rt='tmux -L rt attach -t rt'
 alias e='nvim'
 alias egrep='grep -E --color'
 alias g='git'
-# && "$HOME/sync/system-data/backup.sh" -f
 alias goodnight='veracrypt -t -d && sc poweroff -i'
 alias grep='grep --color'
 alias mus='mpv --profile=novid'
@@ -111,10 +110,11 @@ alias scu='sc --user'
 alias jcu='jc --user'
 
 alias clearterm='printf "\033c"'
+# https://unix.stackexchange.com/questions/78776/characters-encodings-supported-by-more-cat-and-less
+alias icat='iconv -f WINDOWS-1251 -t UTF-8'
 alias back='cd $OLDPWD'
 # https://github.com/Syncplay/syncplay/issues/147#issuecomment-336957986
-alias syncplay='QT_PREFERRED_BINDING=PySide syncplay'
+alias syncplay='QT_PREFERRED_BINDING=PySide2 syncplay'
 alias flush_caches='sync && sudo sync && sudo sysctl -qw vm.drop_caches=3'
-alias reswap='sudo swapoff -a && sudo swapon -a'
-alias linuxsteamgames='curl --http2 -s "https://store.steampowered.com/search/?category1=998&os=linux" | grep -o "showing 1 - 25 of [0-9]*" | sed "s/showing 1 - 25 of //"'
-alias gogdownload='lgogdownloader --exclude e,c --platform lin,win --use-cache --language ru,en --download --game'
+#alias reswap='sudo swapoff -a && sudo swapon -a'
+alias gogdownload='lgogdownloader --exclude e,c,p --platform lin,win --use-cache --language ru,en --download --game'

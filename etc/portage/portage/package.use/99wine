@@ -2,7 +2,6 @@ x11-libs/libva abi_x86_32
 >=media-sound/mpg123-1.24.0 abi_x86_32
 >=app-arch/lz4-1.7.5-r1 abi_x86_32
 >=x11-libs/pango-1.40.4 abi_x86_32
-virtual/wine staging
 app-emulation/winetricks rar
 virtual/jpeg:0 abi_x86_32
 sys-devel/gettext abi_x86_32
@@ -13,6 +12,7 @@ media-libs/libv4l abi_x86_32
 media-libs/lcms abi_x86_32
 net-libs/gnutls abi_x86_32
 app-emulation/wine-* dos openal s3tc staging themes gstreamer custom-cflags
+# gta3 crashes with this and textures are broken with d3d9
 app-emulation/wine-gecko abi_x86_32
 
 # winetricks[gtk]
@@ -34,7 +34,14 @@ dev-libs/libgudev abi_x86_32
 dev-libs/libgusb abi_x86_32
 x11-libs/gtk+ abi_x86_32
 
-
+# required by media-libs/gst-plugins-base-1.12.3::gentoo[orc]
+# required by media-plugins/gst-plugins-vaapi-1.10.5::gentoo
+# required by media-plugins/gst-plugins-meta-1.10.5::gentoo[vaapi]
+# required by app-emulation/wine-any-9999::gentoo[gstreamer]
+# required by @wine
+# required by @selected
+# required by @world (argument)
+>=dev-lang/orc-0.4.27 abi_x86_32
 # required by app-emulation/wine-any-2.9::gentoo[xml]
 # required by @wine
 # required by @selected
@@ -170,6 +177,7 @@ x11-libs/gtk+ abi_x86_32
 media-plugins/gst-plugins-libav abi_x86_32
 media-plugins/gst-plugins-meta ffmpeg -v4l -a52
 media-plugins/gst-plugins-xvid abi_x86_32
+media-plugins/gst-plugins-mpg123 abi_x86_32
 
 # required by media-video/ffmpeg-3.2.4::libressl[libcaca]
 # required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]

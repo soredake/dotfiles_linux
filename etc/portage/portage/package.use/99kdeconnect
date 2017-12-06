@@ -6,13 +6,3 @@ kde-frameworks/plasma -*
 kde-plasma/breeze -wayland
 */* -handbook
 media-libs/phonon -vlc
-# required by kde-frameworks/knotifications-5.37.0-r1::gentoo[dbus]
-# required by kde-misc/kdeconnect-1.0.3::gentoo
-# required by kde-misc/kdeconnect (argument)
->=dev-libs/libdbusmenu-qt-0.9.3_pre20160218 qt5
-# required by kde-plasma/polkit-kde-agent-5.10.5::gentoo
-# required by kde-frameworks/kauth-5.37.0::gentoo[policykit]
-# required by kde-frameworks/kconfigwidgets-5.37.0::gentoo
-# required by kde-misc/kdeconnect-1.0.3::gentoo
-# required by kde-misc/kdeconnect (argument)
->=sys-auth/polkit-qt-0.112.0-r1 qt5

@@ -1,10 +1,5 @@
-# delete when https://github.com/gentoo/gentoo/commit/2ed5f5c748bbcc0587c6113df802bc0f604a09ec is reverted
--d3d9
--staging
-
+-jit
 -custom-cflags
--libressl
--curl_ssl_libressl
 -libzfs
 -zfs
 -python_targets_pypy

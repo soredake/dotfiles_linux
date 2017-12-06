@@ -1,0 +1,114 @@
+From 0c2826c60c508a0300f9978ae3818d6f4c00d53a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Tue, 24 Oct 2017 14:48:54 +0200
+Subject: [PATCH] core: in --user mode, report READY=1 as soon as basic.target
+ is reached (#7102)
+
+When a user logs in, systemd-pam will wait for the user manager instance to
+report readiness. We don't need to wait for all the jobs to finish, it
+is enough if the basic startup is done and the user manager is responsive.
+
+systemd --user will now send out a READY=1 notification when either of two
+conditions becomes true:
+- basic.target/start job is gone,
+- the initial transaction is done.
+
+Also fixes #2863.
+---
+ TODO               |  2 --
+ src/core/manager.c | 31 ++++++++++++++++++++++++++++---
+ src/core/manager.h |  2 ++
+ 3 files changed, 30 insertions(+), 5 deletions(-)
+
+diff --git a/TODO b/TODO
+index 9abee502bc..e1771c802f 100644
+--- a/TODO
++++ b/TODO
+@@ -325,8 +325,6 @@ Features:
+ 
+ * introduce systemd-timesync-wait.service or so to sync on an NTP fix?
+ 
+-* systemd --user should issue sd_notify() upon reaching basic.target, not on becoming idle
+-
+ * consider showing the unit names during boot up in the status output, not just the unit descriptions
+ 
+ * maybe allow timer units with an empty Units= setting, so that they
+diff --git a/src/core/manager.c b/src/core/manager.c
+index d2be218b00..3643deb049 100644
+--- a/src/core/manager.c
++++ b/src/core/manager.c
+@@ -2573,9 +2573,10 @@ int manager_serialize(Manager *m, FILE *f, FDSet *fds, bool switching_root) {
+         m->n_reloading++;
+ 
+         fprintf(f, "current-job-id=%"PRIu32"\n", m->current_job_id);
+-        fprintf(f, "taint-usr=%s\n", yes_no(m->taint_usr));
+         fprintf(f, "n-installed-jobs=%u\n", m->n_installed_jobs);
+         fprintf(f, "n-failed-jobs=%u\n", m->n_failed_jobs);
++        fprintf(f, "taint-usr=%s\n", yes_no(m->taint_usr));
++        fprintf(f, "ready-sent=%s\n", yes_no(m->ready_sent));
+ 
+         dual_timestamp_serialize(f, "firmware-timestamp", &m->firmware_timestamp);
+         dual_timestamp_serialize(f, "loader-timestamp", &m->loader_timestamp);
+@@ -2732,6 +2733,15 @@ int manager_deserialize(Manager *m, FILE *f, FDSet *fds) {
+                         else
+                                 m->taint_usr = m->taint_usr || b;
+ 
++                } else if ((val = startswith(l, "ready-sent="))) {
++                        int b;
++
++                        b = parse_boolean(val);
++                        if (b < 0)
++                                log_notice("Failed to parse ready-sent flag %s", val);
++                        else
++                                m->ready_sent = m->ready_sent || b;
++
+                 } else if ((val = startswith(l, "firmware-timestamp=")))
+                         dual_timestamp_deserialize(val, &m->firmware_timestamp);
+                 else if ((val = startswith(l, "loader-timestamp=")))
+@@ -3062,9 +3072,11 @@ static void manager_notify_finished(Manager *m) {
+         bus_manager_send_finished(m, firmware_usec, loader_usec, kernel_usec, initrd_usec, userspace_usec, total_usec);
+ 
+         sd_notifyf(false,
+-                   "READY=1\n"
+-                   "STATUS=Startup finished in %s.",
++                   m->ready_sent ? "STATUS=Startup finished in %s."
++                                 : "READY=1\n"
++                                   "STATUS=Startup finished in %s.",
+                    format_timespan(sum, sizeof(sum), total_usec, USEC_PER_MSEC));
++        m->ready_sent = true;
+ }
+ 
+ void manager_check_finished(Manager *m) {
+@@ -3079,6 +3091,19 @@ void manager_check_finished(Manager *m) {
+         if (m->exit_code != MANAGER_OK)
+                 return;
+ 
++        /* For user managers, send out READY=1 as soon as we reach basic.target */
++        if (MANAGER_IS_USER(m) && !m->ready_sent) {
++                Unit *u;
++
++                u = manager_get_unit(m, SPECIAL_BASIC_TARGET);
++                if (u && !u->job) {
++                        sd_notifyf(false,
++                                   "READY=1\n"
++                                   "STATUS=Reached " SPECIAL_BASIC_TARGET ".");
++                        m->ready_sent = true;
++                }
++        }
++
+         if (hashmap_size(m->jobs) > 0) {
+                 if (m->jobs_in_progress_event_source)
+                         /* Ignore any failure, this is only for feedback */
+diff --git a/src/core/manager.h b/src/core/manager.h
+index 6fff7b2437..ff69f6c50b 100644
+--- a/src/core/manager.h
++++ b/src/core/manager.h
+@@ -254,6 +254,8 @@ struct Manager {
+ 
+         bool taint_usr:1;
+ 
++        bool ready_sent:1;
++
+         unsigned test_run_flags:8;
+ 
+         /* If non-zero, exit with the following value when the systemd

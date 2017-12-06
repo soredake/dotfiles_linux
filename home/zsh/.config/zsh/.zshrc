@@ -13,7 +13,7 @@ if [[ "$ZPLUG" == true ]]; then
   zplug "lib/key-bindings", from:oh-my-zsh
   zplug "lib/theme-and-appearance", from:oh-my-zsh
   zplug "plugins/extract", from:oh-my-zsh
-  zplug "pepa65/tldr-bash-client", as:command, use:"tldr"
+  #zplug "pepa65/tldr-bash-client", as:command, use:"tldr"
   # https://github.com/Orochimarufan/.files/blob/1ade15c9069c2846b134860e56fbe9b97b1ed0bb/zsh/zshrc#L28
   # Install plugins if there are plugins that have not been installed
   if ! zplug check --verbose; then

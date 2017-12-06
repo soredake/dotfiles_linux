@@ -1,3 +1,4 @@
+app-office/calligra
 app-accessibility/yasr
 app-admin/abrt
 app-admin/aerospike-amc-community
@@ -25,6 +26,7 @@ app-misc/countrycodes
 app-misc/fdupes
 app-misc/gentoo
 app-misc/mencal
+app-misc/pwsafe
 app-misc/sl
 app-misc/sleepyhead
 app-misc/slmon
@@ -58,6 +60,7 @@ dev-python/agate
 dev-python/colorama
 dev-python/graphviz
 dev-python/python-ctags
+dev-util/catfish
 dev-util/gource
 dev-util/repo
 dev-util/rustfmt
@@ -67,7 +70,10 @@ dev-vcs/git-cola
 dev-vcs/gitolite
 games-action/violetland
 games-arcade/blobwars
+games-arcade/fishsupper
+games-board/stockfish
 games-misc/lolcat
+games-puzzle/fish-fillets
 games-simulation/openrct2
 kde-plasma/kde-cli-tools[kdesu]
 lxqt-base/lxqt-sudo
@@ -81,6 +87,8 @@ media-sound/pasystray
 media-sound/pavucontrol
 media-sound/sonic-visualiser/
 media-video/get_flash_videos
+media-video/mkclean
+media-video/mkvalidator
 net-analyzer/multimon-ng
 net-analyzer/vnstat
 net-dns/coredns
@@ -123,6 +131,7 @@ x11-misc/libinput-gestures
 x11-misc/qsynergy
 x11-misc/synergy
 x11-misc/xclip
+x11-misc/xfishtank
 x11-misc/xiccd
 x11-misc/xmountains
 x11-misc/xsetleds

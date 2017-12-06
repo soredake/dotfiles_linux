@@ -55,16 +55,15 @@ unignore organization organisation x-mailer: x-newsreader: x-mailing-list:
 unignore posted-to:
 
 # Folder hooks
-folder-hook 'account.com.autistici.maledom' 'source ~/.local/share/mail/account.com.autistici.maledom'
+folder-hook 'maledom.autistici.org' 'source ~/.local/share/mail/maledom.autistici.org'
 folder-hook 'yuno.cock.li' 'source ~/.local/share/mail/yuno.cock.li'
 
 # Default account
-source ~/.local/share/mail/account.com.autistici.maledom
+source ~/.local/share/mail/maledom.autistici.org
 
 # Macros for switching accounts
-macro index <f2> '<sync-mailbox><enter-command>source ~/.local/share/mail/account.com.autistici.maledom<enter><change-folder>!<enter>'
+macro index <f2> '<sync-mailbox><enter-command>source ~/.local/share/mail/maledom.autistici.org<enter><change-folder>!<enter>'
 macro index <f3> '<sync-mailbox><enter-command>source ~/.local/share/mail/yuno.cock.li<enter><change-folder>!<enter>'
-macro index <f4> '<sync-mailbox><enter-command>source ~/.local/share/mail/account.com.test.test<enter><change-folder>!<enter>'
 
 # Fetch mail shortcut
 bind index "^" imap-fetch-mail

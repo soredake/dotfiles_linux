@@ -1,7 +1,7 @@
+sys-apps/shadow::rindeal
 sys-devel/gcc-config::gentoo
 net-misc/youtube-dl::rindeal
 sys-apps/less::mv
 x11-libs/gtk+::mv
 app-eselect/eselect-wine::bobwya
 app-emulation/wine-mono::bobwya
->=www-client/qutebrowser-1.0.2

@@ -1,3 +1,6 @@
+[user]
+  name = soredake
+  email = fdsfgs@krutt.org
 [core]
   # Use 12 characters for the abbreviated commit hash. I can currently make
   # do with 10, but this should provide a certain level of safety for the

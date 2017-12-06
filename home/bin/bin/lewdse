@@ -3,3 +3,4 @@ if [[ "$1" =~ ^https?://.*$ ]]; then prefix="curl --fail -L --progress-bar --soc
 # eval or sh -c
 # shellcheck disable=SC2002
 eval "${prefix:-true}" | curl --fail -L --progress-bar --socks5-hostname 127.0.0.1:9250 -F name="${2:-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 20 | head -n 1 | grep -i '[a-zA-Z0-9]').${1##*.}}" -F file=@"${suffix:--}" https://lewd.se/api.php?d=upload-tool
+#eval "${prefix:-true}" | curl --fail -L --progress-bar --socks5-hostname 127.0.0.1:9250 -F name="1" -F file=@"${suffix:--}" https://lewd.se/api.php?d=upload-tool

@@ -15,7 +15,7 @@ app-emulation/wine-any wine-9999-fixed
 media-sound/ncmpcpp albumonly
 
 # try to mitigate ryzen segfault
-#media-libs/mesa no-ryzen-segfault
+#media-libs/mesa j1
 
 # https://github.com/rg3/youtube-dl/issues/13889#issuecomment-326045140
 #net-misc/youtube-dl googlephoto
@@ -30,3 +30,7 @@ sys-libs/glibc splitdebug
 
 # fetches deps in src_compile
 games-strategy/openra nonetsandbox
+
+# https://bugs.gentoo.org/show_bug.cgi?id=624682
+dev-python/shiboken clang
+dev-python/pyside clang

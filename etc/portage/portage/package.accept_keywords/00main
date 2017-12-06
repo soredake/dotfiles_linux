@@ -1,68 +1,45 @@
-# required by virtual/pypy-5.8.0::gentoo
-# required by dev-python/setuptools-36.0.1::gentoo[python_targets_pypy]
-# required by dev-python/pyxattr-0.5.5::gentoo
-# required by sys-apps/portage-2.3.6::gentoo[python_targets_pypy,xattr,-python_targets_python2_7]
-# required by sys-apps/portage (argument)
-#=dev-python/pypy-5.8.0
-# required by sys-apps/portage-2.3.6::gentoo[python_targets_pypy]
-# required by sys-apps/portage (argument)
-#=virtual/pypy-5.8.0
-# required by app-admin/haskell-updater-1.2.10::gentoo
-# required by dev-lang/ghc-7.10.3::gentoo[-ghcbootstrap]
-# required by dev-haskell/random-1.0.1.1-r1::gentoo
-# required by dev-haskell/quickcheck-2.8.1::gentoo
-# required by dev-util/shellcheck-0.4.6::gentoo
-# required by @selected
-# required by @world (argument)
-#=sys-apps/portage-2.3.7
-
-
 # required by media-libs/mesa-17.2.0_rc3::gentoo
 # required by www-client/torbrowser-52.3.0_p704::torbrowser
 # required by @selected
 # required by @world (argument)
 =x11-libs/libdrm-2.4.82
 
-# required by app-emulation/docker-compose-1.16.1::gentoo
-# required by @selected
-# required by @world (argument)
-=dev-python/docker-py-2.5.1
-
 # required by app-emulation/docker-compose-1.16.1-r1::gentoo
 # required by @selected
 # required by @world (argument)
 =dev-python/texttable-0.9.1
 
-# needed for newer gog installers
-app-arch/innoextract
-
 net-news/rssguard
 # rssguard needs >=qt-5.8
-# no qtnetwork ebuild in libressl repository yet
-=dev-qt/qtnetwork-5.9.2::libressl
-=dev-qt/qtxml-5.9.2
-=dev-qt/qtsql-5.9.2
-=dev-qt/qtgui-5.9.2
-=dev-qt/qtcore-5.9.2
-=dev-qt/qtdbus-5.9.2
-=dev-qt/qtwidgets-5.9.2
+=dev-qt/designer-5.9.2
+=dev-qt/assistant-5.9.2
 =dev-qt/linguist-tools-5.9.2
 =dev-qt/qtconcurrent-5.9.2
+=dev-qt/qtcore-5.9.2
+=dev-qt/qtdbus-5.9.2
 =dev-qt/qtdeclarative-5.9.2
 =dev-qt/qtgraphicaleffects-5.9.2
+=dev-qt/qtgui-5.9.2
+=dev-qt/qthelp-5.9.2
 =dev-qt/qtmultimedia-5.9.2
+=dev-qt/qtnetwork-5.9.2::libressl
 =dev-qt/qtopengl-5.9.2
 =dev-qt/qtprintsupport-5.9.2
 =dev-qt/qtquickcontrols-5.9.2
 =dev-qt/qtquickcontrols2-5.9.2
 =dev-qt/qtscript-5.9.2
+=dev-qt/qtsql-5.9.2
 =dev-qt/qtsvg-5.9.2
 =dev-qt/qttest-5.9.2
 =dev-qt/qttranslations-5.9.2
 =dev-qt/qtwayland-5.9.2
-=dev-qt/qtx11extras-5.9.2
-=dev-qt/qtxmlpatterns-5.9.2
 =dev-qt/qtwebkit-5.9.1
+=dev-qt/qtwidgets-5.9.2
+=dev-qt/qtx11extras-5.9.2
+=dev-qt/qtxml-5.9.2
+=dev-qt/qtxmlpatterns-5.9.2
+=dev-qt/qtwebengine-5.9.2
+=dev-qt/qtwebchannel-5.9.2
 
 net-misc/trackma
 net-nds/openldap
@@ -70,8 +47,6 @@ net-nds/openldap
 =dev-libs/sway-9999 **
 =dev-libs/wlc-9999 **
 =app-misc/dragon-9999 **
-app-shells/fish
-dev-libs/libratbag
 
 # for album-only sort
 # https://github.com/arybczak/ncmpcpp/pull/240
@@ -81,6 +56,8 @@ dev-libs/libratbag
 media-libs/glew:0/2.0
 =x11-terms/kitty-9999 **
 
+=games-emulation/retroarch-1.6.9
+=net-p2p/syncthing-0.14.38
 =app-misc/piper-9999 **
 =dev-libs/libratbag-9999 **
 mail-client/mutt
@@ -90,13 +67,14 @@ mail-client/neomutt
 =media-video/dvd_info-9999 **
 net-im/telegram-desktop-bin
 =sys-apps/firejail-9999 **
-# required by media-plugins/gst-plugins-vaapi-1.10.5::gentoo
-# required by media-plugins/gst-plugins-meta-1.10.5::gentoo[vaapi]
-# required by app-emulation/wine-any-9999::gentoo[gstreamer]
-# required by @wine
+# required by media-sound/pulseeffects-3.0.8::gentoo
 # required by @selected
 # required by @world (argument)
-=media-libs/gst-plugins-bad-1.12.3
+=media-plugins/gst-plugins-pulse-1.12.3
+# required by app-emulation/docker-compose-1.17.1::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/docker-py-2.6.1
 # required by dev-libs/cyrus-sasl-2.1.26-r11::gentoo[berkdb]
 # required by mail-client/mutt-1.9.1-r1::gentoo[sasl]
 # required by @selected
@@ -109,13 +87,10 @@ net-im/telegram-desktop-bin
 # required by @world (argument)
 =dev-libs/wayland-protocols-1.11
 
-=games-puzzle/glportal-9999 **
-=games-engines/radix-9999 **
 media-sound/mpdas
 
 # zulucrypt test
-app-crypt/zuluCrypt
-app-crypt/zuluplay
+app-crypt/zulucrypt
 
 app-admin/profile-cleaner
 =net-misc/streamlink-9999 **
@@ -127,12 +102,31 @@ app-vim/editorconfig-vim
 # required by app-vim/editorconfig-vim (argument)
 =dev-python/editorconfig-core-py-0.12.0
 
-games-util/esteam
-media-fonts/steamfonts
+# try to fix
+# https://github.com/systemd/systemd/issues/2863
+# https://github.com/graysky2/profile-sync-daemon/issues/197
+=sys-apps/systemd-235*
+
 =media-sound/pulsemixer-9999 **
 
-games-util/lgogdownloader
-=dev-cpp/htmlcxx-0.86
+# libreoffice
+=dev-libs/boost-1.65.0
+
+net-misc/nyx::gentoo
+# required by net-misc/nyx-2.0.4::gentoo
+# required by net-misc/nyx (argument)
+=net-libs/stem-1.6.0
+
+# required by dev-libs/sway-9999::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-libs/json-c-0.12.1
+# required by app-emulation/libvirt-3.9.0::gentoo
+# required by dev-python/libvirt-python-3.9.0::gentoo
+# required by app-emulation/virt-manager-9999::gentoo
+# required by @selected
+# required by @world (argument)
+=net-libs/rpcsvc-proto-1.2-r1
 
 sys-config/ltoize
 # required by sys-config/ltoize-0.4::lto-overlay
@@ -142,18 +136,12 @@ app-portage/portage-bashrc-mv
 # required by sys-config/ltoize-0.4::lto-overlay
 # required by sys-config/ltoize (argument)
 =app-shells/runtitle-2.10
-sys-devel/binutils:2.29.1
-sys-libs/binutils-libs:0/2.29.1
 
 media-video/obs-studio
-games-action/minetest_game
-games-action/minetest
 =app-doc/devmanual-9999 **
 dev-libs/libclc
 
 kde-misc/kdeconnect
-net-misc/networkmanager
-gnome-extra/nm-applet
 
 # hamachi
 net-vpn/logmein-hamachi
@@ -179,11 +167,6 @@ app-emulation/docker-compose
 =dev-python/backports-shutil_which-3.5.1
 
 =media-video/syncplay-9999 **
-#=dev-python/pyside-9999 **
-#=dev-python/shiboken-9999 **
-#=dev-qt/qtgui-5.6.9999 **
-#=dev-qt/qtcore-5.6.9999 **
-#=dev-qt/qtdbus-5.6.9999 **
 
 # neovim
 app-editors/neovim
@@ -210,71 +193,26 @@ dev-python/pygments
 # for youtube-dl cover embed
 media-video/atomicparsley-wez
 
-# radeon vega
-=sys-kernel/amdstaging-sources-4.13*
-=sys-devel/gcc-7.2.0 **
-
-=app-portage/cpuid2cpuflags-4
+=sys-devel/gcc-7.2.0*
+=app-portage/cpuid2cpuflags-5
 app-i18n/translate-shell
 app-benchmarks/phoronix-test-suite
 
 # for i3blocks
 =media-sound/playerctl-0.5.0
 
-# "System error" that i get is pam fault, so i'm tryint new versions...
-# https://github.com/linux-pam/linux-pam/blob/dbd1ae9516e2ff9793cf8957111d526a90716862/libpam/pam_strerror.c#L49-L50
-sys-libs/pam
-
-net-libs/libtorrent-rasterbar::gentoo
 sys-apps/fd
-
-# rpcs3
-=games-emulation/rpcs3-9999::pinkpieea **
-sys-devel/llvm:4
-#sys-devel/llvm:5
-# required by sys-devel/llvm-4.0.1::gentoo
-# required by sys-devel/llvmgold-4::gentoo
-=sys-devel/llvm-common-4.0.1
-#=sys-devel/llvm-common-5.0.0
-# required by sys-devel/llvm-4.0.1::gentoo[gold]
-# required by games-emulation/rpcs3-9999::pinkpieea
-# required by games-emulation/rpcs3 (argument)
-=sys-devel/llvmgold-4
-#=sys-devel/llvmgold-5
-# required by sys-devel/clang-runtime-4.0.1::gentoo[openmp]
-# required by sys-devel/clang-4.0.1::gentoo
-# required by sys-libs/compiler-rt-4.0.1::gentoo[clang]
-=sys-libs/libomp-4.0.1
-#=sys-libs/libomp-5.0.0
-# required by sys-devel/clang-runtime-4.0.1::gentoo[compiler-rt]
-# required by sys-devel/clang-4.0.1::gentoo
-# required by dev-libs/libclc-0.2.0_pre20160921::gentoo
-# required by media-libs/mesa-17.1.5::gentoo[opencl]
-# required by app-emulation/wine-any-2.12::gentoo[d3d9]
-# required by @wine
-# required by @selected
-# required by @world (argument)
-=sys-libs/compiler-rt-4.0.1
-#=sys-libs/compiler-rt-5.0.0
-# required by sys-devel/clang-runtime-4.0.1::gentoo[sanitize,compiler-rt]
-# required by sys-devel/clang-4.0.1::gentoo
-# required by sys-libs/compiler-rt-4.0.1::gentoo[clang]
-=sys-libs/compiler-rt-sanitizers-4.0.1
-#=sys-libs/compiler-rt-sanitizers-5.0.0
-sys-devel/clang-runtime:4.0.1
-#sys-devel/clang-runtime:5.0.0
-sys-devel/clang:4
-#sys-devel/clang:5
-
-=games-util/lutris-9999 **
-=dev-python/python-evdev-0.6.1
+=sys-kernel/gentoo-sources-4.14.3
 
 =sys-kernel/genkernel-next-68
 =dev-util/clinfo-9999 **
-=sys-libs/glibc-2.26* **
+=sys-libs/glibc-2.26*
 =app-emulation/virt-manager-9999 **
 =app-admin/ps_mem-9999 **
+=app-admin/strangle-9999 **
 app-emulation/virtio-win
+# needed for glibc-2.26
+net-libs/libnsl:0/2
 
 # for ripgrep
 dev-lang/rust-bin
@@ -321,18 +259,8 @@ media-video/bluray_info
 # required by media-gfx/gimp-2.9.6::gentoo[webp]
 # required by gimp (argument)
 =media-libs/libwebp-0.6.0
-# required by dev-libs/boost-1.65.0::gentoo
-# required by net-vpn/i2pd-2.15.0::gentoo[libressl,-static]
-# required by @selected
-# required by @world (argument)
-=dev-util/boost-build-1.65.0
-# required by games-util/lgogdownloader-3.2::gentoo
-# required by @selected
-# required by @world (argument)
-=dev-libs/boost-1.65.0
 
 # for libressl support
-=net-libs/ldns-1.6.17*
 dev-libs/cyrus-sasl
 
 # for qt-5.9
@@ -342,6 +270,7 @@ dev-libs/cyrus-sasl
 =x11-terms/alacritty-9999 **
 
 app-emulation/wine-any::gentoo
+=app-emulation/wine-any-9999 **
 
 app-emulation/libvirt
 dev-python/libvirt-python
@@ -352,39 +281,82 @@ app-shells/skim
 # awesome_bot deps
 dev-ruby/parallel
 
-sys-kernel/linux-firmware
-media-gfx/mypaint
-games-strategy/colobot*
-=games-engines/openrw-9999 **
-games-strategy/openra
-=dev-lang/mono-4.8.0.524
-app-admin/eclean-kernel
-net-p2p/syncthing-gtk
+# required by dev-python/PyQt5-5.9.2::gentoo
+# required by app-misc/dupeguru-4.0.3-r1::hsoft
+# required by @selected
+# required by @world (argument)
+=dev-python/sip-4.19.6
+# required by www-client/torbrowser-52.5.0_p7010::torbrowser
+# required by @selected
+# required by @world (argument)
+=media-libs/harfbuzz-1.7.1
+
+# required by media-sound/pulseeffects-3.0.8::gentoo
+# required by media-sound/pulseeffects (argument)
+=media-libs/gst-plugins-good-1.12.3
+# required by media-sound/pulseeffects-3.0.8::gentoo
+# required by media-sound/pulseeffects (argument)
+=dev-python/gst-python-1.12.3
+# required by media-sound/pulseeffects-3.0.8::gentoo
+# required by media-sound/pulseeffects (argument)
+=sci-libs/scipy-0.19.1
+# required by sci-libs/scipy-0.19.1::gentoo
+# required by media-sound/pulseeffects-3.0.8::gentoo
+# required by media-sound/pulseeffects (argument)
+=dev-python/setuptools-36.7.2
+# required by media-sound/pulseeffects-3.0.8::gentoo
+# required by media-sound/pulseeffects (argument)
+=media-plugins/gst-plugins-ladspa-1.12.3
+
+=app-emulation/anbox-9999 **
 =app-emulation/docker-gc-9999 **
-app-misc/ranger::pinkpieea
 =app-misc/tmux-2.5*::gentoo
+=dev-lang/mono-4.8.0.524
+media-sound/pulseeffects
+=games-engines/openrw-9999 **
 =media-libs/openicc-0.1.0
+=net-im/qtox-9999 **
+=app-doc/tldr-9999 **
+=x11-misc/i3blocks-contrib-9999 **
+app-admin/eclean-kernel
 app-admin/elektra
+app-admin/keepassxc
 app-admin/stow
 app-crypt/veracrypt
 app-doc/zeal
+app-misc/jdupes
+app-misc/ranger::pinkpieea
 dev-util/shellcheck
+games-strategy/colobot*
+games-strategy/openra
 games-util/steam-launcher
 games-util/steam-meta
 media-fonts/infinality-ultimate-meta
+media-gfx/mypaint
 media-libs/fontconfig-ultimate::gentoo
 media-libs/oyranos
 media-video/mpv
 net-dns/dnscrypt-proxy
-=net-im/qtox-9999 **
 net-libs/tox
+net-misc/youtube-dl
+net-p2p/syncthing-gtk
+sys-kernel/linux-firmware
+sys-process/glances
 www-client/torbrowser
 www-misc/profile-sync-daemon
 x11-misc/i3blocks
-app-misc/jdupes
 x11-misc/kbdd
-=x11-misc/i3blocks-contrib-9999 **
 x11-misc/notify-osd
+net-vpn/tor
+
+# lto
+media-libs/x264::lto-overlay
+# required by games-emulation/parallel-n64-libretro-1.0_pre20170917::abendbrot
+# required by games-emulation/libretro-meta-1-r4::abendbrot[parallel-n64]
+# required by games-emulation/retroarch-1.6.9::abendbrot
+# required by @selected
+# required by @world (argument)
+=dev-lang/nasm-2.13.01
 
 media-fonts/courier-prime
 media-fonts/heuristica
@@ -394,27 +366,3 @@ media-libs/icc-profiles-basiccolor-printing2009
 media-libs/icc-profiles-openicc
 media-fonts/koruri
 x11-themes/notify-osd-icons
-games-util/steam-client-meta
-
-=app-emulation/anbox-9999 **
-
-net-misc/youtube-dl
-sys-process/glances
-=app-emulation/wine-any-9999 **
-app-admin/keepassxc
-
-# required by app-emulation/docker-compose-1.14.0::gentoo
-# required by @selected
-# required by @world (argument)
-=dev-python/docker-py-2.3.0
-
-# required by app-emulation/docker-compose-1.15.0::gentoo
-# required by @selected
-# required by @world (argument)
-=dev-python/docker-py-2.4.2
-
-# required by app-emulation/wine-any-2.17-r1::gentoo
-# required by @wine
-# required by @selected
-# required by @world (argument)
-=dev-util/patchbin-20160208
