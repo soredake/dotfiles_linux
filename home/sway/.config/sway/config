@@ -58,7 +58,6 @@ set $term gnome-terminal
     # NOTE: without native support rofi needs to be started from sh to avoid 'Rofi daemon mode is now removed'
     bindsym $mod+d exec sh -c 'rofi -terminal gnome-terminal -combi-modi window,drun -show combi -modi combi'
 
-
     # start your launcher
     #bindsym $mod+d exec $menu
 
@@ -211,6 +210,10 @@ output HDMI-A-1 res 2560x1080 pos 0,0 bg ~/.local/share/wallpaper-1.jpg fill
 #output VGA-1 res 1440x900 pos 2560,0
 focus_follows_mouse yes
 for_window [class="explorer.exe"] floating enable
+for_window [class="dota2"] floating enable
+for_window [class="zenity"] floating enable
+#for_window [class="gnome-terminal-server"] floating enable
+
 
 # Minimal windows
 new_window pixel 1

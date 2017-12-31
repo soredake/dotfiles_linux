@@ -17,25 +17,28 @@ download() {
     nightly) URL=-nightly ;;
     *) URL=
   esac
-  #cdir="$XDG_CACHE_HOME/fxlowmem"
+  cdir="${XDG_CACHE_HOME:-$WORKDIR}/fxlowmem"
   _base="$AUTODOWNLOAD-latest.tar.bz2"
-  #[[ ! -d "$cdir" ]] && mkdir -p "${cdir}/normal"
+  [[ ! -d "$cdir" ]] && mkdir -p "${cdir}"
   # cleanup
-  [[ ! -z "$CLEAN" ]] && rm -f /tmp/"$_base"
+  if [[ ! -z "$CLEAN" ]]; then
+    rm -f "${cdir}/$_base"
+    rm -f "${cdir}/${AUTODOWNLOAD}*"
+  fi
   # download
   echo "Downloading firefox version: $AUTODOWNLOAD"
-  [[ ! -e "/tmp/$_base" ]] && wget -O /tmp/"$_base" "https://download.mozilla.org/?product=firefox${URL}-latest-ssl&os=${_os}&lang=${_lang}"
-  [[ ! -z "$CLEAN" ]] && rm "/tmp/$AUTODOWNLOAD.version"
-  if [[ ! -f "/tmp/$AUTODOWNLOAD.version" ]]; then
-    tar xvf /tmp/"$_base" firefox/application.ini -O | grep -Po '(?<=^Version=).*' >"/tmp/$AUTODOWNLOAD.version"
+  [[ ! -e "${cdir}/$_base" ]] && wget -O "${cdir}/$_base" "https://download.mozilla.org/?product=firefox${URL}-latest-ssl&os=${_os}&lang=${_lang}"
+  [[ ! -z "$CLEAN" ]] && rm "${cdir}/$AUTODOWNLOAD.version"
+  if [[ ! -f "${cdir}/$AUTODOWNLOAD.version" ]]; then
+    tar xvf "${cdir}/$_base" firefox/application.ini -O | grep -Po '(?<=^Version=).*' >"${cdir}/$AUTODOWNLOAD.version"
   fi
-  version="$(cat /tmp/$AUTODOWNLOAD.version)"
-  LOCATION="/tmp/${AUTODOWNLOAD}-${version}"
+  version="$(cat "${cdir}/$AUTODOWNLOAD".version)"
+  LOCATION="${cdir}/${AUTODOWNLOAD}-${version}"
   [[ ! -z "$CLEAN" ]] && rm -r "${LOCATION}"
   if ! test -d "${LOCATION}"; then
     mkdir "${LOCATION}"
     # unpack
-    tar xvjf /tmp/"$_base" --strip-components=1 -C "${LOCATION}"
+    tar xvjf "${cdir}/$_base" --strip-components=1 -C "${LOCATION}"
   fi
 }
 
@@ -46,36 +49,37 @@ start() {
   fxbranch="$AUTODOWNLOAD"-
   fxver="$version"-
   date=$(date +%d.%m.%G-%T)
-  profile=${PROFILE:-$(mktemp -d /tmp/firefox-"${fxbranch}${fxver}${date}"-XXX)}
+  profile=${PROFILE:-$(mktemp -d "${cdir}/firefox-${fxbranch}${fxver}${date}"-XXX)}
   location=${LOCATION:-/usr/lib/firefox}
-  logfile=${LOGFILE:-$(mktemp -t firefox-"${fxbranch}${fxver}${date}"-XXX.log)}
+  logfile=${LOGFILE:-$(mktemp -t -p "${cdir}" "firefox-${fxbranch}${fxver}${date}"-XXX.log)}
   cat > "$profile/user.js" <<END
 user_pref("browser.cache.disk.parent_directory",  "/dev/shm/firefox-cache");
 user_pref("browser.download.useDownloadDir", false);
 user_pref("browser.shell.checkDefaultBrowser",  false);
-user_pref("media.volume_scale",  "0.2");
+user_pref("media.autoplay.enabled", false);
+user_pref("media.default_volume", "0.3");
 user_pref("xpinstall.signatures.required",  false);
 // acceleration
 // https://wiki.mozilla.org/Blocklisting/Blocked_Graphics_Drivers#On_X11
 // https://forums.freebsd.org/threads/59089/
-user_pref("javascript.options.asmjs", true);
-user_pref("javascript.options.baselinejit", true);
-user_pref("javascript.options.ion", true);
-user_pref("javascript.options.native_regexp", true);
-user_pref("javascript.options.wasm", true);
-user_pref("javascript.options.wasm_baselinejit", true);
-user_pref("javascript.options.wasm_ionjit", true);
-user_pref("layers.acceleration.disabled", false);
-user_pref("layers.acceleration.force-enabled", true);
+//user_pref("javascript.options.asmjs", true);
+//user_pref("javascript.options.baselinejit", true);
+//user_pref("javascript.options.ion", true);
+//user_pref("javascript.options.native_regexp", true);
+//user_pref("javascript.options.wasm", true);
+//user_pref("javascript.options.wasm_baselinejit", true);
+//user_pref("javascript.options.wasm_ionjit", true);
+//user_pref("layers.acceleration.disabled", false);
+//user_pref("layers.acceleration.force-enabled", true);
 // https://wiki.archlinux.org/index.php/Firefox/Tweaks#Enable_Accelerated_Azure_Canvas
-user_pref("gfx.canvas.azure.accelerated", 1);
+//user_pref("gfx.canvas.azure.accelerated", 1);
 // firefox >=59
 // https://www.phoronix.com/scan.php?page=news_item&px=WebRender-On-Firefox-Nightly
-user_pref("gfx.webrender.blob-images", true);
-user_pref("gfx.webrender.enabled", true);
-user_pref("image.mem.shared", true);
-user_pref("layers.omtp.enabled", true);
-user_pref("layout.css.servo.chrome.enabled", true);
+//user_pref("gfx.webrender.blob-images", true);
+//user_pref("gfx.webrender.enabled", true);
+//user_pref("image.mem.shared", true);
+//user_pref("layers.omtp.enabled", true);
+//user_pref("layout.css.servo.chrome.enabled", true);
 END
   #cp "${XDG_CACHE_HOME:-${HOME}/.cache}/search.json.mozlz4" "$profile" || die "for now, search.json.mozlz4 file is the only way to set the default search engine"
   if [[ ! -z "$INFO" ]]; then
@@ -88,12 +92,13 @@ END
   nohup "$location"/firefox --new-instance --profile "$profile" about:blank &>"$logfile" &
 }
 
-while getopts "p:l:lg:a:ihc" opt; do
+while getopts "p:l:lg:a:wd:ihc" opt; do
   case $opt in
     p) PROFILE="${OPTARG}" ;;
     l) LOCATION="${OPTARG}" ;;
     lg) LOGFILE="${OPTARG}" ;;
     a) AUTODOWNLOAD=${OPTARG} ;;
+    wd) WORKDIR=${OPTARG} ;;
     c) CLEAN=true ;;
     i) INFO=true ;;
     h) ACTION="help"
@@ -109,10 +114,11 @@ fi
 case "${ACTION}" in
     start) start ;;
     help) echo "usage: ${0} [-p, -l, -lg, -a, -i, -h]
-    -p use custom path
+    -p use custom profile path
     -l use custom firefox location (such as firefox from your package manager or other)
     -lg use custom log location
     -a autodownload one of this versions: esr, release, beta, devedition, nightly
+    -wd where to store logs and versions
     -i output some info
     -c remove cached downloaded version
     -h help" ;;

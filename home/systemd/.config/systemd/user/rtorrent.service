@@ -2,6 +2,7 @@
 Description=rtorrent
 After=network.target
 RequiresMountsFor=/media/disk0
+ConditionPathExists=/media/disk0/torrents
 
 [Service]
 LimitNOFILE=10240

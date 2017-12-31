@@ -133,7 +133,7 @@ kernelup() {
 
 # kernel update
 kupdate() {
-	local cur_v="$(eselect kernel show | grep -o [0-9]\.[0-9][0-9]?\.[0-9][0-9]? | sed 's/\./_/g')"
+	local cur_v="$(eselect kernel show | grep -Eo [0-9]\.[0-9][0-9]?\.[0-9][0-9]?)"
 	sudo cp "$HOME/git/dotfiles_home/kernel/.config" /usr/src/linux
 	pushd /usr/src/linux
 	sudo make olddefconfig

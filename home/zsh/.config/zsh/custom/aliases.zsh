@@ -57,7 +57,7 @@ alias fosize='du -sh'
 alias update-grub='test ! -d /boot/grub && sudo mount /boot; sudo grub-mkconfig -o /boot/grub/grub.cfg && sudo umount /boot'
 
 # clean old kernels
-alias clean-kernels='test ! -d /boot/grub && sudo mount /boot; sudo eclean-kernel -n 1 && sudo umount /boot'
+alias clean-kernels='test ! -d /boot/grub && sudo mount /boot; sudo eclean-kernel -n 1 -s mtime && sudo umount /boot'
 
 # docker-gc with options
 alias docker-gc='PID_DIR="$XDG_RUNTIME_DIR" STATE_DIR="$XDG_CACHE_HOME/docker-gc" FORCE_IMAGE_REMOVAL=1 FORCE_CONTAINER_REMOVAL=1 EXCLUDE_FROM_GC="" EXCLUDE_CONTAINERS_FROM_GC="" GRACE_PERIOD_SECONDS=300 docker-gc'

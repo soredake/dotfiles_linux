@@ -2,23 +2,24 @@
 #sys-boot/grub no-distcc
 sys-devel/binutils gold-linker
 sys-process/htop htop-mask
-sys-libs/db force-bfd
 app-emulation/docker-gc fixed-fork
 
-# cargo 9999
+# needs bfd to build
+dev-lang/fpc force-bfd
+sys-libs/db force-bfd
+
+# cargo 9999 and telegram fetches deps in forbidden phases
 x11-terms/alacritty nonetsandbox
+net-im/telegram-desktop nonetsandbox
+# mono
+games-action/osu nonetsandbox
+dev-dotnet/nuget nonetsandbox
+games-strategy/openra nonetsandbox
 
 # in case of staging patches failing to apply
-app-emulation/wine-any wine-9999-fixed
-
-# album-only view
-media-sound/ncmpcpp albumonly
-
-# try to mitigate ryzen segfault
-#media-libs/mesa j1
-
-# https://github.com/rg3/youtube-dl/issues/13889#issuecomment-326045140
-#net-misc/youtube-dl googlephoto
+app-emulation/wine-any wine-any-latest
+# latest vanilla
+app-emulation/wine-vanilla wine-vanilla-latest
 
 #* Valgrind will not work if glibc does not have debug symbols.
 #* To fix this you can add splitdebug to FEATURES in make.conf
@@ -27,10 +28,3 @@ media-sound/ncmpcpp albumonly
 #* https://bugs.gentoo.org/show_bug.cgi?id=274771
 #* https://bugs.gentoo.org/show_bug.cgi?id=388703
 sys-libs/glibc splitdebug
-
-# fetches deps in src_compile
-games-strategy/openra nonetsandbox
-
-# https://bugs.gentoo.org/show_bug.cgi?id=624682
-dev-python/shiboken clang
-dev-python/pyside clang

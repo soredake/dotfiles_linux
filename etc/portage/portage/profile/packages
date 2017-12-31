@@ -1,3 +1,1 @@
-# https://gitweb.gentoo.org/repo/gentoo.git/tree/profiles/base/packages#n47
-# Remove OpenRC from the system profile when using systemd
--*sys-apps/openrc
+

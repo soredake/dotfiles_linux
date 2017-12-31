@@ -1,10 +1,5 @@
 # required by app-emulation/wine-any-9999::gentoo[mono]
 # required by app-emulation/wine-any:9999 (argument)
 =app-emulation/wine-mono-4.7.1
-# required by media-plugins/gst-plugins-vaapi-1.10.5::gentoo
-# required by media-plugins/gst-plugins-meta-1.10.5::gentoo[vaapi]
-# required by app-emulation/wine-any-9999::gentoo[gstreamer]
-# required by @wine
-# required by @selected
-# required by @world (argument)
-=media-libs/gst-plugins-bad-1.12.3
+
+=app-emulation/wine-vanilla-9999::gentoo **

@@ -1,4 +1,3 @@
-app-office/calligra
 app-accessibility/yasr
 app-admin/abrt
 app-admin/aerospike-amc-community
@@ -26,6 +25,7 @@ app-misc/countrycodes
 app-misc/fdupes
 app-misc/gentoo
 app-misc/mencal
+app-misc/ondir
 app-misc/pwsafe
 app-misc/sl
 app-misc/sleepyhead
@@ -39,6 +39,7 @@ app-misc/trash-cli
 app-misc/ttyload
 app-misc/vlock
 app-misc/when
+app-office/calligra
 app-portage/cpuid2cpuflags
 app-portage/diffmask
 app-portage/flaggie
@@ -105,6 +106,7 @@ net-misc/you-get
 net-proxy/redsocks
 net-proxy/torsocks
 net-vpn/vpncloud
+pp-misc/splitvt
 sci-chemistry/ParmEd
 sci-libs/magma
 sys-apps/bleachbit

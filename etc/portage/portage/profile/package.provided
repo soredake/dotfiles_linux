@@ -1,6 +1,9 @@
 # no neonvim in list https://github.com/gentoo/gentoo/blob/master/eclass/vim-plugin.eclass#L19-L20
 app-editors/vim-7.3
 
+# trying
+x11-drivers/xf86-video-amdgpu-1.4.0
+
 # wine 2.19 pull this
 #media-libs/libtxc_dxtn-1.0.1-r1
 

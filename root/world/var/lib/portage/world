@@ -11,6 +11,7 @@ app-arch/innoextract
 app-arch/p7zip
 app-arch/unrar
 app-benchmarks/phoronix-test-suite
+app-cdr/cuetools
 app-cdr/iat
 app-cdr/nrg2iso
 app-crypt/veracrypt
@@ -25,6 +26,7 @@ app-emulation/docker-compose
 app-emulation/docker-gc
 app-emulation/virt-manager
 app-emulation/virtio-win
+app-emulation/wine-vanilla
 app-emulation/winetricks
 app-eselect/eselect-repository
 app-i18n/translate-shell
@@ -38,6 +40,7 @@ app-misc/piper
 app-misc/ranger
 app-misc/tmux
 app-misc/vifm
+app-misc/wipe
 app-office/libreoffice
 app-portage/cpuid2cpuflags
 app-portage/eclass-manpages
@@ -70,6 +73,7 @@ dev-util/valgrind
 dev-vcs/tig
 games-action/minetest
 games-action/minetest_game
+games-action/osu
 games-action/supertuxkart
 games-arcade/supertux
 games-emulation/ppsspp
@@ -88,10 +92,11 @@ games-util/lgogdownloader
 games-util/lutris
 games-util/steam-meta
 kde-apps/k3b
+kde-apps/kmix
+kde-apps/marble
 kde-misc/kdeconnect
 kde-plasma/kde-cli-tools
 mail-client/mutt
-mail-client/neomutt
 media-fonts/alee-fonts
 media-fonts/arphicfonts
 media-fonts/baekmuk-fonts
@@ -127,10 +132,11 @@ media-sound/alsa-utils
 media-sound/cantata
 media-sound/mpd
 media-sound/mpdas
-media-sound/ncmpcpp
+media-sound/pamix
 media-sound/pavucontrol
 media-sound/pulseeffects
 media-sound/pulsemixer
+media-sound/shntool
 media-video/atomicparsley-wez
 media-video/bluray_info
 media-video/dvd_info
@@ -197,12 +203,14 @@ sys-kernel/linux-firmware
 sys-power/cpupower
 sys-process/glances
 sys-process/htop
+www-client/google-chrome
 www-client/links
 www-client/qutebrowser
 www-client/torbrowser
 www-client/w3m
 www-misc/profile-sync-daemon
 www-plugins/freshplayerplugin
+x11-apps/radeon-profile
 x11-misc/i3blocks
 x11-misc/i3blocks-contrib
 x11-misc/kbdd
@@ -215,6 +223,5 @@ x11-misc/xautolock
 x11-misc/xclip
 x11-misc/xdg-user-dirs
 x11-misc/xdotool
-x11-terms/alacritty
 x11-terms/gnome-terminal
 x11-terms/kitty

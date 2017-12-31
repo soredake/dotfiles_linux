@@ -1,45 +1,94 @@
-# required by media-libs/mesa-17.2.0_rc3::gentoo
-# required by www-client/torbrowser-52.3.0_p704::torbrowser
-# required by @selected
-# required by @world (argument)
-=x11-libs/libdrm-2.4.82
-
 # required by app-emulation/docker-compose-1.16.1-r1::gentoo
 # required by @selected
 # required by @world (argument)
 =dev-python/texttable-0.9.1
 
+# osu
+dev-dotnet/nuget
+dev-util/msbuild
+# required by dev-dotnet/system-reflection-metadata-2.0.0_pre::dotnet
+# required by dev-dotnet/msbuild-defaulttasks-15.3-r2::dotnet
+# required by dev-dotnet/msbuild-roslyn-csc-15.3::dotnet
+# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
+# required by dev-util/msbuild (argument)
+=dev-dotnet/system-collections-immutable-2.0.0_pre ~amd64
+# required by dev-util/msbuild-15.3-r2::dotnet
+# required by dev-util/msbuild (argument)
+=dev-dotnet/msbuildtasks-1.5.0.240-r3 ~amd64
+# required by dev-dotnet/msbuildtasks-1.5.0.240-r3::dotnet
+# required by dev-dotnet/system-reflection-metadata-2.0.0_pre::dotnet
+# required by dev-dotnet/msbuild-defaulttasks-15.3-r2::dotnet
+# required by dev-dotnet/msbuild-roslyn-csc-15.3::dotnet
+# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
+# required by dev-util/msbuild (argument)
+=dev-dotnet/dotnetzip-semverd-1.9.3-r2 ~amd64
+# required by dev-dotnet/system-reflection-metadata-2.0.0_pre::dotnet
+# required by dev-dotnet/msbuild-defaulttasks-15.3-r2::dotnet
+# required by dev-dotnet/msbuild-roslyn-csc-15.3::dotnet
+# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
+# required by dev-util/msbuild (argument)
+=dev-dotnet/buildtools-1.0.27 ~amd64
+# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
+# required by dev-util/msbuild (argument)
+=dev-dotnet/msbuild-roslyn-csc-15.3 ~amd64
+# required by dev-dotnet/buildtools-1.0.27::dotnet
+# required by dev-dotnet/msbuild-defaulttasks-15.3-r2::dotnet
+# required by dev-dotnet/msbuild-roslyn-csc-15.3::dotnet
+# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
+# required by dev-util/msbuild (argument)
+=dev-dotnet/newtonsoft-json-6.0.8-r1 ~amd64
+# required by dev-dotnet/nuget-2.8.7-r3::dotnet
+# required by dev-dotnet/nuget (argument)
+=dev-dotnet/xdt-for-monodevelop-2.8.1-r2 ~amd64
+# required by dev-util/msbuild-15.3-r2::dotnet
+# required by dev-util/msbuild (argument)
+=dev-dotnet/msbuild-defaulttasks-15.3-r2 ~amd64
+# required by dev-dotnet/buildtools-1.0.27::dotnet
+# required by dev-dotnet/msbuild-defaulttasks-15.3-r2::dotnet
+# required by dev-dotnet/msbuild-roslyn-csc-15.3::dotnet
+# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
+# required by dev-util/msbuild (argument)
+=dev-dotnet/msbuild-tasks-api-15.3-r1 ~amd64
+# required by dev-dotnet/msbuild-defaulttasks-15.3-r2::dotnet
+# required by dev-dotnet/msbuild-roslyn-csc-15.3::dotnet
+# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
+# required by dev-util/msbuild (argument)
+=dev-dotnet/system-reflection-metadata-2.0.0_pre ~amd64
+
 net-news/rssguard
 # rssguard needs >=qt-5.8
-=dev-qt/designer-5.9.2
-=dev-qt/assistant-5.9.2
-=dev-qt/linguist-tools-5.9.2
-=dev-qt/qtconcurrent-5.9.2
-=dev-qt/qtcore-5.9.2
-=dev-qt/qtdbus-5.9.2
-=dev-qt/qtdeclarative-5.9.2
-=dev-qt/qtgraphicaleffects-5.9.2
-=dev-qt/qtgui-5.9.2
-=dev-qt/qthelp-5.9.2
-=dev-qt/qtmultimedia-5.9.2
-=dev-qt/qtnetwork-5.9.2::libressl
-=dev-qt/qtopengl-5.9.2
-=dev-qt/qtprintsupport-5.9.2
-=dev-qt/qtquickcontrols-5.9.2
-=dev-qt/qtquickcontrols2-5.9.2
-=dev-qt/qtscript-5.9.2
-=dev-qt/qtsql-5.9.2
-=dev-qt/qtsvg-5.9.2
-=dev-qt/qttest-5.9.2
-=dev-qt/qttranslations-5.9.2
-=dev-qt/qtwayland-5.9.2
+=dev-qt/designer-5.9.3
+=dev-qt/assistant-5.9.3
+=dev-qt/linguist-tools-5.9.3
+=dev-qt/qtimageformats-5.9.3
+=dev-qt/qtconcurrent-5.9.3
+=dev-qt/qtcore-5.9.3
+=dev-qt/qtdbus-5.9.3
+=dev-qt/qtdeclarative-5.9.3
+=dev-qt/qtgraphicaleffects-5.9.3
+=dev-qt/qtgui-5.9.3
+=dev-qt/qthelp-5.9.3
+=dev-qt/qtmultimedia-5.9.3
+=dev-qt/qtnetwork-5.9.3::libressl
+=dev-qt/qtopengl-5.9.3
+=dev-qt/qtprintsupport-5.9.3
+=dev-qt/qtquickcontrols-5.9.3
+=dev-qt/qtquickcontrols2-5.9.3
+=dev-qt/qtscript-5.9.3
+=dev-qt/qtsql-5.9.3
+=dev-qt/qtsvg-5.9.3
+=dev-qt/qttest-5.9.3
+=dev-qt/qttranslations-5.9.3
+=dev-qt/qtwayland-5.9.3
 =dev-qt/qtwebkit-5.9.1
-=dev-qt/qtwidgets-5.9.2
-=dev-qt/qtx11extras-5.9.2
-=dev-qt/qtxml-5.9.2
-=dev-qt/qtxmlpatterns-5.9.2
-=dev-qt/qtwebengine-5.9.2
-=dev-qt/qtwebchannel-5.9.2
+=dev-qt/qtwidgets-5.9.3
+=dev-qt/qtpositioning-5.9.3
+=dev-qt/qtx11extras-5.9.3
+=dev-qt/qtxml-5.9.3
+=dev-qt/qtxmlpatterns-5.9.3
+=dev-qt/qtwebengine-5.9.3
+=dev-qt/qtwebchannel-5.9.3
+=dev-qt/qtcharts-5.9.3
 
 net-misc/trackma
 net-nds/openldap
@@ -48,29 +97,18 @@ net-nds/openldap
 =dev-libs/wlc-9999 **
 =app-misc/dragon-9999 **
 
-# for album-only sort
-# https://github.com/arybczak/ncmpcpp/pull/240
-=media-sound/ncmpcpp-9999 **
-
 # testing kitty terminal
 media-libs/glew:0/2.0
 =x11-terms/kitty-9999 **
 
 =games-emulation/retroarch-1.6.9
-=net-p2p/syncthing-0.14.38
 =app-misc/piper-9999 **
 =dev-libs/libratbag-9999 **
 mail-client/mutt
-sys-auth/pambase
-mail-client/neomutt
 =x11-misc/compton-9999 **
 =media-video/dvd_info-9999 **
 net-im/telegram-desktop-bin
 =sys-apps/firejail-9999 **
-# required by media-sound/pulseeffects-3.0.8::gentoo
-# required by @selected
-# required by @world (argument)
-=media-plugins/gst-plugins-pulse-1.12.3
 # required by app-emulation/docker-compose-1.17.1::gentoo
 # required by @selected
 # required by @world (argument)
@@ -80,22 +118,16 @@ net-im/telegram-desktop-bin
 # required by @selected
 # required by @world (argument)
 =sys-libs/db-5.3.28-r3
-# required by media-libs/mesa-17.2.3::gentoo[wayland]
-# required by app-emulation/wine-any-9999::gentoo[d3d9]
-# required by @wine
-# required by @selected
-# required by @world (argument)
-=dev-libs/wayland-protocols-1.11
-
-media-sound/mpdas
 
 # zulucrypt test
 app-crypt/zulucrypt
 
+x11-apps/radeon-profile
+x11-apps/radeon-profile-daemon
 app-admin/profile-cleaner
 =net-misc/streamlink-9999 **
 =net-misc/youtube-dl-99999999 **
-sys-devel/gcc-config::lto-overlay
+=sys-devel/gcc-config-1.9.1
 
 app-vim/editorconfig-vim
 # required by app-vim/editorconfig-vim-0.3.3-r2::gentoo
@@ -105,12 +137,13 @@ app-vim/editorconfig-vim
 # try to fix
 # https://github.com/systemd/systemd/issues/2863
 # https://github.com/graysky2/profile-sync-daemon/issues/197
-=sys-apps/systemd-235*
+=sys-apps/systemd-236*
 
 =media-sound/pulsemixer-9999 **
 
 # libreoffice
 =dev-libs/boost-1.65.0
+=dev-util/boost-build-1.65.0
 
 net-misc/nyx::gentoo
 # required by net-misc/nyx-2.0.4::gentoo
@@ -121,12 +154,6 @@ net-misc/nyx::gentoo
 # required by @selected
 # required by @world (argument)
 =dev-libs/json-c-0.12.1
-# required by app-emulation/libvirt-3.9.0::gentoo
-# required by dev-python/libvirt-python-3.9.0::gentoo
-# required by app-emulation/virt-manager-9999::gentoo
-# required by @selected
-# required by @world (argument)
-=net-libs/rpcsvc-proto-1.2-r1
 
 sys-config/ltoize
 # required by sys-config/ltoize-0.4::lto-overlay
@@ -139,23 +166,56 @@ app-portage/portage-bashrc-mv
 
 media-video/obs-studio
 =app-doc/devmanual-9999 **
-dev-libs/libclc
-
-kde-misc/kdeconnect
 
 # hamachi
 net-vpn/logmein-hamachi
 net-vpn/haguichi
 
 # zfs
-sys-kernel/spl
-sys-fs/zfs-kmod
-sys-fs/zfs
+=sys-kernel/spl-9999 **
+=sys-fs/zfs-kmod-9999 **
+=sys-fs/zfs-9999 **
+
+# required by media-libs/sratom-0.6.0-r1::gentoo
+# required by media-libs/lilv-0.24.2-r2::gentoo
+# required by media-sound/pulseeffects-3.1.4::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-libs/sord-0.16.0-r1 ~amd64
+# required by media-sound/pulseeffects-3.1.4::gentoo
+# required by @selected
+# required by @world (argument)
+=media-plugins/calf-0.90.0 ~amd64
+# required by media-sound/pulseeffects-3.1.4::gentoo
+# required by @selected
+# required by @world (argument)
+=media-plugins/gst-plugins-lv2-1.12.3 ~amd64
+# required by media-sound/pulseeffects-3.1.4::gentoo
+# required by @selected
+# required by @world (argument)
+=media-libs/lilv-0.24.2-r2 ~amd64
+# required by media-libs/sratom-0.6.0-r1::gentoo
+# required by media-libs/lilv-0.24.2-r2::gentoo
+# required by media-sound/pulseeffects-3.1.4::gentoo
+# required by @selected
+# required by @world (argument)
+=media-libs/lv2-1.14.0-r1 ~amd64
+# required by media-libs/lilv-0.24.2-r2::gentoo
+# required by media-sound/pulseeffects-3.1.4::gentoo
+# required by @selected
+# required by @world (argument)
+=media-libs/sratom-0.6.0-r1 ~amd64
+# required by media-libs/lilv-0.24.2-r2::gentoo
+# required by media-sound/pulseeffects-3.1.4::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-libs/serd-0.28.0-r1 ~amd64
+
+
 
 sys-apps/inxi
 net-vpn/i2pd
 net-fs/btfs
-app-misc/neofetch
 media-libs/libsdl2
 
 app-emulation/docker-compose
@@ -197,22 +257,24 @@ media-video/atomicparsley-wez
 =app-portage/cpuid2cpuflags-5
 app-i18n/translate-shell
 app-benchmarks/phoronix-test-suite
-
-# for i3blocks
-=media-sound/playerctl-0.5.0
-
 sys-apps/fd
-=sys-kernel/gentoo-sources-4.14.3
-
+<dev-lang/python-3.7::lto-overlay
 =sys-kernel/genkernel-next-68
 =dev-util/clinfo-9999 **
+app-emulation/wine-any::gentoo
+=app-emulation/wine-any-9999 **
+x11-misc/rofi
+app-shells/skim
 =sys-libs/glibc-2.26*
-=app-emulation/virt-manager-9999 **
+app-emulation/libvirt
+dev-python/libvirt-python
+app-emulation/virt-manager
 =app-admin/ps_mem-9999 **
 =app-admin/strangle-9999 **
 app-emulation/virtio-win
 # needed for glibc-2.26
 net-libs/libnsl:0/2
+=net-libs/rpcsvc-proto-1.2*
 
 # for ripgrep
 dev-lang/rust-bin
@@ -265,18 +327,6 @@ dev-libs/cyrus-sasl
 
 # for qt-5.9
 =dev-python/PyQt5-5.9*
-=dev-python/sip-4.19.3
-
-=x11-terms/alacritty-9999 **
-
-app-emulation/wine-any::gentoo
-=app-emulation/wine-any-9999 **
-
-app-emulation/libvirt
-dev-python/libvirt-python
-app-emulation/virt-manager
-x11-misc/rofi
-app-shells/skim
 
 # awesome_bot deps
 dev-ruby/parallel
@@ -286,17 +336,7 @@ dev-ruby/parallel
 # required by @selected
 # required by @world (argument)
 =dev-python/sip-4.19.6
-# required by www-client/torbrowser-52.5.0_p7010::torbrowser
-# required by @selected
-# required by @world (argument)
-=media-libs/harfbuzz-1.7.1
 
-# required by media-sound/pulseeffects-3.0.8::gentoo
-# required by media-sound/pulseeffects (argument)
-=media-libs/gst-plugins-good-1.12.3
-# required by media-sound/pulseeffects-3.0.8::gentoo
-# required by media-sound/pulseeffects (argument)
-=dev-python/gst-python-1.12.3
 # required by media-sound/pulseeffects-3.0.8::gentoo
 # required by media-sound/pulseeffects (argument)
 =sci-libs/scipy-0.19.1
@@ -304,14 +344,15 @@ dev-ruby/parallel
 # required by media-sound/pulseeffects-3.0.8::gentoo
 # required by media-sound/pulseeffects (argument)
 =dev-python/setuptools-36.7.2
-# required by media-sound/pulseeffects-3.0.8::gentoo
-# required by media-sound/pulseeffects (argument)
-=media-plugins/gst-plugins-ladspa-1.12.3
 
+dev-vcs/git-lfs
+media-sound/pamix
+net-im/telegram-desktop
 =app-emulation/anbox-9999 **
 =app-emulation/docker-gc-9999 **
 =app-misc/tmux-2.5*::gentoo
-=dev-lang/mono-4.8.0.524
+=dev-lang/mono-5.9.0.398
+=games-action/osu-9999 **
 media-sound/pulseeffects
 =games-engines/openrw-9999 **
 =media-libs/openicc-0.1.0
@@ -339,12 +380,10 @@ media-video/mpv
 net-dns/dnscrypt-proxy
 net-libs/tox
 net-misc/youtube-dl
-net-p2p/syncthing-gtk
 sys-kernel/linux-firmware
 sys-process/glances
 www-client/torbrowser
 www-misc/profile-sync-daemon
-x11-misc/i3blocks
 x11-misc/kbdd
 x11-misc/notify-osd
 net-vpn/tor
@@ -366,3 +405,6 @@ media-libs/icc-profiles-basiccolor-printing2009
 media-libs/icc-profiles-openicc
 media-fonts/koruri
 x11-themes/notify-osd-icons
+
+# required by dev-libs/libusb-compat:0 (argument)
+=dev-libs/libusb-compat-0.1.5-r3
