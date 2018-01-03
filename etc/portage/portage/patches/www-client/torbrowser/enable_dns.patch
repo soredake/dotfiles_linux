@@ -1,0 +1,73 @@
+diff --git a/netwerk/dns/nsDNSService2.cpp b/netwerk/dns/nsDNSService2.cpp
+index 73daac944a32..65ae5d8b0a8e 100644
+--- a/netwerk/dns/nsDNSService2.cpp
++++ b/netwerk/dns/nsDNSService2.cpp
+@@ -537,7 +537,6 @@ nsDNSService::Init()
+     bool     disableIPv6      = false;
+     bool     offlineLocalhost = true;
+     bool     disablePrefetch  = false;
+-    bool     disableDNS       = false;
+     bool     blockDotOnion    = true;
+     int      proxyType        = nsIProtocolProxyService::PROXYCONFIG_DIRECT;
+     bool     notifyResolution = false;
+@@ -567,10 +566,6 @@ nsDNSService::Init()
+         // If a manual proxy is in use, disable prefetch implicitly
+         prefs->GetIntPref("network.proxy.type", &proxyType);
+ 
+-        // If the user wants remote DNS, we should fail any lookups that still
+-        // make it here.
+-        prefs->GetBoolPref("network.proxy.socks_remote_dns", &disableDNS);
+-
+         prefs->GetBoolPref(kPrefDnsNotifyResolution, &notifyResolution);
+ 
+         if (mFirstTime) {
+@@ -618,7 +613,6 @@ nsDNSService::Init()
+         mIPv4OnlyDomains = ipv4OnlyDomains; // exchanges buffer ownership
+         mOfflineLocalhost = offlineLocalhost;
+         mDisableIPv6 = disableIPv6;
+-        mDisableDNS = disableDNS;
+         mBlockDotOnion = blockDotOnion;
+ 
+         // Disable prefetching either by explicit preference or if a manual proxy is configured 
+@@ -761,14 +755,6 @@ nsDNSService::AsyncResolveExtended(const nsACString  &aHostname,
+         NS_DispatchToMainThread(new NotifyDNSResolution(aHostname));
+     }
+ 
+-    PRNetAddr tempAddr;
+-    if (mDisableDNS) {
+-        // Allow IP lookups through, but nothing else.
+-        if (PR_StringToNetAddr(aHostname.BeginReading(), &tempAddr) != PR_SUCCESS) {
+-            return NS_ERROR_UNKNOWN_PROXY_HOST; // XXX: NS_ERROR_NOT_IMPLEMENTED?
+-        }
+-    }
+-
+     if (!res)
+         return NS_ERROR_OFFLINE;
+ 
+@@ -898,14 +884,6 @@ nsDNSService::Resolve(const nsACString &aHostname,
+         flags |= RESOLVE_OFFLINE;
+     }
+ 
+-    PRNetAddr tempAddr;
+-    if (mDisableDNS) {
+-        // Allow IP lookups through, but nothing else.
+-        if (PR_StringToNetAddr(aHostname.BeginReading(), &tempAddr) != PR_SUCCESS) {
+-            return NS_ERROR_UNKNOWN_PROXY_HOST; // XXX: NS_ERROR_NOT_IMPLEMENTED?
+-        }
+-    }
+-
+     //
+     // sync resolve: since the host resolver only works asynchronously, we need
+     // to use a mutex and a condvar to wait for the result.  however, since the
+diff --git a/netwerk/dns/nsDNSService2.h b/netwerk/dns/nsDNSService2.h
+index 11c801631134..79454b901b3f 100644
+--- a/netwerk/dns/nsDNSService2.h
++++ b/netwerk/dns/nsDNSService2.h
+@@ -64,7 +64,6 @@ private:
+     bool                                      mDisablePrefetch;
+     bool                                      mBlockDotOnion;
+     bool                                      mFirstTime;
+-    bool                                      mDisableDNS;
+     bool                                      mNotifyResolution;
+     bool                                      mOfflineLocalhost;
+     nsTHashtable<nsCStringHashKey>            mLocalDomains;
