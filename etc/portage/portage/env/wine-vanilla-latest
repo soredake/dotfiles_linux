@@ -1,4 +1,0 @@
-# default EGIT_REPO_URI does not support EGIT_CLONE_TYPE=shallow and returns `fatal: dumb http transport does not support shallow capabilities`
-wine_vanilla_LIVE_REPO=https://github.com/wine-mirror/wine.git
-# 2.21
-WINE_COMMIT="c0d8de63a9628aa304dc00edbb725b5abe615b5b"

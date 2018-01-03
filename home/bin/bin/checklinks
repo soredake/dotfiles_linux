@@ -3,9 +3,9 @@ test() {
     whitelist_sites="exhentai.org"
     [[ "$1" =~ $whitelist_sites ]] && exit 1
     unset result redirect
-    result=( $(curl -K "$XDG_CONFIG_HOME/curlrc" --http2 --no-keepalive --connect-timeout 10 --max-time 10 -o /dev/null --silent --write-out "%{http_code} %{url_effective}" "$1") )
+    result=( $(curl -K "$XDG_CONFIG_HOME/curlrc" --http2 --no-keepalive --connect-timeout 15 --max-time 15 -o /dev/null --silent --write-out "%{http_code} %{url_effective}" "$1") )
     if [[ ${result[0]} == 301 ]]; then
-      result[1]=$(curl -I -K "$XDG_CONFIG_HOME/curlrc" --http2 --no-keepalive --connect-timeout 10 --max-time 10 -o /dev/null --silent --write-out "%{url_effective}" "$1")
+      result[1]=$(curl -I -K "$XDG_CONFIG_HOME/curlrc" --http2 --no-keepalive --connect-timeout 15 --max-time 15 -o /dev/null --silent --write-out "%{url_effective}" "$1")
     fi
     if ! [[ ${result[1]} == "$1" ]]; then 
       redirect=", redirected to \e[0m\e[4m\e[33m${result[1]}\e[0m"
@@ -23,7 +23,7 @@ dooo() {
   # read file
   while read -r char; do
     test "$char" &
-    #sleep 0.4
+    [[ $(jobs | wc -l) -gt 3 ]] && sleep 5
   done < "${1}"
 }
 

@@ -5,21 +5,20 @@ sys-process/htop htop-mask
 app-emulation/docker-gc fixed-fork
 
 # needs bfd to build
-dev-lang/fpc force-bfd
+#dev-lang/fpc force-bfd
 sys-libs/db force-bfd
 
-# cargo 9999 and telegram fetches deps in forbidden phases
+# cargo 9999
 x11-terms/alacritty nonetsandbox
+# fetches deps in forbidden phases
 net-im/telegram-desktop nonetsandbox
 # mono
 games-action/osu nonetsandbox
 dev-dotnet/nuget nonetsandbox
 games-strategy/openra nonetsandbox
 
-# in case of staging patches failing to apply
+# wine maintainers is so slow at publishing new version's
 app-emulation/wine-any wine-any-latest
-# latest vanilla
-app-emulation/wine-vanilla wine-vanilla-latest
 
 #* Valgrind will not work if glibc does not have debug symbols.
 #* To fix this you can add splitdebug to FEATURES in make.conf

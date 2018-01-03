@@ -57,7 +57,9 @@ user_pref("browser.cache.disk.parent_directory",  "/dev/shm/firefox-cache");
 user_pref("browser.download.useDownloadDir", false);
 user_pref("browser.shell.checkDefaultBrowser",  false);
 user_pref("media.autoplay.enabled", false);
-user_pref("media.default_volume", "0.3");
+user_pref("media.default_volume", "0.1");
+user_pref("media.volume_scale", "0.1");
+user_pref("browser.startup.page", 3);
 user_pref("xpinstall.signatures.required",  false);
 // acceleration
 // https://wiki.mozilla.org/Blocklisting/Blocked_Graphics_Drivers#On_X11

@@ -24,6 +24,7 @@ app-editors/neovim
 app-emulation/docker
 app-emulation/docker-compose
 app-emulation/docker-gc
+app-emulation/libvirt
 app-emulation/virt-manager
 app-emulation/virtio-win
 app-emulation/wine-vanilla
@@ -81,6 +82,7 @@ games-emulation/retroarch
 games-emulation/rpcs3
 games-engines/openrw
 games-engines/xash3d
+games-fps/urbanterror
 games-misc/everlasting-summer
 games-misc/ponysay
 games-misc/theherbalist
@@ -155,6 +157,7 @@ net-dns/update-resolv-conf
 net-fs/btfs
 net-fs/sshfs
 net-im/qtox
+net-im/telegram-cli
 net-im/telegram-desktop-bin
 net-misc/android-file-transfer
 net-misc/aria2
@@ -173,18 +176,19 @@ net-p2p/syncthing
 net-p2p/syncthing-gtk
 net-p2p/torrentinfo
 net-proxy/torsocks
-net-vpn/haguichi
 net-vpn/i2pd
-net-vpn/logmein-hamachi
 net-vpn/tor
+sys-apps/bleachbit
 sys-apps/fd
 sys-apps/firejail
+sys-apps/fwupd
 sys-apps/inxi
 sys-apps/lsb-release
 sys-apps/lshw
 sys-apps/progress
 sys-apps/pv
 sys-apps/ripgrep
+sys-apps/smartmontools
 sys-boot/grub
 sys-boot/syslinux
 sys-config/ltoize
@@ -203,6 +207,7 @@ sys-kernel/linux-firmware
 sys-power/cpupower
 sys-process/glances
 sys-process/htop
+sys-process/time
 www-client/google-chrome
 www-client/links
 www-client/qutebrowser

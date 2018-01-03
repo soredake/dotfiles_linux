@@ -126,7 +126,6 @@ x11-apps/radeon-profile
 x11-apps/radeon-profile-daemon
 app-admin/profile-cleaner
 =net-misc/streamlink-9999 **
-=net-misc/youtube-dl-99999999 **
 =sys-devel/gcc-config-1.9.1
 
 app-vim/editorconfig-vim
@@ -138,8 +137,6 @@ app-vim/editorconfig-vim
 # https://github.com/systemd/systemd/issues/2863
 # https://github.com/graysky2/profile-sync-daemon/issues/197
 =sys-apps/systemd-236*
-
-=media-sound/pulsemixer-9999 **
 
 # libreoffice
 =dev-libs/boost-1.65.0
@@ -167,10 +164,6 @@ app-portage/portage-bashrc-mv
 media-video/obs-studio
 =app-doc/devmanual-9999 **
 
-# hamachi
-net-vpn/logmein-hamachi
-net-vpn/haguichi
-
 # zfs
 =sys-kernel/spl-9999 **
 =sys-fs/zfs-kmod-9999 **
@@ -181,52 +174,39 @@ net-vpn/haguichi
 # required by media-sound/pulseeffects-3.1.4::gentoo
 # required by @selected
 # required by @world (argument)
-=dev-libs/sord-0.16.0-r1 ~amd64
+=dev-libs/sord-0.16.0-r1
 # required by media-sound/pulseeffects-3.1.4::gentoo
 # required by @selected
 # required by @world (argument)
-=media-plugins/calf-0.90.0 ~amd64
+=media-plugins/calf-0.90.0
 # required by media-sound/pulseeffects-3.1.4::gentoo
 # required by @selected
 # required by @world (argument)
-=media-plugins/gst-plugins-lv2-1.12.3 ~amd64
+=media-plugins/gst-plugins-lv2-1.12.3
 # required by media-sound/pulseeffects-3.1.4::gentoo
 # required by @selected
 # required by @world (argument)
-=media-libs/lilv-0.24.2-r2 ~amd64
+=media-libs/lilv-0.24.2-r2
 # required by media-libs/sratom-0.6.0-r1::gentoo
 # required by media-libs/lilv-0.24.2-r2::gentoo
 # required by media-sound/pulseeffects-3.1.4::gentoo
 # required by @selected
 # required by @world (argument)
-=media-libs/lv2-1.14.0-r1 ~amd64
+=media-libs/lv2-1.14.0-r1
 # required by media-libs/lilv-0.24.2-r2::gentoo
 # required by media-sound/pulseeffects-3.1.4::gentoo
 # required by @selected
 # required by @world (argument)
-=media-libs/sratom-0.6.0-r1 ~amd64
+=media-libs/sratom-0.6.0-r1
 # required by media-libs/lilv-0.24.2-r2::gentoo
 # required by media-sound/pulseeffects-3.1.4::gentoo
 # required by @selected
 # required by @world (argument)
-=dev-libs/serd-0.28.0-r1 ~amd64
-
-
-
-sys-apps/inxi
-net-vpn/i2pd
-net-fs/btfs
-media-libs/libsdl2
-
-app-emulation/docker-compose
-=dev-python/cached-property-1.3.1
-=dev-python/dockerpty-0.4.1
+=dev-libs/serd-0.28.0-r1
 
 # streamlink
 =dev-python/pycryptodome-3.4.5
 =dev-python/backports-shutil_which-3.5.1
-
-=media-video/syncplay-9999 **
 
 # neovim
 app-editors/neovim
@@ -247,31 +227,84 @@ www-plugins/freshplayerplugin
 
 # for qutebrowser
 www-client/qutebrowser
-dev-python/pygments
 =dev-python/pypeg2-2.15.2
 
 # for youtube-dl cover embed
 media-video/atomicparsley-wez
 
-=sys-devel/gcc-7.2.0*
-=app-portage/cpuid2cpuflags-5
-app-i18n/translate-shell
-app-benchmarks/phoronix-test-suite
-sys-apps/fd
 <dev-lang/python-3.7::lto-overlay
-=sys-kernel/genkernel-next-68
-=dev-util/clinfo-9999 **
-app-emulation/wine-any::gentoo
-=app-emulation/wine-any-9999 **
-x11-misc/rofi
-app-shells/skim
-=sys-libs/glibc-2.26*
-app-emulation/libvirt
-dev-python/libvirt-python
-app-emulation/virt-manager
 =app-admin/ps_mem-9999 **
 =app-admin/strangle-9999 **
+=app-doc/tldr-9999 **
+=app-emulation/anbox-9999 **
+=app-emulation/docker-gc-9999 **
+=app-emulation/wine-any-9999 **
+=app-eselect/eselect-repository-9999 **
+=app-misc/tmux-2.5*::gentoo
+=app-portage/cpuid2cpuflags-5
+=dev-lang/mono-5.9.0.398
+=dev-python/cached-property-1.3.1
+=dev-python/dockerpty-0.4.1
+=dev-util/clinfo-9999 **
+=games-action/osu-9999 **
+=games-engines/openrw-9999 **
+=games-engines/xash3d-9999 **
+=sys-apps/fwupd-1.0.2
+=media-gfx/gimp-2.9.6
+=media-libs/openicc-0.1.0
+=net-im/qtox-9999 **
+=net-im/telegram-cli-9999 **
+=sys-devel/gcc-7.2.0*
+=sys-kernel/genkernel-next-68
+=sys-libs/glibc-2.26*
+=x11-misc/i3blocks-contrib-9999 **
+=x11-misc/xsel-9999 **
+app-admin/eclean-kernel
+app-admin/elektra
+app-admin/keepassxc
+app-admin/stow
+app-benchmarks/phoronix-test-suite
+app-crypt/veracrypt
+app-doc/zeal
+app-emulation/docker-compose
+app-emulation/libvirt
+app-emulation/virt-manager
 app-emulation/virtio-win
+app-emulation/wine-any::gentoo
+app-i18n/translate-shell
+app-misc/jdupes
+app-misc/ranger::pinkpieea
+app-shells/skim
+dev-python/libvirt-python
+dev-util/shellcheck
+games-strategy/colobot*
+games-strategy/openra
+games-util/steam-launcher
+games-util/steam-meta
+media-fonts/infinality-ultimate-meta
+media-gfx/mypaint
+media-libs/fontconfig-ultimate::gentoo
+media-libs/libsdl2
+media-libs/oyranos
+media-sound/pamix
+media-sound/pulseeffects
+media-video/mpv
+media-video/syncplay
+net-dns/dnscrypt-proxy
+net-fs/btfs
+net-libs/tox
+net-misc/youtube-dl
+net-vpn/i2pd
+net-vpn/tor
+sys-apps/fd
+sys-apps/inxi
+sys-kernel/linux-firmware
+sys-process/glances
+www-client/torbrowser
+www-misc/profile-sync-daemon
+x11-misc/kbdd
+x11-misc/notify-osd
+x11-misc/rofi
 # needed for glibc-2.26
 net-libs/libnsl:0/2
 =net-libs/rpcsvc-proto-1.2*
@@ -282,8 +315,6 @@ virtual/rust
 dev-util/cargo::gentoo
 sys-apps/ripgrep
 
-=app-eselect/eselect-repository-9999 **
-
 # required by media-plugins/gst-plugins-libav-1.10.5::gentoo
 # required by media-plugins/gst-plugins-meta-1.10.5::gentoo[ffmpeg]
 # required by app-emulation/wine-any-9999::gentoo[gstreamer]
@@ -291,10 +322,6 @@ sys-apps/ripgrep
 # required by @selected
 # required by @world (argument)
 media-video/ffmpeg::libressl
-
-=games-engines/xash3d-9999 **
-=x11-misc/xsel-9999 **
-=media-gfx/gimp-2.9.6
 
 media-video/bluray_info
 # required by media-video/bluray_info-1.0.0::gentoo
@@ -340,53 +367,7 @@ dev-ruby/parallel
 # required by media-sound/pulseeffects-3.0.8::gentoo
 # required by media-sound/pulseeffects (argument)
 =sci-libs/scipy-0.19.1
-# required by sci-libs/scipy-0.19.1::gentoo
-# required by media-sound/pulseeffects-3.0.8::gentoo
-# required by media-sound/pulseeffects (argument)
-=dev-python/setuptools-36.7.2
-
-dev-vcs/git-lfs
-media-sound/pamix
-net-im/telegram-desktop
-=app-emulation/anbox-9999 **
-=app-emulation/docker-gc-9999 **
-=app-misc/tmux-2.5*::gentoo
-=dev-lang/mono-5.9.0.398
-=games-action/osu-9999 **
-media-sound/pulseeffects
-=games-engines/openrw-9999 **
-=media-libs/openicc-0.1.0
-=net-im/qtox-9999 **
-=app-doc/tldr-9999 **
-=x11-misc/i3blocks-contrib-9999 **
-app-admin/eclean-kernel
-app-admin/elektra
-app-admin/keepassxc
-app-admin/stow
-app-crypt/veracrypt
-app-doc/zeal
-app-misc/jdupes
-app-misc/ranger::pinkpieea
-dev-util/shellcheck
-games-strategy/colobot*
-games-strategy/openra
-games-util/steam-launcher
-games-util/steam-meta
-media-fonts/infinality-ultimate-meta
-media-gfx/mypaint
-media-libs/fontconfig-ultimate::gentoo
-media-libs/oyranos
-media-video/mpv
-net-dns/dnscrypt-proxy
-net-libs/tox
-net-misc/youtube-dl
-sys-kernel/linux-firmware
-sys-process/glances
-www-client/torbrowser
-www-misc/profile-sync-daemon
-x11-misc/kbdd
-x11-misc/notify-osd
-net-vpn/tor
+media-plugins/gst-plugins-ladspa
 
 # lto
 media-libs/x264::lto-overlay

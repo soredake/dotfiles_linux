@@ -13,7 +13,6 @@ app-doc/pms
 app-editors/retext
 app-emacs/ebuild-mode
 app-emacs/lyskom-elisp-client
-app-emulation/libvirt
 app-emulation/q4wine
 app-emulation/xtrs
 app-i18n/ibus-typing-booster
@@ -40,7 +39,6 @@ app-misc/ttyload
 app-misc/vlock
 app-misc/when
 app-office/calligra
-app-portage/cpuid2cpuflags
 app-portage/diffmask
 app-portage/flaggie
 app-portage/install-mask
@@ -64,9 +62,7 @@ dev-python/python-ctags
 dev-util/catfish
 dev-util/gource
 dev-util/repo
-dev-util/rustfmt
 dev-util/source-highlight
-dev-util/strace
 dev-vcs/git-cola
 dev-vcs/gitolite
 games-action/violetland
@@ -85,8 +81,7 @@ media-sound/ardour
 media-sound/guitarix2
 media-sound/paprefs
 media-sound/pasystray
-media-sound/pavucontrol
-media-sound/sonic-visualiser/
+media-sound/sonic-visualiser
 media-video/get_flash_videos
 media-video/mkclean
 media-video/mkvalidator
@@ -109,8 +104,6 @@ net-vpn/vpncloud
 pp-misc/splitvt
 sci-chemistry/ParmEd
 sci-libs/magma
-sys-apps/bleachbit
-sys-apps/fwupd
 sys-apps/fwupdate
 sys-apps/moreutils
 sys-apps/noexec
@@ -128,7 +121,6 @@ sys-process/nmon
 www-misc/vl
 x11-apps/copyq
 x11-misc/arandr
-x11-misc/kbdd
 x11-misc/libinput-gestures
 x11-misc/qsynergy
 x11-misc/synergy

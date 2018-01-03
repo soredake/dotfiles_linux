@@ -93,6 +93,7 @@ mail-client/mutt gpg imap pop sasl sidebar smime smtp mbox -gdbm -berkdb
 app-doc/pms html
 app-misc/jdupes custom-optimization
 media-gfx/gimp vector-icons
+sys-apps/smartmontools nvme
 app-misc/ca-certificates cacert
 x11-misc/rofi windowmode
 app-admin/keepassxc autotype -http

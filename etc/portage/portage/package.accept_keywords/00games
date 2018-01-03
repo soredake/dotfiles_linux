@@ -4,7 +4,7 @@ games-action/supertuxkart
 games-arcade/supertux
 
 # needed for libressl
-=media-libs/opusfile-0.9
+=media-libs/opusfile-0.10
 
 # required by games-strategy/hedgewars-0.9.22-r2::gentoo
 # required by games-strategy/hedgewars (argument)
