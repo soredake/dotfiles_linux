@@ -27,3 +27,6 @@ app-emulation/wine-any wine-any-latest
 #* https://bugs.gentoo.org/show_bug.cgi?id=274771
 #* https://bugs.gentoo.org/show_bug.cgi?id=388703
 sys-libs/glibc splitdebug
+
+# spawning processes up to 6g
+www-client/firefox notmpfs.conf

@@ -85,3 +85,31 @@ sudo tee /etc/xml/catalog >/dev/null <<< "$(xmlcatalog --add rewriteURI http://w
 
 # symlink to fix programs wanting xlocale.h
 sudo ln -s /usr/include/xlocale.h locale.h
+
+# notmpfs
+sudo mkdir /var/tmp/notmpfs
+sudo chown portage:portage /var/tmp/notmpfs
+sudo chmod 775 /var/tmp/notmpfs
+
+# snap
+#sudo snap install --classic anbox-installer
+#/snap/bin/anbox-installer
+#cp /snap/anbox-installer/17/installer.sh /tmp
+# sed -i /tmp/installer.sh
+
+# see anbox installer for needed kernel modules and installation
+#sudo snap install --edge --devmode anbox
+
+sudo tee /etc/subuid >/dev/null <<END
+root:100000:65536
+root:1000:2
+bausch:100000:65536
+bausch:1000:2
+END
+
+sudo tee /etc/subgid >/dev/null <<END
+root:100000:65536
+root:1000:2
+bausch:100000:65536
+bausch:1000:2
+END

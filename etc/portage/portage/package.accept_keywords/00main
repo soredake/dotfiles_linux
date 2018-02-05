@@ -4,56 +4,7 @@
 =dev-python/texttable-0.9.1
 
 # osu
-dev-dotnet/nuget
 dev-util/msbuild
-# required by dev-dotnet/system-reflection-metadata-2.0.0_pre::dotnet
-# required by dev-dotnet/msbuild-defaulttasks-15.3-r2::dotnet
-# required by dev-dotnet/msbuild-roslyn-csc-15.3::dotnet
-# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
-# required by dev-util/msbuild (argument)
-=dev-dotnet/system-collections-immutable-2.0.0_pre ~amd64
-# required by dev-util/msbuild-15.3-r2::dotnet
-# required by dev-util/msbuild (argument)
-=dev-dotnet/msbuildtasks-1.5.0.240-r3 ~amd64
-# required by dev-dotnet/msbuildtasks-1.5.0.240-r3::dotnet
-# required by dev-dotnet/system-reflection-metadata-2.0.0_pre::dotnet
-# required by dev-dotnet/msbuild-defaulttasks-15.3-r2::dotnet
-# required by dev-dotnet/msbuild-roslyn-csc-15.3::dotnet
-# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
-# required by dev-util/msbuild (argument)
-=dev-dotnet/dotnetzip-semverd-1.9.3-r2 ~amd64
-# required by dev-dotnet/system-reflection-metadata-2.0.0_pre::dotnet
-# required by dev-dotnet/msbuild-defaulttasks-15.3-r2::dotnet
-# required by dev-dotnet/msbuild-roslyn-csc-15.3::dotnet
-# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
-# required by dev-util/msbuild (argument)
-=dev-dotnet/buildtools-1.0.27 ~amd64
-# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
-# required by dev-util/msbuild (argument)
-=dev-dotnet/msbuild-roslyn-csc-15.3 ~amd64
-# required by dev-dotnet/buildtools-1.0.27::dotnet
-# required by dev-dotnet/msbuild-defaulttasks-15.3-r2::dotnet
-# required by dev-dotnet/msbuild-roslyn-csc-15.3::dotnet
-# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
-# required by dev-util/msbuild (argument)
-=dev-dotnet/newtonsoft-json-6.0.8-r1 ~amd64
-# required by dev-dotnet/nuget-2.8.7-r3::dotnet
-# required by dev-dotnet/nuget (argument)
-=dev-dotnet/xdt-for-monodevelop-2.8.1-r2 ~amd64
-# required by dev-util/msbuild-15.3-r2::dotnet
-# required by dev-util/msbuild (argument)
-=dev-dotnet/msbuild-defaulttasks-15.3-r2 ~amd64
-# required by dev-dotnet/buildtools-1.0.27::dotnet
-# required by dev-dotnet/msbuild-defaulttasks-15.3-r2::dotnet
-# required by dev-dotnet/msbuild-roslyn-csc-15.3::dotnet
-# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
-# required by dev-util/msbuild (argument)
-=dev-dotnet/msbuild-tasks-api-15.3-r1 ~amd64
-# required by dev-dotnet/msbuild-defaulttasks-15.3-r2::dotnet
-# required by dev-dotnet/msbuild-roslyn-csc-15.3::dotnet
-# required by dev-util/msbuild-15.3-r2::dotnet[roslyn]
-# required by dev-util/msbuild (argument)
-=dev-dotnet/system-reflection-metadata-2.0.0_pre ~amd64
 
 net-news/rssguard
 # rssguard needs >=qt-5.8
@@ -69,7 +20,7 @@ net-news/rssguard
 =dev-qt/qtgui-5.9.3
 =dev-qt/qthelp-5.9.3
 =dev-qt/qtmultimedia-5.9.3
-=dev-qt/qtnetwork-5.9.3::libressl
+=dev-qt/qtnetwork-5.9.3
 =dev-qt/qtopengl-5.9.3
 =dev-qt/qtprintsupport-5.9.3
 =dev-qt/qtquickcontrols-5.9.3
@@ -96,6 +47,11 @@ net-nds/openldap
 =dev-libs/sway-9999 **
 =dev-libs/wlc-9999 **
 =app-misc/dragon-9999 **
+net-misc/teamviewer:13
+
+# fbreader
+app-text/fbreader
+=dev-libs/libunibreak-4.0
 
 # testing kitty terminal
 media-libs/glew:0/2.0
@@ -104,10 +60,10 @@ media-libs/glew:0/2.0
 =games-emulation/retroarch-1.6.9
 =app-misc/piper-9999 **
 =dev-libs/libratbag-9999 **
+net-im/telegram-desktop
 mail-client/mutt
 =x11-misc/compton-9999 **
 =media-video/dvd_info-9999 **
-net-im/telegram-desktop-bin
 =sys-apps/firejail-9999 **
 # required by app-emulation/docker-compose-1.17.1::gentoo
 # required by @selected
@@ -119,28 +75,17 @@ net-im/telegram-desktop-bin
 # required by @world (argument)
 =sys-libs/db-5.3.28-r3
 
-# zulucrypt test
 app-crypt/zulucrypt
-
 x11-apps/radeon-profile
 x11-apps/radeon-profile-daemon
 app-admin/profile-cleaner
-=net-misc/streamlink-9999 **
+net-misc/streamlink
 =sys-devel/gcc-config-1.9.1
 
 app-vim/editorconfig-vim
 # required by app-vim/editorconfig-vim-0.3.3-r2::gentoo
 # required by app-vim/editorconfig-vim (argument)
 =dev-python/editorconfig-core-py-0.12.0
-
-# try to fix
-# https://github.com/systemd/systemd/issues/2863
-# https://github.com/graysky2/profile-sync-daemon/issues/197
-=sys-apps/systemd-236*
-
-# libreoffice
-=dev-libs/boost-1.65.0
-=dev-util/boost-build-1.65.0
 
 net-misc/nyx::gentoo
 # required by net-misc/nyx-2.0.4::gentoo
@@ -168,6 +113,9 @@ media-video/obs-studio
 =sys-kernel/spl-9999 **
 =sys-fs/zfs-kmod-9999 **
 =sys-fs/zfs-9999 **
+#sys-kernel/spl
+#sys-fs/zfs-kmod
+#sys-fs/zfs
 
 # required by media-libs/sratom-0.6.0-r1::gentoo
 # required by media-libs/lilv-0.24.2-r2::gentoo
@@ -205,16 +153,11 @@ media-video/obs-studio
 =dev-libs/serd-0.28.0-r1
 
 # streamlink
-=dev-python/pycryptodome-3.4.5
+=dev-python/pycryptodome-3.4.7
 =dev-python/backports-shutil_which-3.5.1
 
 # neovim
 app-editors/neovim
-=dev-libs/libvterm-0.0_pre20160305
-=dev-lua/mpack-1.0.4
-=dev-lua/lpeg-1.0.1
-=dev-libs/unibilium-1.1.4
-=dev-libs/libtermkey-0.19
 =dev-libs/msgpack-1.1.0
 
 games-misc/ponysay
@@ -225,23 +168,20 @@ media-gfx/maim
 x11-misc/slop
 www-plugins/freshplayerplugin
 
-# for qutebrowser
-www-client/qutebrowser
-=dev-python/pypeg2-2.15.2
-
 # for youtube-dl cover embed
 media-video/atomicparsley-wez
 
-<dev-lang/python-3.7::lto-overlay
+
+net-misc/megasync
+net-misc/meganz-sdk
+
+<dev-lang/python-3.8::lto-overlay
 =app-admin/ps_mem-9999 **
 =app-admin/strangle-9999 **
-=app-doc/tldr-9999 **
-=app-emulation/anbox-9999 **
 =app-emulation/docker-gc-9999 **
-=app-emulation/wine-any-9999 **
+media-video/webcamoid
 =app-eselect/eselect-repository-9999 **
 =app-misc/tmux-2.5*::gentoo
-=app-portage/cpuid2cpuflags-5
 =dev-lang/mono-5.9.0.398
 =dev-python/cached-property-1.3.1
 =dev-python/dockerpty-0.4.1
@@ -249,14 +189,17 @@ media-video/atomicparsley-wez
 =games-action/osu-9999 **
 =games-engines/openrw-9999 **
 =games-engines/xash3d-9999 **
-=sys-apps/fwupd-1.0.2
-=media-gfx/gimp-2.9.6
+app-text/coolreader
+=sys-apps/fwupd-1.0.4
+=media-gfx/gimp-2.9.8*
 =media-libs/openicc-0.1.0
 =net-im/qtox-9999 **
 =net-im/telegram-cli-9999 **
-=sys-devel/gcc-7.2.0*
 =sys-kernel/genkernel-next-68
-=sys-libs/glibc-2.26*
+=sys-devel/gcc-7.3.0*
+=x11-drivers/xf86-video-amdgpu-1.4.0
+=app-admin/hardinfo-9999 **
+=sys-libs/glibc-2.27* **
 =x11-misc/i3blocks-contrib-9999 **
 =x11-misc/xsel-9999 **
 app-admin/eclean-kernel
@@ -268,9 +211,9 @@ app-crypt/veracrypt
 app-doc/zeal
 app-emulation/docker-compose
 app-emulation/libvirt
-app-emulation/virt-manager
 app-emulation/virtio-win
 app-emulation/wine-any::gentoo
+x11-misc/xembedsniproxy
 app-i18n/translate-shell
 app-misc/jdupes
 app-misc/ranger::pinkpieea
@@ -289,8 +232,27 @@ media-libs/oyranos
 media-sound/pamix
 media-sound/pulseeffects
 media-video/mpv
+mail-client/claws-mail
 media-video/syncplay
 net-dns/dnscrypt-proxy
+# keepassxc
+app-crypt/argon2
+=app-admin/keepassxc-9999::local **
+
+www-client/firefox::gentoo
+# required by app-text/poppler-0.57.0-r1::gentoo[png]
+# required by media-gfx/gimp-2.9.8-r1::gentoo[pdf]
+# required by @selected
+# required by @world (argument)
+=media-libs/libpng-1.6.34
+# required by www-client/firefox-57.0.4::gentoo
+# required by www-client/firefox (argument)
+=dev-libs/nspr-4.17
+# required by net-misc/networkmanager-1.8.4::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-libs/nss-3.34.1
+
 net-fs/btfs
 net-libs/tox
 net-misc/youtube-dl
@@ -298,16 +260,44 @@ net-vpn/i2pd
 net-vpn/tor
 sys-apps/fd
 sys-apps/inxi
-sys-kernel/linux-firmware
 sys-process/glances
-www-client/torbrowser
+www-client/torbrowser::torbrowser
 www-misc/profile-sync-daemon
 x11-misc/kbdd
 x11-misc/notify-osd
 x11-misc/rofi
-# needed for glibc-2.26
+# needed for >=glibc-2.26
 net-libs/libnsl:0/2
 =net-libs/rpcsvc-proto-1.2*
+
+=sys-apps/portage-2.3.24
+# required by gnome-base/gnome-keyring-3.20.1::gentoo
+# required by app-crypt/libsecret-0.18.5::gentoo
+# required by gnome-extra/nm-applet-1.8.6::gentoo
+# required by net-misc/networkmanager-openvpn-1.8.0-r1::gentoo[gtk]
+# required by @selected
+# required by @world (argument)
+=app-crypt/gnupg-2.2.4-r1 ~amd64
+# required by sys-apps/portage-2.3.24::gentoo[rsync-verify]
+# required by sys-apps/portage (argument)
+=app-portage/gemato-11.0 ~amd64
+# required by app-portage/gemato-11.0::gentoo[python_targets_python2_7,bzip2,-python_targets_pypy]
+# required by sys-apps/portage-2.3.24::gentoo[rsync-verify]
+# required by sys-apps/portage (argument)
+=dev-python/bz2file-0.98 ~amd64
+
+
+app-emulation/snapd::JamesB192
+# required by app-emulation/snapd-2.30-r3::JamesB192
+# # required by app-emulation/snapd (argument)
+=sys-apps/apparmor-2.12.0 ~amd64
+# # required by sys-apps/apparmor-2.12.0::gentoo
+# # required by app-emulation/snapd-2.30-r3::JamesB192
+# # required by app-emulation/snapd (argument)
+=sys-libs/libapparmor-2.12.0 ~amd64
+
+app-emulation/anbox::jrg-overlay
+
 
 # for ripgrep
 dev-lang/rust-bin
@@ -315,24 +305,18 @@ virtual/rust
 dev-util/cargo::gentoo
 sys-apps/ripgrep
 
-# required by media-plugins/gst-plugins-libav-1.10.5::gentoo
-# required by media-plugins/gst-plugins-meta-1.10.5::gentoo[ffmpeg]
-# required by app-emulation/wine-any-9999::gentoo[gstreamer]
-# required by @wine
-# required by @selected
-# required by @world (argument)
-media-video/ffmpeg::libressl
+# required by dev-libs/dbus-cpp-5.0.0::jrg-overlay
+# required by app-emulation/anbox-9999.2017.07.13.3::jrg-overlay
+# required by anbox (argument)
+=dev-libs/process-cpp-3.0.1 ~amd64
+
+=sys-apps/systemd-237*
 
 media-video/bluray_info
 # required by media-video/bluray_info-1.0.0::gentoo
 # required by media-video/bluray_info (argument)
 =media-libs/libbluray-1.0.1
 
-# required by media-libs/libmypaint-1.3.0::gentoo[gegl]
-# required by media-gfx/gimp-2.9.6::gentoo
-# required by @selected
-# required by @world (argument)
-=media-libs/gegl-0.3.20
 # required by media-gfx/gimp-2.9.6::gentoo
 # required by @selected
 # required by @world (argument)
@@ -340,17 +324,10 @@ media-video/bluray_info
 # required by media-gfx/gimp-2.9.6::gentoo
 # required by @selected
 # required by @world (argument)
-=media-libs/babl-0.1.30
-# required by media-gfx/gimp-2.9.6::gentoo
-# required by @selected
-# required by @world (argument)
 =media-libs/gexiv2-0.10.6
 # required by media-gfx/gimp-2.9.6::gentoo[webp]
 # required by gimp (argument)
 =media-libs/libwebp-0.6.0
-
-# for libressl support
-dev-libs/cyrus-sasl
 
 # for qt-5.9
 =dev-python/PyQt5-5.9*
@@ -379,7 +356,7 @@ media-libs/x264::lto-overlay
 =dev-lang/nasm-2.13.01
 
 media-fonts/courier-prime
-media-fonts/heuristica
+media-fonts/heuristica::gentoo
 media-fonts/signika
 media-fonts/tex-gyre
 media-libs/icc-profiles-basiccolor-printing2009
@@ -389,3 +366,10 @@ x11-themes/notify-osd-icons
 
 # required by dev-libs/libusb-compat:0 (argument)
 =dev-libs/libusb-compat-0.1.5-r3
+
+# required by app-emulation/anbox-9999.2017.07.13.3::unity-gentoo
+# required by anbox (argument)
+=dev-libs/dbus-cpp-5.0.0 ~amd64
+# required by app-emulation/anbox-9999.2017.07.13.3::unity-gentoo
+# required by anbox (argument)
+=dev-libs/properties-cpp-0.0.1 ~amd64

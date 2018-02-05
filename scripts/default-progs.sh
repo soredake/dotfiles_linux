@@ -2,7 +2,7 @@
 # find mimetype by command: mimetype (dev-perl/File-MimeInfo) img.webm
 # or file --mime-type -b img.webm
 
-sudo rm -rf "$XDG_CONFIG_HOME/mimeapps.list" "$XDG_DATA_HOME/"{mimeapps.list,mimeinfo.cache} /usr/{,local/}share/applications/mimeinfo.cache
+sudo rm -rf "$XDG_CONFIG_HOME/mimeapps.list" "$XDG_DATA_HOME/"{mimeapps.list,mimeinfo.cache} /usr/share/applications/mimeinfo.cache
 # https://wiki.archlinux.org/index.php/default_applications#Default_mimeapps.list_files
 rm "$XDG_DATA_HOME/applications/"{mimeapps.list,mimeinfo.cache}
 
@@ -15,7 +15,8 @@ xdg-mime default mpv.desktop application/ogg application/x-ogg application/sdp a
 xdg-mime default mvi.desktop image/gif image/jpeg image/png image/bmp image/x-eps image/x-ico image/x-portable-bitmap image/x-portable-graymap image/x-portable-pixmap image/x-xbitmap image/x-xpixmap
 
 # Browser
-xdg-mime default torbrowser-fixed.desktop text/html text/xml application/xhtml+xml application/vnd.mozilla.xul+xml text/mml x-scheme-handler/http x-scheme-handler/https
+#xdg-mime default torbrowser-fixed.desktop text/html text/xml application/xhtml+xml application/vnd.mozilla.xul+xml text/mml x-scheme-handler/http x-scheme-handler/https
+xdg-mime default firefox.desktop text/html text/xml application/xhtml+xml application/vnd.mozilla.xul+xml text/mml x-scheme-handler/http x-scheme-handler/https
 
 # Folder opening
 xdg-mime default ranger.desktop inode/directory
@@ -36,5 +37,4 @@ xdg-mime default keepassxc-firejail.desktop application/x-keepass2
 xdg-mime default qtox-firejail.desktop x-scheme-handler/tox application/x-tox
 
 # update mime db
-sudo update-desktop-database -v "$XDG_DATA_HOME/applications"
-sudo update-desktop-database -v
+sudo update-desktop-database -v "$XDG_DATA_HOME/applications" /usr/share/applications

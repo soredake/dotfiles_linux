@@ -88,6 +88,7 @@ alias mpvqs='mpvq --vo=opengl'
 alias internal-ip='ip addr show enp4s0 | grep "inet\b" | awk "{print $2}" | cut -d/ -f1 | sed "s/    inet //g"'
 
 # Shorter
+alias webcamoid='webcamoid -q /usr/lib64/qt/qml'
 alias rt='tmux -L rt attach -t rt'
 alias e='nvim'
 alias egrep='grep -E --color'

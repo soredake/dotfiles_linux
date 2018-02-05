@@ -1,3 +1,5 @@
+-gtk3
+-rust
 -jit
 -custom-cflags
 -libzfs

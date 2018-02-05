@@ -35,7 +35,7 @@ export W3MIMGDISPLAY_PATH="/usr/libexec/w3m/w3mimgdisplay"
 export RANGER_LOAD_DEFAULT_RC=false
 
 # for xdg-open
-export BROWSER="torbrowser --allow-remote"
+export BROWSER="firefox"
 
 # gpg-agent-ssh
 #export GPG_TTY=$(tty)

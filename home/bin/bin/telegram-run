@@ -1,4 +1,6 @@
 #!/bin/bash
 # https://github.com/telegramdesktop/tdesktop/issues/2353
 # https://github.com/telegramdesktop/tdesktop/issues/2255
-exec firejail --profile="$XDG_CONFIG_HOME/firejail/Telegram.profile" -- proxychains -q "telegram-desktop" -platform xcb -- "$@"
+# proxychains -q
+#exec firejail --profile="$XDG_CONFIG_HOME/firejail/Telegram.profile" -- telegram-desktop -platform xcb -- "$@"
+exec firejail Telegram "$@"

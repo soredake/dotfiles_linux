@@ -64,6 +64,7 @@ pathadd "$HOME/.gem/ruby/2.2.0/bin"
 pathadd "$HOME/bin"
 pathadd /sbin
 pathadd /usr/sbin
+pathadd /snap/bin
 
 # enable completion for hidden f{iles,olders}
 # https://unix.stackexchange.com/questions/308315/how-can-i-configure-zsh-completion-to-show-hidden-files-and-folders

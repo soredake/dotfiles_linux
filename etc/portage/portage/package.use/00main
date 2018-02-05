@@ -83,7 +83,6 @@ dev-libs/boost python
 # required by www-client/google-chrome (argument)
 >=app-text/ghostscript-gpl-9.21 cups
 
-games-strategy/colobot-data music_flac_convert -music_ogg
 net-im/telegram-desktop -crashreporter gtk3
 games-emulation/ppsspp -sdl
 www-plugins/adobe-flash -nsplugin
@@ -93,6 +92,7 @@ mail-client/mutt gpg imap pop sasl sidebar smime smtp mbox -gdbm -berkdb
 app-doc/pms html
 app-misc/jdupes custom-optimization
 media-gfx/gimp vector-icons
+app-text/coolreader -wxwidgets
 sys-apps/smartmontools nvme
 app-misc/ca-certificates cacert
 x11-misc/rofi windowmode
@@ -127,27 +127,11 @@ x11-base/xorg-server xcsecurity -suid
 # required by sys-apps/firejail-0.9.44.8::gentoo[x11]
 # required by sys-apps/firejail (argument)
 >=x11-base/xorg-server-1.19.2 xvfb
-
-# for qutebrowser
-dev-qt/qtwebkit printsupport
-dev-python/PyQt5 declarative webkit webchannel sql webengine
-# required by dev-qt/qtwebengine-5.7.1-r2::gentoo
-# required by dev-python/PyQt5-5.9.1::gentoo[webengine]
-# required by www-client/qutebrowser-1.0.3::gentoo
+# required by media-libs/mesa-17.3.1::gentoo[llvm,-video_cards_radeon,-video_cards_radeonsi,-video_cards_r600,opencl]
+# required by www-plugins/freshplayerplugin-0.3.9::gentoo
 # required by @selected
 # required by @world (argument)
->=sys-libs/zlib-1.2.11-r1 minizip
-# required by dev-python/PyQt5-5.9.1::gentoo[webengine]
-# required by www-client/qutebrowser-1.0.3::gentoo
-# required by @selected
-# required by @world (argument)
->=dev-qt/qtwebengine-5.7.1-r2 widgets
-# required by dev-qt/qtwebengine-5.7.1-r2::gentoo
-# required by dev-python/PyQt5-5.9.1::gentoo[webengine]
-# required by www-client/qutebrowser-1.0.3::gentoo
-# required by @selected
-# required by @world (argument)
->=dev-qt/qtwebchannel-5.7.1 qml
+>=virtual/libelf-3 abi_x86_32
 
 sys-boot/grub device-mapper efiemu mount libzfs GRUB_PLATFORMS: pc
 
@@ -224,7 +208,10 @@ x11-terms/gnome-terminal -gnome-shell -nautilus vanilla
 dev-libs/sway swaygrab swaylock
 dev-libs/wayland abi_x86_32
 sys-kernel/genkernel-next -*
+media-video/webcamoid ffmpeg videoeffects
 www-client/torbrowser system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite custom-cflags custom-optimization
+www-client/firefox -bindist -gmp-autoupdate rust eme-free hwaccel custom-cflags custom-optimization nsplugin system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite
+mail-client/thunderbird -bindist custom-cflags custom-optimization system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite
 dev-db/sqlite secure-delete
 media-libs/harfbuzz fontconfig
 app-emulation/libvirt zfs
@@ -248,10 +235,28 @@ dev-lang/python sqlite
 # memory leak with +gtk, upd: memory leak even with -gtk, TODO: report bug to upstream
 www-client/w3m -gtk imlib
 
+
+# rx 560
+# required by media-libs/mesa-17.3.1::gentoo[-video_cards_r200,-video_cards_r100,-video_cards_radeon,-video_cards_r300,-video_cards_r600,video_cards_radeonsi]
+# required by dev-qt/qtgui-4.8.7::gentoo[egl]
+# required by dev-qt/qt3support-4.8.7::gentoo
+>=x11-libs/libdrm-2.4.88 video_cards_radeon
+# required by media-libs/mesa-17.3.1::gentoo[-video_cards_radeon,-video_cards_r600,opencl,video_cards_radeonsi,llvm]
+# required by dev-qt/qtgui-4.8.7::gentoo[egl]
+# required by dev-qt/qt3support-4.8.7::gentoo
+>=sys-devel/clang-4.0.1 llvm_targets_AMDGPU
+# required by sys-devel/clang-4.0.1::gentoo
+# required by media-libs/mesa-17.3.1::gentoo[-video_cards_radeon,-video_cards_r600,opencl,video_cards_radeonsi,llvm]
+# required by dev-qt/qtgui-4.8.7::gentoo[egl]
+# required by dev-qt/qt3support-4.8.7::gentoo
+>=sys-devel/llvm-4.0.1-r1 llvm_targets_AMDGPU
+
+net-analyzer/tcpdump -drop-root
+
 media-libs/libvpx postproc
 app-arch/tar minimal
 dev-db/unixODBC minimal
-net-misc/curl http2 CURL_SSL: -openssl libressl
+net-misc/curl http2
 sys-libs/libomp hwloc
 sys-libs/pam abi_x86_32
 media-video/ffmpeg openssl ssh libass openh264 vpx x265 cpudetection theora opus bluray gme libcaca rubberband
@@ -261,7 +266,22 @@ app-emulation/qemu usbredir spice lzo virtfs sdl2 virgl -vnc QEMU_USER_TARGETS: 
 >=net-misc/spice-gtk-0.33-r2 gtk3 usbredir
 app-emulation/spice lz4
 net-misc/spice-gtk lz4
+app-emulation/anbox privileged
+dev-libs/openssl -bindist abi_x86_32
+net-misc/openssh -bindist
+dev-qt/qtnetwork -bindist
+net-misc/meganz-sdk inotify libuv qt
+mail-client/claws-mail archive
 
+# required by app-emulation/anbox-9999.2017.07.13.3::unity-gentoo
+# required by anbox (argument)
+>=sys-apps/systemd-236-r5 nat
+# required by app-emulation/anbox-9999.2017.07.13.3::unity-gentoo
+# required by anbox (argument)
+>=app-emulation/lxc-2.0.9 cgmanager
+# required by app-emulation/snapd-2.30-r3::JamesB192
+# required by app-emulation/snapd (argument)
+>=sys-libs/libseccomp-2.3.2 static-libs
 # required by sys-libs/pam-1.2.1::gentoo
 # required by sys-apps/util-linux-2.30.2::gentoo[pam]
 # required by @system
@@ -289,10 +309,6 @@ net-misc/spice-gtk lz4
 # required by @selected
 # required by @world (argument)
 >=sys-libs/libcap-2.24-r2 abi_x86_32
-# required by net-misc/curl-7.53.0::gentoo[curl_ssl_libressl,ssl]
-# required by dev-vcs/git-2.10.2::gentoo[curl]
-# required by @__auto_slot_operator_replace_installed__ (argument)
->=dev-libs/libressl-2.5.3 abi_x86_32
 # required by x11-libs/gdk-pixbuf-2.34.0::gentoo[tiff]
 # required by x11-libs/gtk+-2.24.31-r1::mv
 # required by x11-libs/wxGTK-3.0.2.0-r2::gentoo[X]
@@ -560,3 +576,19 @@ dev-libs/boost abi_x86_32
 # required by @selected
 # required by @world (argument)
 >=dev-libs/libusb-compat-0.1.5-r3 abi_x86_32
+# required by dev-qt/qtwebengine-5.9.3::gentoo
+# required by kde-apps/libksieve-17.08.3::gentoo
+# required by kde-apps/kmail-17.08.3::gentoo
+# required by kde-apps/kmail (argument)
+>=dev-qt/qtwebchannel-5.9.3 qml
+# required by kde-apps/libksieve-17.08.3::gentoo
+# required by kde-apps/kmail-17.08.3::gentoo
+# required by kde-apps/kmail (argument)
+>=dev-qt/qtwebengine-5.9.3 widgets
+# required by kde-apps/akonadi-17.08.3::gentoo
+# required by kde-apps/calendarsupport-17.08.3::gentoo
+# required by kde-apps/incidenceeditor-17.08.3::gentoo
+# required by kde-apps/messagelib-17.08.3-r1::gentoo
+# required by kde-apps/kmail-17.08.3::gentoo
+# required by kde-apps/kmail (argument)
+>=dev-qt/qtsql-5.9.3 mysql

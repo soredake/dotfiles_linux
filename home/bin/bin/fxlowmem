@@ -1,7 +1,7 @@
 #!/bin/bash
 
 _os="linux64"
-_lang="en-US"
+_lang="ru"
 AUTODOWNLOAD="release"
 
 die() {

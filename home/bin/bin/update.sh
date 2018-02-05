@@ -10,7 +10,7 @@ sudo emerge --sync || exit 1
 sudo emerge --changed-use --newuse -uDU @world || exit 1
 #sudo emerge --changed-use --newuse --ignore-built-slot-operator-deps=y --rebuild-if-new-slot=y --rebuild-if-new-rev=y --rebuild-if-new-ver=y --rebuild-if-unbuilt=y -uDU @world
 sudo emerge --usepkg=n @preserved-rebuild || exit 1
-sudo smart-live-rebuild -f '!www-client/torbrowser' -f '!app-emulation/wine-vanilla' -f '!app-emulation/wine-any' -f '!games-emulation/retroarch' -f '!x11-misc/xsel' -f '!sys-fs/zfs' -f '!sys-fs/zfs-kmod' -f '!sys-kernel/spl' -- --usepkg=n
+sudo smart-live-rebuild -f '!www-client/torbrowser' -f '!app-emulation/wine-vanilla' -f '!app-emulation/wine-any' -f '!games-emulation/retroarch' -f '!x11-misc/xsel' -- --usepkg=n
 sudo emerge -v --depclean || exit 1
 #sudo env-update
 #sudo haskell-updater -c -u -- --usepkg=n

@@ -1,14 +1,11 @@
-games-strategy/hedgewars
 games-fps/urbanterror
+games-fps/redeclipse
 games-action/supertuxkart
 games-arcade/supertux
 
 # needed for libressl
 =media-libs/opusfile-0.10
 
-# required by games-strategy/hedgewars-0.9.22-r2::gentoo
-# required by games-strategy/hedgewars (argument)
-=dev-games/physfs-3.0.1
 # required by games-fps/urbanterror-4.3.2_p20171016::gentoo
 # required by games-fps/urbanterror (argument)
 =games-fps/urbanterror-data-4.3.2-r1
@@ -25,7 +22,7 @@ games-arcade/supertux
 
 =games-util/lutris-9999 **
 =dev-python/python-evdev-0.7.0
-=games-emulation/ppsspp-9999 **
+games-emulation/ppsspp
 
 games-util/steam-client-meta
 games-util/esteam
@@ -40,3 +37,32 @@ games-util/lgogdownloader
 
 # needed for newer gog installers
 app-arch/innoextract
+
+
+
+
+# msbuild
+# 
+# required by dev-dotnet/system-reflection-metadata-2.0.0_pre-r1::dotnet
+# required by dev-dotnet/msbuild-defaulttasks-15.3-r3::dotnet
+# required by dev-dotnet/msbuild-roslyn-csc-15.3-r1::dotnet
+# required by dev-util/msbuild-15.3-r3::dotnet[roslyn]
+# required by dev-util/msbuild (argument)
+=dev-dotnet/buildtools-1.0.27-r1
+# required by dev-util/msbuild-15.3-r3::dotnet[roslyn]
+# required by dev-util/msbuild (argument)
+=dev-dotnet/msbuild-roslyn-csc-15.3-r1
+# required by dev-dotnet/msbuild-roslyn-csc-15.3-r1::dotnet
+# required by dev-util/msbuild-15.3-r3::dotnet[roslyn]
+# required by dev-util/msbuild (argument)
+=dev-dotnet/msbuild-defaulttasks-15.3-r3
+# required by dev-dotnet/msbuild-defaulttasks-15.3-r3::dotnet
+# required by dev-dotnet/msbuild-roslyn-csc-15.3-r1::dotnet
+# required by dev-util/msbuild-15.3-r3::dotnet[roslyn]
+# required by dev-util/msbuild (argument)
+=dev-dotnet/system-reflection-metadata-2.0.0_pre-r1
+# required by dev-dotnet/msbuild-defaulttasks-15.3-r3::dotnet
+# required by dev-dotnet/msbuild-roslyn-csc-15.3-r1::dotnet
+# required by dev-util/msbuild-15.3-r3::dotnet[roslyn]
+# required by dev-util/msbuild (argument)
+=dev-dotnet/system-collections-immutable-2.0.0_pre-r1

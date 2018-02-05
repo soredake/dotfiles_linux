@@ -1,14 +1,1 @@
-# osu
-dev-dotnet/nuget
-# required by dev-dotnet/nuget-2.8.7-r3::dotnet
-# required by dev-dotnet/nuget (argument)
-# /usr/portage/profiles/package.mask:
-# Mikhail Pukhlikov <cynede@gentoo.org> (20 Jul 2017)
-# Old mono/dotnet packages (used on GNOME2 stack)
-# also some deprecated forks used for monodevelop
-# awhile they are very unstable they will live in dotnet overlay
-=dev-dotnet/xdt-for-monodevelop-2.8.1-r2
 
-
-# i need this
-=sys-kernel/gentoo-sources-4.12.12

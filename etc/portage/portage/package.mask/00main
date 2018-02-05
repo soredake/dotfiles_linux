@@ -7,5 +7,5 @@ app-emulation/wine-mono::bobwya
 
 # big breezes on nouveau
 #>=media-libs/mesa-17.3.0_rc
->=sys-kernel/gentoo-sources-4.14
-<sys-kernel/gentoo-sources-4.12
+#>sys-kernel/gentoo-sources-4.14.12
+#<sys-kernel/gentoo-sources-4.14.12

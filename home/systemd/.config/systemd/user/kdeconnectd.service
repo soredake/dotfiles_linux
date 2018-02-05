@@ -2,7 +2,7 @@
 Description=Kde connect daemon
 
 [Service]
-Environment=BROWSER="torbrowser --allow-remote"
+Environment=BROWSER=firefox
 ExecStart=/usr/lib64/libexec/kdeconnectd
 Restart=on-abort
 
