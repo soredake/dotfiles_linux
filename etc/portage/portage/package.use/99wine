@@ -11,8 +11,7 @@ media-sound/pulseaudio abi_x86_32
 media-libs/libv4l abi_x86_32
 media-libs/lcms abi_x86_32
 net-libs/gnutls abi_x86_32
-app-emulation/wine-* dos openal s3tc staging themes gstreamer custom-cflags
-# gta3 crashes with this and textures are broken with d3d9
+app-emulation/wine-* pba dos openal s3tc staging themes gstreamer vulkan custom-cflags
 app-emulation/wine-gecko abi_x86_32
 
 # winetricks[gtk]
@@ -34,6 +33,12 @@ dev-libs/libgudev abi_x86_32
 dev-libs/libgusb abi_x86_32
 x11-libs/gtk+ abi_x86_32
 
+
+# required by app-emulation/wine-any-9999::gentoo[vulkan]
+# required by @wine
+# required by @selected
+# required by @world (argument)
+media-libs/vulkan-loader abi_x86_32
 # required by media-libs/gst-plugins-base-1.12.3::gentoo[orc]
 # required by media-plugins/gst-plugins-vaapi-1.10.5::gentoo
 # required by media-plugins/gst-plugins-meta-1.10.5::gentoo[vaapi]
@@ -58,12 +63,6 @@ x11-libs/gtk+ abi_x86_32
 # required by @selected
 # required by @world (argument)
 >=media-libs/fontconfig-2.12.4 abi_x86_32
-# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[mp3]
-# required by app-emulation/wine-any-2.7::gentoo[gstreamer]
-# required by virtual/wine-0-r4::gentoo
-# required by @selected
-# required by @world (argument)
->=media-plugins/gst-plugins-mad-1.10.3 abi_x86_32
 # required by media-plugins/gst-plugins-meta-1.10.3::gentoo[vaapi]
 # required by app-emulation/wine-any-2.7::gentoo[gstreamer]
 # required by virtual/wine-0-r4::gentoo
@@ -194,13 +193,6 @@ media-plugins/gst-plugins-mpg123 abi_x86_32
 # required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
 # required by gst-plugins-meta (argument)
 >=net-libs/libssh-0.7.3-r1 abi_x86_32
-# required by x11-libs/libXScrnSaver-1.2.2-r1::gentoo
-# required by media-libs/libsdl2-2.0.4::gentoo[X,xscreensaver]
-# required by media-video/ffmpeg-3.2.4::libressl[sdl]
-# required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
-# required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]
-# required by gst-plugins-meta (argument)
->=x11-proto/scrnsaverproto-1.2.2-r1 abi_x86_32
 # required by media-video/ffmpeg-3.2.4::libressl[encode,xvid]
 # required by media-plugins/gst-plugins-libav-1.10.4::gentoo[-libav]
 # required by media-plugins/gst-plugins-meta-1.10.3::gentoo[ffmpeg]

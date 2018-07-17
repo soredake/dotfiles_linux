@@ -1,0 +1,10 @@
+#!/bin/bash
+cd ~/git/dxvk-tools || exit 1
+rm -r win32 win64
+git pull
+# x86_64 games
+WINEARCH=win64 DXVK=1 WINEPREFIX="$HOME/.local/share/lutris/runners/winesteam/prefix/drive_c/Program Files/Steam/steamapps/common/Grand Theft Auto V/prefix" ./installvulkan.sh
+WINEARCH=win64 DXVK=1 WINEPREFIX="$HOME/Games/nier-automata" ./installvulkan.sh
+# x86 + x86_64 games
+WINEARCH=win64 DXVK=1 WINEPREFIX="$HOME/tmp/wine-spirit" ./installvulkan.sh
+WINEARCH=win32 DXVK=1 WINEPREFIX="$HOME/tmp/wine-spirit" ./installvulkan.sh

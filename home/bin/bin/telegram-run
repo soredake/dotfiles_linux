@@ -3,4 +3,5 @@
 # https://github.com/telegramdesktop/tdesktop/issues/2255
 # proxychains -q
 #exec firejail --profile="$XDG_CONFIG_HOME/firejail/Telegram.profile" -- telegram-desktop -platform xcb -- "$@"
-exec firejail Telegram "$@"
+# noblacklist to fix 'libclangCodeGen.so.7: No such file or directory'
+exec firejail --join-or-start=telegram --noblacklist=/usr/lib/llvm* -- Telegram -- "$@"

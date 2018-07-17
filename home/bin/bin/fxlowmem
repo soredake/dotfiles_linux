@@ -40,6 +40,14 @@ download() {
     # unpack
     tar xvjf "${cdir}/$_base" --strip-components=1 -C "${LOCATION}"
   fi
+  current_version="$(grep -Po '(?<=^Version=).*' "${LOCATION}/application.ini")"
+  if [[ ${current_version} != "${version}" ]]; then
+    echo "Firefox is updated, moving ${AUTODOWNLOAD}-${version} to ${AUTODOWNLOAD}-${current_version}"
+    echo "${current_version}" > "${cdir}/$AUTODOWNLOAD".version
+    mv -f "${LOCATION}" "${cdir}/${AUTODOWNLOAD}-${current_version}"
+    LOCATION="${cdir}/${AUTODOWNLOAD}-${current_version}"
+    version="$(cat "${cdir}/$AUTODOWNLOAD".version)"
+  fi
 }
 
 start() {
@@ -91,7 +99,7 @@ END
     echo "Using log file: $logfile"
   fi
   echo "Launching firefox version: ${AUTODOWNLOAD}-${version}"
-  nohup "$location"/firefox --new-instance --profile "$profile" about:blank &>"$logfile" &
+  nohup "$location"/firefox --new-instance --profile "$profile" &>"$logfile" &
 }
 
 while getopts "p:l:lg:a:wd:ihc" opt; do

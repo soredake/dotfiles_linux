@@ -4,6 +4,7 @@ if [[ "$ZPLUG" == true ]]; then
   export ZPLUG_HOME="$XDG_DATA_HOME/zplug"
   export ZPLUG_LOADFILE="$XDG_CONFIG_HOME/zsh/packages.zsh"
   export ZPLUG_CACHE_DIR="$XDG_CACHE_HOME/zplug"
+  # shellcheck disable=1090
   . "$XDG_DATA_HOME/zplug/init.zsh"
   zplug "zdharma/fast-syntax-highlighting"
   zplug "zsh-users/zsh-autosuggestions"
@@ -13,7 +14,6 @@ if [[ "$ZPLUG" == true ]]; then
   zplug "lib/key-bindings", from:oh-my-zsh
   zplug "lib/theme-and-appearance", from:oh-my-zsh
   zplug "plugins/extract", from:oh-my-zsh
-  #zplug "pepa65/tldr-bash-client", as:command, use:"tldr"
   # https://github.com/Orochimarufan/.files/blob/1ade15c9069c2846b134860e56fbe9b97b1ed0bb/zsh/zshrc#L28
   # Install plugins if there are plugins that have not been installed
   if ! zplug check --verbose; then
@@ -53,14 +53,15 @@ if [[ "$ZPLUG" == true ]]; then
   alias ll='ls -lh'
   alias la='ls -lAh'
 
+  # shellcheck disable=1090
   for f in "$XDG_CONFIG_HOME/zsh/custom"/*; do . $f; done
 fi
 
 # Add additional directories to the path.
+# https://github.com/yarnpkg/yarn/issues/5353
 pathadd() {
   [[ -d "$1" ]] && [[ ":$PATH:" != *":$1:"* ]] && PATH="${PATH:+"$PATH:"}$1"
 }
-pathadd "$HOME/.gem/ruby/2.2.0/bin"
 pathadd "$HOME/bin"
 pathadd /sbin
 pathadd /usr/sbin
@@ -70,6 +71,7 @@ pathadd /snap/bin
 # https://unix.stackexchange.com/questions/308315/how-can-i-configure-zsh-completion-to-show-hidden-files-and-folders
 _comp_options+=(globdots)
 
+# shellcheck disable=1090
 for f in $HOME/.private/*; do . $f; done
 
 # Don't hash directories on the path a time, which allows new

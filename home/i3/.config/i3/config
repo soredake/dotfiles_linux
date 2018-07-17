@@ -21,13 +21,13 @@ set $mod Mod4
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec "kitty -1"
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start rofi
-bindsym $mod+d exec --no-startup-id "rofi -show-icons true -terminal gnome-terminal -combi-modi window,drun -show combi -modi combi"
+bindsym $mod+d exec --no-startup-id "rofi -show-icons true -terminal kitty -combi-modi window,drun -show combi -modi combi"
 
 # change focus
 bindsym $mod+$left focus left
@@ -133,7 +133,8 @@ bindsym $mod+Shift+KP_1 exec "output-change.sh"
 #bindsym $mod+KP_4 exec "save-special-server $(xsel -o --logfile $XDG_CACHE_HOME/xsel/xsel.log)"
 #bindsym $mod+KP_5 exec "save-special $(xsel -o --logfile $XDG_CACHE_HOME/xsel/xsel.log)"
 #bindsym $mod+Shift+KP_7 exec "maim -s $HOME/mdata/syncthing/main/Screens/$(date +%d.%m.%G-%T).png"
-bindsym $mod+Shift+KP_7 exec "maim -s $HOME/mdata/syncthing/main/Screens/$(xdotool getwindowname $(xdotool getactivewindow))-$(date +%d.%m.%G-%T).png"
+# screenshot current active window
+bindsym $mod+Shift+KP_7 exec "maim -f png -m 1 $HOME/sync/main/Screens/$(date +%d.%m.%G-%T).png"
 bindsym $mod+Shift+KP_3 exec "scr l"
 bindsym $mod+Shift+KP_9 exec "i3lock"
 
@@ -170,7 +171,7 @@ bar {
         font           pango:Terminus, FontAwesome 9
         position       bottom
         status_command i3blocks -c ~/.config/i3blocks.conf
-        tray_output    HDMI-1
+        tray_output    HDMI-A-0
         colors {
                background              #222222
                separator               #444444
@@ -189,14 +190,14 @@ bar {
 exec --no-startup-id systemctl --user restart nm-applet mouse_accel xsetdpms xautolock xset-kbd-rate
 exec --no-startup-id sleep 10 && systemctl --user restart kbdd kdeconnectd
 #kbdd
-#exec --no-startup-id systemctl --user restart compton-nvidia
+exec --no-startup-id systemctl --user restart compton-nvidia
 ##nvidia-settings xrandr-output
-exec --no-startup-id systemctl --user restart compton-free
+#exec --no-startup-id systemctl --user restart compton-free
 
 #### nouveau:
 #exec --no-startup-id compton -b --backend glx --vsync opengl-mswc --paint-on-overlay --unredir-if-possible --glx-no-stencil --glx-no-rebind-pixmap --config /dev/null
 #exec --no-startup-id xrandr --output VGA-1 --auto --output HDMI-1 --auto --left-of VGA-1
-exec --no-startup-id xrandr --output HDMI-1 --auto --primary
+#exec --no-startup-id xrandr --output HDMI-1 --auto --primary
 
 #### nvidia-drivers:
 #exec --no-startup-id xrandr --output VGA-0 --auto --output HDMI-0 --auto --left-of VGA-0
@@ -208,7 +209,8 @@ exec --no-startup-id xrandr --output HDMI-1 --auto --primary
 exec_always feh --no-fehbg --bg-scale "$XDG_DATA_HOME/wallpaper-1.jpg" --xinerama-index 0
 
 #for_window [class="^mpv$"] move up
-for_window [class="explorer.exe"] floating enable
+for_window [class="Wine"] floating enable
+for_window [class="RPCS3"] floating enable
 for_window [title="The Escapists 2"] floating enable
 #for_window [class="^plasmawindowed$"] kill
 #for_window [class="^Firefox$"] border pixel 1

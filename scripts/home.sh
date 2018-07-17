@@ -47,12 +47,12 @@ resume_swap_file_setup() {
 
 portage_git_init() {
   red "Switching portage tree to git in /usr/portage"
-  pushd /usr/portage
+  pushd /usr/portage || exit 1
   git init
   git remote add origin https://anongit.gentoo.org/git/repo/gentoo.git
   git fetch --depth=1
   git checkout -ft origin/master
-  popd
+  popd || exit 1
 }
 
 create_notmpfs_folder() {
@@ -109,7 +109,6 @@ else
   systemctl restart systemd-timesyncd
   emerge --sync
   eselect profile set pinkpieea:default/linux/amd64/17.0/desktop/systemd
-  #swap_setup
   create_notmpfs_folder
   emerge --getbinpkg=y --usepkg=y dev-vcs/git || die "git install failed"
   emerge --getbinpkg=y --usepkg=y app-admin/stow app-admin/sudo app-shell/zsh dev-util/ccache net-misc/networkmanager net-vpn/tor sys-kernel/genkernel-next x11-misc/xdg-user-dirs x11-misc/xdg-utils || die "emerge failed"
@@ -139,7 +138,7 @@ END
   passwd root || die "setting root password failed"
   red "Creating user dirs"
   sudo -u "$NEWUSER" -s LC_ALL=C xdg-user-dirs-update
-  sudo -u "$NEWUSER" -s mkdir -p media tmp git .{private,config,cache} .local/share/applications/custom
+  sudo -u "$NEWUSER" -s mkdir -p media tmp git .{private,config/kitty,cache} .local/share/applications/custom
   portage_git_init
   red "Owning this repository"
   chown -R "$NEWUSER:$NEWUSER" "$SD"/..

@@ -1,3 +1,0 @@
-# required by app-emulation/wine-any-9999::gentoo[mono]
-# required by app-emulation/wine-any:9999 (argument)
-=app-emulation/wine-mono-4.7.1

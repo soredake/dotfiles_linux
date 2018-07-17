@@ -4,18 +4,13 @@ export XKB_DEFAULT_LAYOUT=us,ru
 export XKB_DEFAULT_MODEL=pc104
 export XKB_DEFAULT_VARIANT=qwerty
 export XKB_DEFAULT_OPTIONS=grp:rctrl_toggle
-#export WLC_REPEAT_DELAY=5
-#export WLC_REPEAT_RATE=1
-
-# Wlc env
-export WLC_LIBINPUT=1
 
 fullwayland=0
 
 if [[ "$fullwayland" == "1" || "$1" == "f" ]]; then
-  # Wayland env
+  # Wayland env, https://github.com/swaywm/sway/wiki/Running-programs-natively-under-wayland
   export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-  #export _JAVA_AWT_WM_NONREPARENTING=1
+  export _JAVA_AWT_WM_NONREPARENTING=1
   export QT_QPA_PLATFORM=wayland
   #export QT_QPA_PLATFORM=wayland-egl
   export GDK_BACKEND=wayland

@@ -24,8 +24,16 @@ tre() {
 }
 
 # Convert currencies; cconv {amount} {from} {to}
+#cconv() {
+#  curl --socks5-hostname 127.0.0.1:9250 -s "https://finance.google.com/finance/converter?a=$1&from=$2&to=$3&hl=es" | sed '/res/!d;s/<[^>]*>//g';
+#}
+
+# Convert currencies; cconv {amount} {from} {to}
+# https://stackoverflow.com/questions/13242469/how-to-use-sed-grep-to-extract-text-between-two-words
 cconv() {
-  curl --socks5-hostname 127.0.0.1:9250 -s "https://finance.google.com/finance/converter?a=$1&from=$2&to=$3&hl=es" | sed '/res/!d;s/<[^>]*>//g';
+  #| grep '&#8372;</strong>'
+  result="$(curl -s "https://exchangerate.guru/$2/$3/$1/" | grep --color=never -o -P '(?<=<input data-role="secondary-input" type="text" class="form-control" value=").*(?=" required>)')"
+  echo "$1 $2 = $result $3"
 }
 
 # Upload to transfer.sh
@@ -40,7 +48,8 @@ bkg() {
 }
 
 wttr() {
-  curl -A curl -k https://wttr.in/"${1:-moon}"?lang=ru
+  # moon or city name
+  curl -A curl -k https://wttr.in/"${1}"?lang=ru
 }
 
 # Calculate actual size of {HD,SS}D; actualsize {size} {gb}[optional, use gigabytes instead of terabytes]
@@ -117,11 +126,6 @@ case "$1" in
 esac
 }
 
-#wp() {
-#  if [[ ! -z "$3"]]; then desktop="explorer /desktop=$(basename $1),$3"; fi
-#  WINEPREFIX="$XDG_DATA_HOME/wineprefix/${2:-steam}" wine "$1" "$2" ${desktop}
-#}
-
 wtp() {
   winetricks prefix="$XDG_DATA_HOME/wineprefix/$@"
 }
@@ -133,17 +137,17 @@ kernelup() {
 
 # kernel update
 kupdate() {
-	local cur_v="$(eselect kernel show | grep -Eo [0-9]\.[0-9][0-9]?\.[0-9][0-9]?)"
-	sudo cp "$HOME/git/dotfiles_home/kernel/.config" /usr/src/linux
-	pushd /usr/src/linux
-	sudo make olddefconfig
-	popd
-	cp /usr/src/linux/.config "$HOME/git/dotfiles_home/kernel/.config"
-	cp /usr/src/linux/.config "$HOME/git/dotfiles_home/kernel/.config_${cur_v}"
-	kernelup
-	sudo emerge @module-rebuild --usepkg=n
-	kernelup initramfs
-	update-grub
+  local cur_v="$(eselect kernel show | grep -Eo [0-9]\.[0-9][0-9]?\.[0-9][0-9]?)"
+  sudo cp "$HOME/git/dotfiles_home/kernel/.config" /usr/src/linux
+  pushd /usr/src/linux
+  sudo make olddefconfig
+  popd
+  cp /usr/src/linux/.config "$HOME/git/dotfiles_home/kernel/.config"
+  cp /usr/src/linux/.config "$HOME/git/dotfiles_home/kernel/.config_${cur_v}"
+  kernelup
+  sudo emerge @module-rebuild --usepkg=n
+  kernelup initramfs
+  update-grub
 }
 
 random() {
@@ -152,11 +156,98 @@ random() {
 
 linuxsteamgames() {
   _url="https://store.steampowered.com/search/?category1=998&os="
-  for os in win linux; do
+  for os in win linux mac; do
     local ${os}games="$(curl --http2 -s "${_url}${os}" | grep -o "showing 1 - 25 of [0-9]*" | sed "s/showing 1 - 25 of //")"
   done
   echo "Windows steam games: ${wingames}"
+  echo "Mac steam games: ${macgames}"
   echo "Linux steam games: ${linuxgames}"
   # https://stackoverflow.com/a/41265735
-  echo "Percentage of linux games:" $(echo "scale = 2; ($linuxgames / $wingames)" | bc -l | awk -F '.' '{print $2}')%
+  echo "Percentage of linux games compared to windows:" $(echo "scale = 2; ($linuxgames / $wingames)" | bc -l | awk -F '.' '{print $2}')%
+  echo "Percentage of linux games compared to macOS:" $(echo "scale = 2; ($linuxgames / $macgames)" | bc -l | awk -F '.' '{print $2}')%
+}
+
+startvm() {
+  sudo -n true
+  #systemctl stop getty@tty1.service
+  #systemctl stop getty.target
+  sudo chmod 777 /dev/kvm
+  sudo cpupower frequency-set -g performance
+
+  #vfio-bind 0000:24:00.0 0000:24:00.1
+  #echo "1002 67ff" > /sys/bus/pci/drivers/vfio-pci/new_id
+  #echo "0000:24:00:0" > /sys/bus/pci/devices/0000:01:00.0/driver/unbind
+  #echo "0000:24:00:0" > /sys/bus/pci/drivers/vfio-pci/bind
+  #echo "1002 67ff" > /sys/bus/pci/drivers/vfio-pci/remove_id
+
+  #echo "1002 aae0" > /sys/bus/pci/drivers/vfio-pci/new_id
+  #echo "0000:24:00:1" > /sys/bus/pci/devices/0000:01:00.1/driver/unbind
+  #echo "0000:24:00:1" > /sys/bus/pci/drivers/vfio-pci/bind
+  #echo "1002 aae0" > /sys/bus/pci/drivers/vfio-pci/remove_id
+
+  sudo virsh start win10
+}
+
+stopvm() {
+  sudo -n true
+  sudo virsh stop win10
+  #echo 1 > /sys/bus/pci/devices/0000:24:00.0/remove
+  #echo 1 > /sys/bus/pci/devices/0000:24:00.1/remove
+  #echo 1 > /sys/bus/pci/rescan
+  #systemctl start getty@tty1.service
+  #systemctl start getty.target
+  sudo cpupower frequency-set -g ondemand
+}
+
+passtovm() {
+  sed -i "s/amdgpu//g" $(realpath /etc/modules-load.d/modules.conf)
+  sudo tee -a /etc/modules-load.d/vfio.conf <<END
+vfio
+vfio_iommu_type1
+vfio_pci
+vfio_virqfd
+END
+  sudo tee -a /etc/modprobe.d/vfio-pci.conf <<< "options vfio-pci ids=1002:67ff,1002:aae0"
+}
+
+backtohost() {
+  tee -a /etc/modules-load.d/modules.conf <<< "amdgpu"
+  sudo rm -f /etc/modules-load.d/vfio.conf /etc/modprobe.d/vfio-pci.conf
+}
+
+# https://gist.github.com/shamil/62935d9b456a6f9877b5
+vm-mount-parts() {
+  sudo qemu-nbd --connect=/dev/nbd0 /var/lib/libvirt/images/win10.qcow2
+  sudo qemu-nbd --connect=/dev/nbd1 /var/lib/libvirt/images/win10-1.qcow2
+  sudo qemu-nbd --connect=/dev/nbd2 /var/lib/libvirt/images/win10-2.qcow2
+  sleep 3
+  sudo ntfsfix -db /dev/nbd0p4
+  sudo ntfsfix -db /dev/nbd1p2
+  sudo ntfsfix -db /dev/nbd2p2
+  sudo mount -o uid=1000,gid=1000 /dev/nbd0p4 "$HOME/media/vm-disk-c"
+  sudo mount -o uid=1000,gid=1000 /dev/nbd1p2 "$HOME/media/vm-disk-f"
+  sudo mount -o uid=1000,gid=1000 /dev/nbd2p2 "$HOME/media/vm-disk-g"
+}
+
+vm-unmount-parts() {
+  sudo umount "$HOME/media/vm-disk-c"
+  sudo umount "$HOME/media/vm-disk-f"
+  sudo umount "$HOME/media/vm-disk-g"
+  sudo qemu-nbd --disconnect /dev/nbd0p4
+  sudo qemu-nbd --disconnect /dev/nbd1p2
+  sudo qemu-nbd --disconnect /dev/nbd2p2
+}
+
+# https://stackoverflow.com/a/10060342
+# https://stackoverflow.com/a/10060342
+# 512mb max
+# stores for 30+ days
+0x0() {
+  if [[ "$1" =~ ^http?[s]://.*$ ]]; then local prefix="url="; else local prefix="file=@"; fi
+  curl -F"${prefix}${1}" https://0x0.st
+}
+
+# https://github.com/chrippa/livestreamer/issues/550#issuecomment-222061982
+streamnodown() {
+  streamlink --loglevel debug --player-external-http --player-no-close --player-external-http-port "5555" --retry-streams1 --retry-open 100 --stream-segment-attempts 20 --stream-timeout 180 --ringbuffer-size 64M --rtmp-timeout 240 "$1" "${2}"
 }

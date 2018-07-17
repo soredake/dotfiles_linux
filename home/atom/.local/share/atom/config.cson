@@ -1,0 +1,62 @@
+"*":
+  autosave:
+    enabled: true
+  core:
+    automaticallyUpdate: false
+    disabledPackages: [
+      "language-go"
+      "language-csharp"
+      "language-clojure"
+      "language-c"
+      "language-java"
+      "language-less"
+      "language-mustache"
+      "language-objective-c"
+      "language-perl"
+      "language-php"
+      "language-python"
+      "language-ruby"
+      "language-ruby-on-rails"
+      "language-sass"
+      "welcome"
+      "open-on-github"
+      "package-generator"
+      "metrics"
+      "language-typescript"
+      "language-toml"
+      "language-sql"
+      "whitespace"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "firewatch-syntax"
+    ]
+  editor:
+    fontFamily: "Hack"
+    fontSize: 15
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: true
+  "exception-reporting":
+    userId: "4a261763-7639-4261-82d5-ab339b204310"
+  "linter-ui-default": {}
+  minimap:
+    plugins:
+      cursorline: true
+      cursorlineDecorationsZIndex: 0
+      "find-and-replace": true
+      "find-and-replaceDecorationsZIndex": 0
+      linter: true
+      linterDecorationsZIndex: 0
+      pigments: true
+      pigmentsDecorationsZIndex: 0
+      selection: true
+      selectionDecorationsZIndex: 0
+  "tree-view":
+    hideVcsIgnoredFiles: true
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ensureSingleTrailingNewline: false
+    removeTrailingWhitespace: false

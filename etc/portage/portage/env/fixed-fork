@@ -1,2 +1,0 @@
-docker_gc_LIVE_REPO="https://notabug.org/soredake/docker-gc.git"
-docker_gc_LIVE_BRANCH="fix-shasum"

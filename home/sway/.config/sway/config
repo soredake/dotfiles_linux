@@ -206,14 +206,13 @@ input "4152:5920:SteelSeries_SteelSeries_Rival_310_eSports_" {
   accel_profile flat
 }
 
-output HDMI-A-1 res 2560x1080 pos 0,0 bg ~/.local/share/wallpaper-1.jpg fill
+output HDMI-A-0 res 2560x1080 pos 0,0 bg ~/.local/share/wallpaper-1.jpg fill
 #output VGA-1 res 1440x900 pos 2560,0
 focus_follows_mouse yes
 for_window [class="explorer.exe"] floating enable
 for_window [class="dota2"] floating enable
 for_window [class="zenity"] floating enable
 #for_window [class="gnome-terminal-server"] floating enable
-
 
 # Minimal windows
 new_window pixel 1

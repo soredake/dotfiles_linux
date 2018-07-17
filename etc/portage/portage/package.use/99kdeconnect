@@ -1,8 +1,0 @@
-kde-misc/kdeconnect -* app
-kde-plasma/plasma-workspace -*
-kde-apps/kio-extras -*
-kde-plasma/kwin -*
-kde-frameworks/plasma -*
-kde-plasma/breeze -wayland
-*/* -handbook
-media-libs/phonon -vlc

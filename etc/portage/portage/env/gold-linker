@@ -1,3 +1,0 @@
-# https://wiki.gentoo.org/wiki/Gold
-# https://trac.webkit.org/wiki/WebKitGTK/SpeedUpBuild
-EXTRA_ECONF="--enable-gold=default"

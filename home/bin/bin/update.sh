@@ -10,11 +10,17 @@ sudo emerge --sync || exit 1
 sudo emerge --changed-use --newuse -uDU @world || exit 1
 #sudo emerge --changed-use --newuse --ignore-built-slot-operator-deps=y --rebuild-if-new-slot=y --rebuild-if-new-rev=y --rebuild-if-new-ver=y --rebuild-if-unbuilt=y -uDU @world
 sudo emerge --usepkg=n @preserved-rebuild || exit 1
-sudo smart-live-rebuild -f '!www-client/torbrowser' -f '!app-emulation/wine-vanilla' -f '!app-emulation/wine-any' -f '!games-emulation/retroarch' -f '!x11-misc/xsel' -- --usepkg=n
-sudo emerge -v --depclean || exit 1
-#sudo env-update
+sudo smart-live-rebuild -f '!www-client/torbrowser' -f '!games-emulation/retroarch' -f '!net-im/telegram-desktop' -- --usepkg=n
 #sudo haskell-updater -c -u -- --usepkg=n
 #sudo perl-cleaner --all -- --usepkg=n
-glsa-check -l affected
+sudo emerge -v --depclean || exit 1
 sudo eclean -d -n distfiles
 sudo eclean --deep -d packages
+apm update
+flatpak --user update
+flatpak --user uninstall --unused
+yarn global upgrade
+yarn autoclean
+yarn cache clean
+fwupdmgr refresh
+fwupdmgr update

@@ -2,7 +2,7 @@
 Description=Compton compositor (Nvidia driver)
 
 [Service]
-ExecStart=/usr/bin/compton --config /dev/null --backend xrender --unredir-if-possible
+ExecStart=/usr/bin/compton --config %h/.config/compton.conf --backend xrender --unredir-if-possible
 Restart=on-abort
 
 [Install]

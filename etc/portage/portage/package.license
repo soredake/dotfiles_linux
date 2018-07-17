@@ -1,8 +1,2 @@
->=www-plugins/adobe-flash-26.0.0.151 AdobeFlash-11.x
-# required by games-fps/urbanterror-4.3.2_p20171016::gentoo
-# required by games-fps/urbanterror (argument)
->=games-fps/urbanterror-data-4.3.2-r1 Q3AEULA-20000111
 # required by www-client/google-chrome (argument)
 >=www-client/google-chrome-63.0.3239.108 google-chrome
-# required by teamviewer (argument)
->=net-misc/teamviewer-13.0.5693-r2 TeamViewer

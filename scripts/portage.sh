@@ -13,7 +13,7 @@ sudo emerge --sync
 sudo emerge --changed-use --newuse -uDU @world
 
 # Install software
-sudo emerge -n @world @x11 @comments @gamepad-joystick
+sudo emerge -n @world @x11
 
 # Remove outdated versions from the portage.
 sudo emerge -av --depclean

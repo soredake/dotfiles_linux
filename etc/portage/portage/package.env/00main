@@ -1,32 +1,7 @@
-# grub can only be built with disabled distcc
-#sys-boot/grub no-distcc
-sys-devel/binutils gold-linker
-sys-process/htop htop-mask
-app-emulation/docker-gc fixed-fork
-
 # needs bfd to build
-#dev-lang/fpc force-bfd
 sys-libs/db force-bfd
 
-# cargo 9999
-x11-terms/alacritty nonetsandbox
-# fetches deps in forbidden phases
-net-im/telegram-desktop nonetsandbox
-# mono
-games-action/osu nonetsandbox
-dev-dotnet/nuget nonetsandbox
-games-strategy/openra nonetsandbox
-
-# wine maintainers is so slow at publishing new version's
-app-emulation/wine-any wine-any-latest
-
-#* Valgrind will not work if glibc does not have debug symbols.
-#* To fix this you can add splitdebug to FEATURES in make.conf
-#* and remerge glibc.  See:
-#* https://bugs.gentoo.org/show_bug.cgi?id=214065
-#* https://bugs.gentoo.org/show_bug.cgi?id=274771
-#* https://bugs.gentoo.org/show_bug.cgi?id=388703
-sys-libs/glibc splitdebug
-
-# spawning processes up to 6g
-www-client/firefox notmpfs.conf
+# too big for ram
+net-im/telegram-desktop notmpfs
+dev-util/electron notmpfs
+dev-qt/qtwebengine notmpfs j8
