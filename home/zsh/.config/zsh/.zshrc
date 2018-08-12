@@ -110,9 +110,4 @@ zstyle ':url-quote-magic:*' url-metas "*&?[]^'(|)~#="
 zle -N self-insert url-quote-magic
 zle -N bracketed-paste bracketed-paste-magic
 
-# start X if on tty1 and it's not already running
-#if [[ -z $DISPLAY && "$(tty)" == /dev/tty1 ]] && (( $+commands[startx] )); then
-#  exec startx -- vt1 &> "$XDG_CACHE_HOME/xorg.log"
-#fi
-
 echo Hi sempai~

@@ -33,7 +33,6 @@ dev-libs/libgudev abi_x86_32
 dev-libs/libgusb abi_x86_32
 x11-libs/gtk+ abi_x86_32
 
-
 # required by app-emulation/wine-any-9999::gentoo[vulkan]
 # required by @wine
 # required by @selected

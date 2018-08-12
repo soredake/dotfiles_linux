@@ -169,21 +169,8 @@ linuxsteamgames() {
 
 startvm() {
   sudo -n true
-  #systemctl stop getty@tty1.service
-  #systemctl stop getty.target
   sudo chmod 777 /dev/kvm
   sudo cpupower frequency-set -g performance
-
-  #vfio-bind 0000:24:00.0 0000:24:00.1
-  #echo "1002 67ff" > /sys/bus/pci/drivers/vfio-pci/new_id
-  #echo "0000:24:00:0" > /sys/bus/pci/devices/0000:01:00.0/driver/unbind
-  #echo "0000:24:00:0" > /sys/bus/pci/drivers/vfio-pci/bind
-  #echo "1002 67ff" > /sys/bus/pci/drivers/vfio-pci/remove_id
-
-  #echo "1002 aae0" > /sys/bus/pci/drivers/vfio-pci/new_id
-  #echo "0000:24:00:1" > /sys/bus/pci/devices/0000:01:00.1/driver/unbind
-  #echo "0000:24:00:1" > /sys/bus/pci/drivers/vfio-pci/bind
-  #echo "1002 aae0" > /sys/bus/pci/drivers/vfio-pci/remove_id
 
   sudo virsh start win10
 }
@@ -191,11 +178,6 @@ startvm() {
 stopvm() {
   sudo -n true
   sudo virsh stop win10
-  #echo 1 > /sys/bus/pci/devices/0000:24:00.0/remove
-  #echo 1 > /sys/bus/pci/devices/0000:24:00.1/remove
-  #echo 1 > /sys/bus/pci/rescan
-  #systemctl start getty@tty1.service
-  #systemctl start getty.target
   sudo cpupower frequency-set -g ondemand
 }
 
@@ -250,4 +232,26 @@ vm-unmount-parts() {
 # https://github.com/chrippa/livestreamer/issues/550#issuecomment-222061982
 streamnodown() {
   streamlink --loglevel debug --player-external-http --player-no-close --player-external-http-port "5555" --retry-streams1 --retry-open 100 --stream-segment-attempts 20 --stream-timeout 180 --ringbuffer-size 64M --rtmp-timeout 240 "$1" "${2}"
+}
+
+# backup
+backup() {
+  cps "$HOME/sync/arch" "$HOME/sync/system-data" "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" /media/disk0/backup
+  # dropbox
+  rclone sync "$HOME/sync/arch" dropbox:/arch
+  rclone sync "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" dropbox:/
+  # opendrive
+  rclone sync "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" opendrive:/
+  # google drive
+  rclone sync "$HOME/sync/arch" google_drive:/arch
+  rclone sync "$HOME/sync/system-data" google_drive:/system-data
+  rclone sync "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" google_drive:/
+  # mega.nz
+  rclone sync "$HOME/sync/arch" mega_nz:/arch
+  rclone sync "$HOME/sync/system-data" mega_nz:/system-data
+  rclone sync "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" mega_nz:/
+  # yandex.disk
+  rclone sync "$HOME/sync/arch" mega_nz:/arch
+  rclone sync "$HOME/sync/system-data" mega_nz:/system-data
+  rclone sync "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" mega_nz:/
 }

@@ -6,5 +6,9 @@ git pull
 WINEARCH=win64 DXVK=1 WINEPREFIX="$HOME/.local/share/lutris/runners/winesteam/prefix/drive_c/Program Files/Steam/steamapps/common/Grand Theft Auto V/prefix" ./installvulkan.sh
 WINEARCH=win64 DXVK=1 WINEPREFIX="$HOME/Games/nier-automata" ./installvulkan.sh
 # x86 + x86_64 games
-WINEARCH=win64 DXVK=1 WINEPREFIX="$HOME/tmp/wine-spirit" ./installvulkan.sh
-WINEARCH=win32 DXVK=1 WINEPREFIX="$HOME/tmp/wine-spirit" ./installvulkan.sh
+WINEARCH=win64 DXVK=1 WINEPREFIX="$HOME/Games/awesome-spirit" ./installvulkan.sh
+WINEARCH=win32 DXVK=1 WINEPREFIX="$HOME/Games/awesome-spirit" ./installvulkan.sh
+WINEARCH=win64 DXVK=1 WINEPREFIX="$HOME/Games/deadspace-gog-galaxy" ./installvulkan.sh
+WINEARCH=win32 DXVK=1 WINEPREFIX="$HOME/Games/deadspace-gog-galaxy" ./installvulkan.sh
+WINEARCH=win64 DXVK=1 WINEPREFIX="$HOME/Games/va11" ./installvulkan.sh
+WINEARCH=win32 DXVK=1 WINEPREFIX="$HOME/Games/va11" ./installvulkan.sh

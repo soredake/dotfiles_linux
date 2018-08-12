@@ -1,9 +1,5 @@
-app-accessibility/espeak-ng
-app-accessibility/speech-dispatcher
 app-admin/eclean-kernel
-app-admin/hardinfo
 app-admin/keepassxc
-app-admin/profile-cleaner
 app-admin/ps_mem
 app-admin/stow
 app-admin/sudo
@@ -147,6 +143,7 @@ net-misc/networkmanager
 net-misc/networkmanager-openvpn
 net-misc/nyx
 net-misc/proxychains
+net-misc/rclone
 net-misc/streamlink
 net-misc/trackma
 net-misc/whois
@@ -171,6 +168,7 @@ sys-apps/pv
 sys-apps/qdirstat
 sys-apps/ripgrep
 sys-apps/smartmontools
+sys-apps/usbutils
 sys-apps/yarn
 sys-block/gparted
 sys-boot/grub

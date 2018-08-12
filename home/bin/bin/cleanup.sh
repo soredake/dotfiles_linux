@@ -10,13 +10,10 @@ rmlist=(
   /var/log/journal
   "$HOMEDIR"/.pulse-cookie
   #$HOMEDIR/.*sh_history
-  "$HOMEDIR"/.cache/{ranger,thumbnails,docker-gc,fontconfig,gstreamer-1.0,less,media,wine,youtube-dl,*.kcache,ksycoca5*,plasma-svgelements*,qt_compose_cache*}
+  "$HOMEDIR"/.cache/{ranger,thumbnails,gstreamer-1.0,less,wine,youtube-dl,qt_compose_cache*}
   "$HOMEDIR/.dbus"
   "$XDD/{xorg,RecentDocuments,Trash}"
   "$XDD/*.xbel*"
-  #$XDD/firefox/tor-main/sessions/{Deleted\ Sessions,Удалённые\ сессии}/*
-  #$HOMEDIR/.Xauthority
-  #$HOMEDIR/tmux-*.log
 )
 /bin/rm -r "${rmlist[@]}"
 /usr/bin/ccache -C

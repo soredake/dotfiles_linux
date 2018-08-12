@@ -29,11 +29,5 @@ xdg-mime default libreoffice-calc.desktop application/vnd.oasis.opendocument.spr
 # Steam
 xdg-mime default steam-fixed.desktop x-scheme-handler/steam
 
-# keepassxc
-xdg-mime default keepassxc-firejail.desktop application/x-keepass2
-
-# qtox
-xdg-mime default qtox-firejail.desktop x-scheme-handler/tox application/x-tox
-
 # update mime db
 sudo update-desktop-database -v "$XDG_DATA_HOME/applications" /usr/share/applications

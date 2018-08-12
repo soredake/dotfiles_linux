@@ -11,7 +11,7 @@ unzip vk.zip -d vk
 wget https://github.com/terkelg/ramme/releases/download/v3.2.5/Ramme-3.2.5.tar.gz -O Ramme.tar.gz
 tar zxvf Ramme.tar.gz
 mkdir ramme
-mv Ramme/* ramme
+mv Ramme-*/* ramme
 # itch
 wget https://nuts.itch.zone/download -O itch.tar.xz
 tar --xz -xvf itch.tar.xz

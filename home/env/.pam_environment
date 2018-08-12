@@ -37,6 +37,5 @@ TOR_NO_DISPLAY_NETWORK_SETTINGS=1
 # menu item.
 TOR_HIDE_UPDATE_CHECK_UI=1
 
-# https://github.com/doitsujin/dxvk/#debugging
-DXVK_FAKE_DX10_SUPPORT=1
-DXVK_USE_PIPECOMPILER=1
+# https://github.com/doitsujin/dxvk/wiki/Configuration
+DXVK_CONFIG_FILE				DEFAULT=${XDG_CONFIG_HOME}/dxvk.conf

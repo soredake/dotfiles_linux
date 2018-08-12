@@ -5,4 +5,5 @@ dev-libs/sway::ineluctable-overlay
 net-misc/openssh::FireBurn
 sys-apps/less::mv
 virtual/libusb::booboo
+www-client/firefox::bobwya
 x11-libs/gtk+::mv

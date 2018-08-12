@@ -59,10 +59,7 @@ alias gitpullall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.g
 #alias flatpak-lutris='flatpak run net.lutris.Lutris'
 #alias flatpak-pulseeffects='flatpak run com.github.wwmm.pulseeffects'
 #alias flatpak-steam='flatpak run com.valvesoftware.Steam'
-#alias rt='tmux -L rt attach -t rt'
-#alias webcamoid='webcamoid -q /usr/lib64/qt/qml'
 alias back='cd $OLDPWD'
-alias cantata='bkg env QT_QPA_PLATFORMTHEME=  cantata' # remove after 2.3.1 is out, https://github.com/CDrummond/cantata/issues/1301#issuecomment-394460333
 alias clearterm='printf "\033c"'
 alias e='atom'
 alias egrep='grep -E --color'
@@ -73,12 +70,12 @@ alias gogdownload='lgogdownloader --exclude e,c,p --platform lin,win --use-cache
 alias goodnight='veracrypt -t -d && vm-unmount-parts; sc poweroff -i'
 alias grep='grep --color'
 alias icat='iconv -f WINDOWS-1251 -t UTF-8' # https://unix.stackexchange.com/questions/78776/characters-encodings-supported-by-more-cat-and-less
-alias internal-ip='ip addr show enp30s0 | grep "inet\b" | awk "{print $2}" | cut -d/ -f1 | sed "s/    inet //g"'
+alias internal-ip="ip -o route get to 8.8.8.8 | sed -rn 's/.*src (([0-9]{1,3}\.){3}[0-9]{1,3}).*/\1/p'" # https://github.com/pi-hole/docker-pi-hole/issues/312#issuecomment-412254618
 alias jc='journalctl'
 alias jcu='jc --user'
 alias mpvq='mpvq'
 alias mus='mpv --profile=novid'
-alias mvi='mpv --profile image'
+alias mvi='mpv --profile=image'
 alias o='xdg-open'
 alias ob='bkg xdg-open'
 alias sc='systemctl'
@@ -88,3 +85,4 @@ alias sudoedit='SUDO_EDITOR="atom -w" sudoedit -E'
 alias syncplay='QT_PREFERRED_BINDING=PySide2 syncplay' # https://github.com/Syncplay/syncplay/issues/147#issuecomment-336957986
 alias virsh-edit='EDITOR=atom sudo -E virsh edit'
 alias vm-sound-restart='sudo virsh destroy win10 && systemctl --user restart pulseaudio && systemctl restart libvirtd && sudo virsh start win10'
+alias rpcs3='PULSE_LATENCY_MSEC=60 ./*.AppImage'

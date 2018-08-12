@@ -127,11 +127,8 @@ PUBLICSHARE=.crap/Public
 TEMPLATES=.crap/Templates
 VIDEOS=Videos
 END
-  red "Creating data group..."
-  groupadd -g 1500 data
   red "Creating user..."
-  # UMASK=027 is not posible because of etc and root links
-  useradd -K UMASK=022 -m -G users,audio,data,wheel,video,plugdev -s /bin/zsh "$NEWUSER"
+  useradd -m -G users,audio,wheel,video,plugdev -s /bin/zsh "$NEWUSER"
   red "Password for user"
   passwd "$NEWUSER" || die "setting user password failed"
   red "Password for root"

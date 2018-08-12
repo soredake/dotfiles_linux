@@ -16,6 +16,10 @@ net-news/rssguard webengine
 dev-util/electron -system-ffmpeg
 dev-qt/qtwebengine -system-ffmpeg
 >=media-plugins/gst-plugins-gtk-1.14.1 abi_x86_32
+# required by media-libs/gst-plugins-base-1.14.2-r1::gentoo[-gles2,opengl]
+# required by media-plugins/gst-plugins-libav-1.14.2::gentoo
+# required by =media-plugins/gst-plugins-libav-1.14.2 (argument)
+>=media-libs/graphene-1.8.2 abi_x86_32
 
 # Lector
 app-text/lector python_targets_python3_6
@@ -282,6 +286,11 @@ media-libs/alsa-lib abi_x86_32
 # required by @selected
 # required by @world (argument)
 >=media-libs/gst-plugins-good-1.12.3 abi_x86_32
+# required by net-libs/nghttp2-1.31.1::gentoo[cxx]
+# required by net-libs/nodejs-8.11.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/boost-1.65.0 abi_x86_32
 
 >=sys-devel/clang-3.9.1-r100 abi_x86_32
 
@@ -303,6 +312,7 @@ app-cdr/cuetools flac
 net-p2p/transmission ayatana
 sys-libs/glibc nscd
 dev-python/pyside widgets gui
+dev-lang/perl ithreads
 media-sound/cantata taglib musicbrainz cdio cddb
 media-sound/mpd -alsa cdio gme libmpdclient -mikmod modplug opus pipe -sid recorder soundcloud upnp wildmidi expat
 media-video/syncplay gui
@@ -310,6 +320,7 @@ sys-boot/grub device-mapper efiemu mount libzfs GRUB_PLATFORMS: pc
 net-misc/aria2 adns bittorrent jemalloc scripts
 sys-apps/firejail x11
 net-vpn/tor zstd lzma scrypt
+app-office/libreoffice-bin python_targets_python3_5
 x11-libs/libdrm libkms
 sys-apps/dbus user-session
 sys-apps/coreutils multicall
@@ -330,6 +341,12 @@ media-video/ffmpeg openssl ssh libass openh264 vpx x265 cpudetection theora opus
 app-emulation/qemu usbredir spice lzo virtfs sdl2 virgl -vnc QEMU_USER_TARGETS: x86_64
 dev-libs/openssl -bindist abi_x86_32
 net-misc/openssh -bindist
+
+dev-python/websocket-client python_targets_python3_5
+dev-python/pycountry python_targets_python3_5
+dev-python/pycryptodome python_targets_python3_5
+>=virtual/python-cffi-0 python_targets_python3_5
+
 app-emulation/docker overlay -device-mapper
 net-misc/networkmanager resolvconf -wext
 media-libs/mesa gles2 -bindist

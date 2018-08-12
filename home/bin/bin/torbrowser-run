@@ -4,13 +4,10 @@
 export TOR_CONTROL_PORT
 export TOR_CONTROL_HOST
 export TOR_CONTROL_PASSWD
-# https://askubuntu.com/questions/491750/force-enable-hardware-acceleration-in-firefox
-export MOZ_USE_OMTC=1
-#exec firejail --profile="$XDG_CONFIG_HOME/firejail/torbrowser.profile" -- torbrowser --allow-remote "$@" 
 if [[ ! $(pgrep -f "torbrowser --allow-remote") ]]; then
   exec torbrowser --allow-remote --ProfileManager "$@"
 elif [[ "$*" =~ http[s]?:// ]]; then
-  exec torbrowser --allow-remote "$@" 
+  exec torbrowser --allow-remote "$@"
 else
   exec torbrowser --ProfileManager "$@"
 fi

@@ -24,6 +24,18 @@ app-arch/innoextract
 =media-video/ffmpeg-4*
 =media-video/mpv-0.28*
 =net-im/qtox-9999 **
+=media-plugins/gst-plugins-libav-1.14.2
+# required by media-libs/gst-plugins-base-1.14.2-r1::gentoo[-gles2,opengl]
+# required by media-plugins/gst-plugins-libav-1.14.2::gentoo
+# required by =media-plugins/gst-plugins-libav-1.14.2 (argument)
+=media-libs/graphene-1.8.2 ~amd64
+# required by media-plugins/gst-plugins-libav-1.14.2::gentoo
+# required by =media-plugins/gst-plugins-libav-1.14.2 (argument)
+=media-libs/gst-plugins-base-1.14.2-r1 ~amd64
+# required by net-im/viber-bin-7.0.0.1035::nest
+# required by @selected
+# required by @world (argument)
+=media-libs/gstreamer-1.14.2 ~amd64
 
 =media-video/syncplay-9999*::pinkpieea **
 =dev-python/shiboken-9999::qt **
@@ -62,6 +74,15 @@ app-arch/innoextract
 =dev-python/python-xlib-0.23
 # required by @__auto_rebuild__ (argument)
 sys-apps/fwupd
+# required by app-emulation/docker-compose-1.21.2-r1::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/docker-py-3.4.1
+# required by dev-python/docker-py-3.4.1::gentoo
+# required by app-emulation/docker-compose-1.21.2-r1::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/docker-pycreds-0.3.0
 # required by @__auto_rebuild__ (argument)
 =net-libs/stem-1.6.0
 sys-apps/yarn
@@ -112,7 +133,7 @@ app-accessibility/speech-dispatcher
 
 games-emulation/retroarch
 =sys-apps/firejail-9999 **
-=sys-kernel/gentoo-sources-4.16*
+=sys-kernel/gentoo-sources-4.17*
 
 #=media-libs/mesa-18*
 #=sys-devel/clang-common-6.0.0
@@ -145,6 +166,7 @@ media-sound/spotify
 =app-eselect/eselect-electron-2.1
 =dev-libs/json-c-0.13
 =dev-libs/wayland-1.15.0
+net-misc/rclone
 =dev-util/electron-1.7.15
 =media-libs/libvpx-1.7.0
 =media-libs/libwebp-1.0.0
@@ -158,17 +180,18 @@ app-admin/elektra
 app-admin/keepassxc
 app-admin/profile-cleaner
 app-admin/ps_mem
+media-sound/cantata
 app-admin/stow
 app-crypt/argon2
+app-doc/zeal
 app-editors/atom
 app-emulation/docker-compose
-app-doc/zeal
-app-portage/portage-postsyncd-mv
 app-emulation/virtio-win
 app-emulation/wine-any::gentoo
 app-emulation/winetricks
 app-i18n/translate-shell
 app-misc/jdupes
+app-portage/portage-postsyncd-mv
 app-text/coolreader
 dev-libs/sway
 dev-libs/wlc
@@ -183,6 +206,12 @@ media-fonts/signika
 media-gfx/maim
 media-gfx/mypaint
 media-libs/fontconfig-ultimate::gentoo
+media-libs/icc-profiles-basiccolor-printing2009
+media-libs/icc-profiles-openicc
+media-libs/libmypaint
+media-libs/libXcm
+media-libs/openicc
+media-libs/oyranos
 media-libs/vulkan-loader
 media-sound/pamix
 media-video/bluray_info
@@ -218,5 +247,6 @@ x11-misc/kbdd
 x11-misc/notify-osd
 x11-misc/safeeyes
 x11-misc/slop
+x11-misc/xprintidle
 x11-terms/kitty
 x11-themes/notify-osd-icons
