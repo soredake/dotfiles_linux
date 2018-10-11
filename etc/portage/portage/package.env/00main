@@ -1,7 +1,0 @@
-# needs bfd to build
-sys-libs/db force-bfd
-
-# too big for ram
-net-im/telegram-desktop notmpfs
-dev-util/electron notmpfs
-dev-qt/qtwebengine notmpfs j8

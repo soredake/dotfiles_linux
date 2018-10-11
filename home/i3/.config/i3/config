@@ -119,7 +119,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # toogle i3bar
 bindsym $mod+F11 exec "i3-msg bar mode toggle"
-bindsym F12 exec "maim -i $(xdotool getactivewindow) --format png $HOME/mdata/syncthing/main/Screens/$(date +%d.%m.%G-%T).png"
+bindsym F12 exec "maim -i $(xdotool getactivewindow) --format png $HOME/sync/main/Screens/$(date +%d.%m.%G-%T).png"
 # toogle microphone input
 bindsym $mod+o exec "pactl set-source-mute alsa_input.usb-RODE_Microphones_RODE_NT-USB-00.analog-stereo toggle"
 # toogle kolonkee/headphones
@@ -132,10 +132,10 @@ bindsym $mod+Shift+KP_1 exec "output-change.sh"
 
 #bindsym $mod+KP_4 exec "save-special-server $(xsel -o --logfile $XDG_CACHE_HOME/xsel/xsel.log)"
 #bindsym $mod+KP_5 exec "save-special $(xsel -o --logfile $XDG_CACHE_HOME/xsel/xsel.log)"
-#bindsym $mod+Shift+KP_7 exec "maim -s $HOME/mdata/syncthing/main/Screens/$(date +%d.%m.%G-%T).png"
+#bindsym $mod+Shift+KP_7 exec "maim -s $HOME/sync/main/Screens/$(date +%d.%m.%G-%T).png"
 # screenshot current active window
 bindsym $mod+Shift+KP_7 exec "maim -f png -m 1 $HOME/sync/main/Screens/$(date +%d.%m.%G-%T).png"
-bindsym $mod+Shift+KP_3 exec "scr l"
+bindsym $mod+Shift+KP_3 exec "/home/bausch/bin/scr l"
 bindsym $mod+Shift+KP_9 exec "i3lock"
 
 # resize window (you can also use the mouse for that)

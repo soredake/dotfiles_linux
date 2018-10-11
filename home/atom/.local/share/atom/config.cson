@@ -40,6 +40,7 @@
     softWrap: true
   "exception-reporting":
     userId: "4a261763-7639-4261-82d5-ab339b204310"
+  "file-icons": {}
   "linter-ui-default": {}
   minimap:
     plugins:
@@ -53,6 +54,7 @@
       pigmentsDecorationsZIndex: 0
       selection: true
       selectionDecorationsZIndex: 0
+  "spell-check": {}
   "tree-view":
     hideVcsIgnoredFiles: true
   welcome:

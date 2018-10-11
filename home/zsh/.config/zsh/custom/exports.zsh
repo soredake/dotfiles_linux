@@ -1,5 +1,8 @@
 # shellcheck disable=2034,2148
 
+# no valid MANPAGER pager is set lead to https://bbs.archlinux.org/viewtopic.php?id=178730 
+export MANPAGER=less
+
 # When executing the same command twice or more in a row, only store it once.
 # Ignore commands that start with spaces and duplicates
 export HISTCONTROL=ignoreboth
@@ -12,6 +15,8 @@ export PROMPT_EOL_MARK=""
 # Ranger settings
 export RANGER_LOAD_DEFAULT_RC=false
 
+export EDITOR="atom"
+
 # for xdg-open
 export BROWSER="firefox"
 
@@ -22,5 +27,4 @@ export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export HISTFILE="$XDG_CACHE_HOME/zsh/history"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains.conf"
-export ATOM_HOME="$XDG_DATA_HOME/atom"
-export ANDROID_SDK_HOME="$XDG_CONFIG_HOME"/android
+export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"

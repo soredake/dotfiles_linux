@@ -1,2 +1,0 @@
-# https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs#Per-package_choices_at_compile_time
-PORTAGE_TMPDIR="/var/tmp/notmpfs"

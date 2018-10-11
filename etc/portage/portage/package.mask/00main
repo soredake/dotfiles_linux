@@ -1,9 +1,0 @@
-app-emulation/wine-mono::bobwya
-app-eselect/eselect-wine::bobwya
-dev-libs/libusb::booboo
-dev-libs/sway::ineluctable-overlay
-net-misc/openssh::FireBurn
-sys-apps/less::mv
-virtual/libusb::booboo
-www-client/firefox::bobwya
-x11-libs/gtk+::mv

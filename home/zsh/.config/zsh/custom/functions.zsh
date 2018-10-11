@@ -126,30 +126,6 @@ case "$1" in
 esac
 }
 
-wtp() {
-  winetricks prefix="$XDG_DATA_HOME/wineprefix/$@"
-}
-
-# upgrade currently selected kernel
-kernelup() {
-  sudo genkernel --cachedir=/var/tmp/portage --tempdir=/var/tmp/portage --install --udev --virtio --postclear --no-save-config --clean --no-lvm --no-mdadm --no-dmraid --zfs --no-btrfs --no-iscsi --no-luks --no-netboot --mountboot --makeopts=-j$(nproc) --ramdisk-modules --kernel-config="$HOME/git/dotfiles_home/kernel/.config" "${@:-all}"
-}
-
-# kernel update
-kupdate() {
-  local cur_v="$(eselect kernel show | grep -Eo [0-9]\.[0-9][0-9]?\.[0-9][0-9]?)"
-  sudo cp "$HOME/git/dotfiles_home/kernel/.config" /usr/src/linux
-  pushd /usr/src/linux
-  sudo make olddefconfig
-  popd
-  cp /usr/src/linux/.config "$HOME/git/dotfiles_home/kernel/.config"
-  cp /usr/src/linux/.config "$HOME/git/dotfiles_home/kernel/.config_${cur_v}"
-  kernelup
-  sudo emerge @module-rebuild --usepkg=n
-  kernelup initramfs
-  update-grub
-}
-
 random() {
   shuf -i "${1}-${2}" -n "${3:-1}"
 }
@@ -168,21 +144,18 @@ linuxsteamgames() {
 }
 
 startvm() {
-  sudo -n true
   sudo chmod 777 /dev/kvm
   sudo cpupower frequency-set -g performance
-
-  sudo virsh start win10
+  sudo virsh start win10-old
 }
 
 stopvm() {
-  sudo -n true
-  sudo virsh stop win10
+  sudo virsh stop win10-old
   sudo cpupower frequency-set -g ondemand
 }
 
 passtovm() {
-  sed -i "s/amdgpu//g" $(realpath /etc/modules-load.d/modules.conf)
+  sed -i -e "s/amdgpu//g" -e '/^$/d' $(realpath /etc/modules-load.d/modules.conf)
   sudo tee -a /etc/modules-load.d/vfio.conf <<END
 vfio
 vfio_iommu_type1
@@ -201,23 +174,18 @@ backtohost() {
 vm-mount-parts() {
   sudo qemu-nbd --connect=/dev/nbd0 /var/lib/libvirt/images/win10.qcow2
   sudo qemu-nbd --connect=/dev/nbd1 /var/lib/libvirt/images/win10-1.qcow2
-  sudo qemu-nbd --connect=/dev/nbd2 /var/lib/libvirt/images/win10-2.qcow2
   sleep 3
   sudo ntfsfix -db /dev/nbd0p4
   sudo ntfsfix -db /dev/nbd1p2
-  sudo ntfsfix -db /dev/nbd2p2
   sudo mount -o uid=1000,gid=1000 /dev/nbd0p4 "$HOME/media/vm-disk-c"
   sudo mount -o uid=1000,gid=1000 /dev/nbd1p2 "$HOME/media/vm-disk-f"
-  sudo mount -o uid=1000,gid=1000 /dev/nbd2p2 "$HOME/media/vm-disk-g"
 }
 
 vm-unmount-parts() {
   sudo umount "$HOME/media/vm-disk-c"
   sudo umount "$HOME/media/vm-disk-f"
-  sudo umount "$HOME/media/vm-disk-g"
   sudo qemu-nbd --disconnect /dev/nbd0p4
   sudo qemu-nbd --disconnect /dev/nbd1p2
-  sudo qemu-nbd --disconnect /dev/nbd2p2
 }
 
 # https://stackoverflow.com/a/10060342
@@ -231,7 +199,7 @@ vm-unmount-parts() {
 
 # https://github.com/chrippa/livestreamer/issues/550#issuecomment-222061982
 streamnodown() {
-  streamlink --loglevel debug --player-external-http --player-no-close --player-external-http-port "5555" --retry-streams1 --retry-open 100 --stream-segment-attempts 20 --stream-timeout 180 --ringbuffer-size 64M --rtmp-timeout 240 "$1" "${2}"
+  streamlink --loglevel debug --player-external-http --player-no-close --player-external-http-port "5555" --retry-streams 1 --retry-open 100 --stream-segment-attempts 20 --stream-timeout 180 --ringbuffer-size 64M --rtmp-timeout 240 "$1" "${2}"
 }
 
 # backup

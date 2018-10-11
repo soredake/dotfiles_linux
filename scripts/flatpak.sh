@@ -7,3 +7,5 @@ flatpak --user install tingping net.lutris.Lutris
 flatpak --user install flathub org.libretro.RetroArch
 flatpak --user install flathub com.valvesoftware.Steam
 flatpak --user install flathub com.github.wwmm.pulseeffects
+flatpak --user install flathub com.obsproject.Studio
+flatpak --user install flathub com.discordapp.Discord

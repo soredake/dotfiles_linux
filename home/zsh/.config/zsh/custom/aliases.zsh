@@ -36,8 +36,7 @@ alias cpu='mrsync --update'
 alias cps='mrsync --update --delete'
 
 alias fosize='du -sh' # Folder size
-alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg' # similar to ubuntu's update-grub
-alias clean-kernels='test ! -d /boot/grub && sudo mount /boot; sudo eclean-kernel -n 1 -s mtime && sudo umount /boot' # clean old kernels
+alias update-grub='ZPOOL_VDEV_NAME_PATH=1 sudo -E grub-mkconfig -o /boot/grub/grub.cfg' # similar to ubuntu's 	
 alias docker-gc='PID_DIR="$XDG_RUNTIME_DIR" STATE_DIR="$XDG_CACHE_HOME/docker-gc" FORCE_IMAGE_REMOVAL=1 FORCE_CONTAINER_REMOVAL=1 EXCLUDE_FROM_GC="" EXCLUDE_CONTAINERS_FROM_GC="" GRACE_PERIOD_SECONDS=300 docker-gc' # docker-gc with options
 
 # perms quick-fix
@@ -56,20 +55,18 @@ alias gitpushall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.g
 alias gitpullall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.git --work-tree=$PWD/{} pull \;'
 
 # Shorter
-#alias flatpak-lutris='flatpak run net.lutris.Lutris'
-#alias flatpak-pulseeffects='flatpak run com.github.wwmm.pulseeffects'
-#alias flatpak-steam='flatpak run com.valvesoftware.Steam'
 alias back='cd $OLDPWD'
 alias clearterm='printf "\033c"'
 alias e='atom'
 alias egrep='grep -E --color'
 alias flatpak-retroarch='flatpak run org.libretro.RetroArch'
+alias flatpak-obs='flatpak run com.obsproject.Studio'
 alias flush_caches='sync && sudo sync && sudo sysctl -qw vm.drop_caches=3'
 alias g='git'
 alias gogdownload='lgogdownloader --exclude e,c,p --platform lin,win --use-cache --language ru,en --download --game'
 alias goodnight='veracrypt -t -d && vm-unmount-parts; sc poweroff -i'
 alias grep='grep --color'
-alias icat='iconv -f WINDOWS-1251 -t UTF-8' # https://unix.stackexchange.com/questions/78776/characters-encodings-supported-by-more-cat-and-less
+alias ecat='iconv -f WINDOWS-1251 -t UTF-8' # https://unix.stackexchange.com/questions/78776/characters-encodings-supported-by-more-cat-and-less
 alias internal-ip="ip -o route get to 8.8.8.8 | sed -rn 's/.*src (([0-9]{1,3}\.){3}[0-9]{1,3}).*/\1/p'" # https://github.com/pi-hole/docker-pi-hole/issues/312#issuecomment-412254618
 alias jc='journalctl'
 alias jcu='jc --user'
@@ -81,8 +78,18 @@ alias ob='bkg xdg-open'
 alias sc='systemctl'
 alias scu='sc --user'
 alias sl='streamlink'
-alias sudoedit='SUDO_EDITOR="atom -w" sudoedit -E'
-alias syncplay='QT_PREFERRED_BINDING=PySide2 syncplay' # https://github.com/Syncplay/syncplay/issues/147#issuecomment-336957986
-alias virsh-edit='EDITOR=atom sudo -E virsh edit'
+alias sudoedit='SUDO_EDITOR="atom -w" sudo -e'
+#alias syncplay='QT_PREFERRED_BINDING=PySide2 syncplay' # https://github.com/Syncplay/syncplay/issues/147#issuecomment-336957986
+alias virsh-edit="EDITOR='atom -w' sudo -E virsh edit"
 alias vm-sound-restart='sudo virsh destroy win10 && systemctl --user restart pulseaudio && systemctl restart libvirtd && sudo virsh start win10'
 alias rpcs3='PULSE_LATENCY_MSEC=60 ./*.AppImage'
+alias redshft='redshift -t 6500:5800 -b 1.0:0.9'
+alias chrome='firejail --profile=/etc/firejail/google-chrome.profile google-chrome-stable'
+#alias vk='bkg ~/Documents/progs/vk/vk'
+#alias ramme='bkg ~/Documents/progs/ramme/ramme'
+alias itch='bkg ~/Documents/progs/itch'
+alias igdm='bkg ~/Documents/progs/IGdm.AppImage'
+
+# https://www.checkyourmath.com/convert/length/inches_cm.php
+cmtoinch() { echo $(bc -l <<< "$1 / 2.54"); }
+inchtocm() { echo $(bc -l <<< "$1 * 2.54"); }

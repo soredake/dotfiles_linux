@@ -1,1 +1,1 @@
-/usr/lib64/systemd/user/pulseaudio.socket
+/usr/lib/systemd/user/pulseaudio.socket

@@ -8,7 +8,7 @@
 # See the grub info page for documentation on possible variables and
 # their associated values.
 
-GRUB_DISTRIBUTOR="Gentoo"
+GRUB_DISTRIBUTOR="ArchLinux"
 
 # Default menu entry
 #GRUB_DEFAULT=0
@@ -27,14 +27,14 @@ GRUB_TIMEOUT=6
 # GRUB_CMDLINE_LINUX="net.ifnames=0"
 #
 # Boot with systemd instead of sysvinit (openrc)
-GRUB_CMDLINE_LINUX="init=/lib/systemd/systemd"
+#GRUB_CMDLINE_LINUX="init=/lib/systemd/systemd"
 
 # Append parameters to the linux kernel command line for non-recovery entries
 # https://github.com/gentoo/gentoo/pull/6207#issue-274619661
 # `amdgpu.vm_fragment_size=9`
 #
 # ZFS: Unable to set "noop" scheduler
-GRUB_CMDLINE_LINUX_DEFAULT="raid=noautodetect dozfs root=ZFS=rpool/ROOT/gentoo elevator=kyber amd_iommu=on iommu=pt"
+GRUB_CMDLINE_LINUX_DEFAULT="raid=noautodetect kernel.sysrq=1 amd_iommu=on iommu=pt module_blacklist=pcspkr scsi_mod.use_blk_mq=1"
 #snd-hda-intel.model=dual-codecs snd-hda-intel.primary_hp=0 snd-hda-intel.vmaster=0 snd-hda-intel.auto_mute=0 snd-hda-intel.auto_mic=0
 
 # Uncomment to disable graphical terminal (grub-pc only)

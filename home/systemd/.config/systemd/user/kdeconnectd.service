@@ -3,7 +3,7 @@ Description=Kde connect daemon
 
 [Service]
 Environment=BROWSER=firefox
-ExecStart=/usr/lib64/libexec/kdeconnectd
+ExecStart=/usr/lib/kdeconnectd
 Restart=on-abort
 
 [Install]

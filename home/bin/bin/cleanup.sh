@@ -26,3 +26,4 @@ rmlist=(
 /usr/bin/youtube-dl --rm-cache-dir
 /usr/bin/psd c
 /usr/bin/localepurge
+yay -Scc

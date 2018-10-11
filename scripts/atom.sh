@@ -23,7 +23,6 @@ packages=(
   minimap-linter
   minimap-pigments
   minimap-selection
-  nix
   permanent-delete
   pigments
   pinned-tabs
