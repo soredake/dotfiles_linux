@@ -1,6 +1,3 @@
-# Copyright 1999-2015 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-#
 # To populate all changes in this file you need to regenerate your
 # grub configuration file afterwards:
 #     'grub2-mkconfig -o /boot/grub/grub.cfg'
@@ -33,9 +30,8 @@ GRUB_TIMEOUT=6
 # https://github.com/gentoo/gentoo/pull/6207#issue-274619661
 # `amdgpu.vm_fragment_size=9`
 #
-# ZFS: Unable to set "noop" scheduler
-GRUB_CMDLINE_LINUX_DEFAULT="raid=noautodetect kernel.sysrq=1 amd_iommu=on iommu=pt module_blacklist=pcspkr scsi_mod.use_blk_mq=1"
-#snd-hda-intel.model=dual-codecs snd-hda-intel.primary_hp=0 snd-hda-intel.vmaster=0 snd-hda-intel.auto_mute=0 snd-hda-intel.auto_mic=0
+# amd_iommu=on iommu=pt
+GRUB_CMDLINE_LINUX_DEFAULT="raid=noautodetect kernel.sysrq=1 module_blacklist=pcspkr scsi_mod.use_blk_mq=1 idle=nomwait"
 
 # Uncomment to disable graphical terminal (grub-pc only)
 #GRUB_TERMINAL=console

@@ -10,8 +10,6 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-for i in editor visual; do sudo eselect $i set atom; done
-sudo eselect pinentry set pinentry-gnome3
 ln -s "$HOME"/{Downloads,Загрузки}
 sudo tee /etc/vconsole.conf >/dev/null <<END
 FONT="ter-v16v"
@@ -36,8 +34,8 @@ END
 sudo locale-gen -j "$(nproc)"
 
 # settings for x11
-localectl set-x11-keymap us,ru pc104 qwerty grp:rctrl_toggle
-sudo sed -i -e "\$a exec i3" -e '57,65d' /etc/X11/xinit/xinitrc
+#localectl set-x11-keymap us,ru pc104 qwerty grp:rctrl_toggle
+#sudo sed -i -e "\$a exec i3" -e '57,65d' /etc/X11/xinit/xinitrc
 
 # for no reason, when systemd-coredump is disabled, my system instead creates large coredump files EVERYWHERE, so disable them entierly
 sudo tee -a /etc/security/limits.conf >/dev/null <<END
@@ -47,3 +45,6 @@ END
 
 # https://aspiceodyssey.wordpress.com/2017/04/28/fedora25-3d-accelerated-guest/
 sudo gpasswd -a qemu video
+
+# lutris: use system cores 
+ln -sfv /usr/lib/libretro "$XDG_DATA_HOME/lutris/runners/retroarch/cores"

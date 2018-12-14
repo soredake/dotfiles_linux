@@ -1,11 +1,6 @@
 # about this file: https://github.com/linux-pam/linux-pam/issues/7
 # https://github.com/ayekat/dotfiles/issues/7
 
-# mesa env
-# https://www.mesa3d.org/envvars.html
-# https://trac.ffmpeg.org/wiki/Hardware/VAAPI
-VAAPI_MPEG4_ENABLED=1
-
 # https://wiki.archlinux.org/index.php/wine#Prevent_new_Wine_file_associations
 WINEDLLOVERRIDES=winemenubuilder.exe=d
 
@@ -27,10 +22,8 @@ ATOM_HOME                               DEFAULT=${XDG_DATA_HOME}/atom
 # /run/user/1000/bus
 #DBUS_SESSION_BUS_ADDRESS	DEFAULT=unix:path=${XDG_RUNTIME_DIR}/bus
 # Enable qt5ct for all qt programs
+# https://www.reddit.com/r/kde/comments/752vaf/cant_change_icon_theme_in_antergos/do36bsf/
 QT_QPA_PLATFORMTHEME=qt5ct
 
 # https://github.com/doitsujin/dxvk/wiki/Configuration
 DXVK_CONFIG_FILE				DEFAULT=${XDG_CONFIG_HOME}/dxvk.conf
-
-# not needed
-LUTRIS_RUNTIME=0

@@ -143,51 +143,6 @@ linuxsteamgames() {
   echo "Percentage of linux games compared to macOS:" $(echo "scale = 2; ($linuxgames / $macgames)" | bc -l | awk -F '.' '{print $2}')%
 }
 
-startvm() {
-  sudo chmod 777 /dev/kvm
-  sudo cpupower frequency-set -g performance
-  sudo virsh start win10-old
-}
-
-stopvm() {
-  sudo virsh stop win10-old
-  sudo cpupower frequency-set -g ondemand
-}
-
-passtovm() {
-  sed -i -e "s/amdgpu//g" -e '/^$/d' $(realpath /etc/modules-load.d/modules.conf)
-  sudo tee -a /etc/modules-load.d/vfio.conf <<END
-vfio
-vfio_iommu_type1
-vfio_pci
-vfio_virqfd
-END
-  sudo tee -a /etc/modprobe.d/vfio-pci.conf <<< "options vfio-pci ids=1002:67ff,1002:aae0"
-}
-
-backtohost() {
-  tee -a /etc/modules-load.d/modules.conf <<< "amdgpu"
-  sudo rm -f /etc/modules-load.d/vfio.conf /etc/modprobe.d/vfio-pci.conf
-}
-
-# https://gist.github.com/shamil/62935d9b456a6f9877b5
-vm-mount-parts() {
-  sudo qemu-nbd --connect=/dev/nbd0 /var/lib/libvirt/images/win10.qcow2
-  sudo qemu-nbd --connect=/dev/nbd1 /var/lib/libvirt/images/win10-1.qcow2
-  sleep 3
-  sudo ntfsfix -db /dev/nbd0p4
-  sudo ntfsfix -db /dev/nbd1p2
-  sudo mount -o uid=1000,gid=1000 /dev/nbd0p4 "$HOME/media/vm-disk-c"
-  sudo mount -o uid=1000,gid=1000 /dev/nbd1p2 "$HOME/media/vm-disk-f"
-}
-
-vm-unmount-parts() {
-  sudo umount "$HOME/media/vm-disk-c"
-  sudo umount "$HOME/media/vm-disk-f"
-  sudo qemu-nbd --disconnect /dev/nbd0p4
-  sudo qemu-nbd --disconnect /dev/nbd1p2
-}
-
 # https://stackoverflow.com/a/10060342
 # https://stackoverflow.com/a/10060342
 # 512mb max
@@ -219,7 +174,7 @@ backup() {
   rclone sync "$HOME/sync/system-data" mega_nz:/system-data
   rclone sync "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" mega_nz:/
   # yandex.disk
-  rclone sync "$HOME/sync/arch" mega_nz:/arch
-  rclone sync "$HOME/sync/system-data" mega_nz:/system-data
-  rclone sync "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" mega_nz:/
+  #rclone sync "$HOME/sync/arch" mega_nz:/arch
+  #rclone sync "$HOME/sync/system-data" mega_nz:/system-data
+  #rclone sync "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" mega_nz:/
 }
