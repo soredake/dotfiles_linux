@@ -11,9 +11,10 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ln -s "$HOME"/{Downloads,Загрузки}
+# https://wiki.archlinux.org/index.php/Localization/Russian_(Русский)#Настройка_консоли
 sudo tee /etc/vconsole.conf >/dev/null <<END
-FONT="ter-v16v"
-KEYMAP="us"
+FONT="ter-v16n"
+KEYMAP="ru-utf"
 END
 
 # xdg zsh
@@ -46,5 +47,12 @@ END
 # https://aspiceodyssey.wordpress.com/2017/04/28/fedora25-3d-accelerated-guest/
 sudo gpasswd -a qemu video
 
-# lutris: use system cores 
+# lutris: use system libretro cores 
 ln -sfv /usr/lib/libretro "$XDG_DATA_HOME/lutris/runners/retroarch/cores"
+# lutris: use system winetricks
+rm -f  "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks"
+ln -sfv /usr/bin/winetricks "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks"
+
+
+# for radeon-profile
+sudo tee /etc/sudoers.d/00radeon-profile <<< "bausch ALL = NOPASSWD: /usr/bin/radeon-profile"

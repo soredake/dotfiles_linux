@@ -160,21 +160,35 @@ streamnodown() {
 # backup
 backup() {
   cps "$HOME/sync/arch" "$HOME/sync/system-data" "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" /media/disk0/backup
+  cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" /run/media/bausch/48A2065DA206503C/Users/anya/Desktop
   # dropbox
-  rclone sync "$HOME/sync/arch" dropbox:/arch
-  rclone sync "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" dropbox:/
+  rclone sync -P "$HOME/sync/arch" dropbox:/arch
+  rclone sync -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" dropbox:/
   # opendrive
-  rclone sync "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" opendrive:/
+  rclone sync -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" opendrive:/
   # google drive
-  rclone sync "$HOME/sync/arch" google_drive:/arch
-  rclone sync "$HOME/sync/system-data" google_drive:/system-data
-  rclone sync "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" google_drive:/
+  rclone sync --drive-use-trash -P "$HOME/sync/arch" google_drive:/arch
+  rclone sync --drive-use-trash -P "$HOME/sync/system-data" google_drive:/system-data
+  rclone sync --drive-use-trash -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" google_drive:/
   # mega.nz
-  rclone sync "$HOME/sync/arch" mega_nz:/arch
-  rclone sync "$HOME/sync/system-data" mega_nz:/system-data
-  rclone sync "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" mega_nz:/
+  rclone sync --mega-hard-delete -P "$HOME/sync/arch" mega_nz:/arch
+  rclone sync --mega-hard-delete -P "$HOME/sync/main/Documents" 50gbmega:/Documents
+  rclone sync --mega-hard-delete -P "$HOME/sync/main/me" 50gbmega:/me
+  rclone sync --mega-hard-delete -P "$HOME/sync/main/Images" 50gbmega:/Images
+  rclone sync --mega-hard-delete -P "$HOME/sync/system-data" mega_nz:/system-data
+  rclone sync --mega-hard-delete -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" mega_nz:/
   # yandex.disk
-  #rclone sync "$HOME/sync/arch" mega_nz:/arch
-  #rclone sync "$HOME/sync/system-data" mega_nz:/system-data
-  #rclone sync "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" mega_nz:/
+  #rclone sync -P "$HOME/sync/arch" mega_nz:/arch
+  #rclone sync -P "$HOME/sync/system-data" mega_nz:/system-data
+  #rclone sync -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" mega_nz:/
+}
+
+update-grub() {
+  # mount esp
+  [[ ! $(grep /boot/efi /proc/mounts)  ]] && sudo mount /boot/efi
+  # copy microcode
+  sudo cp /boot/amd-ucode.img /boot/efi
+  # generate config
+  ZPOOL_VDEV_NAME_PATH=1 sudo -E grub-mkconfig -o /boot/grub/grub.cfg
+  sudo umount /boot/efi
 }

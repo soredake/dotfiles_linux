@@ -21,9 +21,12 @@ ATOM_HOME                               DEFAULT=${XDG_DATA_HOME}/atom
 # /run/dbus/system_bus_socket 
 # /run/user/1000/bus
 #DBUS_SESSION_BUS_ADDRESS	DEFAULT=unix:path=${XDG_RUNTIME_DIR}/bus
-# Enable qt5ct for all qt programs
-# https://www.reddit.com/r/kde/comments/752vaf/cant_change_icon_theme_in_antergos/do36bsf/
-QT_QPA_PLATFORMTHEME=qt5ct
 
 # https://github.com/doitsujin/dxvk/wiki/Configuration
 DXVK_CONFIG_FILE				DEFAULT=${XDG_CONFIG_HOME}/dxvk.conf
+
+VAAPI_MPEG4_ENABLED=1
+
+# https://pointieststick.wordpress.com/2018/12/16/this-week-in-usability-productivity-part-49/
+# TODO: enabled it later
+GTK_USE_PORTAL=1

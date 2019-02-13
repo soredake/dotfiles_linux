@@ -38,16 +38,7 @@ resume_swap_file_setup() {
   # It is possible to have the swap in a ZVOL but currently you cannot resume from hibernation with that
 }
 
-create_notmpfs_folder() {
-  mkdir /var/tmp/notmpfs
-  chown portage:portage /var/tmp/notmpfs
-  chmod 775 /var/tmp/notmpfs
-}
-
 main() {
-# Link Portage stuff.
-./setup-portage.sh
-
 # Install packages from portage.
 ./pacman.sh
 
@@ -61,7 +52,7 @@ main() {
 ./systemd.sh
 
 # default progs
-./other/default-progs.sh
+#./other/default-progs.sh
 
 # Setup linux
 ./linux.sh
@@ -82,26 +73,15 @@ else
   red "User not exists, starting stage1..."
   localectl set-locale ru_RU.utf8
   timedatectl set-timezone Europe/Kiev
-  pacman -Sy
-  create_notmpfs_folder
-  emerge --getbinpkg=y --usepkg=y app-admin/stow app-admin/sudo app-shell/zsh dev-util/ccache net-misc/networkmanager net-vpn/tor sys-kernel/genkernel-next x11-misc/xdg-user-dirs x11-misc/xdg-utils || die "emerge failed"
+  pacman -Syu
+  pacstrap base stow sudo zsh networkmanager xdg-user-dirs xdg-utils || die "pacstrap failed"
   hostnamectl set-hostname archlinux
   systemd-machine-id-setup
   ccache -M 20G
   echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/00wheel
   echo "$NEWUSER ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper" > /etc/sudoers.d/99psd
-  cat > /etc/xdg/user-dirs.defaults <<END
-DESKTOP=.crap/Desktop
-DOCUMENTS=Documents
-DOWNLOAD=Downloads
-MUSIC=Music
-PICTURES=Pictures
-PUBLICSHARE=.crap/Public
-TEMPLATES=.crap/Templates
-VIDEOS=Videos
-END
   red "Creating user..."
-  useradd -m -G users,audio,wheel,video,plugdev -s /bin/zsh "$NEWUSER"
+  useradd -m -G disk,wheel,audio,video,usb,users,plugdev -s /bin/zsh "$NEWUSER"
   red "Password for user"
   passwd "$NEWUSER" || die "setting user password failed"
   red "Password for root"

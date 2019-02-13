@@ -9,7 +9,6 @@ alias s='sudo '
 alias curl='curl -K $XDG_CONFIG_HOME/curlrc'
 alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 
-alias fxhelp='find $HOME/.mozilla/firefox -name "*.sqlite" -print -exec sqlite3 {} "VACUUM; REINDEX;" \;' # Help firefox
 alias badlinks='find . -type l -exec test ! -e {} \; -print' # find broken symlinks
 alias ls='ls --color=auto -ah --quoting-style=escape --group-directories-first' # Color ls.
 alias timer="echo 'Timer started. Stop with Ctrl-D.' && date && time cat && date" # Timer.
@@ -36,7 +35,7 @@ alias cpu='mrsync --update'
 alias cps='mrsync --update --delete'
 
 alias fosize='du -sh' # Folder size
-alias update-grub='ZPOOL_VDEV_NAME_PATH=1 sudo -E grub-mkconfig -o /boot/grub/grub.cfg' # similar to ubuntu's 	
+#alias update-grub='ZPOOL_VDEV_NAME_PATH=1 sudo -E grub-mkconfig -o /boot/grub/grub.cfg' # similar to ubuntu's 	
 alias docker-gc='PID_DIR="$XDG_RUNTIME_DIR" STATE_DIR="$XDG_CACHE_HOME/docker-gc" FORCE_IMAGE_REMOVAL=1 FORCE_CONTAINER_REMOVAL=1 EXCLUDE_FROM_GC="" EXCLUDE_CONTAINERS_FROM_GC="" GRACE_PERIOD_SECONDS=300 docker-gc' # docker-gc with options
 
 # perms quick-fix
@@ -62,7 +61,8 @@ alias egrep='grep -E --color'
 alias flush_caches='sync && sudo sync && sudo sysctl -qw vm.drop_caches=3'
 alias g='git'
 alias gogdownload='lgogdownloader --exclude e,c,p --platform lin,win --use-cache --language ru,en --download --game'
-alias goodnight='veracrypt -t -d && sc poweroff -i'
+# https://forum.manjaro.org/t/best-commands-to-shutdown-reboot-via-terminal/40955/8
+alias goodnight='veracrypt -t -d && qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 2 2 '
 alias grep='grep --color'
 alias ecat='iconv -f WINDOWS-1251 -t UTF-8' # https://unix.stackexchange.com/questions/78776/characters-encodings-supported-by-more-cat-and-less
 alias internal-ip="ip -o route get to 8.8.8.8 | sed -rn 's/.*src (([0-9]{1,3}\.){3}[0-9]{1,3}).*/\1/p'" # https://github.com/pi-hole/docker-pi-hole/issues/312#issuecomment-412254618
@@ -78,7 +78,9 @@ alias scu='sc --user'
 alias sl='streamlink'
 alias sudoedit='SUDO_EDITOR="atom -w" sudo -e'
 alias virsh-edit="EDITOR='atom -w' sudo -E virsh edit"
-alias rpcs3='PULSE_LATENCY_MSEC=60 ./*.AppImage'
+# https://github.com/RPCS3/rpcs3/issues/5324#issuecomment-443421886
+alias rpcs3='KDE_DEBUG=1 rpcs3'
+alias play-emu='KDE_DEBUG=1 play-emu'
 alias discord='PULSE_LATENCY_MSEC=60 discord'
 alias chrome='firejail --profile=/etc/firejail/google-chrome.profile google-chrome-stable'
 alias itch='bkg ~/Documents/progs/itch'
