@@ -15,7 +15,7 @@ xdg-mime default mpv.desktop application/ogg application/x-ogg application/sdp a
 xdg-mime default mvi.desktop image/gif image/jpeg image/png image/bmp image/x-eps image/x-ico image/x-portable-bitmap image/x-portable-graymap image/x-portable-pixmap image/x-xbitmap image/x-xpixmap
 
 # Browser
-xdg-mime default firefox.desktop text/html text/xml application/xhtml+xml application/vnd.mozilla.xul+xml text/mml x-scheme-handler/http x-scheme-handler/https
+xdg-mime default firefox-developer-edition.desktop text/html text/xml application/xhtml+xml application/vnd.mozilla.xul+xml text/mml x-scheme-handler/http x-scheme-handler/https
 
 # Folder opening
 xdg-mime default ranger.desktop inode/directory

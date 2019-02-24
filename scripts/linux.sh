@@ -56,3 +56,16 @@ ln -sfv /usr/bin/winetricks "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks
 
 # for radeon-profile
 sudo tee /etc/sudoers.d/00radeon-profile <<< "bausch ALL = NOPASSWD: /usr/bin/radeon-profile"
+
+# emoji for browser/terminal
+# https://www.reddit.com/r/linux/comments/ao0mp3/how_to_better_enable_color_emojis/
+# or https://github.com/kovidgoyal/kitty/issues/73#issuecomment-465984396
+# test here: https://eosrei.github.io/emojione-color-font/full-demo.html
+# or https://aur.archlinux.org/packages/ttf-twemoji-color/
+# sudo ln -sf ../conf.avail/56-ttf-twemoji-color.conf /etc/fonts/conf.d/56-ttf-twemoji-color.conf
+
+# use main profile, not dev edition dedicated
+touch "$HOME/.mozilla/firefox/ignore-dev-edition-profile"
+
+# disable tty motd
+touch "$HOME/.hushlogin"

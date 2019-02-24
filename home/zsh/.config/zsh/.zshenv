@@ -1,2 +1,4 @@
+# shellcheck disable=2034,2148
 # General settings
-ZPLUG=true
+ZPLUG=false
+zplugin=true

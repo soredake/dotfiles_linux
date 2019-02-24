@@ -17,3 +17,4 @@ yarn autoclean
 yarn cache clean
 fwupdmgr refresh
 fwupdmgr update
+zplugin update --all

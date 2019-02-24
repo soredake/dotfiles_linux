@@ -1,4 +1,6 @@
 # shellcheck disable=2034,2148
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 if [[ "$ZPLUG" == true ]]; then
   [[ ! -d "$XDG_DATA_HOME/zplug" ]] && git clone --depth 1 https://github.com/zplug/zplug "$XDG_DATA_HOME/zplug"
   export ZPLUG_HOME="$XDG_DATA_HOME/zplug"
@@ -25,37 +27,66 @@ if [[ "$ZPLUG" == true ]]; then
 
   # Then, source plugins and add commands to $PATH
   zplug load
-
-  # Changing/making/removing directory
-  setopt auto_pushd
-  setopt pushd_ignore_dups
-  setopt pushdminus
-
-  alias -g ...='../..'
-  alias -g ....='../../..'
-  alias -g .....='../../../..'
-  alias -g ......='../../../../..'
-
-  alias 1='cd -'
-  alias 2='cd -2'
-  alias 3='cd -3'
-  alias 4='cd -4'
-  alias 5='cd -5'
-  alias 6='cd -6'
-  alias 7='cd -7'
-  alias 8='cd -8'
-  alias 9='cd -9'
-  alias d='dirs -v | head -10'
-
-  # List directory contents
-  alias lsa='ls -lah'
-  alias l='ls -lah'
-  alias ll='ls -lh'
-  alias la='ls -lAh'
-
-  # shellcheck disable=1090
-  for f in "$XDG_CONFIG_HOME/zsh/custom"/*; do . $f; done
 fi
+
+# shellcheck disable=2154
+if [[ "$zplugin" == true ]]; then
+  [[ ! -d "$XDG_DATA_HOME/zplugin" ]] && git clone --depth 10 https://github.com/zdharma/zplugin.git "$XDG_DATA_HOME/zplugin"
+  export ZPLG_HOME="$XDG_DATA_HOME/zplugin"
+  ### Added by Zplugin's installer
+  # shellcheck disable=1090
+  source "$ZPLG_HOME/zplugin.zsh"
+  autoload -Uz _zplugin
+  # shellcheck disable=2154
+  (( ${+_comps} )) && _comps[zplugin]=_zplugin
+  ### End of Zplugin's installer chunk
+  # shellcheck disable=1090
+  zplugin light zsh-users/zsh-autosuggestions
+  zplugin snippet OMZ::lib/completion.zsh
+  zplugin snippet OMZ::lib/history.zsh
+  zplugin snippet OMZ::lib/key-bindings.zsh
+  zplugin snippet OMZ::lib/theme-and-appearance.zsh
+  zplugin snippet OMZ::plugins/extract/extract.plugin.zsh
+  # Load the pure theme, with zsh-async library that's bundled with it
+  zplugin ice pick"async.zsh" src"pure.zsh"; zplugin light sindresorhus/pure
+  
+  # enable navigating by arrows in ls mv or any other command
+  autoload -Uz compinit
+  compinit
+  # syntax-highlighting plugins (like fast-syntax-highlighting or zsh-syntax-highlighting) expect to be loaded last
+  zplugin light zdharma/fast-syntax-highlighting
+  
+fi
+
+# Changing/making/removing directory
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
+
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+
+alias 1='cd -'
+alias 2='cd -2'
+alias 3='cd -3'
+alias 4='cd -4'
+alias 5='cd -5'
+alias 6='cd -6'
+alias 7='cd -7'
+alias 8='cd -8'
+alias 9='cd -9'
+alias d='dirs -v | head -10'
+
+# List directory contents
+alias lsa='ls -lah'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -lAh'
+
+# shellcheck disable=1090
+for f in "$XDG_CONFIG_HOME/zsh/custom"/*; do . $f; done
 
 # Add additional directories to the path.
 # https://github.com/yarnpkg/yarn/issues/5353

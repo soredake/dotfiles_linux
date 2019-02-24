@@ -35,7 +35,6 @@ alias cpu='mrsync --update'
 alias cps='mrsync --update --delete'
 
 alias fosize='du -sh' # Folder size
-#alias update-grub='ZPOOL_VDEV_NAME_PATH=1 sudo -E grub-mkconfig -o /boot/grub/grub.cfg' # similar to ubuntu's 	
 alias docker-gc='PID_DIR="$XDG_RUNTIME_DIR" STATE_DIR="$XDG_CACHE_HOME/docker-gc" FORCE_IMAGE_REMOVAL=1 FORCE_CONTAINER_REMOVAL=1 EXCLUDE_FROM_GC="" EXCLUDE_CONTAINERS_FROM_GC="" GRACE_PERIOD_SECONDS=300 docker-gc' # docker-gc with options
 
 # perms quick-fix
@@ -82,9 +81,7 @@ alias virsh-edit="EDITOR='atom -w' sudo -E virsh edit"
 alias rpcs3='KDE_DEBUG=1 rpcs3'
 alias play-emu='KDE_DEBUG=1 play-emu'
 alias discord='PULSE_LATENCY_MSEC=60 discord'
-alias chrome='firejail --profile=/etc/firejail/google-chrome.profile google-chrome-stable'
-alias itch='bkg ~/Documents/progs/itch'
-alias igdm='bkg ~/Documents/progs/IGdm.AppImage'
+alias chromium-firejail='firejail --profile=/etc/firejail/chromium-browser.profile chromium'
 
 # https://www.checkyourmath.com/convert/length/inches_cm.php
 cmtoinch() { echo $(bc -l <<< "$1 / 2.54"); }

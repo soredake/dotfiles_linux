@@ -36,6 +36,7 @@ resume_swap_file_setup() {
   # ZFS does not allow to use swapfiles
   # https://aaronlauterer.com/blog/2017/04/arch-linux-on-an-encrypted-zfs-root-system/
   # It is possible to have the swap in a ZVOL but currently you cannot resume from hibernation with that
+  # https://github.com/zfsonlinux/pkg-zfs/wiki/HOWTO-use-a-zvol-as-a-swap-device
 }
 
 main() {
@@ -52,7 +53,7 @@ main() {
 ./systemd.sh
 
 # default progs
-#./other/default-progs.sh
+#./default-progs.sh
 
 # Setup linux
 ./linux.sh

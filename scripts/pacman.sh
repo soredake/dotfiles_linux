@@ -36,6 +36,7 @@ lang=(
   kbd-ru-keymaps
   libreoffice-fresh-ru
   man-pages-ru
+  firefox-developer-edition-i18n-ru
   thunderbird-i18n-ru
 )
 
@@ -56,12 +57,10 @@ packages=(
   atool
   bind-tools
   birdtray
-  birdtray
   btfs
   cantata
   ccache
   cloc
-  colobot-gold
   colordiff
   coolreader3-git
   cpupower
@@ -88,8 +87,10 @@ packages=(
   festival
   ffmpegthumbnailer
   firefox
+  firefox-developer-edition
   firejail
   fish
+  flashplugin
   flatpak
   font-manager
   fuse2
@@ -98,7 +99,6 @@ packages=(
   gamemode
   gimp
   godot
-  google-chrome
   gparted
   grub
   haguichi
@@ -106,9 +106,11 @@ packages=(
   httpie
   i2pd
   iat
+  igdm
   imagemagick
   innoextract
   iotop
+  itch
   jdownloader2
   jdupes
   jpegoptim
@@ -162,6 +164,7 @@ packages=(
   obs-glcapture-git
   obs-linuxbrowser-bin
   obs-studio
+  onionshare
   os-prober
   osu-lazer
   oyranos
@@ -169,6 +172,7 @@ packages=(
   pamix-git
   partitionmanager
   pavucontrol
+  pepper-flash 
   phantomjs-bin
   piper
   profile-sync-daemon
@@ -211,9 +215,6 @@ packages=(
   speech-dispatcher
   sqlitebrowser
   sshfs
-  steam
-  steam-fonts
-  steam-native-runtime
   stow
   strace
   streamlink
@@ -241,6 +242,7 @@ packages=(
   translate-shell
   twitch-indicator
   unarchiver
+  ungoogled-chromium-bin
   unrar
   veracrypt
   viber
@@ -342,22 +344,31 @@ libretro=(
 )
 
 games=(
+  colobot-gold
   linux-steam-integration
   openmw-git
+  openrw-git
+  openspades-git
   pcsx2-git
   pcsx2-plugin-usbqemu-wheel
   play-emu-ninja-git
   protonfixes-git
   protontricks-git
+  residualvm-git
   rpcs3-git
+  steam
+  steam-fonts
+  steam-native-runtime
   winetricks-git
   xash3d-git
   yuzu-canary-git
 )
 
 wine=(
+  gallium-nine-git
   gst-plugins-bad
   gst-plugins-ugly
+  lib32-gallium-nine-git
   lib32-gst-plugins-bad
   lib32-gst-plugins-ugly
   wine_gecko

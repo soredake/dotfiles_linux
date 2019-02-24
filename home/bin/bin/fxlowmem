@@ -51,34 +51,34 @@ download() {
 }
 
 start() {
-  if [[ ! -z "$AUTODOWNLOAD" ]]; then
-    download "$AUTODOWNLOAD"
+  if [[ ! -z "${AUTODOWNLOAD}" ]]; then
+    download "${AUTODOWNLOAD}"
   fi
-  fxbranch="$AUTODOWNLOAD"-
-  fxver="$version"-
+  fxbranch="${AUTODOWNLOAD}"-
+  fxver="${version}"-
   date=$(date +%d.%m.%G-%T)
   profile=${PROFILE:-$(mktemp -d "${cdir}/firefox-${fxbranch}${fxver}${date}"-XXX)}
   location=${LOCATION:-/usr/lib/firefox}
   logfile=${LOGFILE:-$(mktemp -t -p "${cdir}" "firefox-${fxbranch}${fxver}${date}"-XXX.log)}
-  cat > "$profile/user.js" <<END
+  cat > "${profile}/user.js" <<END
 user_pref("browser.cache.disk.parent_directory",  "/dev/shm/firefox-cache");
 user_pref("browser.download.useDownloadDir", false);
-user_pref("browser.shell.checkDefaultBrowser",  false);
+user_pref("browser.shell.checkDefaultBrowser", false);
 user_pref("media.autoplay.enabled", false);
 user_pref("media.default_volume", "0.1");
 user_pref("media.volume_scale", "0.1");
 user_pref("browser.startup.page", 3);
-user_pref("xpinstall.signatures.required",  false);
+user_pref("xpinstall.signatures.required", false);
 END
   #cp "${XDG_CACHE_HOME:-${HOME}/.cache}/search.json.mozlz4" "$profile" || die "for now, search.json.mozlz4 file is the only way to set the default search engine"
-  if [[ ! -z "$INFO" ]]; then
-    echo "Using date: $date"
-    echo "Using profile dir: $profile"
-    echo "Using firefox location: $location"
-    echo "Using log file: $logfile"
+  if [[ ! -z "${INFO}" ]]; then
+    echo "Using date: ${date}"
+    echo "Using profile dir: ${profile}"
+    echo "Using firefox location: ${location}"
+    echo "Using log file: ${logfile}"
   fi
   echo "Launching firefox version: ${AUTODOWNLOAD}-${version}"
-  nohup "$location"/firefox --new-instance --profile "$profile" &>"$logfile" &
+  nohup "${location}"/firefox --new-instance --profile "${profile}" &>"${logfile}" &
 }
 
 while getopts "p:l:lg:a:wd:ihc" opt; do
@@ -96,7 +96,7 @@ done
 
 shift $((OPTIND -1))
 
-if [[ -z "$ACTION" ]]; then
+if [[ -z "${ACTION}" ]]; then
     ACTION="${1:-start}"
 fi
 

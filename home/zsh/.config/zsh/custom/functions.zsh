@@ -67,12 +67,12 @@ ppicalc() {
 }
 
 # 5gb max
-# stores for 90 days
-#lewdse() {
-#   if [[ "$1" =~ ^https?://.*$ ]]; then local prefix="curl --fail -L --progress-bar --socks5-hostname 127.0.0.1:9250 ${1} || exit 1"; else local suffix="${1}"; fi
+# stores for 24 hours
+cockfile() {
+   if [[ "$1" =~ ^https?://.*$ ]]; then local prefix="curl --fail -L --progress-bar ${1} || exit 1"; else local suffix="${1}"; fi
    # eval or sh -c
-#   eval "${prefix:-true}" | curl --fail -L --progress-bar --socks5-hostname 127.0.0.1:9250 -F name="${2:-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 20 | head -n 1 | grep -i '[a-zA-Z0-9]').${1##*.}}" -F file=@"${suffix:--}" https://lewd.se/api.php?d=upload-tool
-#}
+   eval "${prefix:-true}" | curl --fail -L --progress-bar -F name="${2:-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 20 | head -n 1 | grep -i '[a-zA-Z0-9]').${1##*.}}" -F file=@"${suffix:--}" https://cockfile.com/api.php?d=upload-tool
+}
 
 # Validate tar archives
 tarval() {
@@ -160,7 +160,7 @@ streamnodown() {
 # backup
 backup() {
   cps "$HOME/sync/arch" "$HOME/sync/system-data" "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" /media/disk0/backup
-  cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" /run/media/bausch/48A2065DA206503C/Users/anya/Desktop
+  cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" "/run/media/bausch/Windows 10/Users/User/Desktop/"
   # dropbox
   rclone sync -P "$HOME/sync/arch" dropbox:/arch
   rclone sync -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" dropbox:/

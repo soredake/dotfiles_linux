@@ -28,5 +28,4 @@ DXVK_CONFIG_FILE				DEFAULT=${XDG_CONFIG_HOME}/dxvk.conf
 VAAPI_MPEG4_ENABLED=1
 
 # https://pointieststick.wordpress.com/2018/12/16/this-week-in-usability-productivity-part-49/
-# TODO: enabled it later
 GTK_USE_PORTAL=1

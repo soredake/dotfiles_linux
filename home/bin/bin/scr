@@ -8,5 +8,5 @@ else
   echo "Something went wrong, your screenshot is not saved" && exit 1
 fi
 if [[ ${1} != "l" ]]; then
-  xsel -ib <<< "$(lewdse "${file}")"
+  xsel -ib <<< "$(cockfile "${file}")"
 fi
