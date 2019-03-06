@@ -29,3 +29,7 @@ VAAPI_MPEG4_ENABLED=1
 
 # https://pointieststick.wordpress.com/2018/12/16/this-week-in-usability-productivity-part-49/
 GTK_USE_PORTAL=1
+
+# https://wiki.mozilla.org/Platform/GFX/Quantum_Render
+MOZ_ACCELERATED=1
+MOZ_WEBRENDER=1

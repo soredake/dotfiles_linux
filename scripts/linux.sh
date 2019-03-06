@@ -69,3 +69,6 @@ touch "$HOME/.mozilla/firefox/ignore-dev-edition-profile"
 
 # disable tty motd
 touch "$HOME/.hushlogin"
+
+# disk is slow
+balooctl config add excludeFolders /media/disk0

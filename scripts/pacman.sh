@@ -17,7 +17,9 @@ plasma=(
   plasma-nm
   plasma-wayland-session
   plasma5-applets-redshift-control
+  kdegraphics-meta
   powerdevil
+  plasma5-applets-weather-widget
 )
 
 i3=(
@@ -28,6 +30,12 @@ i3=(
   i3blocks
   i3lock
   kbdd-git
+)
+
+bluetooth=(
+  bluez-utils
+  # http://troglobit.com/2017/01/03/trust-bluetooth-4.0-adapter-in-linux/
+  bluez-hid2hci
 )
 
 lang=(
@@ -41,11 +49,12 @@ lang=(
 )
 
 packages=(
-  # nyx
+  nyx
   # wine from tkg
+  # linux from tkg
   ##media-video/bluray_info
   #media-video/dvd_info
-  adriconf-git
+  adriconf
   alsa-utils
   amd-ucode
   anbox-git
@@ -62,7 +71,7 @@ packages=(
   ccache
   cloc
   colordiff
-  coolreader3-git
+  coolreader
   cpupower
   cuetools
   d-feet
@@ -76,12 +85,13 @@ packages=(
   dosbox-svn
   dosbox-x-sdl2
   dosfstools
-  dupeguru-git
+  dupeguru
   espeak
   etc-update
   etcher
   exfat-utils
   f2fs-tools
+  opera-ffmpeg-codecs  
   fbreader-qt5
   fd
   festival
@@ -99,6 +109,7 @@ packages=(
   gamemode
   gimp
   godot
+  trash-cli
   gparted
   grub
   haguichi
@@ -114,6 +125,7 @@ packages=(
   jdownloader2
   jdupes
   jpegoptim
+  opencl-mesa
   jq
   k3b
   kdeconnect
@@ -121,6 +133,8 @@ packages=(
   kitty
   lector
   lesspipe
+  appmenu-qt4
+  appmenu-gtk-module
   lgogdownloader
   lib32-gamemode
   libappimage 
@@ -141,6 +155,7 @@ packages=(
   mdf2iso
   mediainfo
   mesa
+  usb_modeswitch
   mesa-demos
   minetest
   mpc
@@ -150,6 +165,9 @@ packages=(
   ms-sys
   multimc5
   mupdf
+  xdelta3
+  asf
+  pulseaudio-modules-bt-git
   mypaint
   neofetch
   netcat
@@ -195,6 +213,7 @@ packages=(
   qt5ct
   qtox
   radeon-profile
+  gpsd
   radeon-profile-daemon-git
   ramme
   ranger
@@ -217,6 +236,9 @@ packages=(
   sshfs
   stow
   strace
+  atomicparsley
+  kde-gtk-config
+  breeze-grub
   streamlink
   subliminal
   sudo
@@ -251,9 +273,9 @@ packages=(
   virtualbox
   virtualbox-ext-oracle
   virtualbox-guest-iso
-  virtualbox-guest-modules-arch
+  virtualbox-guest-dkms
   virtualbox-guest-utils
-  virtualbox-host-modules-arch
+  virtualbox-host-dkms
   vulkan-radeon
   w3m
   wget
@@ -336,11 +358,8 @@ libretro=(
   libretro-pokemini-git # RetroAchievements 	✕ Nintendo - Pokémon Mini
   libretro-ppsspp-git # RetroAchievements 	✕ Sony - PlayStation Portable
   libretro-reicast-git # RetroAchievements 	✕ Sega Dreamcast
-  libretro-shaders-slang-git
-  retroarch-assets-xmb-git
-  retroarch-autoconfig-udev-git
-  retroarch-git
-  xdg-utils-git
+  retroarch
+  xdg-utils
 )
 
 games=(
