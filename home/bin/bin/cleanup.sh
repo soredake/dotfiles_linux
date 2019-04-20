@@ -22,4 +22,10 @@ rmlist=(
 /usr/bin/youtube-dl --rm-cache-dir
 /usr/bin/psd c
 /usr/bin/localepurge
-/usr/bin/yay -Scc
+/usr/bin/yay --color=auto -Sc
+/usr/bin/flatpak uninstall --all
+/usr/bin/flatpak --user uninstall --unused
+/usr/bin/yarn autoclean
+/usr/bin/yarn cache clean
+#https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Removing_unused_packages_(orphans)
+/usr/bin/yay -Rns $(/usr/bin/yay -Qtdq)

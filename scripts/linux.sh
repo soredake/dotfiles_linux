@@ -72,3 +72,6 @@ touch "$HOME/.hushlogin"
 
 # disk is slow
 balooctl config add excludeFolders /media/disk0
+
+# https://github.com/kakra/wine-proton/blob/rebase/proton_3.16/README.md#hints-to-32-bit-users-applies-also-to-syswow64
+sudo tee /etc/pulse/daemon.conf <<< "shm-size-bytes=1048576"

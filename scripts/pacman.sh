@@ -49,12 +49,15 @@ lang=(
 )
 
 packages=(
+  thrash-protect
   nyx
   # wine from tkg
   # linux from tkg
   ##media-video/bluray_info
   #media-video/dvd_info
   adriconf
+  repkg
+  pulseaudio-modules-bt-git
   alsa-utils
   amd-ucode
   anbox-git
@@ -62,27 +65,33 @@ packages=(
   android-tools
   archzfs-dkms
   aria2
+  skypeforlinux-stable-bin
+  bleachbit
+  cleanerml-git
   atom
   atool
   bind-tools
   birdtray
   btfs
   cantata
+  mirrorlist-manager
   ccache
   cloc
   colordiff
   coolreader
   cpupower
+  electronmail-bin
   cuetools
   d-feet
   dasht
   discord
-  dkms-sorted
+  dkms
   dnscrypt-proxy
   docker
   docker-compose
   docker-gc
   dosbox-svn
+  spotify
   dosbox-x-sdl2
   dosfstools
   dupeguru
@@ -102,6 +111,7 @@ packages=(
   fish
   flashplugin
   flatpak
+  wxhexeditor
   font-manager
   fuse2
   fuse3
@@ -142,13 +152,14 @@ packages=(
   libstrangle-git
   libva-mesa-driver
   libvirt
+  stubby
   links
   linux-firmware
   lostfiles
   lsb-release
   lshw
   lsof
-  lutris-git
+  lutris
   lxrandr
   maim
   mc
@@ -161,7 +172,7 @@ packages=(
   mpc
   mpd
   mpdas
-  mpv-full
+  mpv
   ms-sys
   multimc5
   mupdf
@@ -223,7 +234,7 @@ packages=(
   ripme-git
   rivalcfg-git
   rofi
-  rssguard-git
+  rssguard
   safeeyes
   sass
   scrot
@@ -238,6 +249,7 @@ packages=(
   strace
   atomicparsley
   kde-gtk-config
+  snapd
   breeze-grub
   streamlink
   subliminal
@@ -298,7 +310,8 @@ packages=(
   zsh-completions
 )
 fonts=(
-  # media-fonts/infinality-ultimate-meta
+  # https://gpo.zugaina.org/media-fonts/infinality-ultimate-meta
+  # https://gpo.zugaina.org/www-client/chromium
   cantarell-fonts
   font-bh-ttf
   mplus-font
@@ -336,14 +349,14 @@ libretro=(
   libretro-beetle-psx-hw-git # RetroAchievements 	✕ PlayStation
   libretro-bsnes-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
   libretro-bsnes-mercury-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
-  libretro-citra-git # RetroAchievements 	✕ Nintendo - 3DS
+  # cant't build               libretro-citra-git # RetroAchievements 	✕ Nintendo - 3DS
   libretro-desmume-git # RetroAchievements 	✕ Nintendo - DS
   libretro-dolphin-git # RetroAchievements 	✕ Nintendo Gamecube/Wii
   libretro-dosbox-git # RetroAchievements 	✕ DOS
   libretro-fbalpha-git
   libretro-fceumm-git # RetroAchievements 	✔ Nintendo - NES / Famicom
   libretro-fuse-git # RetroAchievements 	✕ ZX Spectrum (Fuse)
-  libretro-gambatte-git # RetroAchievements 	✔ GB/GBC Nintendo - Game Boy / Color
+  libretro-gambatte-git # RetroAchievements 	✔ GB/GBC Nintendo - Game Boy / Color # https://github.com/libretro/gambatte-libretro/pull/123 !!!!!!!1
   libretro-genesis-plus-gx-git # RetroAchievements 	✔ Sega - MS/GG/MD/CD
   libretro-gw-git # RetroAchievements 	✕ Handheld Electronic
   libretro-higan # RetroAchievements 	✕ Nintendo - SNES / Famicom
@@ -363,11 +376,15 @@ libretro=(
 )
 
 games=(
+  citra-canary-git
   colobot-gold
   linux-steam-integration
   openmw-git
-  openrw-git
+  openrw-git 
+  colobot-gold-music
   openspades-git
+  ninfs-gui
+  vitetris  
   pcsx2-git
   pcsx2-plugin-usbqemu-wheel
   play-emu-ninja-git

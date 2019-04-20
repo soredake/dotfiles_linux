@@ -6,16 +6,11 @@ sudo -v
 # Keep-alive: update existing `sudo` timestamp until we're done.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-yay --color=auto -Syu --devel --timeupdate --answerclean y --answerdiff y --answerupgrade y
+yay --sudoloop -Syu --devel --timeupdate --answerclean y --answerdiff y --answerupgrade y --noremovemake --color=auto
 sudo etc-update
-#yay --color=auto -c
 apm update --confirm false
 flatpak --user update
-flatpak --user uninstall --unused
 yarn global upgrade
-yarn autoclean
-yarn cache clean
 fwupdmgr refresh
 fwupdmgr update
 zplugin update --all
-#flatpak uninstall --all
