@@ -64,12 +64,11 @@ alias gogdownload='lgogdownloader --exclude e,c,p --platform lin,win --use-cache
 alias goodnight='veracrypt -t -d && qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 2 2 '
 alias grep='grep --color'
 alias ecat='iconv -f WINDOWS-1251 -t UTF-8' # https://unix.stackexchange.com/questions/78776/characters-encodings-supported-by-more-cat-and-less
-alias internal-ip="ip -o route get to 8.8.8.8 | sed -rn 's/.*src (([0-9]{1,3}\.){3}[0-9]{1,3}).*/\1/p'" # https://github.com/pi-hole/docker-pi-hole/issues/312#issuecomment-412254618
+alias internal-ip="ip -o route get to 1.1.1.1 | sed -rn 's/.*src (([0-9]{1,3}\.){3}[0-9]{1,3}).*/\1/p'" # https://github.com/pi-hole/docker-pi-hole/issues/312#issuecomment-412254618
 alias jc='journalctl'
 alias jcu='jc --user'
 alias mpvq='mpvq'
 alias mus='mpv --profile=novid'
-alias yay='yay --sudoloop --color=auto'
 alias mvi='mpv --profile=image'
 alias o='xdg-open'
 alias ob='bkg xdg-open'
@@ -79,10 +78,23 @@ alias sl='streamlink'
 alias sudoedit='SUDO_EDITOR="atom -w" sudo -e'
 alias virsh-edit="EDITOR='atom -w' sudo -E virsh edit"
 # https://github.com/RPCS3/rpcs3/issues/5324#issuecomment-443421886
-alias rpcs3='KDE_DEBUG=1 rpcs3'
-alias play-emu='KDE_DEBUG=1 play-emu'
+alias rpcs3='KDE_DEBUG=1 gamemoderun rpcs3'
+alias play-emu='KDE_DEBUG=1 gamemoderun play-emu'
+alias yuzu='KDE_DEBUG=1 gamemoderun yuzu'
 alias discord='PULSE_LATENCY_MSEC=60 discord'
 alias chromium-firejail='firejail --profile=/etc/firejail/chromium-browser.profile chromium'
+alias build_dxvk='cd $HOME/git/PKGBUILDS/dxvk-tools && ./updxvk build && ./updxvk lutris && ./updxvk proton-tkg'
+alias build_d9vk='cd $HOME/git/PKGBUILDS/dxvk-tools && ./upd9vk build && ./upd9vk proton-tkg'
+alias build_wine='cd $HOME/git/PKGBUILDS/wine-tkg-git && makepkg -si'
+alias build_proton='cd $HOME/git/PKGBUILDS/proton-tkg && ./proton-tkg.sh'
+alias build_mingw='cd ~/git/PKGBUILDS/mingw && ./mingw-on-arch-automator.sh'
+alias mountandroidfs='sshfs -o kernel_cache -oport=2222 ssh@192.168.1.234:/ media/android'
+alias vts='echo vitetris --connect $(myip):27015 && vitetris -listen 27015'
+alias copyuserjs='cat $HOME/git/misc/firefox/user.js $HOME/git/misc/firefox/tor-main.js > $HOME/.mozilla/firefox/tor-main/user.js'
+# https://www.lifewire.com/kubuntu-p2-2202573
+alias restart-plasma="kquitapp5 plasmashell; nohup plasmashell &>/dev/null &"
+# https://wiki.archlinux.org/index.php/Mirrors#List_by_speed
+alias archmirrorlist='curl -s https://www.archlinux.org/mirrorlist/\?country\=UA\&country\=RU\&country\=FR\&protocol\=https\&use_mirror_status\=on | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 10 -'
 
 # https://www.checkyourmath.com/convert/length/inches_cm.php
 cmtoinch() { echo $(bc -l <<< "$1 / 2.54"); }

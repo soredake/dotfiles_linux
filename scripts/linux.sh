@@ -17,6 +17,9 @@ FONT="ter-v16n"
 KEYMAP="ru-utf"
 END
 
+# limit ccache size
+ccache -M 10G
+
 # xdg zsh
 sudo tee /etc/zsh/zshenv >/dev/null <<< 'ZDOTDIR=$XDG_CONFIG_HOME/zsh'
 
@@ -34,14 +37,25 @@ END
 # generate locales
 sudo locale-gen -j "$(nproc)"
 
-# settings for x11
+# settings for x11/i3
 #localectl set-x11-keymap us,ru pc104 qwerty grp:rctrl_toggle
 #sudo sed -i -e "\$a exec i3" -e '57,65d' /etc/X11/xinit/xinitrc
 
-# for no reason, when systemd-coredump is disabled, my system instead creates large coredump files EVERYWHERE, so disable them entierly
+# for no reason, when systemd-coredump is disabled, my system instead creates large coredump files EVERYWHERE, so disable them entierly and raise file descriptors limits for wine esync
 sudo tee -a /etc/security/limits.conf >/dev/null <<END
 # disable coredumps entierly
 * hard core 0
+# wine esync
+bausch soft nofile 1048576
+bausch hard nofile 1048576
+END
+
+# wine esync
+sudo tee -a /etc/systemd/user.conf >/dev/null <<END
+DefaultLimitNOFILE=1048576
+END
+sudo tee -a /etc/systemd/system.conf >/dev/null <<END
+DefaultLimitNOFILE=1048576
 END
 
 # https://aspiceodyssey.wordpress.com/2017/04/28/fedora25-3d-accelerated-guest/
@@ -50,9 +64,8 @@ sudo gpasswd -a qemu video
 # lutris: use system libretro cores 
 ln -sfv /usr/lib/libretro "$XDG_DATA_HOME/lutris/runners/retroarch/cores"
 # lutris: use system winetricks
-rm -f  "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks"
+rm -f "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks"
 ln -sfv /usr/bin/winetricks "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks"
-
 
 # for radeon-profile
 sudo tee /etc/sudoers.d/00radeon-profile <<< "bausch ALL = NOPASSWD: /usr/bin/radeon-profile"
@@ -71,7 +84,25 @@ touch "$HOME/.mozilla/firefox/ignore-dev-edition-profile"
 touch "$HOME/.hushlogin"
 
 # disk is slow
-balooctl config add excludeFolders /media/disk0
+#balooctl config add excludeFolders /media/disk0
 
 # https://github.com/kakra/wine-proton/blob/rebase/proton_3.16/README.md#hints-to-32-bit-users-applies-also-to-syswow64
-sudo tee /etc/pulse/daemon.conf <<< "shm-size-bytes=1048576"
+sudo tee -a /etc/pulse/daemon.conf <<< "shm-size-bytes=1048576"
+
+# https://docs.docker.com/config/containers/live-restore/#enable-live-restore
+sudo tee -a /etc/docker/daemon.json >/dev/null <<END 
+{
+  "live-restore": true
+}
+END
+
+# needed for "open with" firefox addon
+wget https://github.com/darktrojan/openwith/raw/master/webextension/native/open_with_linux.py
+chmod u+x open_with_linux.py
+./open_with_linux.py install
+rm open_with_linux.py
+
+# fix distorted/crackling/robotized discord audio
+# https://askubuntu.com/questions/1102738/crackling-static-in-discord-with-default-audio-output-port-pulseaudio
+# https://www.reddit.com/r/discordapp/comments/7si7s3/linux_crackling_sound_in_application/
+sudo sed -i "s|load-module module-udev-detect|load-module module-udev-detect tsched=0|g" /etc/pulse/default.pa

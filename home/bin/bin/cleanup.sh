@@ -9,15 +9,17 @@ rmlist=(
   "$HOMEDIR"/.pulse-cookie
   #$HOMEDIR/.*sh_history
   "$HOMEDIR"/.cache/{ranger,thumbnails,gstreamer-1.0,less,wine,youtube-dl,qt_compose_cache*}
-  "$HOMEDIR/.dbus"
+  #"$HOMEDIR/.dbus"
   "$XDD/{xorg,RecentDocuments}"
   "$XDD/*.xbel*"
 )
 /bin/rm -r "${rmlist[@]}"
 /usr/bin/ccache -C
-/usr/bin/find $HOMEDIR/.{config,cache} ! -path "*/syncthing/*" ! -path "*/zplug/*" -empty -delete
-/usr/bin/find ! -path "*/Steam/*" ! -path "*/systemd/*" ! -path "*/lutris/*" -empty -delete
+/usr/bin/find "$HOMEDIR"/.{config,cache} ! -path "*/syncthing/*" ! -path "*/zplug/*" -empty -delete
+/usr/bin/find "$XDD" ! -path "*/Steam/*" ! -path "*/systemd/*" ! -path "*/lutris/*" -empty -delete
 /usr/bin/fd -t f -H "^\.[0-9][0-9][0-9][0-9]?[0-9]?$" "$HOMEDIR" -x "rm" {}
+/usr/bin/fd -t d -H ".unwanted" /media/disk0/torrents -x rm -r {}
+/usr/bin/fd -t f -H -e .tar.xz --full-path /home/bausch/git/PKGBUILDS -x "rm" {}
 /usr/bin/journalctl --vacuum-time=1d
 /usr/bin/youtube-dl --rm-cache-dir
 /usr/bin/psd c

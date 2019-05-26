@@ -23,7 +23,7 @@ die() {
 
 swap_setup() {
   red "Creating swap"
-  dd if=/dev/zero of=/swapfile bs=1M count=2700
+  dd if=/dev/zero of=/swapfile bs=1M count=8000
   chmod 600 /swapfile
   mkswap /swapfile
   swapon /swapfile

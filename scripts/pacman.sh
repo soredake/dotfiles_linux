@@ -10,16 +10,17 @@ plasma=(
   kde-applications-meta
   kde-thumbnailer-apk
   kde-thumbnailer-epub
+  kdegraphics-meta
   kdegraphics-thumbnailers
   kimageformats
+  kwin-lowlatency
   packagekit-qt5
   plasma-meta
   plasma-nm
   plasma-wayland-session
   plasma5-applets-redshift-control
-  kdegraphics-meta
-  powerdevil
   plasma5-applets-weather-widget
+  powerdevil
 )
 
 i3=(
@@ -39,48 +40,51 @@ bluetooth=(
 )
 
 lang=(
+  firefox-developer-edition-i18n-ru
   firefox-i18n-ru
   hunspell-ru-aot
   kbd-ru-keymaps
   libreoffice-fresh-ru
   man-pages-ru
-  firefox-developer-edition-i18n-ru
   thunderbird-i18n-ru
 )
 
 packages=(
-  thrash-protect
-  nyx
-  # wine from tkg
   # linux from tkg
-  ##media-video/bluray_info
+  # proton from tkg
+  # revert to non-git package when 0.30 is out
+  # wine from tkg
+  #media-video/bluray_info
   #media-video/dvd_info
+  #waifu2x-converter-cpp
+  #waifu2x-git
   adriconf
-  repkg
-  pulseaudio-modules-bt-git
   alsa-utils
   amd-ucode
   anbox-git
   android-file-transfer
   android-tools
+  appmenu-gtk-module
+  appmenu-qt4
   archzfs-dkms
   aria2
-  skypeforlinux-stable-bin
-  bleachbit
-  cleanerml-git
+  asf
   atom
+  atomicparsley
   atool
   bind-tools
   birdtray
+  bleachbit
+  breeze-grub
+  remotely-git
   btfs
   cantata
-  mirrorlist-manager
   ccache
+  cleanerml-git
   cloc
   colordiff
   coolreader
   cpupower
-  electronmail-bin
   cuetools
   d-feet
   dasht
@@ -91,16 +95,17 @@ packages=(
   docker-compose
   docker-gc
   dosbox-svn
-  spotify
   dosbox-x-sdl2
   dosfstools
+  doublecmd-plugin-p7z-usr
+  doublecmd-qt5
   dupeguru
+  electronmail-bin
   espeak
   etc-update
   etcher
   exfat-utils
   f2fs-tools
-  opera-ffmpeg-codecs  
   fbreader-qt5
   fd
   festival
@@ -111,21 +116,22 @@ packages=(
   fish
   flashplugin
   flatpak
-  wxhexeditor
   font-manager
   fuse2
+  code
   fuse3
   fwupd
   gamemode
   gimp
   godot
-  trash-cli
   gparted
+  gpsd
   grub
   haguichi
   htop
   httpie
   i2pd
+  megasync
   iat
   igdm
   imagemagick
@@ -135,16 +141,14 @@ packages=(
   jdownloader2
   jdupes
   jpegoptim
-  opencl-mesa
   jq
   k3b
+  kde-gtk-config
   kdeconnect
   keepassxc
   kitty
   lector
   lesspipe
-  appmenu-qt4
-  appmenu-gtk-module
   lgogdownloader
   lib32-gamemode
   libappimage 
@@ -152,7 +156,6 @@ packages=(
   libstrangle-git
   libva-mesa-driver
   libvirt
-  stubby
   links
   linux-firmware
   lostfiles
@@ -166,19 +169,17 @@ packages=(
   mdf2iso
   mediainfo
   mesa
-  usb_modeswitch
   mesa-demos
   minetest
+  mirrorlist-manager
+  mkvtoolnix-gui
   mpc
   mpd
   mpdas
-  mpv
+  mpv-git
   ms-sys
   multimc5
   mupdf
-  xdelta3
-  asf
-  pulseaudio-modules-bt-git
   mypaint
   neofetch
   netcat
@@ -190,14 +191,18 @@ packages=(
   notification-daemon
   nrg2iso
   ntfs-3g
+  nyx
   obs-glcapture-git
   obs-linuxbrowser-bin
   obs-studio
   onionshare
+  opencl-mesa
+  opera-ffmpeg-codecs  
   os-prober
   osu-lazer
   oyranos
   p7zip
+  p7zip-zstd-codec
   pamix-git
   partitionmanager
   pavucontrol
@@ -210,6 +215,8 @@ packages=(
   ps_mem
   pulseaudio
   pulseaudio-alsa
+  pulseaudio-modules-bt-git
+  pulseaudio-modules-bt-git
   pulseeffects
   pulsemixer
   pv
@@ -217,6 +224,7 @@ packages=(
   python-pillow
   python-urwid
   python-xdg
+  qalculate-gtk
   qbittorrent  
   qdirstat
   qemu
@@ -224,12 +232,12 @@ packages=(
   qt5ct
   qtox
   radeon-profile
-  gpsd
   radeon-profile-daemon-git
   ramme
   ranger
   rclone
   redshift
+  repkg
   ripgrep
   ripme-git
   rivalcfg-git
@@ -241,17 +249,17 @@ packages=(
   sct
   shellcheck
   shntool
+  skypeforlinux-stable-bin
   smartmontools
+  snapd
   speech-dispatcher
+  spotify
   sqlitebrowser
   sshfs
   stow
   strace
-  atomicparsley
-  kde-gtk-config
-  snapd
-  breeze-grub
   streamlink
+  stubby
   subliminal
   sudo
   syncplay
@@ -264,6 +272,7 @@ packages=(
   teamviewer-beta
   telegram-desktop
   texlive-core
+  thrash-protect
   thunderbird
   tig
   time
@@ -274,18 +283,22 @@ packages=(
   traceroute
   trackma-git
   translate-shell
+  trash-cli
   twitch-indicator
+  skanlite
   unarchiver
   ungoogled-chromium-bin
   unrar
+  usb_modeswitch
   veracrypt
   viber
+  xpadneo-dkms-git
   vifm
   virtio-win
   virtualbox
   virtualbox-ext-oracle
-  virtualbox-guest-iso
   virtualbox-guest-dkms
+  virtualbox-guest-iso
   virtualbox-guest-utils
   virtualbox-host-dkms
   vulkan-radeon
@@ -294,8 +307,10 @@ packages=(
   whois
   wmctrl
   woeusb
+  wxhexeditor
   xautolock
   xclip
+  xdelta3
   xdg-desktop-portal
   xdg-desktop-portal-kde
   xdg-user-dirs
@@ -345,16 +360,17 @@ fonts=(
 )
 
 libretro=(
+  # cant't build               libretro-citra-git # RetroAchievements 	✕ Nintendo - 3DS
   libretro-4do-git # RetroAchievements 	✕ The 3DO Company - 3DO
   libretro-beetle-psx-hw-git # RetroAchievements 	✕ PlayStation
   libretro-bsnes-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
   libretro-bsnes-mercury-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
-  # cant't build               libretro-citra-git # RetroAchievements 	✕ Nintendo - 3DS
   libretro-desmume-git # RetroAchievements 	✕ Nintendo - DS
   libretro-dolphin-git # RetroAchievements 	✕ Nintendo Gamecube/Wii
   libretro-dosbox-git # RetroAchievements 	✕ DOS
   libretro-fbalpha-git
   libretro-fceumm-git # RetroAchievements 	✔ Nintendo - NES / Famicom
+  libretro-fmsx-git
   libretro-fuse-git # RetroAchievements 	✕ ZX Spectrum (Fuse)
   libretro-gambatte-git # RetroAchievements 	✔ GB/GBC Nintendo - Game Boy / Color # https://github.com/libretro/gambatte-libretro/pull/123 !!!!!!!1
   libretro-genesis-plus-gx-git # RetroAchievements 	✔ Sega - MS/GG/MD/CD
@@ -363,6 +379,8 @@ libretro=(
   libretro-mame2003-plus-git # RetroAchievements 	✕
   libretro-mgba-git # RetroAchievements 	✔ Nintendo - Game Boy Advance
   libretro-mrboom-git
+  libretro-bluemsx-git
+  libretro-fmsx-git
   libretro-nestopia-git # RetroAchievements 	✕ Nintendo - NES / Famicom
   libretro-overlays-git
   libretro-parallel-n64-git # RetroAchievements 	✔ Nintendo 64
@@ -371,20 +389,22 @@ libretro=(
   libretro-pokemini-git # RetroAchievements 	✕ Nintendo - Pokémon Mini
   libretro-ppsspp-git # RetroAchievements 	✕ Sony - PlayStation Portable
   libretro-reicast-git # RetroAchievements 	✕ Sega Dreamcast
+  libretro-snes9x-git # RetroAchievements 	✔ Nintendo - SNES / Famicom
   retroarch
   xdg-utils
 )
 
 games=(
+  cataclysm-dda-tiles
   citra-canary-git
   colobot-gold
+  colobot-gold-music
   linux-steam-integration
+  ninfs-gui
   openmw-git
   openrw-git 
-  colobot-gold-music
   openspades-git
-  ninfs-gui
-  vitetris  
+  openttd
   pcsx2-git
   pcsx2-plugin-usbqemu-wheel
   play-emu-ninja-git
@@ -394,7 +414,12 @@ games=(
   rpcs3-git
   steam
   steam-fonts
+  openra-ra2-git
+  openra
   steam-native-runtime
+  taisei-git
+  vitetris  
+  vk9-git
   winetricks-git
   xash3d-git
   yuzu-canary-git
@@ -412,7 +437,7 @@ wine=(
 )
 
 # Upgrade any already-installed packages.
-yay -S "${packages[@]}" "${fonts[@]}" "${libretro[@]}" "${plasma[@]}" "${i3[@]}" "${lang[@]}" "${games[@]}" "${wine[@]}"
+yay -S "${packages[@]}" "${fonts[@]}" "${libretro[@]}" "${plasma[@]}" "${i3[@]}" "${lang[@]}" "${games[@]}" "${wine[@]}" "${bluetooth[@]}"
 
 # Remove outdated versions from the pacman.
 yay -c

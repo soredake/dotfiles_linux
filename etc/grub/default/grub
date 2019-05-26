@@ -27,10 +27,13 @@ GRUB_TIMEOUT=6
 #GRUB_CMDLINE_LINUX="init=/lib/systemd/systemd"
 
 # Append parameters to the linux kernel command line for non-recovery entries
+# https://www.phoronix.com/scan.php?page=news_item&px=Spectre-Meltdown-Easy-Switch-52
+# https://wiki.archlinux.org/index.php/Improving_performance#Turn_off_CPU_exploit_mitigations
+# `mitigations=off`
 # https://github.com/gentoo/gentoo/pull/6207#issue-274619661
 # `amdgpu.vm_fragment_size=9`
-#
-# amd_iommu=on iommu=pt
+# Enable iommu
+# `amd_iommu=on iommu=pt`
 GRUB_CMDLINE_LINUX_DEFAULT="raid=noautodetect kernel.sysrq=1 module_blacklist=pcspkr amdgpu.gpu_recovery=1"
 
 # Uncomment to disable graphical terminal (grub-pc only)

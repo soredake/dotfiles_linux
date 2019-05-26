@@ -35,6 +35,7 @@
   editor:
     fontFamily: "Hack"
     fontSize: 15
+    preferredLineLength: 120
     showIndentGuide: true
     showInvisibles: true
     softWrap: true

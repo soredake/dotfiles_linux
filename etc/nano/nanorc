@@ -40,6 +40,9 @@ set atblanks
 ## optionally followed by these closing brackets, can end sentences.
 # set brackets ""')>]}"
 
+## Automatically hard-wrap the current line when it becomes overlong.
+# set breaklonglines
+
 ## Do case-sensitive searches by default.
 # set casesensitive
 
@@ -49,7 +52,9 @@ set atblanks
 
 ## Use cut-from-cursor-to-end-of-line by default.
 # set cutfromcursor
-## (The old form, 'cut', is deprecated.)
+
+## Do not use the line below the title bar, leaving it entirely blank.
+# set emptyline
 
 ## Enable hard-wrapping and set the target width, both for automatic
 ## line wrapping and for justifying paragraphs.  If the value is 0 or
@@ -58,6 +63,9 @@ set atblanks
 
 ## Remember the used search/replace strings for the next session.
 # set historylog
+
+## Scroll the buffer contents per half-screen instead of per line.
+# set jumpyscrolling
 
 ## Display line numbers to the left of the text.
 # set linenumbers
@@ -79,7 +87,7 @@ set atblanks
 ## mouse clicks can be used to place the cursor, set the mark (with a
 ## double click), and execute shortcuts.  The mouse will work in the X
 ## Window System, and on the console when gpm is running.
-#set mouse
+# set mouse
 
 ## Switch on multiple file buffers (inserting a file will put it into
 ## a separate buffer).
@@ -123,9 +131,12 @@ set nowrap
 ## 1 keystroke instead of 26.  Note that "constantshow" overrides this.
 # set quickblank
 
-## The email-quote string, used to justify email-quoted paragraphs.
-## This is an extended regular expression.  The default is:
-# set quotestr "^([ 	]*([#:>|}]|//))+"
+## The regular expression that matches quoting characters in email
+## or line-comment introducers in source code.  The default is:
+# set quotestr "^([ 	]*([!#%:;>|}]|//|--))+"
+
+## Try to work around a mismatching terminfo terminal description.
+# set rawsequences
 
 ## Fix Backspace/Delete confusion problem.
 # set rebinddelete
@@ -172,7 +183,6 @@ set softwrap
 
 ## Snip whitespace at the end of lines when justifying or hard-wrapping.
 # set trimblanks
-## (The old form, 'justifytrim', is deprecated.)
 
 ## Disallow file modification.  Why would you want this in an rcfile? ;)
 # set view
