@@ -52,7 +52,7 @@ lang=(
 packages=(
   # linux from tkg
   # proton from tkg
-  # revert to non-git package when 0.30 is out
+  # revert mpv to non-git package when 0.30 is out
   # wine from tkg
   #media-video/bluray_info
   #media-video/dvd_info
@@ -76,12 +76,12 @@ packages=(
   birdtray
   bleachbit
   breeze-grub
-  remotely-git
   btfs
   cantata
   ccache
   cleanerml-git
   cloc
+  code
   colordiff
   coolreader
   cpupower
@@ -106,7 +106,7 @@ packages=(
   etcher
   exfat-utils
   f2fs-tools
-  fbreader-qt5
+  fbreader
   fd
   festival
   ffmpegthumbnailer
@@ -118,7 +118,6 @@ packages=(
   flatpak
   font-manager
   fuse2
-  code
   fuse3
   fwupd
   gamemode
@@ -131,7 +130,6 @@ packages=(
   htop
   httpie
   i2pd
-  megasync
   iat
   igdm
   imagemagick
@@ -142,6 +140,7 @@ packages=(
   jdupes
   jpegoptim
   jq
+  jq unityhub
   k3b
   kde-gtk-config
   kdeconnect
@@ -168,6 +167,7 @@ packages=(
   mc
   mdf2iso
   mediainfo
+  megasync
   mesa
   mesa-demos
   minetest
@@ -197,7 +197,7 @@ packages=(
   obs-studio
   onionshare
   opencl-mesa
-  opera-ffmpeg-codecs  
+  opera-ffmpeg-codecs
   os-prober
   osu-lazer
   oyranos
@@ -237,6 +237,7 @@ packages=(
   ranger
   rclone
   redshift
+  remotely-git
   repkg
   ripgrep
   ripme-git
@@ -249,6 +250,7 @@ packages=(
   sct
   shellcheck
   shntool
+  skanlite
   skypeforlinux-stable-bin
   smartmontools
   snapd
@@ -276,6 +278,7 @@ packages=(
   thunderbird
   tig
   time
+  tldr++
   tmux
   tor
   tor-browser
@@ -285,14 +288,18 @@ packages=(
   translate-shell
   trash-cli
   twitch-indicator
-  skanlite
   unarchiver
   ungoogled-chromium-bin
+  unity-editor
+  unity-editor-android
+  unity-editor-facebook
+  unity-editor-ios
+  unity-editor-mac
+  unity-editor-webgl
   unrar
   usb_modeswitch
   veracrypt
   viber
-  xpadneo-dkms-git
   vifm
   virtio-win
   virtualbox
@@ -317,6 +324,7 @@ packages=(
   xdotool
   xf86-video-amdgpu
   xorg
+  xpadneo-dkms-git
   xsel
   yarn
   zeal
@@ -382,13 +390,14 @@ libretro=(
   libretro-bluemsx-git
   libretro-fmsx-git
   libretro-nestopia-git # RetroAchievements 	✕ Nintendo - NES / Famicom
+  libretro-sameboy-git # RetroAchievements     ✔ GB/GBC Nintendo - Game Boy / Color
   libretro-overlays-git
   libretro-parallel-n64-git # RetroAchievements 	✔ Nintendo 64
   libretro-pcsx-rearmed-git # RetroAchievements 	✕ Sony - PlayStation
   libretro-picodrive-git # RetroAchievements 	✔ Sega - MS/MD/CD/32X
   libretro-pokemini-git # RetroAchievements 	✕ Nintendo - Pokémon Mini
   libretro-ppsspp-git # RetroAchievements 	✕ Sony - PlayStation Portable
-  libretro-reicast-git # RetroAchievements 	✕ Sega Dreamcast
+  libretro-beetle-dc-git # RetroAchievements 	✕ Sega Dreamcast
   libretro-snes9x-git # RetroAchievements 	✔ Nintendo - SNES / Famicom
   retroarch
   xdg-utils

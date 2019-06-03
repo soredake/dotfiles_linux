@@ -32,4 +32,7 @@ GTK_USE_PORTAL=1
 
 # https://wiki.mozilla.org/Platform/GFX/Quantum_Render
 MOZ_ACCELERATED=1
-MOZ_WEBRENDER=1
+#MOZ_WEBRENDER=1
+
+# https://github.com/isacikgoz/tldr#use-for-different-os
+TLDR_OS=linux

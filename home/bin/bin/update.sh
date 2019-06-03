@@ -14,3 +14,4 @@ yarn global upgrade
 fwupdmgr refresh
 fwupdmgr update
 zplugin update --all
+tldr --update
