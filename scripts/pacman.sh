@@ -63,7 +63,7 @@ packages=(
   amd-ucode
   anbox-git
   android-file-transfer
-  android-tools
+  #android-tools
   appmenu-gtk-module
   appmenu-qt4
   archzfs-dkms
@@ -376,7 +376,7 @@ libretro=(
   libretro-desmume-git # RetroAchievements 	✕ Nintendo - DS
   libretro-dolphin-git # RetroAchievements 	✕ Nintendo Gamecube/Wii
   libretro-dosbox-git # RetroAchievements 	✕ DOS
-  libretro-fbalpha-git
+  libretro-fbneo-git
   libretro-fceumm-git # RetroAchievements 	✔ Nintendo - NES / Famicom
   libretro-fmsx-git
   libretro-fuse-git # RetroAchievements 	✕ ZX Spectrum (Fuse)
@@ -386,6 +386,7 @@ libretro=(
   libretro-higan # RetroAchievements 	✕ Nintendo - SNES / Famicom
   libretro-mame2003-plus-git # RetroAchievements 	✕
   libretro-mgba-git # RetroAchievements 	✔ Nintendo - Game Boy Advance
+  libretro-vba-next-git # RetroAchievements     ✔ Nintendo - Game Boy Advance
   libretro-mrboom-git
   libretro-bluemsx-git
   libretro-fmsx-git
@@ -397,7 +398,7 @@ libretro=(
   libretro-picodrive-git # RetroAchievements 	✔ Sega - MS/MD/CD/32X
   libretro-pokemini-git # RetroAchievements 	✕ Nintendo - Pokémon Mini
   libretro-ppsspp-git # RetroAchievements 	✕ Sony - PlayStation Portable
-  libretro-beetle-dc-git # RetroAchievements 	✕ Sega Dreamcast
+  libretro-flycast-git # RetroAchievements 	✕ Sega Dreamcast
   libretro-snes9x-git # RetroAchievements 	✔ Nintendo - SNES / Famicom
   retroarch
   xdg-utils
@@ -441,6 +442,7 @@ wine=(
   lib32-gallium-nine-git
   lib32-gst-plugins-bad
   lib32-gst-plugins-ugly
+  lib32-gst-plugins-base
   wine_gecko
   wine-mono
 )

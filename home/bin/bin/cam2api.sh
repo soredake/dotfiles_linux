@@ -3,8 +3,8 @@
 # https://forum.xda-developers.com/mi-a2-lite/how-to/guide-how-to-enable-camera2-api-t3851414
 adb shell <<END
 #su -c 'setprop persist.camera.HAL3.enabled 1; setprop persist.camera.eis.enabled 1'
-mount -o remount,rw /system
+su -c 'mount -o remount,rw /system'
 su -c 'echo "persist.camera.HAL3.enabled=1\npersist.camera.eis.enabled=1" >>/system/build.prop'
-mount -o remount,ro /system
+su -c 'mount -o remount,ro /system'
 END
 adb reboot

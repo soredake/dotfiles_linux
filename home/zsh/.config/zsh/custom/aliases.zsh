@@ -90,6 +90,7 @@ alias build_proton='cd $HOME/git/PKGBUILDS/proton-tkg && ./proton-tkg.sh'
 alias build_mingw='cd $HOME/git/PKGBUILDS/mingw && ./mingw-on-arch-automator.sh'
 alias build_kernel='cd $HOME/git/PKGBUILDS/linux51-tkg && makepkg -si'
 alias mountandroidfs='sshfs -o kernel_cache -oport=2222 ssh@192.168.1.234:/ media/android'
+alias fixwinhibernation='sudo umount /run/media/bausch/Windows\ 10 && sudo ntfs-3g -o remove_hiberfile /dev/sda4 /run/media/bausch/Windows\ 10'
 alias vts='echo vitetris --connect $(myip):27015 && vitetris -listen 27015'
 alias copyuserjs='cat $HOME/git/misc/firefox/user.js $HOME/git/misc/firefox/tor-main.js > $HOME/.mozilla/firefox/tor-main/user.js'
 # https://www.lifewire.com/kubuntu-p2-2202573
