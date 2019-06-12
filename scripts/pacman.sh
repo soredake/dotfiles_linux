@@ -90,6 +90,7 @@ packages=(
   dasht
   discord
   dkms
+  amdvlk
   dnscrypt-proxy
   docker
   docker-compose
@@ -278,6 +279,7 @@ packages=(
   thunderbird
   tig
   time
+  trebleshot
   tldr++
   tmux
   tor
@@ -368,7 +370,7 @@ fonts=(
 )
 
 libretro=(
-  # cant't build               libretro-citra-git # RetroAchievements 	✕ Nintendo - 3DS
+  libretro-citra-git # RetroAchievements 	✕ Nintendo - 3DS
   libretro-4do-git # RetroAchievements 	✕ The 3DO Company - 3DO
   libretro-beetle-psx-hw-git # RetroAchievements 	✕ PlayStation
   libretro-bsnes-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
@@ -385,7 +387,7 @@ libretro=(
   libretro-gw-git # RetroAchievements 	✕ Handheld Electronic
   libretro-higan # RetroAchievements 	✕ Nintendo - SNES / Famicom
   libretro-mame2003-plus-git # RetroAchievements 	✕
-  libretro-mgba-git # RetroAchievements 	✔ Nintendo - Game Boy Advance
+  libretro-mgba-git # RetroAchievements         ✔ (GBA only) Nintendo - Game Boy Advance
   libretro-vba-next-git # RetroAchievements     ✔ Nintendo - Game Boy Advance
   libretro-mrboom-git
   libretro-bluemsx-git

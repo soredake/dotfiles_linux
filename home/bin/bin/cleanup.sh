@@ -17,9 +17,9 @@ rmlist=(
 /usr/bin/ccache -C
 /usr/bin/find "$HOMEDIR"/.{config,cache} ! -path "*/syncthing/*" ! -path "*/zplug/*" -empty -delete
 /usr/bin/find "$XDD" ! -path "*/Steam/*" ! -path "*/systemd/*" ! -path "*/lutris/*" -empty -delete
-/usr/bin/fd -t f -H "^\.[0-9][0-9][0-9][0-9]?[0-9]?$" "$HOMEDIR" -x "rm" {}
+/usr/bin/fd -t f -H -I "^\.[0-9][0-9][0-9][0-9]?[0-9]?$" "$HOMEDIR" -x "rm" {}
 /usr/bin/fd -t d -H ".unwanted" /media/disk0/torrents -x rm -r {}
-/usr/bin/fd -t f -H -e .tar.xz --full-path /home/bausch/git/PKGBUILDS -x "rm" {}
+/usr/bin/fd -t f -H -I -e .tar.xz --search-path /home/bausch/git/PKGBUILDS -x "rm" {}
 /usr/bin/journalctl --vacuum-time=1d
 /usr/bin/youtube-dl --rm-cache-dir
 /usr/bin/psd c

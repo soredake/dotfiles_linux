@@ -104,6 +104,15 @@ _comp_options+=(globdots)
 # shellcheck disable=1090
 for f in $HOME/.private/*; do . $f; done
 
+# read profile files
+for sh in /etc/profile.d/*.sh ; do
+        [ -r "$sh" ] && . "$sh"
+done
+unset sh
+
+# use language set from plasma
+. "$HOME/.config/plasma-locale-settings.sh"
+
 # Don't hash directories on the path a time, which allows new
 # binaries in $PATH to be executed without rehashing.
 setopt nohashdirs

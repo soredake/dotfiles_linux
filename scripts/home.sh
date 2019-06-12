@@ -72,10 +72,10 @@ if grep --quiet "$NEWUSER" /etc/passwd; then
   main
 else
   red "User not exists, starting stage1..."
-  localectl set-locale ru_RU.utf8
+  localectl set-locale LANG=en_US.UTF-8
   timedatectl set-timezone Europe/Kiev
   pacman -Syu
-  pacstrap base stow sudo zsh networkmanager xdg-user-dirs xdg-utils || die "pacstrap failed"
+  pacman -S base stow sudo zsh networkmanager xdg-user-dirs xdg-utils || die "pacstrap failed"
   hostnamectl set-hostname archlinux
   systemd-machine-id-setup
   ccache -M 20G
