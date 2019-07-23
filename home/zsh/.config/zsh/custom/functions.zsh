@@ -164,16 +164,16 @@ backup() {
   cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" "/run/media/bausch/Windows 10/Users/User/Desktop/"
   cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" "$HOME/sync/share/"
   # dropbox
-  rclone sync --fast-list -P "$HOME/sync/arch" dropbox:/arch
+  #rclone sync --fast-list -P "$HOME/sync/arch" dropbox:/arch
   rclone sync --fast-list -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" dropbox:/
   # opendrive
   rclone sync -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" opendrive:/
   # google drive
-  rclone sync --drive-use-trash --fast-list -P "$HOME/sync/arch" google_drive:/arch
+  #rclone sync --drive-use-trash --fast-list -P "$HOME/sync/arch" google_drive:/arch
   rclone sync --drive-use-trash --fast-list -P "$HOME/sync/system-data" google_drive:/system-data
   rclone sync --drive-use-trash -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" google_drive:/
   # mega.nz
-  rclone sync --mega-hard-delete --fast-list -P "$HOME/sync/arch" 50gbmega:/arch
+  #rclone sync --mega-hard-delete --fast-list -P "$HOME/sync/arch" 50gbmega:/arch
   rclone sync --mega-hard-delete --fast-list -P "$HOME/sync/main/Documents" 50gbmega:/Documents
   rclone sync --mega-hard-delete --fast-list -P "$HOME/sync/main/me" 50gbmega:/me
   rclone sync --mega-hard-delete --fast-list -P "$HOME/sync/main/Images" 50gbmega:/Images

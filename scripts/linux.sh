@@ -106,3 +106,6 @@ rm open_with_linux.py
 # https://askubuntu.com/questions/1102738/crackling-static-in-discord-with-default-audio-output-port-pulseaudio
 # https://www.reddit.com/r/discordapp/comments/7si7s3/linux_crackling_sound_in_application/
 sudo sed -i "s|load-module module-udev-detect|load-module module-udev-detect tsched=0|g" /etc/pulse/default.pa
+
+# https://wiki.archlinux.org/index.php/Bluetooth#Auto_power-on_after_boot
+sudo -i "s|#AutoEnable=false|AutoEnable=true|g" /etc/bluetooth/main.conf

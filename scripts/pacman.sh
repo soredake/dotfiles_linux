@@ -34,7 +34,11 @@ i3=(
 )
 
 bluetooth=(
+  bluedevil
+  bluez
+  bluez-plugins
   bluez-utils
+  pulseaudio-modules-bt-git
   # http://troglobit.com/2017/01/03/trust-bluetooth-4.0-adapter-in-linux/
   bluez-hid2hci
 )
@@ -54,6 +58,7 @@ packages=(
   # proton from tkg
   # revert mpv to non-git package when 0.30 is out
   # wine from tkg
+  # vkd3d from tkg
   #media-video/bluray_info
   #media-video/dvd_info
   #waifu2x-converter-cpp
@@ -63,7 +68,7 @@ packages=(
   amd-ucode
   anbox-git
   android-file-transfer
-  #android-tools
+  android-tools
   appmenu-gtk-module
   appmenu-qt4
   archzfs-dkms
@@ -72,9 +77,12 @@ packages=(
   atom
   atomicparsley
   atool
+  audacity
+  balena-etcher
   bind-tools
   birdtray
   bleachbit
+  blender
   breeze-grub
   btfs
   cantata
@@ -85,12 +93,12 @@ packages=(
   colordiff
   coolreader
   cpupower
+  ctags	
   cuetools
   d-feet
   dasht
   discord
   dkms
-  amdvlk
   dnscrypt-proxy
   docker
   docker-compose
@@ -104,7 +112,6 @@ packages=(
   electronmail-bin
   espeak
   etc-update
-  etcher
   exfat-utils
   f2fs-tools
   fbreader
@@ -123,7 +130,8 @@ packages=(
   fwupd
   gamemode
   gimp
-  godot
+  godot-blender-exporter
+  godot-pulse
   gparted
   gpsd
   grub
@@ -132,6 +140,8 @@ packages=(
   httpie
   i2pd
   iat
+  xinput-gui
+  aespresso
   igdm
   imagemagick
   innoextract
@@ -141,7 +151,6 @@ packages=(
   jdupes
   jpegoptim
   jq
-  jq unityhub
   k3b
   kde-gtk-config
   kdeconnect
@@ -162,7 +171,6 @@ packages=(
   lsb-release
   lshw
   lsof
-  lutris
   lxrandr
   maim
   mc
@@ -179,7 +187,7 @@ packages=(
   mpdas
   mpv-git
   ms-sys
-  multimc5
+  multimc-git
   mupdf
   mypaint
   neofetch
@@ -216,8 +224,6 @@ packages=(
   ps_mem
   pulseaudio
   pulseaudio-alsa
-  pulseaudio-modules-bt-git
-  pulseaudio-modules-bt-git
   pulseeffects
   pulsemixer
   pv
@@ -279,7 +285,6 @@ packages=(
   thunderbird
   tig
   time
-  trebleshot
   tldr++
   tmux
   tor
@@ -289,15 +294,10 @@ packages=(
   trackma-git
   translate-shell
   trash-cli
+  trebleshot
   twitch-indicator
   unarchiver
   ungoogled-chromium-bin
-  unity-editor
-  unity-editor-android
-  unity-editor-facebook
-  unity-editor-ios
-  unity-editor-mac
-  unity-editor-webgl
   unrar
   usb_modeswitch
   veracrypt
@@ -310,6 +310,7 @@ packages=(
   virtualbox-guest-iso
   virtualbox-guest-utils
   virtualbox-host-dkms
+  vulkan-mesa-layer
   vulkan-radeon
   w3m
   wget
@@ -370,16 +371,19 @@ fonts=(
 )
 
 libretro=(
-  libretro-citra-git # RetroAchievements 	✕ Nintendo - 3DS
   libretro-4do-git # RetroAchievements 	✕ The 3DO Company - 3DO
   libretro-beetle-psx-hw-git # RetroAchievements 	✕ PlayStation
+  libretro-bluemsx-git
   libretro-bsnes-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
   libretro-bsnes-mercury-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
+  libretro-citra-git # RetroAchievements 	✕ Nintendo - 3DS
   libretro-desmume-git # RetroAchievements 	✕ Nintendo - DS
   libretro-dolphin-git # RetroAchievements 	✕ Nintendo Gamecube/Wii
   libretro-dosbox-git # RetroAchievements 	✕ DOS
   libretro-fbneo-git
   libretro-fceumm-git # RetroAchievements 	✔ Nintendo - NES / Famicom
+  libretro-flycast-git # RetroAchievements 	✕ Sega Dreamcast
+  libretro-fmsx-git
   libretro-fmsx-git
   libretro-fuse-git # RetroAchievements 	✕ ZX Spectrum (Fuse)
   libretro-gambatte-git # RetroAchievements 	✔ GB/GBC Nintendo - Game Boy / Color # https://github.com/libretro/gambatte-libretro/pull/123 !!!!!!!1
@@ -388,20 +392,17 @@ libretro=(
   libretro-higan # RetroAchievements 	✕ Nintendo - SNES / Famicom
   libretro-mame2003-plus-git # RetroAchievements 	✕
   libretro-mgba-git # RetroAchievements         ✔ (GBA only) Nintendo - Game Boy Advance
-  libretro-vba-next-git # RetroAchievements     ✔ Nintendo - Game Boy Advance
   libretro-mrboom-git
-  libretro-bluemsx-git
-  libretro-fmsx-git
   libretro-nestopia-git # RetroAchievements 	✕ Nintendo - NES / Famicom
-  libretro-sameboy-git # RetroAchievements     ✔ GB/GBC Nintendo - Game Boy / Color
   libretro-overlays-git
   libretro-parallel-n64-git # RetroAchievements 	✔ Nintendo 64
   libretro-pcsx-rearmed-git # RetroAchievements 	✕ Sony - PlayStation
   libretro-picodrive-git # RetroAchievements 	✔ Sega - MS/MD/CD/32X
   libretro-pokemini-git # RetroAchievements 	✕ Nintendo - Pokémon Mini
   libretro-ppsspp-git # RetroAchievements 	✕ Sony - PlayStation Portable
-  libretro-flycast-git # RetroAchievements 	✕ Sega Dreamcast
+  libretro-sameboy-git # RetroAchievements     ✔ GB/GBC Nintendo - Game Boy / Color
   libretro-snes9x-git # RetroAchievements 	✔ Nintendo - SNES / Famicom
+  libretro-vba-next-git # RetroAchievements     ✔ Nintendo - Game Boy Advance
   retroarch
   xdg-utils
 )
@@ -412,8 +413,13 @@ games=(
   colobot-gold
   colobot-gold-music
   linux-steam-integration
+  lutris
+  lutris-battlenet-meta
+  lutris-wine-meta
   ninfs-gui
   openmw-git
+  openra
+  openra-ra2-git
   openrw-git 
   openspades-git
   openttd
@@ -426,12 +432,9 @@ games=(
   rpcs3-git
   steam
   steam-fonts
-  openra-ra2-git
-  openra
   steam-native-runtime
   taisei-git
-  vitetris  
-  vk9-git
+  vitetris
   winetricks-git
   xash3d-git
   yuzu-canary-git
@@ -443,8 +446,8 @@ wine=(
   gst-plugins-ugly
   lib32-gallium-nine-git
   lib32-gst-plugins-bad
-  lib32-gst-plugins-ugly
   lib32-gst-plugins-base
+  lib32-gst-plugins-ugly
   wine_gecko
   wine-mono
 )

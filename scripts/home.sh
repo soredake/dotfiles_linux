@@ -75,10 +75,10 @@ else
   localectl set-locale LANG=en_US.UTF-8
   timedatectl set-timezone Europe/Kiev
   pacman -Syu
-  pacman -S base stow sudo zsh networkmanager xdg-user-dirs xdg-utils || die "pacstrap failed"
+  pacman -S stow sudo zsh networkmanager xdg-user-dirs xdg-utils || die "pacman failed"
   hostnamectl set-hostname archlinux
   systemd-machine-id-setup
-  ccache -M 20G
+  ccache -M 10G
   echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/00wheel
   echo "$NEWUSER ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper" > /etc/sudoers.d/99psd
   red "Creating user..."
@@ -92,6 +92,6 @@ else
   sudo -u "$NEWUSER" -s mkdir -p media tmp git .{private,config/kitty,cache} .local/share/applications/custom
   red "Owning this repository"
   chown -R "$NEWUSER:$NEWUSER" "$SD"/..
-  rsync --archive --hard-links --acls --xattrs --compress --progress --verbose --executability -h --remove-source-files "$SD"/../../"$BASE" "$dotpath"
+  rsync --archive --compress --progress --verbose --executability -h --remove-source-files "$SD"/../../"$BASE" "$dotpath"
   sudo -u "$NEWUSER" -s "$dotpath"/"$BASE"/scripts/home.sh
 fi
