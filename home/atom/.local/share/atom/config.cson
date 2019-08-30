@@ -42,10 +42,13 @@
   "exception-reporting":
     userId: "4a261763-7639-4261-82d5-ab339b204310"
   "file-icons": {}
+  "find-and-replace":
+    useRipgrep: true
   "fuzzy-finder":
     scoringSystem: "fast"
     useRipGrep: true
-  "linter-ui-default": {}
+  "linter-ui-default":
+    showPanel: true
   minimap:
     plugins:
       cursorline: true

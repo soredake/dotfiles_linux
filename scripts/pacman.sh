@@ -124,7 +124,7 @@ packages=(
   fish
   flashplugin
   flatpak
-  font-manager
+  #font-manager
   fuse2
   fuse3
   fwupd
@@ -134,8 +134,10 @@ packages=(
   godot-pulse
   gparted
   gpsd
-  grub
+  grub-libzfs
   haguichi
+  gnome-firmware-updater-git
+  firmware-manager-git
   htop
   httpie
   i2pd
@@ -167,6 +169,7 @@ packages=(
   libvirt
   links
   linux-firmware
+  mpv-mpris-git
   lostfiles
   lsb-release
   lshw
@@ -185,7 +188,7 @@ packages=(
   mpc
   mpd
   mpdas
-  mpv-git
+  mpv-full-git
   ms-sys
   multimc-git
   mupdf
@@ -240,7 +243,6 @@ packages=(
   qtox
   radeon-profile
   radeon-profile-daemon-git
-  ramme
   ranger
   rclone
   redshift
@@ -282,8 +284,10 @@ packages=(
   telegram-desktop
   texlive-core
   thrash-protect
+  git-cola
   thunderbird
   tig
+  sam-rewritten-git
   time
   tldr++
   tmux
@@ -415,6 +419,7 @@ games=(
   linux-steam-integration
   lutris
   lutris-battlenet-meta
+  lutris-world-of-warcraft-dependencies-amd
   lutris-wine-meta
   ninfs-gui
   openmw-git
@@ -450,6 +455,7 @@ wine=(
   lib32-gst-plugins-ugly
   wine_gecko
   wine-mono
+  spirv-headers-git
 )
 
 # Upgrade any already-installed packages.

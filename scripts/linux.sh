@@ -109,3 +109,6 @@ sudo sed -i "s|load-module module-udev-detect|load-module module-udev-detect tsc
 
 # https://wiki.archlinux.org/index.php/Bluetooth#Auto_power-on_after_boot
 sudo -i "s|#AutoEnable=false|AutoEnable=true|g" /etc/bluetooth/main.conf
+
+# autoload mpv-mpris-git package
+ln -sfv /usr/share/mpv/scripts/mpris.so "$HOME/.config/mpv/scripts"
