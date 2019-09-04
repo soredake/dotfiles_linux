@@ -2,6 +2,7 @@
 
 url="${1}"
 number="${url##*-}"
+res=${3}
 
 if df /mnt/c &>/dev/null; then
   # https://stackoverflow.com/a/54642295
@@ -18,13 +19,59 @@ else
 fi
 
 curlsub() {
-  curl -so ${tmpfolder}sub.ass https://smotret-anime-365.ru/translations/ass/${number}?download=1
+  curl -so ${tmpfolder}${1}.ass https://smotret-anime-365.ru/translations/ass/${1}?download=1
+  echo "${1}"
 }
 
 pagetitle() {
-  curl -s "${url}" | grep -o -P '(?<=\"og:title\" content\=\").*(?=" />)'
+  titlepage=$(curl -s "${1}" | grep -o -P '(?<=\"og:title\" content\=\").*(?=" />)')
+  newpagetitle=$(echo ${titlepage} | awk '{gsub(/[ \t]/,"_");print}' | awk '{gsub(/[,\t]/,"_");print}')
+  echo ${newpagetitle}
 }
 
+getnextepisode() {
+  # https://stackoverflow.com/questions/13242469/how-to-use-sed-grep-to-extract-text-between-two-words
+  nextepisode=$(curl -s ${url} | grep -o -P '(?<=href=").*(?="><i class="material-icons right">chevron_right<)' | head -n1) && echo "https://smotret-anime-365.ru"${nextepisode##*href=\"}
+}
+
+getnumber() {
+  echo "${1##*-}"
+}
+
+play() {
+  echo "https://smotret-anime-365.ru/translations/mp4/${1}?format=mp4&height=${2}"
+}
+
+writeplaylist() {
+  tee -a ${tmpfolder}playlist >/dev/null <<END
+loadfile ${1} append sub-file=/tmp/${2}.ass,title=${3}
+END
+}
+
+tee ${tmpfolder}playlist >/dev/null <<< "loadfile https://example.com replace sub-file=/tmp/ass.ass"
+
+writeplaylist "$(play ${number} ${res})" "$(curlsub ${number})" "$(pagetitle ${url})"
+
+if [[ -n  "${2}" ]]; then
+  for ((n=0;n<${2};n++)); do
+    [[ -n ${nex1} ]] && url=${nex1}
+    echo "current url: ${url}"
+    nextepurl=$(getnextepisode ${url}) # getting next episode url from current episode url
+    [[ "${nextepurl}" == "https://smotret-anime-365.ru" ]] && break
+    nextepurlredirected=$(curl -e "${url}" -Ls -o /dev/null -w %{url_effective} ${nextepurl}) # getting redirected next episode url
+    echo "next episode url: ${nextepurlredirected}"
+    nextepnumber=$(getnumber ${nextepurlredirected}) # getting next episode number from next episode url
+    echo "next episode number: ${nextepnumber}"
+    
+    writeplaylist "$(play ${nextepnumber} ${res})" "$(curlsub ${nextepnumber})" "$(pagetitle ${nextepurlredirected})" # write next episode info to playlist
+    
+    # info for new iteration
+    export nex1=${nextepurlredirected}
+  done
+fi
+
+
+#echo ${whattoplay}
 #for res in 1080 720 480 360; do
 #  result="$(curl -sI https://smotret-anime-365.ru/translations/mp4/${number}?format=mp4\&height=${res} | head -n1)"
 #  if grep 302 <<< "${result}" &>/dev/null; then
@@ -37,4 +84,4 @@ pagetitle() {
 
 curlsub
 [[ $wsl == "1" ]] && tmpfolder=C:\\Users\\${user}\\Documents\\
-eval "nohup ${mpvexe} --demuxer-readahead-secs=6000 --cache-secs=600 --sub-file='${tmpfolder}sub.ass' --title='$(pagetitle)' https://smotret-anime-365.ru/translations/mp4/${number}?format=mp4\&height\=${2} &>/dev/null &"
+eval "nohup ${mpvexe} --demuxer-readahead-secs=6000 --cache-secs=600 https://example.com --input-file=${tmpfolder}playlist &>/tmp/mpv-log &"

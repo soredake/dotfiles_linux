@@ -155,6 +155,7 @@ packages=(
   jq
   k3b
   kde-gtk-config
+  namespaced-openvpn-git
   kdeconnect
   keepassxc
   kitty
@@ -286,6 +287,8 @@ packages=(
   thrash-protect
   git-cola
   thunderbird
+  octopi-dev
+  octopi-notifier-frameworks
   tig
   sam-rewritten-git
   time
@@ -425,6 +428,11 @@ games=(
   openmw-git
   openra
   openra-ra2-git
+  oversteer
+  jstest-gtk-git
+  gltron
+  gb-studio-bin
+  freej2me
   openrw-git 
   openspades-git
   openttd
@@ -438,6 +446,7 @@ games=(
   steam
   steam-fonts
   steam-native-runtime
+  boxtron-git
   taisei-git
   vitetris
   winetricks-git
