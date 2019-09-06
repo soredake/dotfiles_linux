@@ -51,6 +51,9 @@ END
 
 #tee ${tmpfolder}playlist >/dev/null <<< "loadfile https://example.com replace sub-file=/tmp/ass.ass"
 
+# clean playlist file
+echo "" >${tmpfolder}playlist
+
 # always write first episode to playlist
 writeplaylist "$(play ${number} ${res})" "$(curlsub ${number})" "$(pagetitle ${url})"
 
