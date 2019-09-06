@@ -431,7 +431,7 @@ games=(
   oversteer
   jstest-gtk-git
   gltron
-  gb-studio-bin
+  gb-studio-git
   freej2me
   openrw-git 
   openspades-git

@@ -25,6 +25,7 @@ curlsub() {
 
 pagetitle() {
   titlepage=$(curl -s "${1}" | grep -o -P '(?<=\"og:title\" content\=\").*(?=" />)')
+  # https://www.tek-tips.com/viewthread.cfm?qid=1524347
   newpagetitle=$(echo ${titlepage} | awk '{gsub(/[ \t]/,"_");print}' | awk '{gsub(/[,\t]/,"_");print}')
   echo ${newpagetitle}
 }
@@ -48,8 +49,9 @@ loadfile ${1} append sub-file=/tmp/${2}.ass,title=${3}
 END
 }
 
-tee ${tmpfolder}playlist >/dev/null <<< "loadfile https://example.com replace sub-file=/tmp/ass.ass"
+#tee ${tmpfolder}playlist >/dev/null <<< "loadfile https://example.com replace sub-file=/tmp/ass.ass"
 
+# always write first episode to playlist
 writeplaylist "$(play ${number} ${res})" "$(curlsub ${number})" "$(pagetitle ${url})"
 
 if [[ -n  "${2}" ]]; then
@@ -58,6 +60,7 @@ if [[ -n  "${2}" ]]; then
     echo "current url: ${url}"
     nextepurl=$(getnextepisode ${url}) # getting next episode url from current episode url
     [[ "${nextepurl}" == "https://smotret-anime-365.ru" ]] && break
+    # https://stackoverflow.com/questions/3074288/get-final-url-after-curl-is-redirected
     nextepurlredirected=$(curl -e "${url}" -Ls -o /dev/null -w %{url_effective} ${nextepurl}) # getting redirected next episode url
     echo "next episode url: ${nextepurlredirected}"
     nextepnumber=$(getnumber ${nextepurlredirected}) # getting next episode number from next episode url
@@ -71,7 +74,6 @@ if [[ -n  "${2}" ]]; then
 fi
 
 
-#echo ${whattoplay}
 #for res in 1080 720 480 360; do
 #  result="$(curl -sI https://smotret-anime-365.ru/translations/mp4/${number}?format=mp4\&height=${res} | head -n1)"
 #  if grep 302 <<< "${result}" &>/dev/null; then
@@ -82,6 +84,5 @@ fi
 #  fi
 #done
 
-curlsub
 [[ $wsl == "1" ]] && tmpfolder=C:\\Users\\${user}\\Documents\\
-eval "nohup ${mpvexe} --demuxer-readahead-secs=6000 --cache-secs=600 https://example.com --input-file=${tmpfolder}playlist &>/tmp/mpv-log &"
+eval "nohup ${mpvexe} --demuxer-readahead-secs=6000 --cache-secs=600 https://5fsdf.com --msg-level=all=info --input-file=${tmpfolder}playlist &>/tmp/mpv-log &"
