@@ -29,6 +29,7 @@ i3=(
   feh
   i3-wm
   i3blocks
+  i3blocks-contrib
   i3lock
   kbdd-git
 )
@@ -136,7 +137,7 @@ packages=(
   gpsd
   grub-libzfs
   haguichi
-  gnome-firmware-updater-git
+  gnome-firmware
   firmware-manager-git
   htop
   httpie
@@ -193,7 +194,7 @@ packages=(
   ms-sys
   multimc-git
   mupdf
-  mypaint
+  #mypaint
   neofetch
   netcat
   networkmanager

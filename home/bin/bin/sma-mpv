@@ -26,7 +26,7 @@ curlsub() {
 pagetitle() {
   titlepage=$(curl -s "${1}" | grep -o -P '(?<=\"og:title\" content\=\").*(?=" />)')
   # https://www.tek-tips.com/viewthread.cfm?qid=1524347
-  newpagetitle=$(echo ${titlepage} | awk '{gsub(/[ \t]/,"_");print}' | awk '{gsub(/[,\t]/,"_");print}')
+  newpagetitle=$(echo ${titlepage} | awk '{gsub(/[ \t]/,"_");print}' | awk '{gsub(/[,\t]/,"_");print}' | awk '{gsub(/[&\t]/,"_");print}' | awk '{gsub(/[;\t]/,"_");print}')
   echo ${newpagetitle}
 }
 
@@ -88,4 +88,4 @@ fi
 #done
 
 [[ $wsl == "1" ]] && tmpfolder=C:\\Users\\${user}\\Documents\\
-eval "nohup ${mpvexe} --demuxer-readahead-secs=6000 --cache-secs=600 https://5fsdf.com --msg-level=all=info --input-file=${tmpfolder}playlist &>/tmp/mpv-log &"
+eval "nohup ${mpvexe} --demuxer-readahead-secs=6000 --cache-secs=600 non-exist --msg-level=all=info --input-file=${tmpfolder}playlist &>/tmp/mpv-log &"

@@ -36,3 +36,6 @@ MOZ_ACCELERATED=1
 
 # https://github.com/isacikgoz/tldr#use-for-different-os
 TLDR_OS=linux
+
+# https://github.com/Tk-Glitch/PKGBUILDS/issues/312
+#RADV_PERFTEST=aco
