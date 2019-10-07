@@ -7,7 +7,16 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 plasma=(
-  kde-applications-meta
+  kdeaccessibility-meta
+  kdeadmin-meta
+  kdebase-meta
+  kdeedu-meta
+  kdegames-meta
+  kdegraphics-meta
+  kdemultimedia-meta
+  kdenetwork-meta
+  kdepim-meta
+  kdeutils-meta
   kde-thumbnailer-apk
   kde-thumbnailer-epub
   kdegraphics-meta
@@ -24,6 +33,8 @@ plasma=(
 )
 
 i3=(
+  xautolock
+  rofi
   compton-git
   dragon-drag-and-drop-git
   feh
@@ -45,33 +56,38 @@ bluetooth=(
 )
 
 lang=(
-  firefox-developer-edition-i18n-ru
-  firefox-i18n-ru
   hunspell-ru-aot
   kbd-ru-keymaps
-  libreoffice-fresh-ru
   man-pages-ru
-  thunderbird-i18n-ru
+)
+
+mesa=(
+  libva-mesa-driver
+  mesa
+  mesa-demos
+  opencl-mesa
+  vulkan-mesa-layer
+  vulkan-radeon
+  xf86-video-amdgpu
 )
 
 packages=(
   # linux from tkg
   # proton from tkg
-  # revert mpv to non-git package when 0.30 is out
-  # wine from tkg
   # vkd3d from tkg
+  # wine from tkg
   #media-video/bluray_info
   #media-video/dvd_info
+  #mypaint
   #waifu2x-converter-cpp
   #waifu2x-git
   adriconf
+  aespresso
   alsa-utils
   amd-ucode
-  anbox-git
   android-file-transfer
   android-tools
   appmenu-gtk-module
-  appmenu-qt4
   archzfs-dkms
   aria2
   asf
@@ -96,6 +112,7 @@ packages=(
   cpupower
   ctags	
   cuetools
+  curlie
   d-feet
   dasht
   discord
@@ -115,37 +132,35 @@ packages=(
   etc-update
   exfat-utils
   f2fs-tools
+  falkon
   fbreader
   fd
   festival
   ffmpegthumbnailer
   firefox
-  firefox-developer-edition
   firejail
+  firmware-manager-git
   fish
   flashplugin
   flatpak
-  #font-manager
   fuse2
-  fuse3
   fwupd
   gamemode
   gimp
+  git-cola
+  gnome-disk-utility
+  gnome-firmware
+  go-pie
   godot-blender-exporter
   godot-pulse
   gparted
   gpsd
   grub-libzfs
   haguichi
-  gnome-firmware
-  firmware-manager-git
   htop
   httpie
   i2pd
   iat
-  xinput-gui
-  aespresso
-  igdm
   imagemagick
   innoextract
   iotop
@@ -156,10 +171,10 @@ packages=(
   jq
   k3b
   kde-gtk-config
-  namespaced-openvpn-git
   kdeconnect
   keepassxc
   kitty
+  kompare
   lector
   lesspipe
   lgogdownloader
@@ -167,11 +182,9 @@ packages=(
   libappimage 
   libreoffice
   libstrangle-git
-  libva-mesa-driver
   libvirt
   links
   linux-firmware
-  mpv-mpris-git
   lostfiles
   lsb-release
   lshw
@@ -182,19 +195,19 @@ packages=(
   mdf2iso
   mediainfo
   megasync
-  mesa
-  mesa-demos
-  minetest
   mirrorlist-manager
   mkvtoolnix-gui
   mpc
   mpd
   mpdas
   mpv-full-git
+  mpv-mpris-git
   ms-sys
-  multimc-git
+  nano
+  linux
+  multimc5
   mupdf
-  #mypaint
+  namespaced-openvpn-git
   neofetch
   netcat
   networkmanager
@@ -205,13 +218,14 @@ packages=(
   notification-daemon
   nrg2iso
   ntfs-3g
+  nvme-cli
   nyx
   obs-glcapture-git
   obs-linuxbrowser-bin
   obs-studio
+  octopi-dev
+  octopi-notifier-frameworks
   onionshare
-  opencl-mesa
-  opera-ffmpeg-codecs
   os-prober
   osu-lazer
   oyranos
@@ -253,9 +267,9 @@ packages=(
   ripgrep
   ripme-git
   rivalcfg-git
-  rofi
   rssguard
   safeeyes
+  sam-rewritten-git
   sass
   scrot
   sct
@@ -264,7 +278,6 @@ packages=(
   skanlite
   skypeforlinux-stable-bin
   smartmontools
-  snapd
   speech-dispatcher
   spotify
   sqlitebrowser
@@ -276,6 +289,7 @@ packages=(
   subliminal
   sudo
   syncplay
+  base # https://www.archlinux.org/news/base-group-replaced-by-mandatory-base-package-manual-intervention-required/
   syncthing
   syncthing-gtk
   syncthingtray
@@ -286,12 +300,8 @@ packages=(
   telegram-desktop
   texlive-core
   thrash-protect
-  git-cola
   thunderbird
-  octopi-dev
-  octopi-notifier-frameworks
   tig
-  sam-rewritten-git
   time
   tldr++
   tmux
@@ -305,35 +315,26 @@ packages=(
   trebleshot
   twitch-indicator
   unarchiver
-  ungoogled-chromium-bin
   unrar
   usb_modeswitch
   veracrypt
   viber
   vifm
   virtio-win
-  virtualbox
-  virtualbox-ext-oracle
-  virtualbox-guest-dkms
-  virtualbox-guest-iso
-  virtualbox-guest-utils
-  virtualbox-host-dkms
-  vulkan-mesa-layer
-  vulkan-radeon
   w3m
+  grub-customizer
   wget
   whois
   wmctrl
   woeusb
   wxhexeditor
-  xautolock
   xclip
   xdelta3
   xdg-desktop-portal
   xdg-desktop-portal-kde
   xdg-user-dirs
   xdotool
-  xf86-video-amdgpu
+  xinput-gui
   xorg
   xpadneo-dkms-git
   xsel
@@ -379,10 +380,12 @@ fonts=(
 )
 
 libretro=(
+  #libretro-neocd-git # RetroAchievements     ✔ Nintendo - Game Boy Advance
+  #libretro-vba-m-git # RetroAchievements     ✔ Nintendo - Game Boy Advance
   libretro-4do-git # RetroAchievements 	✕ The 3DO Company - 3DO
-  libretro-beetle-psx-hw-git # RetroAchievements 	✕ PlayStation
-  libretro-bluemsx-git
-  libretro-bsnes-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
+  libretro-beetle-psx-hw-git # RetroAchievements 	(https://retroachievements.org/viewtopic.php?t=9302) ✔ PlayStation
+  libretro-bluemsx-git # RetroAchievements 	✕ MSX/SVI/ColecoVision/SG-1000
+  libretro-bsnes-hd-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
   libretro-bsnes-mercury-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
   libretro-citra-git # RetroAchievements 	✕ Nintendo - 3DS
   libretro-desmume-git # RetroAchievements 	✕ Nintendo - DS
@@ -391,16 +394,15 @@ libretro=(
   libretro-fbneo-git
   libretro-fceumm-git # RetroAchievements 	✔ Nintendo - NES / Famicom
   libretro-flycast-git # RetroAchievements 	✕ Sega Dreamcast
-  libretro-fmsx-git
-  libretro-fmsx-git
+  libretro-fmsx-git # RetroAchievements 	✕ MSX
   libretro-fuse-git # RetroAchievements 	✕ ZX Spectrum (Fuse)
   libretro-gambatte-git # RetroAchievements 	✔ GB/GBC Nintendo - Game Boy / Color # https://github.com/libretro/gambatte-libretro/pull/123 !!!!!!!1
   libretro-genesis-plus-gx-git # RetroAchievements 	✔ Sega - MS/GG/MD/CD
   libretro-gw-git # RetroAchievements 	✕ Handheld Electronic
-  libretro-higan # RetroAchievements 	✕ Nintendo - SNES / Famicom
   libretro-mame2003-plus-git # RetroAchievements 	✕
   libretro-mgba-git # RetroAchievements         ✔ (GBA only) Nintendo - Game Boy Advance
   libretro-mrboom-git
+  libretro-mupen64plus-nx-git # RetroAchievements 	✔ Nintendo 64
   libretro-nestopia-git # RetroAchievements 	✕ Nintendo - NES / Famicom
   libretro-overlays-git
   libretro-parallel-n64-git # RetroAchievements 	✔ Nintendo 64
@@ -416,27 +418,29 @@ libretro=(
 )
 
 games=(
+  boxtron-git
   cataclysm-dda-tiles
   citra-canary-git
   colobot-gold
   colobot-gold-music
+  freej2me
+  gb-studio-git
+  gltron
+  jstest-gtk-git
   linux-steam-integration
   lutris
   lutris-battlenet-meta
-  lutris-world-of-warcraft-dependencies-amd
   lutris-wine-meta
+  lutris-world-of-warcraft-dependencies-amd
   ninfs-gui
   openmw-git
   openra
   openra-ra2-git
-  oversteer
-  jstest-gtk-git
-  gltron
-  gb-studio-git
-  freej2me
   openrw-git 
   openspades-git
   openttd
+  oversteer
+  minetest
   pcsx2-git
   pcsx2-plugin-usbqemu-wheel
   play-emu-ninja-git
@@ -447,25 +451,36 @@ games=(
   steam
   steam-fonts
   steam-native-runtime
-  boxtron-git
+  syobon
   taisei-git
+  vita3k-git
   vitetris
   winetricks-git
   xash3d-git
+  xboxdrv
   yuzu-canary-git
 )
 
 wine=(
-  gallium-nine-git
+  wine-nine
   gst-plugins-bad
   gst-plugins-ugly
   lib32-gallium-nine-git
   lib32-gst-plugins-bad
   lib32-gst-plugins-base
   lib32-gst-plugins-ugly
+  spirv-headers-git
   wine_gecko
   wine-mono
-  spirv-headers-git
+)
+
+virtualbox=(
+  virtualbox
+  virtualbox-ext-oracle
+  virtualbox-guest-dkms
+  virtualbox-guest-iso
+  virtualbox-guest-utils
+  virtualbox-host-dkms
 )
 
 # Upgrade any already-installed packages.

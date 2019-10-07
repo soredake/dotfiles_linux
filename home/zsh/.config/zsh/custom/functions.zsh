@@ -160,7 +160,7 @@ streamnodown() {
 # backup
 backup() {
   # local
-  cps "$HOME/sync/arch" "$HOME/sync/system-data" "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" /media/disk0/backup
+  cps "$HOME/sync/system-data" "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" /media/disk0/backup
   cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" "/run/media/bausch/Windows 10/Users/User/Desktop/"
   cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" "$HOME/sync/share/"
   # dropbox

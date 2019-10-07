@@ -9,13 +9,19 @@ XDG_DATA_HOME				DEFAULT=@{HOME}/.local/share
 XDG_CONFIG_HOME			DEFAULT=@{HOME}/.config
 XDG_CACHE_HOME			DEFAULT=@{HOME}/.cache
 
-# XDG's
+# XDG's https://wiki.archlinux.org/index.php/XDG_Base_Directory
 DVDCSS_CACHE		DEFAULT=${XDG_CACHE_HOME}/dvdcss
 TMUX_TMPDIR			DEFAULT=${XDG_RUNTIME_DIR}
 #https://github.com/grawity/dotfiles/blob/master/.dotfiles.notes#L352
 PUTTYDIR				DEFAULT=${XDG_CACHE_HOME}/putty
 WGETRC					DEFAULT=${XDG_CONFIG_HOME}/wgetrc
 ATOM_HOME                               DEFAULT=${XDG_DATA_HOME}/atom
+NPM_CONFIG_USERCONFIG                   DEFAULT=${XDG_CONFIG_HOME}/npm/npmrc
+GTK2_RC_FILES                           DEFAULT=${XDG_CONFIG_HOME}/gtk-2.0/gtkrc
+CARGO_HOME                              DEFAULT=${XDG_DATA_HOME}/cargo
+CCACHE_CONFIGPATH                       DEFAULT=${XDG_CONFIG_HOME}/ccache.conf
+CCACHE_DIR                              DEFAULT=${XDG_CACHE_HOME}/ccache
+NUGET_PACKAGES                          DEFAULT=${XDG_CACHE_HOME}/NuGetPackages
 	
 # https://github.com/grawity/dotfiles/blob/master/.dotfiles.notes#L64
 # /run/dbus/system_bus_socket 
@@ -32,10 +38,14 @@ GTK_USE_PORTAL=1
 
 # https://wiki.mozilla.org/Platform/GFX/Quantum_Render
 MOZ_ACCELERATED=1
-#MOZ_WEBRENDER=1
+MOZ_WEBRENDER=1
 
 # https://github.com/isacikgoz/tldr#use-for-different-os
 TLDR_OS=linux
 
 # https://github.com/Tk-Glitch/PKGBUILDS/issues/312
-#RADV_PERFTEST=aco
+# https://www.phoronix.com/scan.php?page=news_item&px=Mesa-19.3-Lands-RADV-ACO
+RADV_PERFTEST=aco
+
+# bug https://github.com/ValveSoftware/steam-for-linux/issues/6499#issuecomment-534630739
+STEAM_RUNTIME_PREFER_HOST_LIBRARIES=1

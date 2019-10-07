@@ -108,7 +108,12 @@ rm open_with_linux.py
 sudo sed -i "s|load-module module-udev-detect|load-module module-udev-detect tsched=0|g" /etc/pulse/default.pa
 
 # https://wiki.archlinux.org/index.php/Bluetooth#Auto_power-on_after_boot
-sudo -i "s|#AutoEnable=false|AutoEnable=true|g" /etc/bluetooth/main.conf
+sudo sed -i "s|#AutoEnable=false|AutoEnable=true|g" /etc/bluetooth/main.conf
 
 # autoload mpv-mpris-git package
 ln -sfv /usr/share/mpv/scripts/mpris.so "$HOME/.config/mpv/scripts"
+
+# set java version for multimc https://aur.archlinux.org/packages/multimc5/#pinned-700404
+# https://github.com/MultiMC/MultiMC5/wiki/FAQ#not-the-right-java-version
+# sudo archlinux-java status
+sudo archlinux-java set java-8-openjdk

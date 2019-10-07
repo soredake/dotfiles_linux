@@ -17,6 +17,7 @@ packages=(
   language-systemd
   language-tmux
   linter
+  https://github.com/microsoft/vscode/issues/33110
   linter-bootlint
   linter-shellcheck
   https://github.com/Microsoft/vscode/issues/20934
