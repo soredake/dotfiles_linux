@@ -88,12 +88,14 @@ alias build_dxvk='tkgup; cd $HOME/git/PKGBUILDS/dxvk-tools && ./updxvk build && 
 alias build_d9vk='tkgup; cd $HOME/git/PKGBUILDS/dxvk-tools && ./upd9vk build && ./upd9vk lutris && ./upd9vk proton-tkg'
 #alias build_mesa='tkgup; cd $HOME/git/PKGBUILDS/mesa-git && sed -i -e "s/_localglesv2pc=true/_localglesv2pc=false/" -e "s/#MESA_WHICH_LLVM=4/MESA_WHICH_LLVM=4/" customization.cfg && makepkg -si'
 alias build_wine='tkgup; cd $HOME/git/PKGBUILDS/wine-tkg-git && makepkg -si'
-alias build_vkd3d='tkgup; cd $HOME/git/PKGBUILDS/vkd3d-git && makepkg -si'
+alias build_vkd3d='tkgup; cd $HOME/git/PKGBUILDS/vkd3d-git && sed -i "s/_vkd3d_source=\"\"/_vkd3d_source=\"staging\"/" customization.cfg && makepkg -si'
 alias build_proton='tkgup; cd $HOME/git/PKGBUILDS/proton-tkg && ./proton-tkg.sh'
 alias build_mingw='tkgup; cd $HOME/git/PKGBUILDS/mingw && sed -i "s/sudo pacman/yay/g" ./mingw-on-arch-automator.sh; ./mingw-on-arch-automator.sh'
 alias build_kernel='tkgup; cd $HOME/git/PKGBUILDS/linux53-tkg && makepkg -si'
 alias build_all='build_kernel; build_d9vk; build_dxvk; build_vkd3d; build_wine; build_proton'
 alias build_all_m='build_mingw; build_all'
+# https://wiki.archlinux.org/index.php/.SRCINFO https://wiki.archlinux.org/index.php/Arch_package_guidelines
+alias aurup='makepkg --printsrcinfo > .SRCINFO; updpkgsums'
 alias mountandroidfs='sshfs -o kernel_cache -oport=2222 ssh@192.168.1.234:/ $HOME/media/android'
 alias fixwinhibernation='sudo umount /run/media/bausch/Windows\ 10; sudo ntfsfix -bd /dev/sda4; sudo ntfs-3g -o remove_hiberfile /dev/sda4 /run/media/bausch/Windows\ 10'
 alias vts='echo vitetris --connect $(myip):27015 && vitetris -listen 27015'
@@ -106,3 +108,6 @@ alias archmirrorlist='curl -s https://www.archlinux.org/mirrorlist/\?country\=UA
 # https://www.checkyourmath.com/convert/length/inches_cm.php
 cmtoinch() { echo $(bc -l <<< "$1 / 2.54"); }
 inchtocm() { echo $(bc -l <<< "$1 * 2.54"); }
+
+# color
+alias diff='diff --color'

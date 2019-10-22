@@ -40,9 +40,18 @@ i3=(
   feh
   i3-wm
   i3blocks
+  maim
   i3blocks-contrib
   i3lock
+  links
   kbdd-git
+  xsel
+  scrot
+  sct
+  pulsemixer
+  pamix-git
+  vifm
+  wmctrl
 )
 
 bluetooth=(
@@ -96,8 +105,8 @@ packages=(
   atool
   audacity
   balena-etcher
+  base # https://www.archlinux.org/news/base-group-replaced-by-mandatory-base-package-manual-intervention-required/
   bind-tools
-  birdtray
   bleachbit
   blender
   breeze-grub
@@ -110,26 +119,22 @@ packages=(
   colordiff
   coolreader
   cpupower
-  ctags	
+  ctags
   cuetools
   curlie
-  d-feet
   dasht
   discord
-  dkms
   dnscrypt-proxy
   docker
   docker-compose
-  docker-gc
   dosbox-svn
   dosbox-x-sdl2
   dosfstools
-  doublecmd-plugin-p7z-usr
-  doublecmd-qt5
   dupeguru
   electronmail-bin
   espeak
   etc-update
+  evtest
   exfat-utils
   f2fs-tools
   falkon
@@ -140,12 +145,10 @@ packages=(
   firefox
   firejail
   firmware-manager-git
-  fish
   flashplugin
   flatpak
   fuse2
   fwupd
-  gamemode
   gimp
   git-cola
   gnome-disk-utility
@@ -154,8 +157,9 @@ packages=(
   godot-blender-exporter
   godot-pulse
   gparted
-  gpsd
+  grub-customizer
   grub-libzfs
+  guiscrcpy
   haguichi
   htop
   httpie
@@ -177,20 +181,15 @@ packages=(
   kompare
   lector
   lesspipe
-  lgogdownloader
-  lib32-gamemode
   libappimage 
   libreoffice
   libstrangle-git
-  libvirt
-  links
+  linux
   linux-firmware
   lostfiles
-  lsb-release
   lshw
   lsof
   lxrandr
-  maim
   mc
   mdf2iso
   mediainfo
@@ -199,52 +198,42 @@ packages=(
   mkvtoolnix-gui
   mpc
   mpd
-  mpdas
   mpv-full-git
   mpv-mpris-git
   ms-sys
-  nano
-  linux
   multimc5
-  mupdf
   namespaced-openvpn-git
+  nano
   neofetch
-  netcat
   networkmanager
   networkmanager-openvpn
   networkmanager-pptp
   nmap
   nodejs
-  notification-daemon
   nrg2iso
   ntfs-3g
   nvme-cli
-  nyx
   obs-glcapture-git
   obs-linuxbrowser-bin
   obs-studio
   octopi-dev
   octopi-notifier-frameworks
-  onionshare
   os-prober
   osu-lazer
   oyranos
   p7zip
   p7zip-zstd-codec
-  pamix-git
   partitionmanager
   pavucontrol
-  pepper-flash 
+  pepper-flash
   phantomjs-bin
   piper
-  profile-sync-daemon
   progress
   proxychains
   ps_mem
   pulseaudio
   pulseaudio-alsa
   pulseeffects
-  pulsemixer
   pv
   python-cairo
   python-pillow
@@ -253,49 +242,33 @@ packages=(
   qalculate-gtk
   qbittorrent  
   qdirstat
-  qemu
-  qt5
-  qt5ct
-  qtox
   radeon-profile
   radeon-profile-daemon-git
   ranger
   rclone
   redshift
   remotely-git
-  repkg
   ripgrep
   ripme-git
   rivalcfg-git
   rssguard
   safeeyes
   sam-rewritten-git
-  sass
-  scrot
-  sct
   shellcheck
   shntool
   skanlite
-  skypeforlinux-stable-bin
   smartmontools
   speech-dispatcher
   spotify
   sqlitebrowser
   sshfs
   stow
-  strace
   streamlink
-  stubby
-  subliminal
   sudo
   syncplay
-  base # https://www.archlinux.org/news/base-group-replaced-by-mandatory-base-package-manual-intervention-required/
   syncthing
-  syncthing-gtk
   syncthingtray
-  syslinux
   systemdgenie
-  tcpdump
   teamviewer-beta
   telegram-desktop
   texlive-core
@@ -316,20 +289,12 @@ packages=(
   twitch-indicator
   unarchiver
   unrar
-  usb_modeswitch
-  veracrypt
   viber
-  vifm
-  virtio-win
-  w3m
-  grub-customizer
   wget
   whois
-  wmctrl
   woeusb
   wxhexeditor
   xclip
-  xdelta3
   xdg-desktop-portal
   xdg-desktop-portal-kde
   xdg-user-dirs
@@ -337,7 +302,6 @@ packages=(
   xinput-gui
   xorg
   xpadneo-dkms-git
-  xsel
   yarn
   zeal
   zip
@@ -384,11 +348,13 @@ libretro=(
   #libretro-vba-m-git # RetroAchievements     ✔ Nintendo - Game Boy Advance
   libretro-4do-git # RetroAchievements 	✕ The 3DO Company - 3DO
   libretro-beetle-psx-hw-git # RetroAchievements 	(https://retroachievements.org/viewtopic.php?t=9302) ✔ PlayStation
+  libretro-beetle-saturn-git # RetroAchievements 	✕ Sega - Saturn
   libretro-bluemsx-git # RetroAchievements 	✕ MSX/SVI/ColecoVision/SG-1000
   libretro-bsnes-hd-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
   libretro-bsnes-mercury-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
   libretro-citra-git # RetroAchievements 	✕ Nintendo - 3DS
   libretro-desmume-git # RetroAchievements 	✕ Nintendo - DS
+  libretro-melonds-git # RetroAchievements 	✕ Nintendo - DS
   libretro-dolphin-git # RetroAchievements 	✕ Nintendo Gamecube/Wii
   libretro-dosbox-git # RetroAchievements 	✕ DOS
   libretro-fbneo-git
@@ -404,7 +370,6 @@ libretro=(
   libretro-mrboom-git
   libretro-mupen64plus-nx-git # RetroAchievements 	✔ Nintendo 64
   libretro-nestopia-git # RetroAchievements 	✕ Nintendo - NES / Famicom
-  libretro-overlays-git
   libretro-parallel-n64-git # RetroAchievements 	✔ Nintendo 64
   libretro-pcsx-rearmed-git # RetroAchievements 	✕ Sony - PlayStation
   libretro-picodrive-git # RetroAchievements 	✔ Sega - MS/MD/CD/32X
@@ -424,23 +389,26 @@ games=(
   colobot-gold
   colobot-gold-music
   freej2me
+  gamemode
   gb-studio-git
   gltron
   jstest-gtk-git
+  lib32-gamemode
   linux-steam-integration
-  lutris
   lutris-battlenet-meta
+  lutris-git
   lutris-wine-meta
   lutris-world-of-warcraft-dependencies-amd
+  minetest
   ninfs-gui
-  openmw-git
+  openmw
   openra
   openra-ra2-git
-  openrw-git 
-  openspades-git
+  openrw-git
+  openspades
+  betterspades
   openttd
   oversteer
-  minetest
   pcsx2-git
   pcsx2-plugin-usbqemu-wheel
   play-emu-ninja-git
@@ -452,7 +420,7 @@ games=(
   steam-fonts
   steam-native-runtime
   syobon
-  taisei-git
+  taisei
   vita3k-git
   vitetris
   winetricks-git
@@ -465,8 +433,8 @@ wine=(
   wine-nine
   gst-plugins-bad
   gst-plugins-ugly
-  lib32-gallium-nine-git
   lib32-gst-plugins-bad
+  lib32-gst-plugins-good
   lib32-gst-plugins-base
   lib32-gst-plugins-ugly
   spirv-headers-git
@@ -484,7 +452,7 @@ virtualbox=(
 )
 
 # Upgrade any already-installed packages.
-yay -S "${packages[@]}" "${fonts[@]}" "${libretro[@]}" "${plasma[@]}" "${i3[@]}" "${lang[@]}" "${games[@]}" "${wine[@]}" "${bluetooth[@]}"
+yay -S "${packages[@]}" "${fonts[@]}" "${mesa[@]}" "${libretro[@]}" "${plasma[@]}" "${lang[@]}" "${games[@]}" "${wine[@]}" "${bluetooth[@]}"
 
 # Remove outdated versions from the pacman.
 yay -c

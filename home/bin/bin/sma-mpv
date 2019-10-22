@@ -12,14 +12,14 @@ if df /mnt/c &>/dev/null; then
   user=$(cmd.exe /C "echo %USERNAME%"|sed $'s/\r$//')
   tmpfolder=/mnt/c/Users/${user}/Documents/
   mpvexe="/mnt/c/mpv/mpv.exe"
-  wsl=1
+  wsl=1smotret-anime.online
 else
   tmpfolder="/tmp/"
   mpvexe="mpv";
 fi
 
 curlsub() {
-  curl -so ${tmpfolder}${1}.ass https://smotret-anime-365.ru/translations/ass/${1}?download=1
+  curl -so ${tmpfolder}${1}.ass https://smotret-anime.online/translations/ass/${1}?download=1
   echo "${1}"
 }
 
@@ -32,7 +32,7 @@ pagetitle() {
 
 getnextepisode() {
   # https://stackoverflow.com/questions/13242469/how-to-use-sed-grep-to-extract-text-between-two-words
-  nextepisode=$(curl -s ${url} | grep -o -P '(?<=href=").*(?="><i class="material-icons right">chevron_right<)' | head -n1) && echo "https://smotret-anime-365.ru"${nextepisode##*href=\"}
+  nextepisode=$(curl -s ${url} | grep -o -P '(?<=href=").*(?="><i class="material-icons right">chevron_right<)' | head -n1) && echo "https://smotret-anime.online"${nextepisode##*href=\"}
 }
 
 getnumber() {
@@ -40,7 +40,7 @@ getnumber() {
 }
 
 play() {
-  echo "https://smotret-anime-365.ru/translations/mp4/${1}?format=mp4&height=${2}"
+  echo "https://smotret-anime.online/translations/mp4/${1}?format=mp4&height=${2}"
 }
 
 writeplaylist() {
@@ -62,7 +62,7 @@ if [[ -n  "${2}" ]]; then
     [[ -n ${nex1} ]] && url=${nex1}
     echo "current url: ${url}"
     nextepurl=$(getnextepisode ${url}) # getting next episode url from current episode url
-    [[ "${nextepurl}" == "https://smotret-anime-365.ru" ]] && break
+    [[ "${nextepurl}" == "https://smotret-anime.online" ]] && break
     # https://stackoverflow.com/questions/3074288/get-final-url-after-curl-is-redirected
     nextepurlredirected=$(curl -e "${url}" -Ls -o /dev/null -w %{url_effective} ${nextepurl}) # getting redirected next episode url
     echo "next episode url: ${nextepurlredirected}"
@@ -78,7 +78,7 @@ fi
 
 
 #for res in 1080 720 480 360; do
-#  result="$(curl -sI https://smotret-anime-365.ru/translations/mp4/${number}?format=mp4\&height=${res} | head -n1)"
+#  result="$(curl -sI https://smotret-anime.online/translations/mp4/${number}?format=mp4\&height=${res} | head -n1)"
 #  if grep 302 <<< "${result}" &>/dev/null; then
 #    echo "max res is ${res}, using it"; break
 #    maxres="${res}"
