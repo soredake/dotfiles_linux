@@ -157,6 +157,12 @@ streamnodown() {
   streamlink --loglevel debug --player-external-http --player-no-close --player-external-http-port "5555" --retry-streams 1 --retry-open 100 --stream-segment-attempts 20 --stream-timeout 180 --ringbuffer-size 64M --rtmp-timeout 240 "$1" "${2}"
 }
 
+# rclone alias
+# https://stackoverflow.com/questions/45601589/zsh-not-recognizing-alias-from-within-function
+# https://stackoverflow.com/questions/25532050/newly-defined-alias-not-working-inside-a-function-zsh
+# TODO remove when https://github.com/rclone/rclone/issues/2697 is done
+alias -g upload="rclone sync  --transfers 8 --delete-excluded --fast-list -P"
+
 # backup
 backup() {
   # local
@@ -164,24 +170,24 @@ backup() {
   cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" "/run/media/bausch/Windows 10/Users/User/Desktop/"
   cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" "$HOME/sync/share/"
   # dropbox
-  rclone sync --delete-excluded --fast-list -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" dropbox:/
+  upload "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" dropbox:/
   # opendrive
-  rclone sync --delete-excluded --fast-list -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" opendrive:/
+  upload "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" opendrive:/
   # google drive
-  rclone sync --delete-excluded --drive-use-trash --fast-list -P "$HOME/sync/system-data" google_drive:/system-data
-  rclone sync --delete-excluded --drive-use-trash --fast-list -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" google_drive:/
+  upload --drive-use-trash "$HOME/sync/system-data" google_drive:/system-data
+  upload --drive-use-trash "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" google_drive:/
   # mega.nz
   # fix errors like ` googledocs/Cake streams.ods: Duplicate object found in destination - ignoring` https://github.com/rclone/rclone/issues/2131#issuecomment-372459713
   rclone dedupe --dedupe-mode newest 50gbmega:/
-  rclone sync --delete-excluded --mega-hard-delete --fast-list -P "$HOME/sync/main/Documents" 50gbmega:/Documents
-  rclone sync --delete-excluded --mega-hard-delete --fast-list -P "$HOME/sync/main/me" 50gbmega:/me
-  rclone sync --delete-excluded --mega-hard-delete --fast-list -P "$HOME/sync/main/Images" 50gbmega:/Images
-  rclone sync --delete-excluded --mega-hard-delete --fast-list -P "$HOME/sync/system-data" 50gbmega:/system-data
-  rclone sync --delete-excluded --mega-hard-delete --fast-list -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" 50gbmega:/
+  upload --mega-hard-delete "$HOME/sync/main/Documents" 50gbmega:/Documents
+  upload --mega-hard-delete "$HOME/sync/main/me" 50gbmega:/me
+  upload --mega-hard-delete "$HOME/sync/main/Images" 50gbmega:/Images
+  upload --mega-hard-delete "$HOME/sync/system-data" 50gbmega:/system-data
+  upload --mega-hard-delete "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" 50gbmega:/
   # yandex.disk
-  rclone sync --delete-excluded --fast-list -P "$HOME/sync/system-data" yandex:/system-data
-  rclone sync --delete-excluded --mega-hard-delete  --fast-list -P "$HOME/sync/main/me" yandex:/me
-  rclone sync --delete-excluded --fast-list -P "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" yandex:/
+  upload "$HOME/sync/system-data" yandex:/system-data
+  upload "$HOME/sync/main/me" yandex:/me
+  upload "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" yandex:/
 }
 
 update-grub() {
@@ -192,4 +198,20 @@ update-grub() {
   # generate config
   ZPOOL_VDEV_NAME_PATH=1 sudo -E grub-mkconfig -o /boot/grub/grub.cfg
   sudo umount /boot/efi
+}
+
+# workaround for https://github.com/citra-emu/citra/issues/3862
+yuzu() {
+  [[ -f "libsndio.so.6.1" ]] && ln -sfv /usr/lib/libsndio.so.7.0 libsndio.so.6.1
+  KDE_DEBUG=1 strangle 60 gamemoderun yuzu
+}
+
+# https://shapeshed.com/zsh-corrupt-history-file/
+# https://dev.to/rishibaldawa/fixing-corrupt-zsh-history-4nf4
+fix_zsh_history() {
+  cd "$XDG_DATA_HOME/zsh"
+  mv history history_bad
+  strings history_bad > history
+  fc -R history
+  rm -f history_bad
 }

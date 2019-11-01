@@ -24,7 +24,7 @@ rmlist=(
 /usr/bin/youtube-dl --rm-cache-dir
 /usr/bin/psd c
 /usr/bin/localepurge
-/usr/bin/yay --color=auto -Sc
+/usr/bin/yay -Sc
 /usr/bin/flatpak uninstall --all
 /usr/bin/flatpak --user uninstall --unused
 /usr/bin/yarn autoclean

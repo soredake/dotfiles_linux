@@ -24,7 +24,7 @@ export BROWSER="firefox"
 # https://wiki.archlinux.org/index.php/XDG_Base_Directory_support
 export MPD_HOST="$XDG_RUNTIME_DIR/mpd/socket"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-export HISTFILE="$XDG_CACHE_HOME/zsh/history"
+export HISTFILE="$XDG_DATA_HOME/zsh/history"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains.conf"
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"

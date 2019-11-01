@@ -7,20 +7,20 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 plasma=(
+  kde-thumbnailer-apk
+  kde-thumbnailer-epub
   kdeaccessibility-meta
   kdeadmin-meta
   kdebase-meta
   kdeedu-meta
   kdegames-meta
   kdegraphics-meta
+  kdegraphics-meta
+  kdegraphics-thumbnailers
   kdemultimedia-meta
   kdenetwork-meta
   kdepim-meta
   kdeutils-meta
-  kde-thumbnailer-apk
-  kde-thumbnailer-epub
-  kdegraphics-meta
-  kdegraphics-thumbnailers
   kimageformats
   kwin-lowlatency
   packagekit-qt5
@@ -33,25 +33,25 @@ plasma=(
 )
 
 i3=(
-  xautolock
-  rofi
   compton-git
   dragon-drag-and-drop-git
   feh
   i3-wm
   i3blocks
-  maim
   i3blocks-contrib
   i3lock
-  links
   kbdd-git
-  xsel
+  links
+  maim
+  pamix-git
+  pulsemixer
+  rofi
   scrot
   sct
-  pulsemixer
-  pamix-git
   vifm
   wmctrl
+  xautolock
+  xsel
 )
 
 bluetooth=(
@@ -198,7 +198,7 @@ packages=(
   mkvtoolnix-gui
   mpc
   mpd
-  mpv-full-git
+  mpv
   mpv-mpris-git
   ms-sys
   multimc5
@@ -253,7 +253,7 @@ packages=(
   rivalcfg-git
   rssguard
   safeeyes
-  sam-rewritten-git
+  samrewritten-git
   shellcheck
   shntool
   skanlite
@@ -343,49 +343,10 @@ fonts=(
   wqy-zenhei
 )
 
-libretro=(
-  #libretro-neocd-git # RetroAchievements     ✔ Nintendo - Game Boy Advance
-  #libretro-vba-m-git # RetroAchievements     ✔ Nintendo - Game Boy Advance
-  libretro-4do-git # RetroAchievements 	✕ The 3DO Company - 3DO
-  libretro-beetle-psx-hw-git # RetroAchievements 	(https://retroachievements.org/viewtopic.php?t=9302) ✔ PlayStation
-  libretro-beetle-saturn-git # RetroAchievements 	✕ Sega - Saturn
-  libretro-bluemsx-git # RetroAchievements 	✕ MSX/SVI/ColecoVision/SG-1000
-  libretro-bsnes-hd-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
-  libretro-bsnes-mercury-git  # RetroAchievements 	✔ Nintendo - SNES / Famicom
-  libretro-citra-git # RetroAchievements 	✕ Nintendo - 3DS
-  libretro-desmume-git # RetroAchievements 	✕ Nintendo - DS
-  libretro-melonds-git # RetroAchievements 	✕ Nintendo - DS
-  libretro-dolphin-git # RetroAchievements 	✕ Nintendo Gamecube/Wii
-  libretro-dosbox-git # RetroAchievements 	✕ DOS
-  libretro-fbneo-git
-  libretro-fceumm-git # RetroAchievements 	✔ Nintendo - NES / Famicom
-  libretro-flycast-git # RetroAchievements 	✕ Sega Dreamcast
-  libretro-fmsx-git # RetroAchievements 	✕ MSX
-  libretro-fuse-git # RetroAchievements 	✕ ZX Spectrum (Fuse)
-  libretro-gambatte-git # RetroAchievements 	✔ GB/GBC Nintendo - Game Boy / Color # https://github.com/libretro/gambatte-libretro/pull/123 !!!!!!!1
-  libretro-genesis-plus-gx-git # RetroAchievements 	✔ Sega - MS/GG/MD/CD
-  libretro-gw-git # RetroAchievements 	✕ Handheld Electronic
-  libretro-mame2003-plus-git # RetroAchievements 	✕
-  libretro-mgba-git # RetroAchievements         ✔ (GBA only) Nintendo - Game Boy Advance
-  libretro-mrboom-git
-  libretro-mupen64plus-nx-git # RetroAchievements 	✔ Nintendo 64
-  libretro-nestopia-git # RetroAchievements 	✕ Nintendo - NES / Famicom
-  libretro-parallel-n64-git # RetroAchievements 	✔ Nintendo 64
-  libretro-pcsx-rearmed-git # RetroAchievements 	✕ Sony - PlayStation
-  libretro-picodrive-git # RetroAchievements 	✔ Sega - MS/MD/CD/32X
-  libretro-pokemini-git # RetroAchievements 	✕ Nintendo - Pokémon Mini
-  libretro-ppsspp-git # RetroAchievements 	✕ Sony - PlayStation Portable
-  libretro-sameboy-git # RetroAchievements     ✔ GB/GBC Nintendo - Game Boy / Color
-  libretro-snes9x-git # RetroAchievements 	✔ Nintendo - SNES / Famicom
-  libretro-vba-next-git # RetroAchievements     ✔ Nintendo - Game Boy Advance
-  retroarch
-  xdg-utils
-)
-
 games=(
+  betterspades
   boxtron-git
   cataclysm-dda-tiles
-  citra-canary-git
   colobot-gold
   colobot-gold-music
   freej2me
@@ -406,40 +367,40 @@ games=(
   openra-ra2-git
   openrw-git
   openspades
-  betterspades
   openttd
   oversteer
   pcsx2-git
   pcsx2-plugin-usbqemu-wheel
-  play-emu-ninja-git
   protonfixes-git
   protontricks-git
   residualvm-git
-  rpcs3-git
+  retroarch
+  sndio # yuzu binary dep
   steam
   steam-fonts
   steam-native-runtime
   syobon
   taisei
-  vita3k-git
   vitetris
   winetricks-git
-  xash3d-git
+  scummvm-git
   xboxdrv
-  yuzu-canary-git
+  xdg-utils
+  kde-cdemu-manager-kf5 cdemu-client vhba-module-dkms # https://wiki.archlinux.org/index.php/CDemu
+  flips-git
 )
 
 wine=(
-  wine-nine
   gst-plugins-bad
   gst-plugins-ugly
   lib32-gst-plugins-bad
-  lib32-gst-plugins-good
   lib32-gst-plugins-base
+  lib32-gst-plugins-good
   lib32-gst-plugins-ugly
   spirv-headers-git
   wine_gecko
   wine-mono
+  wine-nine
 )
 
 virtualbox=(
@@ -452,7 +413,7 @@ virtualbox=(
 )
 
 # Upgrade any already-installed packages.
-yay -S "${packages[@]}" "${fonts[@]}" "${mesa[@]}" "${libretro[@]}" "${plasma[@]}" "${lang[@]}" "${games[@]}" "${wine[@]}" "${bluetooth[@]}"
+yay -S "${packages[@]}" "${fonts[@]}" "${mesa[@]}" "${plasma[@]}" "${lang[@]}" "${games[@]}" "${wine[@]}" "${bluetooth[@]}"
 
 # Remove outdated versions from the pacman.
 yay -c
