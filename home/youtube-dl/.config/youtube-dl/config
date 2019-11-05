@@ -5,4 +5,3 @@
 # https://github.com/rg3/youtube-dl/issues/4772#issuecomment-71390927
 # https://github.com/termux/termux-packages/pull/998
 --external-downloader-args "-x 14 -s 6 -m 3"
-#--external-downloader-args "-x 16 -s 20 -m 3 -k 1M"

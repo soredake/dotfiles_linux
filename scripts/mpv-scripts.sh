@@ -6,7 +6,6 @@
 
 g="https://raw.githubusercontent.com"
 cd "$XDG_CONFIG_HOME/mpv/scripts" || exit 1
-# skipchapters,
 wget $g/haasn/gentoo-conf/xor/home/nand/.mpv/scripts/avail/image.lua
 wget $g/ElegantMonkey/mpv-webm/master/build/webm.lua
 wget https://github.com/TheAMM/mpv_crop_script/releases/download/0.5.0/mpv_crop_script.lua

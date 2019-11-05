@@ -60,14 +60,11 @@ bluetooth=(
   bluez-plugins
   bluez-utils
   pulseaudio-modules-bt-git
-  # http://troglobit.com/2017/01/03/trust-bluetooth-4.0-adapter-in-linux/
-  bluez-hid2hci
 )
 
 lang=(
   hunspell-ru-aot
   kbd-ru-keymaps
-  man-pages-ru
 )
 
 mesa=(
@@ -83,13 +80,8 @@ mesa=(
 packages=(
   # linux from tkg
   # proton from tkg
-  # vkd3d from tkg
   # wine from tkg
-  #media-video/bluray_info
   #media-video/dvd_info
-  #mypaint
-  #waifu2x-converter-cpp
-  #waifu2x-git
   adriconf
   aespresso
   alsa-utils
@@ -97,7 +89,6 @@ packages=(
   android-file-transfer
   android-tools
   appmenu-gtk-module
-  archzfs-dkms
   aria2
   asf
   atom
@@ -127,8 +118,7 @@ packages=(
   dnscrypt-proxy
   docker
   docker-compose
-  dosbox-svn
-  dosbox-x-sdl2
+  dosbox
   dosfstools
   dupeguru
   electronmail-bin
@@ -158,7 +148,7 @@ packages=(
   godot-pulse
   gparted
   grub-customizer
-  grub-libzfs
+  grub
   guiscrcpy
   haguichi
   htop
@@ -299,9 +289,7 @@ packages=(
   xdg-desktop-portal-kde
   xdg-user-dirs
   xdotool
-  xinput-gui
   xorg
-  xpadneo-dkms-git
   yarn
   zeal
   zip
@@ -345,7 +333,7 @@ fonts=(
 
 games=(
   betterspades
-  boxtron-git
+  boxtron
   cataclysm-dda-tiles
   colobot-gold
   colobot-gold-music
@@ -363,8 +351,6 @@ games=(
   minetest
   ninfs-gui
   openmw
-  openra
-  openra-ra2-git
   openrw-git
   openspades
   openttd
@@ -391,13 +377,12 @@ games=(
 )
 
 wine=(
-  gst-plugins-bad
-  gst-plugins-ugly
-  lib32-gst-plugins-bad
+  gst-plugins-bad lib32-gst-plugins-bad
+  gst-plugins-ugly lib32-gst-plugins-ugly
   lib32-gst-plugins-base
   lib32-gst-plugins-good
-  lib32-gst-plugins-ugly
-  spirv-headers-git
+  spirv-headers
+  vkd3d lib32-vkd3d
   wine_gecko
   wine-mono
   wine-nine

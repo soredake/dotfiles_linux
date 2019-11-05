@@ -2,11 +2,6 @@
 SD="$(cd "$(dirname "$0")" > /dev/null || exit 1; pwd)";
 cd "$SD" || exit 1
 
-systemctl enable zfs.target
-systemctl enable zfs-import-cache
-systemctl enable zfs-mount
-systemctl enable zfs-import.target
-
 # speed
 # https://linux-faq.ru/page/uskorenie-processa-zagruzki-distributiva-linux
 # https://forum.manjaro.org/t/removing-lvm-support-during-boot-time/56850

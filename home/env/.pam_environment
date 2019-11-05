@@ -5,7 +5,7 @@
 WINEDLLOVERRIDES=winemenubuilder.exe=d
 
 # https://wiki.archlinux.org/index.php/XDG_Base_Directory_support
-XDG_DATA_HOME				DEFAULT=@{HOME}/.local/share
+XDG_DATA_HOME			DEFAULT=@{HOME}/.local/share
 XDG_CONFIG_HOME			DEFAULT=@{HOME}/.config
 XDG_CACHE_HOME			DEFAULT=@{HOME}/.cache
 
@@ -25,14 +25,14 @@ NUGET_PACKAGES                          DEFAULT=${XDG_CACHE_HOME}/NuGetPackages
 # https://github.com/ihaveamac/ninfs#setup
 BOOT9_PATH                              DEFAULT=${XDG_DATA_HOME}/3ds/boot9.bin
 SEEDDB_PATH                             DEFAULT=${XDG_DATA_HOME}/3ds/seeddb.bin
-	
+
 # https://github.com/grawity/dotfiles/blob/master/.dotfiles.notes#L64
 # /run/dbus/system_bus_socket 
 # /run/user/1000/bus
 #DBUS_SESSION_BUS_ADDRESS	DEFAULT=unix:path=${XDG_RUNTIME_DIR}/bus
 
 # https://github.com/doitsujin/dxvk/wiki/Configuration
-DXVK_CONFIG_FILE				DEFAULT=${XDG_CONFIG_HOME}/dxvk.conf
+DXVK_CONFIG_FILE		DEFAULT=${XDG_CONFIG_HOME}/dxvk.conf
 
 # mesa
 VAAPI_MPEG4_ENABLED=1
@@ -50,6 +50,3 @@ TLDR_OS=linux
 # https://github.com/Tk-Glitch/PKGBUILDS/issues/312
 # https://www.phoronix.com/scan.php?page=news_item&px=Mesa-19.3-Lands-RADV-ACO
 RADV_PERFTEST=aco
-
-# bug https://github.com/ValveSoftware/steam-for-linux/issues/6499#issuecomment-534630739
-STEAM_RUNTIME_PREFER_HOST_LIBRARIES=1

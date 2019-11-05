@@ -15,6 +15,7 @@ export PROMPT_EOL_MARK=""
 # Ranger settings
 export RANGER_LOAD_DEFAULT_RC=false
 
+# Set default editor
 export EDITOR="atom"
 
 # for xdg-open

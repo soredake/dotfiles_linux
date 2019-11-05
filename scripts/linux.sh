@@ -37,10 +37,6 @@ END
 # generate locales
 sudo locale-gen -j "$(nproc)"
 
-# settings for x11/i3
-#localectl set-x11-keymap us,ru pc104 qwerty grp:rctrl_toggle
-#sudo sed -i -e "\$a exec i3" -e '57,65d' /etc/X11/xinit/xinitrc
-
 # for no reason, when systemd-coredump is disabled, my system instead creates large coredump files EVERYWHERE, so disable them entierly and raise file descriptors limits for wine esync
 sudo tee -a /etc/security/limits.conf >/dev/null <<END
 # disable coredumps entierly
@@ -61,10 +57,11 @@ END
 # https://aspiceodyssey.wordpress.com/2017/04/28/fedora25-3d-accelerated-guest/
 sudo gpasswd -a qemu video
 
-# lutris: use system libretro cores 
+# lutris: use system libretro cores
+# TODO: report to upstream to add option to use system cores
 ln -sfv "$XDG_CONFIG_HOME/retroarch/cores/" "$XDG_DATA_HOME/lutris/runners/retroarch/cores"
 # lutris: use system winetricks
-# TODO: report to upstream to aedd option to use system winetricks
+# TODO: report to upstream to add option to use system winetricks
 rm -f "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks"
 ln -sfv /usr/bin/winetricks "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks"
 chmod 555 "$XDG_DATA_HOME/lutris/runtime/winetricks"
@@ -104,9 +101,6 @@ sudo sed -i "s|load-module module-udev-detect|load-module module-udev-detect tsc
 
 # https://wiki.archlinux.org/index.php/Bluetooth#Auto_power-on_after_boot
 sudo sed -i "s|#AutoEnable=false|AutoEnable=true|g" /etc/bluetooth/main.conf
-
-# autoload mpv-mpris-git package
-ln -sfv /usr/share/mpv/scripts/mpris.so "$HOME/.config/mpv/scripts"
 
 # set java version for multimc https://aur.archlinux.org/packages/multimc5/#pinned-700404
 # https://github.com/MultiMC/MultiMC5/wiki/FAQ#not-the-right-java-version

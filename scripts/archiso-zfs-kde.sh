@@ -19,20 +19,14 @@ ln -sfv /usr/lib/systemd/system/sddm.service airootfs/etc/systemd/system/display
 mkdir -p airootfs/etc/sddm.conf.d
 sed -e "s/MinimumUid=1000/MinimumUid=0/g" -e "s/MaximumUid=60000/MaximumUid=0/g" /usr/lib/sddm/sddm.conf.d/default.conf > airootfs/etc/sddm.conf.d/default.conf
 
-tee -a pacman.conf >/dev/null <<END
-[archzfs]
-SigLevel = Optional TrustAll
-Server = http://archzfs.com/\$repo/x86_64
-END
+zfs=false
 
 tee -a packages.x86_64 >/dev/null <<END
-archzfs-dkms
 cpupower
 firefox
 gedit
 gparted
 htop
-linux-headers
 keepassxc
 lsof
 mpv
@@ -63,5 +57,17 @@ xorg-server
 youtube-dl
 zip
 END
+
+if [[ "${zfs}" == "true" ]]; then
+tee -a pacman.conf >/dev/null <<END
+[archzfs]
+SigLevel = Optional TrustAll
+Server = http://archzfs.com/\$repo/x86_64
+END
+tee -a packages.x86_64 >/dev/null <<END
+archzfs-dkms
+linux-headers
+END
+fi
 
 sudo ./build.sh -v

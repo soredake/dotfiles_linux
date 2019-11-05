@@ -32,11 +32,6 @@ swap_setup() {
 
 resume_swap_file_setup() {
   red "Creating swapfile for hibernation"
-  # https://wiki.archlinux.org/index.php/ZFS#Swap_volume
-  # ZFS does not allow to use swapfiles
-  # https://aaronlauterer.com/blog/2017/04/arch-linux-on-an-encrypted-zfs-root-system/
-  # It is possible to have the swap in a ZVOL but currently you cannot resume from hibernation with that
-  # https://github.com/zfsonlinux/pkg-zfs/wiki/HOWTO-use-a-zvol-as-a-swap-device
 }
 
 main() {
@@ -80,7 +75,6 @@ else
   systemd-machine-id-setup
   ccache -M 10G
   echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/00wheel
-  echo "$NEWUSER ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper" > /etc/sudoers.d/99psd
   red "Creating user..."
   useradd -m -G disk,wheel,audio,video,usb,users,plugdev -s /bin/zsh "$NEWUSER"
   red "Password for user"

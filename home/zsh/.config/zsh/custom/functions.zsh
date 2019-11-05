@@ -1,7 +1,7 @@
 # shellcheck disable=2034,2148
 
 # play all in mpv
-mpa() { if [[ -d "${PWD}/VIDEO_TS" ]] || [[ -d "${PWD}/BDMV" ]]; then
+mpa() { if [[ -d "${PWD}/VIDEO_TS" ]]; then
     mpv "${PWD}"
   else
     files=( $(ls -b ${PWD}/*.{mp4,mkv,webm,avi,wmv} 2>/dev/null) )
@@ -167,7 +167,7 @@ alias -g upload="rclone sync  --transfers 8 --delete-excluded --fast-list -P"
 backup() {
   # local
   cps "$HOME/sync/system-data" "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" /media/disk0/backup
-  cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" "/run/media/bausch/Windows 10/Users/User/Desktop/"
+  cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" "/media/disk2/Users/User/Desktop/"
   cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" "$HOME/sync/share/"
   # dropbox
   upload "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" dropbox:/
@@ -196,14 +196,15 @@ update-grub() {
   # copy microcode
   sudo cp /boot/amd-ucode.img /boot/efi
   # generate config
-  ZPOOL_VDEV_NAME_PATH=1 sudo -E grub-mkconfig -o /boot/grub/grub.cfg
+  sudo grub-mkconfig -o /boot/grub/grub.cfg
   sudo umount /boot/efi
 }
 
 # workaround for https://github.com/citra-emu/citra/issues/3862
 yuzu() {
   [[ -f "libsndio.so.6.1" ]] && ln -sfv /usr/lib/libsndio.so.7.0 libsndio.so.6.1
-  KDE_DEBUG=1 strangle 60 gamemoderun yuzu
+  #KDE_DEBUG=1
+  strangle 60 gamemoderun yuzu
 }
 
 # https://shapeshed.com/zsh-corrupt-history-file/
