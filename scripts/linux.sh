@@ -27,15 +27,13 @@ sudo tee /etc/zsh/zshenv >/dev/null <<< 'ZDOTDIR=$XDG_CONFIG_HOME/zsh'
 sudo tee /etc/locale.gen >/dev/null <<END
 en_US.UTF-8 UTF-8
 ja_JP EUC-JP
-ja_JP SHIFT_JIS
-ja_JP SHIFT_JISX0213
 ja_JP.EUC-JP EUC-JP
 ja_JP.UTF-8 UTF-8
 ru_RU.UTF-8 UTF-8
 END
 
 # generate locales
-sudo locale-gen -j "$(nproc)"
+sudo locale-gen
 
 # for no reason, when systemd-coredump is disabled, my system instead creates large coredump files EVERYWHERE, so disable them entierly and raise file descriptors limits for wine esync
 sudo tee -a /etc/security/limits.conf >/dev/null <<END
@@ -54,9 +52,6 @@ sudo tee -a /etc/systemd/system.conf >/dev/null <<END
 DefaultLimitNOFILE=1048576
 END
 
-# https://aspiceodyssey.wordpress.com/2017/04/28/fedora25-3d-accelerated-guest/
-sudo gpasswd -a qemu video
-
 # lutris: use system libretro cores
 # TODO: report to upstream to add option to use system cores
 ln -sfv "$XDG_CONFIG_HOME/retroarch/cores/" "$XDG_DATA_HOME/lutris/runners/retroarch/cores"
@@ -67,7 +62,7 @@ ln -sfv /usr/bin/winetricks "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks
 chmod 555 "$XDG_DATA_HOME/lutris/runtime/winetricks"
 
 # for radeon-profile
-sudo tee /etc/sudoers.d/00radeon-profile <<< "bausch ALL = NOPASSWD: /usr/bin/radeon-profile"
+#sudo tee /etc/sudoers.d/00radeon-profile <<< "bausch ALL = NOPASSWD: /usr/bin/radeon-profile"
 
 # use main profile, not dev edition dedicated
 touch "$HOME/.mozilla/firefox/ignore-dev-edition-profile"

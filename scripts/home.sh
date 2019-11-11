@@ -69,14 +69,13 @@ else
   red "User not exists, starting stage1..."
   localectl set-locale LANG=en_US.UTF-8
   timedatectl set-timezone Europe/Kiev
-  pacman -Syu
-  pacman -S stow sudo zsh networkmanager xdg-user-dirs xdg-utils || die "pacman failed"
+  pacman -Syu stow zsh networkmanager xdg-user-dirs || die "pacman failed"
   hostnamectl set-hostname archlinux
   systemd-machine-id-setup
   ccache -M 10G
   echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/00wheel
   red "Creating user..."
-  useradd -m -G disk,wheel,audio,video,usb,users,plugdev -s /bin/zsh "$NEWUSER"
+  useradd -s /bin/zsh "$NEWUSER"
   red "Password for user"
   passwd "$NEWUSER" || die "setting user password failed"
   red "Password for root"

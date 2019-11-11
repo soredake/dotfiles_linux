@@ -7,21 +7,40 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 plasma=(
+  akonadi-calendar-tools
+  akonadiconsole
+  ark
+  dolphin
+  dolphin-plugins
+  ffmpegthumbs
+  filelight
+  kaddressbook
+  kate
+  kcalc
+  kcharselect
   kde-thumbnailer-apk
   kde-thumbnailer-epub
-  kdeaccessibility-meta
-  kdeadmin-meta
-  kdebase-meta
-  kdeedu-meta
-  kdegames-meta
-  kdegraphics-meta
   kdegraphics-meta
   kdegraphics-thumbnailers
-  kdemultimedia-meta
+  kdenetwork-filesharing
   kdenetwork-meta
+  kdepim-addons
   kdepim-meta
   kdeutils-meta
+  kdf
+  kdialog
+  kfind
+  khelpcenter
   kimageformats
+  knotes
+  kde-servicemenus-rootactions
+  kde-service-menu-reimage
+  kompare
+  kontact
+  korganizer
+  ksystemlog
+  ktimer
+  kwalletmanager
   kwin-lowlatency
   packagekit-qt5
   plasma-meta
@@ -30,24 +49,24 @@ plasma=(
   plasma5-applets-redshift-control
   plasma5-applets-weather-widget
   powerdevil
+  print-manager
+  telepathy-kde-meta
+  zeroconf-ioslave
 )
 
 i3=(
-  compton-git
   dragon-drag-and-drop-git
-  feh
-  i3-wm
-  i3blocks
-  i3blocks-contrib
-  i3lock
+  fe
   kbdd-git
   links
+  pavucontrol
   maim
   pamix-git
   pulsemixer
   rofi
   scrot
   sct
+  network-manager-applet
   vifm
   wmctrl
   xautolock
@@ -68,13 +87,37 @@ lang=(
 )
 
 mesa=(
-  libva-mesa-driver
-  mesa
-  mesa-demos
+  libva-mesa-driver lib32-libva-mesa-driver
+  mesa lib32-mesa
+  mesa-demos lib32-mesa-demos
   opencl-mesa
-  vulkan-mesa-layer
-  vulkan-radeon
+  vulkan-mesa-layer lib32-vulkan-mesa-layer
+  vulkan-radeon lib32-vulkan-radeon
   xf86-video-amdgpu
+  llvm lib32-llvm
+)
+
+optdeps=(
+  # bleachbit-git
+  cleanerml-git
+  # plasma-workspace
+  appmenu-gtk-module
+  # firefox
+  speech-dispatcher espeak-ng festival
+  # plasma-meta
+  kde-gtk-config
+  # jdownloader2
+  phantomjs-bin
+  # ranger
+  ffmpegthumbnailer
+  # kio-extras kfilemetadata
+  libappimage
+  # htop
+  lsof
+  # yuzu binary dep
+  sndio
+  # atom
+  ctags
 )
 
 packages=(
@@ -82,13 +125,11 @@ packages=(
   # proton from tkg
   # wine from tkg
   #media-video/dvd_info
-  adriconf
   aespresso
+  # alsamixer
   alsa-utils
-  amd-ucode
   android-file-transfer
   android-tools
-  appmenu-gtk-module
   aria2
   asf
   atom
@@ -96,22 +137,18 @@ packages=(
   atool
   audacity
   balena-etcher
-  base # https://www.archlinux.org/news/base-group-replaced-by-mandatory-base-package-manual-intervention-required/
-  bind-tools
+  # https://www.archlinux.org/news/base-group-replaced-by-mandatory-base-package-manual-intervention-required/
+  base
   bleachbit
   blender
-  breeze-grub
   btfs
   cantata
   ccache
-  cleanerml-git
   cloc
   code
   colordiff
   coolreader
   cpupower
-  ctags
-  cuetools
   curlie
   dasht
   discord
@@ -119,149 +156,117 @@ packages=(
   docker
   docker-compose
   dosbox
-  dosfstools
+  # mkfs.fat mkfs.exfat
+  dosfstools exfat-utils
   dupeguru
   electronmail-bin
-  espeak
   etc-update
   evtest
-  exfat-utils
-  f2fs-tools
   falkon
   fbreader
   fd
-  festival
-  ffmpegthumbnailer
   firefox
   firejail
+  pkgtop
   firmware-manager-git
   flashplugin
   flatpak
-  fuse2
   fwupd
   gimp
   git-cola
   gnome-disk-utility
   gnome-firmware
   go-pie
-  godot-blender-exporter
-  godot-pulse
+  godot-pulse godot-blender-exporter
   gparted
-  grub-customizer
-  grub
+  # https://wiki.archlinux.org/index.php/GRUB/Tips_and_tricks#Theme
+  grub breeze-grub grub-customizer
   guiscrcpy
   haguichi
   htop
   httpie
   i2pd
-  iat
-  imagemagick
   innoextract
   iotop
   itch
   jdownloader2
+  meld
   jdupes
   jpegoptim
   jq
-  k3b
-  kde-gtk-config
   kdeconnect
   keepassxc
   kitty
   kompare
   lector
-  lesspipe
-  libappimage 
+  lesspipe 
   libreoffice
   libstrangle-git
-  linux
-  linux-firmware
+  linux linux-firmware amd-ucode
   lostfiles
   lshw
-  lsof
   lxrandr
   mc
-  mdf2iso
   mediainfo
   megasync
   mirrorlist-manager
   mkvtoolnix-gui
-  mpc
-  mpd
-  mpv
-  mpv-mpris-git
-  ms-sys
+  mpc mpd
+  mpv mpv-mpris-git
   multimc5
   namespaced-openvpn-git
   nano
   neofetch
-  networkmanager
-  networkmanager-openvpn
-  networkmanager-pptp
+  networkmanager networkmanager-pptp networkmanager-openvpn
   nmap
-  nodejs
-  nrg2iso
+  nodejs yarn
   ntfs-3g
   nvme-cli
-  obs-glcapture-git
-  obs-linuxbrowser-bin
-  obs-studio
-  octopi-dev
+  obs-studio obs-linuxbrowser-bin obs-glcapture-git
   octopi-notifier-frameworks
   os-prober
-  osu-lazer
   oyranos
   p7zip
   p7zip-zstd-codec
   partitionmanager
-  pavucontrol
   pepper-flash
-  phantomjs-bin
   piper
   progress
   proxychains
   ps_mem
-  pulseaudio
   pulseaudio-alsa
   pulseeffects
   pv
-  python-cairo
-  python-pillow
-  python-urwid
-  python-xdg
   qalculate-gtk
   qbittorrent  
   qdirstat
-  radeon-profile
-  radeon-profile-daemon-git
+  radeon-profile radeon-profile-daemon-git
   ranger
   rclone
   redshift
   remotely-git
   ripgrep
   ripme-git
-  rivalcfg-git
   rssguard
   safeeyes
   samrewritten-git
   shellcheck
-  shntool
   skanlite
   smartmontools
-  speech-dispatcher
+  downgrade
+  man-db man-pages
   spotify
+  joyutils
   sqlitebrowser
   sshfs
   stow
   streamlink
   sudo
   syncplay
-  syncthing
-  syncthingtray
+  syncthing syncthingtray
   systemdgenie
-  teamviewer-beta
+  teamviewer
   telegram-desktop
-  texlive-core
   thrash-protect
   thunderbird
   tig
@@ -273,28 +278,24 @@ packages=(
   torrentinfo
   traceroute
   trackma-git
+  kdocker
   translate-shell
   trash-cli
+  downgrade
   trebleshot
   twitch-indicator
   unarchiver
-  unrar
+  unrar zip
   viber
   wget
   whois
   woeusb
   wxhexeditor
-  xclip
-  xdg-desktop-portal
-  xdg-desktop-portal-kde
+  xclip xdotool
   xdg-user-dirs
-  xdotool
   xorg
-  yarn
   zeal
-  zip
-  zsh
-  zsh-completions
+  zsh zsh-completions
 )
 fonts=(
   # https://gpo.zugaina.org/media-fonts/infinality-ultimate-meta
@@ -332,7 +333,6 @@ fonts=(
 )
 
 games=(
-  betterspades
   boxtron
   cataclysm-dda-tiles
   colobot-gold
@@ -343,25 +343,21 @@ games=(
   gltron
   jstest-gtk-git
   lib32-gamemode
-  linux-steam-integration
   lutris-battlenet-meta
   lutris-git
   lutris-wine-meta
   lutris-world-of-warcraft-dependencies-amd
-  minetest
   ninfs-gui
   openmw
-  openrw-git
-  openspades
   openttd
   oversteer
   pcsx2-git
   pcsx2-plugin-usbqemu-wheel
   protonfixes-git
+  osu-lazer
   protontricks-git
   residualvm-git
   retroarch
-  sndio # yuzu binary dep
   steam
   steam-fonts
   steam-native-runtime
@@ -372,16 +368,16 @@ games=(
   scummvm-git
   xboxdrv
   xdg-utils
-  kde-cdemu-manager-kf5 cdemu-client vhba-module-dkms # https://wiki.archlinux.org/index.php/CDemu
+  # https://wiki.archlinux.org/index.php/CDemu
+  kde-cdemu-manager-kf5 cdemu-client vhba-module-dkms
   flips-git
 )
 
 wine=(
   gst-plugins-bad lib32-gst-plugins-bad
   gst-plugins-ugly lib32-gst-plugins-ugly
-  lib32-gst-plugins-base
-  lib32-gst-plugins-good
-  spirv-headers
+  gst-plugins-base lib32-gst-plugins-base
+  gst-plugins-good lib32-gst-plugins-good
   vkd3d lib32-vkd3d
   wine_gecko
   wine-mono
@@ -398,6 +394,12 @@ virtualbox=(
 )
 
 # Upgrade any already-installed packages.
+yay -Syu
+
+# Install optdeps
+yay -S --asdeps "${optdeps[@]}"
+
+# Install my packages
 yay -S "${packages[@]}" "${fonts[@]}" "${mesa[@]}" "${plasma[@]}" "${lang[@]}" "${games[@]}" "${wine[@]}" "${bluetooth[@]}"
 
 # Remove outdated versions from the pacman.

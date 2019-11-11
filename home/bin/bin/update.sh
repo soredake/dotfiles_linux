@@ -6,7 +6,7 @@ sudo -v
 # Keep-alive: update existing `sudo` timestamp until we're done.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-yay -Syu --answerclean y --answerdiff y --answerupgrade y
+yay -Syu --combinedupgrade --answerclean y --answerdiff y --answerupgrade y
 sudo etc-update
 apm update --confirm false
 flatpak --user update
