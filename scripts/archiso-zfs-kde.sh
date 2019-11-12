@@ -19,7 +19,8 @@ ln -sfv /usr/lib/systemd/system/sddm.service airootfs/etc/systemd/system/display
 mkdir -p airootfs/etc/sddm.conf.d
 sed -e "s/MinimumUid=1000/MinimumUid=0/g" -e "s/MaximumUid=60000/MaximumUid=0/g" /usr/lib/sddm/sddm.conf.d/default.conf > airootfs/etc/sddm.conf.d/default.conf
 
-zfs=false
+ZFS="false"
+KDE="false"
 
 tee -a packages.x86_64 >/dev/null <<END
 firefox
@@ -28,12 +29,7 @@ htop
 keepassxc
 lsof
 p7zip
-plasma-meta
 pulseaudio-alsa
-kdebase-meta
-gwenview
-okular
-ark
 ranger
 sddm
 ttf-dejavu
@@ -44,7 +40,16 @@ xorg-server
 zip
 END
 
-if [[ "${zfs}" == "true" ]]; then
+if [[ "${KDE}" == "true" ]]; then
+tee -a packages.x86_64 >/dev/null <<END
+plasma-meta
+kdebase-meta
+gwenview
+okular
+ark
+fi
+
+if [[ "${ZFS}" == "true" ]]; then
 tee -a pacman.conf >/dev/null <<END
 [archzfs]
 SigLevel = Optional TrustAll
