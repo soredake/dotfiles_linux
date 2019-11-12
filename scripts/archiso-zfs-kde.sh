@@ -22,25 +22,18 @@ sed -e "s/MinimumUid=1000/MinimumUid=0/g" -e "s/MaximumUid=60000/MaximumUid=0/g"
 zfs=false
 
 tee -a packages.x86_64 >/dev/null <<END
-cpupower
 firefox
 gparted
 htop
 keepassxc
 lsof
-mpv
 p7zip
-packagekit-qt5
-pavucontrol
 plasma-meta
-plasma-nm
-plasma-wayland-session
-pulseaudio
 pulseaudio-alsa
-kdeadmin-meta
 kdebase-meta
-kdegraphics-meta
-kdeutils-meta
+gwenview
+okular
+ark
 ranger
 sddm
 ttf-dejavu
@@ -48,7 +41,6 @@ ttf-hack
 unrar
 xfce4
 xorg-server
-youtube-dl
 zip
 END
 
@@ -56,7 +48,7 @@ if [[ "${zfs}" == "true" ]]; then
 tee -a pacman.conf >/dev/null <<END
 [archzfs]
 SigLevel = Optional TrustAll
-Server = http://archzfs.com/\$repo/x86_64
+Server = https://archzfs.com/\$repo/x86_64
 END
 tee -a packages.x86_64 >/dev/null <<END
 archzfs-dkms
