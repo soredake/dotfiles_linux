@@ -22,6 +22,7 @@ sed -e "s/MinimumUid=1000/MinimumUid=0/g" -e "s/MaximumUid=60000/MaximumUid=0/g"
 ZFS="false"
 KDE="false"
 
+if [[ "${KDE}" == "true" ]]; then
 tee -a packages.x86_64 >/dev/null <<END
 firefox
 gparted
@@ -38,6 +39,11 @@ unrar
 xfce4
 xorg-server
 zip
+END
+fi
+
+tee -a packages.x86_64 >/dev/null <<END
+base
 END
 
 if [[ "${KDE}" == "true" ]]; then
@@ -61,10 +67,5 @@ archzfs-dkms
 linux-headers
 END
 fi
-ls -l /tmp
-ls -l /tmp/archiso/
-ls -l /tmp/archiso/out
-sudo ./build.sh -v
-ls -l /tmp
-ls -l /tmp/archiso/
-ls -l /tmp/archiso/out
+
+sudo ./build.sh -v -o "${1}" -N archiso -V none
