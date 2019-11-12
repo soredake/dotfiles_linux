@@ -21,7 +21,9 @@ sed -e "s/MinimumUid=1000/MinimumUid=0/g" -e "s/MaximumUid=60000/MaximumUid=0/g"
 
 ZFS="false"
 KDE="false"
+BASE="false"
 
+if [[ "${BASE}" == "true" ]]; then
 tee -a packages.x86_64 >/dev/null <<END
 firefox
 gparted
@@ -39,6 +41,7 @@ xfce4
 xorg-server
 zip
 END
+fi
 
 if [[ "${KDE}" == "true" ]]; then
 tee -a packages.x86_64 >/dev/null <<END
@@ -47,6 +50,7 @@ kdebase-meta
 gwenview
 okular
 ark
+END
 fi
 
 if [[ "${ZFS}" == "true" ]]; then
