@@ -23,7 +23,7 @@ ZFS="false"
 KDE="false"
 BASE="false"
 
-echo " " > packages.x86_64
+echo "sed" > packages.x86_64
 
 if [[ "${BASE}" == "true" ]]; then
 tee -a packages.x86_64 >/dev/null <<END
