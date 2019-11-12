@@ -61,5 +61,10 @@ archzfs-dkms
 linux-headers
 END
 fi
-
+ls -l /tmp
+ls -l /tmp/archiso/
+ls -l /tmp/archiso/out
 sudo ./build.sh -v
+ls -l /tmp
+ls -l /tmp/archiso/
+ls -l /tmp/archiso/out
