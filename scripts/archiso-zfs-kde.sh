@@ -24,7 +24,6 @@ zfs=false
 tee -a packages.x86_64 >/dev/null <<END
 cpupower
 firefox
-gedit
 gparted
 htop
 keepassxc
@@ -38,17 +37,12 @@ plasma-nm
 plasma-wayland-session
 pulseaudio
 pulseaudio-alsa
-kdeaccessibility-meta
 kdeadmin-meta
 kdebase-meta
 kdegraphics-meta
-kdenetwork-meta
-kdepim-meta
 kdeutils-meta
-kdewebdev-meta
 ranger
 sddm
-sddm-kcm
 ttf-dejavu
 ttf-hack
 unrar
