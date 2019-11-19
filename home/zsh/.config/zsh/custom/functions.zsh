@@ -202,9 +202,9 @@ update-grub() {
 
 # workaround for https://github.com/citra-emu/citra/issues/3862
 yuzu() {
-  [[ -f "libsndio.so.6.1" ]] && ln -sfv /usr/lib/libsndio.so.7.0 libsndio.so.6.1
+  [[ ! -f "libsndio.so.6.1" ]] && ln -sfv /usr/lib/libsndio.so.7.0 libsndio.so.6.1
   #KDE_DEBUG=1
-  strangle 60 gamemoderun yuzu
+  LD_LIBRARY_PATH=$PWD strangle 60 gamemoderun ./yuzu
 }
 
 # https://shapeshed.com/zsh-corrupt-history-file/

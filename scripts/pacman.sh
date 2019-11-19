@@ -118,6 +118,10 @@ optdeps=(
   sndio
   # atom
   ctags
+  # youtube-dl
+  atomicparsley
+  # kde-service-menu-reimage
+  jhead
 )
 
 packages=(
@@ -133,7 +137,6 @@ packages=(
   aria2
   asf
   atom
-  atomicparsley
   atool
   audacity
   balena-etcher
@@ -185,7 +188,6 @@ packages=(
   haguichi
   htop
   httpie
-  i2pd
   innoextract
   iotop
   itch
@@ -264,6 +266,7 @@ packages=(
   sudo
   syncplay
   syncthing syncthingtray
+  displaycal colord-kde
   systemdgenie
   teamviewer
   telegram-desktop
