@@ -57,4 +57,4 @@ GRUB_DISABLE_RECOVERY=true
 # disable submenu
 GRUB_DISABLE_SUBMENU=y
 # breeze-grub
-GRUB_THEME="/usr/share/grub/themes/breeze/theme.txt"
+GRUB_THEME="/boot/grub/themes/breeze/theme.txt"

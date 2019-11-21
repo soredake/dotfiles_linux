@@ -125,7 +125,6 @@ optdeps=(
 )
 
 packages=(
-  # linux from tkg
   # proton from tkg
   # wine from tkg
   #media-video/dvd_info
@@ -138,6 +137,7 @@ packages=(
   asf
   atom
   atool
+  linux-tkg-pds-zen linux-tkg-pds-zen-headers
   audacity
   balena-etcher
   # https://www.archlinux.org/news/base-group-replaced-by-mandatory-base-package-manual-intervention-required/

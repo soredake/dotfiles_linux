@@ -23,8 +23,8 @@ CCACHE_CONFIGPATH                       DEFAULT=${XDG_CONFIG_HOME}/ccache.conf
 CCACHE_DIR                              DEFAULT=${XDG_CACHE_HOME}/ccache
 NUGET_PACKAGES                          DEFAULT=${XDG_CACHE_HOME}/NuGetPackages
 # https://github.com/ihaveamac/ninfs#setup
-BOOT9_PATH                              DEFAULT=${XDG_DATA_HOME}/3ds/boot9.bin
-SEEDDB_PATH                             DEFAULT=${XDG_DATA_HOME}/3ds/seeddb.bin
+BOOT9_PATH                              DEFAULT=${HOME}/sync/main/Documents/3ds/boot9.bin
+SEEDDB_PATH                             DEFAULT=${HOME}/sync/main/Documents/3ds/seeddb.bin
 
 # https://github.com/grawity/dotfiles/blob/master/.dotfiles.notes#L64
 # /run/dbus/system_bus_socket 

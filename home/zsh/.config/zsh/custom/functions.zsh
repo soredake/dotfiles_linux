@@ -166,25 +166,37 @@ alias -g upload="rclone sync  --transfers 8 --delete-excluded --fast-list -P"
 # backup
 backup() {
   # local
-  cps "$HOME/sync/system-data" "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" /media/disk0/backup
-  cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" "/media/disk2/Users/User/Desktop/"
-  cps "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" "$HOME/sync/share/"
+  cps -L "$HOME/sync" /media/disk0/backup
+  cps "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" "/media/disk2/Users/User/Desktop/"
+  cps "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" "$HOME/sync/share/"
   # dropbox
-  upload "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" dropbox:/
+  # 2gb
+  # TODO: https://plati.ru/search/DROPBOX
+  upload "$HOME/sync/main/Documents" dropbox:/Documents
+  upload "$HOME/sync/system-data" dropbox:/system-data
   # opendrive
-  upload "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" opendrive:/
+  # 5gb
+  upload "$HOME/sync/main/Documents" opendrive:/Documents
+  upload "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" opendrive:/
   # google drive
+  # 15gb
+  upload "$HOME/sync/main/Documents" opendrive:/Documents
+  upload --drive-use-trash "$HOME/sync/main/me" google_drive:/me
+  upload --drive-use-trash "$HOME/sync/main/Media" google_drive:/Media
   upload --drive-use-trash "$HOME/sync/system-data" google_drive:/system-data
   upload --drive-use-trash "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" google_drive:/
   # mega.nz
+  # 50gb
   # fix errors like ` googledocs/Cake streams.ods: Duplicate object found in destination - ignoring` https://github.com/rclone/rclone/issues/2131#issuecomment-372459713
   rclone dedupe --dedupe-mode newest 50gbmega:/
   upload --mega-hard-delete "$HOME/sync/main/Documents" 50gbmega:/Documents
   upload --mega-hard-delete "$HOME/sync/main/me" 50gbmega:/me
-  upload --mega-hard-delete "$HOME/sync/main/Images" 50gbmega:/Images
+  upload --mega-hard-delete "$HOME/sync/main/Media" 50gbmega:/Media
   upload --mega-hard-delete "$HOME/sync/system-data" 50gbmega:/system-data
   upload --mega-hard-delete "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" 50gbmega:/
   # yandex.disk
+  # 10gb
+  upload "$HOME/sync/main/Documents" yandex:/Documents
   upload "$HOME/sync/system-data" yandex:/system-data
   upload "$HOME/sync/main/me" yandex:/me
   upload "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" yandex:/
@@ -192,7 +204,7 @@ backup() {
 
 update-grub() {
   # mount esp
-  [[ ! $(grep /boot/efi /proc/mounts)  ]] && sudo mount /boot/efi
+  [[ ! $(grep /boot/efi /proc/mounts) ]] && sudo mount /boot/efi
   # copy microcode
   sudo cp /boot/amd-ucode.img /boot/efi
   # generate config
@@ -226,4 +238,31 @@ man() {
    LESS_TERMCAP_ue=$'\e[0m' \
    LESS_TERMCAP_us=$'\e[01;32m' \
    command man "$@"
+}
+
+# ukr nalogi
+# https://3g2upl4pq6kufc4m.onion/?q=(400+-+165)+*+35%25&ia=calculator
+ukr_nalogi() { echo Tax is: $(bc -l <<< "($1 - 165) * 0.35") USD; }
+
+checkvk() {
+  Estatus=$(proxychains -q curl --http2 -sS "https://api.vk.com/method/users.get?user_id=$1&fields=last_seen,online&v=5.8" || exit)
+  case "$(jq '.response[0].last_seen.platform' <<< "$Estatus")" in
+    1) platform="мобильная версия" ;;
+    4) platform="приложение для Android" ;;
+    7) platform="полная версия сайта" ;;
+    8) platform="VK Mobile" ;;
+    *) platform="Unknown"
+  esac
+  echo "Онлайн ли сейчас: $(jq '.response[0].online' <<< "$Estatus")"
+  echo "Последний раз в сети: $(date -d @$(jq '.response[0].last_seen.time' <<< "$Estatus"))"
+  echo "Платформа: $platform"
+}
+
+speedfox() {
+  array=( $(pgrep -f plugin-container) )
+  array+=( $(pgrep -f ^firefox) )
+  for pid in "${array[@]}"; do
+    sudo renice -n -20 -p "$pid"
+    sudo ionice -c realtime -p "$pid" && echo "Changed io priority to realtime for pid $pid"
+  done
 }

@@ -4,4 +4,5 @@ SD="$(cd "$(dirname "$0")" > /dev/null || exit 1; pwd)";
 cd "$SD" || exit 1
 
 sudo cp "$SD/grub/grub" /etc/default/grub
+sudo cp -r /usr/share/grub/themes/breeze /boot/grub/themes/breeze
 sudo cp "$SD/dnscrypt-proxy/dnscrypt-proxy.toml" /etc/dnscrypt-proxy/dnscrypt-proxy.toml

@@ -56,13 +56,10 @@ alias gitpullall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.g
 alias back='cd $OLDPWD'
 alias clearterm='printf "\033c"'
 alias e='atom'
-alias egrep='grep -E --color'
 alias flush_caches='sync && sudo sync && sudo sysctl -qw vm.drop_caches=3' # https://www.opennet.ru/tips/1455_linux_kernel_cache.shtml?skip=10 
 alias g='git'
-#alias gogdownload='lgogdownloader --exclude e,c,p --platform lin,win --use-cache --language ru,en --download --game'
 # https://forum.manjaro.org/t/best-commands-to-shutdown-reboot-via-terminal/40955/8
 alias goodnight='veracrypt -t -d && qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 2 2 '
-alias grep='grep --color'
 alias ecat='iconv -f WINDOWS-1251 -t UTF-8' # https://unix.stackexchange.com/questions/78776/characters-encodings-supported-by-more-cat-and-less
 alias internal-ip="ip -o route get to 1.1.1.1 | sed -rn 's/.*src (([0-9]{1,3}\.){3}[0-9]{1,3}).*/\1/p'" # https://github.com/pi-hole/docker-pi-hole/issues/312#issuecomment-412254618
 alias jc='journalctl'
@@ -75,17 +72,11 @@ alias sc='systemctl'
 alias scu='sc --user'
 alias sl='streamlink'
 alias sudoedit='SUDO_EDITOR="atom -w" sudo -e'
-#alias virsh-edit="EDITOR='atom -w' sudo -E virsh edit"
 # https://github.com/RPCS3/rpcs3/issues/5324#issuecomment-443421886
 # KDE_DEBUG=1
 alias rpcs3='gamemoderun ./rpcs3*'
 alias play-emu='gamemoderun ./play-emu*'
-#alias yuzu='strangle 60 gamemoderun yuzu'
-#alias discord='PULSE_LATENCY_MSEC=60 discord'
 alias tkgup='cd $HOME/git/PKGBUILDS; git reset --hard origin/master; git pull'
-#alias build_dxvk='tkgup; cd $HOME/git/PKGBUILDS/dxvk-tools && ./updxvk build && ./updxvk lutris && ./updxvk proton-tkg'
-#alias build_d9vk='tkgup; cd $HOME/git/PKGBUILDS/dxvk-tools && ./upd9vk build && ./upd9vk lutris && ./upd9vk proton-tkg'
-#alias build_mesa='tkgup; cd $HOME/git/PKGBUILDS/mesa-git && sed -i "s/#MESA_WHICH_LLVM=4/MESA_WHICH_LLVM=4/" customization.cfg && makepkg -si'
 alias build_wine='tkgup; cd $HOME/git/PKGBUILDS/wine-tkg-git && makepkg -si'
 alias build_proton='tkgup; cd $HOME/git/PKGBUILDS/proton-tkg && ./proton-tkg.sh'
 alias build_mingw='tkgup; cd $HOME/git/PKGBUILDS/mingw && sed -i "s/sudo pacman/yay/g" ./mingw-on-arch-automator.sh; ./mingw-on-arch-automator.sh -f'
@@ -96,7 +87,6 @@ alias build_all_m='build_mingw; build_all'
 alias aurup='makepkg --printsrcinfo > .SRCINFO; updpkgsums'
 alias mountandroidfs='sshfs -o kernel_cache -oport=2222 ssh@192.168.1.234:/ $HOME/media/android'
 alias vts='echo vitetris --connect $(myip):27015 && vitetris -listen 27015'
-alias copyuserjs='cp $HOME/sync/main/Documents/misc/firefox/user.js $HOME/.mozilla/firefox/tor-main/user.js'
 # https://www.lifewire.com/kubuntu-p2-2202573
 alias restart-plasma="kquitapp5 plasmashell; nohup plasmashell &>/dev/null &"
 # https://wiki.archlinux.org/index.php/Mirrors#List_by_speed
@@ -107,4 +97,33 @@ cmtoinch() { echo $(bc -l <<< "$1 / 2.54"); }
 inchtocm() { echo $(bc -l <<< "$1 * 2.54"); }
 
 # color
+alias egrep='grep -E --color'
 alias diff='diff --color'
+alias grep='grep --color'
+
+# extract initramfs
+# xzcat /boot/initramfs-genkernel-x86_64-4.15.2-gentoo | cpio -idmv --no-absolute-filenames
+alias 2ch-vpn="sudo $HOME/git/namespaced-openvpn/namespaced-openvpn --config $HOME/tmp/vpn/nl-free-01.protonvpn.com.udp1194.ovpn"
+alias 2ch-browser="sudo ip netns exec protected sudo -u $USER $HOME/bin/fxlowmem -p $HOME/Documents/fxprofiles/2ch"
+alias vpn-pass="sudo ip netns exec protected sudo -u $USER "
+alias vpn-proton="sudo $HOME/git/namespaced-openvpn/namespaced-openvpn --config $HOME/Documents/vpn/nl-free-01.protonvpn.com.udp1194.ovpn"
+
+containter1="$HOME/sync/arch/1"
+containter1l="$HOME/media/veracrypt1"
+
+# Mount veracrypt throught cryptsetup
+alias m3test='sudo cryptsetup --veracrypt open --type tcrypt "$containter1" veracrypt; sudo mount /dev/mapper/veracrypt "$containter1l"'
+
+# Mounts.
+#alias m1='test ! -d $HOME/media/server_torrents && mkdir $HOME/media/server_torrents; sshfs -o big_writes,auto_unmount s:mdata/torrents $HOME/media/server_torrents'
+#alias m1a='test ! -d $HOME/media/server_torrents && mkdir $HOME/media/server_torrents; sshfs -o big_writes,auto_unmount s:mdata/stream $HOME/media/stream'
+alias m1ro='test ! -d $containter1l && mkdir $containter1l; veracrypt -v -m=ro -k "" --protect-hidden=no $containter1 $containter1l'
+alias m1rw='test ! -d $containter1l && mkdir $containter1l; veracrypt -v  -k "" --protect-hidden=no $containter1 $containter1l'
+
+#alias find2chimages='array=( $(fd "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]?[0-9]?[0-9]?[0-9]?\.(png|jpeg|jpg|JPG|jpeg|JPEG|JPE|PNG)$") ); mvi "${array[@]}"'
+#alias fixtearing="xrandr --output HDMI-A-0 --mode 1920x1080; xrandr --output HDMI-A-0 --auto"
+#alias perf='sudo cpupower frequency-set -g performance'
+#alias checksomething='vl -s 2 -t 10 --whitelist example.com porn2.txt'
+#alias checksomething='awesome_bot -t 10 -w example.com --skip-save-results'
+#cat bookmarks/multimedia/music.txt | sed -e "s/ .*\[.*//g" | fpp -nfc -ai -c torbrowser --allow-remote
+alias linkmusic='ln -sf /media/disk0/torrents/Music/OST/* "$HOME/Music"'
