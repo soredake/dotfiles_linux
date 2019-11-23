@@ -353,14 +353,16 @@ games=(
   ninfs-gui
   openmw
   openttd
+  osu-lazer
   oversteer
   pcsx2-git
   pcsx2-plugin-usbqemu-wheel
   protonfixes-git
-  osu-lazer
   protontricks-git
   residualvm-git
   retroarch
+  rpcs3-git
+  scummvm-git
   steam
   steam-fonts
   steam-native-runtime
@@ -368,9 +370,9 @@ games=(
   taisei
   vitetris
   winetricks-git
-  scummvm-git
   xboxdrv
   xdg-utils
+  yuzu-canary-git
   # https://wiki.archlinux.org/index.php/CDemu
   kde-cdemu-manager-kf5 cdemu-client vhba-module-dkms
   flips-git

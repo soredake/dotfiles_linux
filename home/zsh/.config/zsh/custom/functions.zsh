@@ -90,20 +90,6 @@ ranger() {
     rm -f -- "$tempfile"
 }
 
-# Algorithm borrowed from http://wiki.rtorrent.org/MagnetUri and adapted to work with zsh.
-# Copied from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/torrent/torrent.plugin.zsh
-magnet_to_torrent() {
-  [[ "$1" =~ xt=urn:btih:([^\&/]+) ]] || return 1
-  hashh=${match[1]}
-  if [[ "$1" =~ dn=([^\&/]+) ]]; then
-    filename=${match[1]}
-  else
-    filename=$hashh
-  fi
-  echo "d10:magnet-uri${#1}:${1}e" > "$filename.torrent"
-}
-
-
 px() {
   # https://stackoverflow.com/questions/23258413/expand-aliases-in-non-interactive-shells/23259088#23259088
   setopt aliases
@@ -117,9 +103,7 @@ case "$1" in
   g) cd "$HOME/git" ;;
   s) cd "$HOME/sync" ;;
   t) cd /media/disk0/torrents ;;
-  gd) cd "$HOME/sync/main/Documents/googledocs" ;;
-  dch) cd "$HOME/sync/main/Documents/dollchan" ;;
-  b) cd "$HOME/sync/main/Documents/bookmarks" ;;
+  d) cd "$HOME/sync/main/Documents/googledocs" ;;
   bak) cd "$HOME/sync/system-data" ;;
   m) cd "$HOME/media" ;;
   *) echo "No folder defined for this alias." ;;
@@ -161,7 +145,7 @@ streamnodown() {
 # https://stackoverflow.com/questions/45601589/zsh-not-recognizing-alias-from-within-function
 # https://stackoverflow.com/questions/25532050/newly-defined-alias-not-working-inside-a-function-zsh
 # TODO remove when https://github.com/rclone/rclone/issues/2697 is done
-alias -g upload="rclone sync  --transfers 8 --delete-excluded --fast-list -P"
+alias -g upload="rclone sync --transfers 8 --delete-excluded --fast-list -P --delete-before"
 
 # backup
 backup() {
@@ -173,47 +157,60 @@ backup() {
   # 2gb
   # TODO: https://plati.ru/search/DROPBOX
   upload "$HOME/sync/main/Documents" dropbox:/Documents
+  upload "$HOME/sync/main/Screens" dropbox:/Screens
   upload "$HOME/sync/system-data" dropbox:/system-data
   # opendrive
   # 5gb
   upload "$HOME/sync/main/Documents" opendrive:/Documents
+  upload "$HOME/sync/main/Screens" opendrive:/Screens
   upload "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" opendrive:/
   # google drive
   # 15gb
-  upload "$HOME/sync/main/Documents" opendrive:/Documents
-  upload --drive-use-trash "$HOME/sync/main/me" google_drive:/me
-  upload --drive-use-trash "$HOME/sync/main/Media" google_drive:/Media
-  upload --drive-use-trash "$HOME/sync/system-data" google_drive:/system-data
-  upload --drive-use-trash "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" google_drive:/
+  upload "$HOME/sync/main/Documents" google_drive:/Documents
+  upload "$HOME/sync/main/Screens" google_drive:/Screens
+  upload "$HOME/sync/main/me" google_drive:/me
+  upload "$HOME/sync/main/Media" google_drive:/Media
+  upload "$HOME/sync/system-data" google_drive:/system-data
+  upload "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" google_drive:/
   # mega.nz
   # 50gb
   # fix errors like ` googledocs/Cake streams.ods: Duplicate object found in destination - ignoring` https://github.com/rclone/rclone/issues/2131#issuecomment-372459713
   rclone dedupe --dedupe-mode newest 50gbmega:/
   upload --mega-hard-delete "$HOME/sync/main/Documents" 50gbmega:/Documents
+  upload --mega-hard-delete "$HOME/sync/main/Screens" 50gbmega:/Screens
   upload --mega-hard-delete "$HOME/sync/main/me" 50gbmega:/me
   upload --mega-hard-delete "$HOME/sync/main/Media" 50gbmega:/Media
   upload --mega-hard-delete "$HOME/sync/system-data" 50gbmega:/system-data
-  upload --mega-hard-delete "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" 50gbmega:/
+  upload --mega-hard-delete "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" 50gbmega:/
+  # mega.nz
+  # 15gb
+  upload "$HOME/sync/main/Documents" mega_nz:/Documents
+  upload "$HOME/sync/main/Screens" mega_nz:/Screens
+  upload "$HOME/sync/main/me" mega_nz:/me
+  upload "$HOME/sync/main/Media" mega_nz:/Media
+  upload "$HOME/sync/system-data" mega_nz:/system-data
+  upload "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" mega_nz:/
   # yandex.disk
   # 10gb
   upload "$HOME/sync/main/Documents" yandex:/Documents
+  upload "$HOME/sync/main/Screens" yandex:/Screens
   upload "$HOME/sync/system-data" yandex:/system-data
   upload "$HOME/sync/main/me" yandex:/me
-  upload "$XDG_DATA_HOME/keepass/NewDatabase.kdbx" yandex:/
+  upload "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" yandex:/
 }
 
 update-grub() {
   # mount esp
-  [[ ! $(grep /boot/efi /proc/mounts) ]] && sudo mount /boot/efi
+  #[[ ! $(grep /boot/efi /proc/mounts) ]] && sudo mount /boot/efi
   # copy microcode
-  sudo cp /boot/amd-ucode.img /boot/efi
+  #sudo cp /boot/amd-ucode.img /boot/efi
   # generate config
   sudo grub-mkconfig -o /boot/grub/grub.cfg
-  sudo umount /boot/efi
+  #sudo umount /boot/efi
 }
 
 # workaround for https://github.com/citra-emu/citra/issues/3862
-yuzu() {
+yuzu-binary() {
   [[ ! -f "libsndio.so.6.1" ]] && ln -sfv /usr/lib/libsndio.so.7.0 libsndio.so.6.1
   #KDE_DEBUG=1
   LD_LIBRARY_PATH=$PWD strangle 60 gamemoderun ./yuzu
