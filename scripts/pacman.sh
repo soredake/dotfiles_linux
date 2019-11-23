@@ -150,7 +150,6 @@ packages=(
   cloc
   code
   colordiff
-  coolreader
   cpupower
   curlie
   dasht
@@ -166,7 +165,6 @@ packages=(
   etc-update
   evtest
   falkon
-  fbreader
   fd
   firefox
   firejail
@@ -228,6 +226,8 @@ packages=(
   octopi-notifier-frameworks
   os-prober
   oyranos
+  krename
+  fatrace
   p7zip
   p7zip-zstd-codec
   partitionmanager
@@ -266,7 +266,7 @@ packages=(
   sudo
   syncplay
   syncthing syncthingtray
-  displaycal colord-kde
+  #displaycal colord-kde
   systemdgenie
   teamviewer
   telegram-desktop

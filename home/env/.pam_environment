@@ -22,6 +22,13 @@ CARGO_HOME                              DEFAULT=${XDG_DATA_HOME}/cargo
 CCACHE_CONFIGPATH                       DEFAULT=${XDG_CONFIG_HOME}/ccache.conf
 CCACHE_DIR                              DEFAULT=${XDG_CACHE_HOME}/ccache
 NUGET_PACKAGES                          DEFAULT=${XDG_CACHE_HOME}/NuGetPackages
+MPD_HOST                                DEFAULT=${XDG_RUNTIME_DIR}/mpd/socket
+GNUPGHOME                               DEFAULT=${XDG_DATA_HOME}/gnupg
+HISTFILE                                DEFAULT=${XDG_DATA_HOME}/zsh/history
+LESSHISTFILE                            DEFAULT=${XDG_CACHE_HOME}/less/history
+PROXYCHAINS_CONF_FILE                   DEFAULT=${XDG_CONFIG_HOME}/proxychains.conf
+ANDROID_SDK_HOME                        DEFAULT=${XDG_CONFIG_HOME}/android
+_JAVA_OPTIONS                           DEFAULT=-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java
 # https://github.com/ihaveamac/ninfs#setup
 BOOT9_PATH                              DEFAULT=${HOME}/sync/main/Documents/3ds/boot9.bin
 SEEDDB_PATH                             DEFAULT=${HOME}/sync/main/Documents/3ds/seeddb.bin
