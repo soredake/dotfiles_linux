@@ -10,7 +10,6 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-ln -s "$HOME"/{Downloads,Загрузки}
 # https://wiki.archlinux.org/index.php/Localization/Russian_(Русский)#Настройка_консоли
 sudo tee /etc/vconsole.conf >/dev/null <<END
 FONT="ter-v16n"
@@ -52,11 +51,14 @@ sudo tee -a /etc/systemd/system.conf >/dev/null <<END
 DefaultLimitNOFILE=1048576
 END
 
+# set compilation cores
+sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j16"/g' /etc/makepkg.conf
+
 # lutris: use system libretro cores
-# TODO: report to upstream to add option to use system cores
+# https://github.com/lutris/lutris/issues/2444
 ln -sfv "$XDG_CONFIG_HOME/retroarch/cores/" "$XDG_DATA_HOME/lutris/runners/retroarch/cores"
 # lutris: use system winetricks
-# TODO: report to upstream to add option to use system winetricks
+# https://github.com/lutris/lutris/issues/2445
 rm -f "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks"
 ln -sfv /usr/bin/winetricks "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks"
 chmod 555 "$XDG_DATA_HOME/lutris/runtime/winetricks"

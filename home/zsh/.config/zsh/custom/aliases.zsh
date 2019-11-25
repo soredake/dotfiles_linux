@@ -34,8 +34,8 @@ alias mv='mrsync --remove-source-files'
 alias cpu='mrsync --update'
 alias cps='mrsync --update --delete'
 
-alias fosize='du -sh' # Folder size
-#alias docker-gc='PID_DIR="$XDG_RUNTIME_DIR" STATE_DIR="$XDG_CACHE_HOME/docker-gc" FORCE_IMAGE_REMOVAL=1 FORCE_CONTAINER_REMOVAL=1 EXCLUDE_FROM_GC="" EXCLUDE_CONTAINERS_FROM_GC="" GRACE_PERIOD_SECONDS=300 docker-gc' # docker-gc with options
+# Folder size
+alias fosize='du -sh'
 
 # perms quick-fix
 alias dir755='find . -type d -exec chmod 755 {} +'
@@ -72,17 +72,16 @@ alias sc='systemctl'
 alias scu='sc --user'
 alias sl='streamlink'
 alias sudoedit='SUDO_EDITOR="atom -w" sudo -e'
-# https://github.com/RPCS3/rpcs3/issues/5324#issuecomment-443421886
-# KDE_DEBUG=1
-alias rpcs3='gamemoderun ./rpcs3*'
+alias rpcs3='gamemoderun rpcs3'
 alias play-emu='gamemoderun ./play-emu*'
+alias yuzu='strangle 60 gamemoderun yuzu'
 alias tkgup='cd $HOME/git/PKGBUILDS; git reset --hard origin/master; git pull'
 alias build_wine='tkgup; cd $HOME/git/PKGBUILDS/wine-tkg-git && makepkg -si'
 alias build_proton='tkgup; cd $HOME/git/PKGBUILDS/proton-tkg && ./proton-tkg.sh'
-alias build_mingw='tkgup; cd $HOME/git/PKGBUILDS/mingw && sed -i "s/sudo pacman/yay/g" ./mingw-on-arch-automator.sh; ./mingw-on-arch-automator.sh -f'
-alias build_kernel='tkgup; cd $HOME/git/PKGBUILDS/linux53-tkg && makepkg -si'
-alias build_all='build_kernel; build_wine; build_proton'
-alias build_all_m='build_mingw; build_all'
+#alias build_mingw='tkgup; cd $HOME/git/PKGBUILDS/mingw && sed -i "s/sudo pacman/yay/g" ./mingw-on-arch-automator.sh; ./mingw-on-arch-automator.sh -f'
+#alias build_kernel='tkgup; cd $HOME/git/PKGBUILDS/linux53-tkg && makepkg -si'
+alias build_all='build_wine; build_proton'
+#alias build_all_m='build_mingw; build_all'
 # https://wiki.archlinux.org/index.php/.SRCINFO https://wiki.archlinux.org/index.php/Arch_package_guidelines
 alias aurup='makepkg --printsrcinfo > .SRCINFO; updpkgsums'
 alias mountandroidfs='sshfs -o kernel_cache -oport=2222 ssh@192.168.1.234:/ $HOME/media/android'
@@ -123,7 +122,8 @@ alias m1rw='test ! -d $containter1l && mkdir $containter1l; veracrypt -v  -k "" 
 #alias find2chimages='array=( $(fd "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]?[0-9]?[0-9]?[0-9]?\.(png|jpeg|jpg|JPG|jpeg|JPEG|JPE|PNG)$") ); mvi "${array[@]}"'
 #alias fixtearing="xrandr --output HDMI-A-0 --mode 1920x1080; xrandr --output HDMI-A-0 --auto"
 #alias perf='sudo cpupower frequency-set -g performance'
-#alias checksomething='vl -s 2 -t 10 --whitelist example.com porn2.txt'
-#alias checksomething='awesome_bot -t 10 -w example.com --skip-save-results'
-#cat bookmarks/multimedia/music.txt | sed -e "s/ .*\[.*//g" | fpp -nfc -ai -c torbrowser --allow-remote
-alias linkmusic='ln -sf /media/disk0/torrents/Music/OST/* "$HOME/Music"'
+#alias checksomething='vl -s 2 -t 10 --whitelist example.com file.txt'
+#alias checksomething2='awesome_bot -t 10 -w example.com --skip-save-results'
+#alias checksomething3='linkcheck'
+#cat bookmarks/multimedia/music.txt | sed -e "s/ .*\[.*//g" | fpp -nfc -ai -c firefox --allow-remote
+alias linkmusic='ln -sfv /media/disk0/torrents/Music/OST/* "$HOME/Music"'

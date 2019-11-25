@@ -48,7 +48,7 @@ main() {
 ./systemd.sh
 
 # default progs
-#./default-progs.sh
+./default-progs.sh
 
 # Setup linux
 ./linux.sh
@@ -59,32 +59,32 @@ main() {
 
 export -f main
 
-read -p "Choose username? " NEWUSER;
 BASE=$(basename "$(realpath "$SD"/..)")
-dotpath="/home/$NEWUSER/git"
-if grep --quiet "$NEWUSER" /etc/passwd; then
+dotpath="/home/soredake/git"
+if grep --quiet "soredake" /etc/passwd; then
   red "User exists, starting stage2..."
   main
 else
   red "User not exists, starting stage1..."
   localectl set-locale LANG=en_US.UTF-8
   timedatectl set-timezone Europe/Kiev
-  pacman -Syu stow zsh networkmanager xdg-user-dirs || die "pacman failed"
+  rsync --archive --compress --progress --verbose --executability -h --remove-source-files "$SD"/../etc/arch/pacman.conf /etc/pacman.conf
+  pacman -Syuu yay base stow zsh networkmanager xdg-user-dirs || die "pacman failed"
   hostnamectl set-hostname archlinux
   systemd-machine-id-setup
-  ccache -M 10G
-  echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/00wheel
+  sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
   red "Creating user..."
-  useradd -s /bin/zsh "$NEWUSER"
+  useradd -s /bin/zsh "soredake"
   red "Password for user"
-  passwd "$NEWUSER" || die "setting user password failed"
+  passwd "soredake" || die "setting user password failed"
   red "Password for root"
   passwd root || die "setting root password failed"
   red "Creating user dirs"
-  sudo -u "$NEWUSER" -s LC_ALL=C xdg-user-dirs-update
-  sudo -u "$NEWUSER" -s mkdir -p media tmp git .{private,config/kitty,cache} .local/share/applications/custom
+  sudo -u "soredake" -s xdg-user-dirs-update
+  sudo -u "soredake" -s mkdir -p media tmp git .{config,cache,local/share/applications/custom}
   red "Owning this repository"
-  chown -R "$NEWUSER:$NEWUSER" "$SD"/..
-  rsync --archive --compress --progress --verbose --executability -h --remove-source-files "$SD"/../../"$BASE" "$dotpath"
-  sudo -u "$NEWUSER" -s "$dotpath"/"$BASE"/scripts/home.sh
+  chown -R "soredake:soredake" "$SD"/..
+  git clone https://notabug.org/soredake/dotfiles_home.git "${dotpath}/dotfiles_home"
+  rsync --archive --compress --progress --verbose --executability -h --remove-source-files "$SD"/../home/env/.pam_environment /home/soredake
+  sudo -u "soredake" -s "$dotpath"/"$BASE"/scripts/home.sh
 fi

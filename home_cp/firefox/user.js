@@ -63,10 +63,10 @@ user_pref("browser.tabs.closeWindowWithLastTab", false);
 
 // color management
 // https://developer.mozilla.org/en-US/Firefox/Releases/3.5/ICC_color_correction_in_Firefox
-//user_pref("gfx.color_management.mode", 1);
-//user_pref("gfx.color_management.display_profile", "/home/bausch/sync/main/Documents/icc/ULTRAWIDE.icm");
-//user_pref("gfx.color_management.rendering_intent", 1);
-//user_pref("gfx.color_management.enablev4", true);
+user_pref("gfx.color_management.mode", 1);
+user_pref("gfx.color_management.display_profile", "/home/bausch/sync/main/Documents/icc/ULTRAWIDE.icm");
+user_pref("gfx.color_management.rendering_intent", 1);
+user_pref("gfx.color_management.enablev4", true);
 
 // for dasht, https://sunaku.github.io/dasht/man/man1/dasht-server.1.html#firefox
 user_pref("capability.policy.policynames", "localfilelinks");

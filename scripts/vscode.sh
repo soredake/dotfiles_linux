@@ -20,11 +20,7 @@ packages=(
   https://github.com/microsoft/vscode/issues/33110
   linter-bootlint
   linter-shellcheck
-  https://github.com/Microsoft/vscode/issues/20934
-  https://github.com/Microsoft/vscode/issues/20853
-  https://github.com/Microsoft/vscode/issues/20934
-  https://github.com/Microsoft/vscode/issues/21404
-  https://github.com/Microsoft/vscode/issues/20853
+  https://github.com/microsoft/vscode/issues/84151
   pigments
   https://github.com/Microsoft/vscode/issues/12622
   prettier-atom
@@ -33,6 +29,7 @@ packages=(
   source-preview
   tree-view-git-status
   tree-view-search-bar
+  chrislajoie.vscode-modelines
 )
 
 code --install-extension "${packages[@]}"

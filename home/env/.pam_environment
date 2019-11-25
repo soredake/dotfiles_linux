@@ -1,45 +1,39 @@
 # about this file: https://github.com/linux-pam/linux-pam/issues/7
 # https://github.com/ayekat/dotfiles/issues/7
+# https://github.com/grawity/dotfiles/blob/master/.dotfiles.notes
+# https://wiki.archlinux.org/index.php/XDG_Base_Directory
 
 # https://wiki.archlinux.org/index.php/wine#Prevent_new_Wine_file_associations
 WINEDLLOVERRIDES=winemenubuilder.exe=d
 
-# https://wiki.archlinux.org/index.php/XDG_Base_Directory_support
-XDG_DATA_HOME			DEFAULT=@{HOME}/.local/share
-XDG_CONFIG_HOME			DEFAULT=@{HOME}/.config
-XDG_CACHE_HOME			DEFAULT=@{HOME}/.cache
-
-# XDG's https://wiki.archlinux.org/index.php/XDG_Base_Directory
-DVDCSS_CACHE		DEFAULT=${XDG_CACHE_HOME}/dvdcss
-TMUX_TMPDIR			DEFAULT=${XDG_RUNTIME_DIR}
-#https://github.com/grawity/dotfiles/blob/master/.dotfiles.notes#L352
-PUTTYDIR				DEFAULT=${XDG_CACHE_HOME}/putty
-WGETRC					DEFAULT=${XDG_CONFIG_HOME}/wgetrc
-ATOM_HOME                               DEFAULT=${XDG_DATA_HOME}/atom
-NPM_CONFIG_USERCONFIG                   DEFAULT=${XDG_CONFIG_HOME}/npm/npmrc
-GTK2_RC_FILES                           DEFAULT=${XDG_CONFIG_HOME}/gtk-2.0/gtkrc
-CARGO_HOME                              DEFAULT=${XDG_DATA_HOME}/cargo
-CCACHE_CONFIGPATH                       DEFAULT=${XDG_CONFIG_HOME}/ccache.conf
-CCACHE_DIR                              DEFAULT=${XDG_CACHE_HOME}/ccache
-NUGET_PACKAGES                          DEFAULT=${XDG_CACHE_HOME}/NuGetPackages
-MPD_HOST                                DEFAULT=${XDG_RUNTIME_DIR}/mpd/socket
-GNUPGHOME                               DEFAULT=${XDG_DATA_HOME}/gnupg
-HISTFILE                                DEFAULT=${XDG_DATA_HOME}/zsh/history
-LESSHISTFILE                            DEFAULT=${XDG_CACHE_HOME}/less/history
-PROXYCHAINS_CONF_FILE                   DEFAULT=${XDG_CONFIG_HOME}/proxychains.conf
-ANDROID_SDK_HOME                        DEFAULT=${XDG_CONFIG_HOME}/android
-_JAVA_OPTIONS                           DEFAULT=-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java
+# the env vars
+XDG_DATA_HOME              DEFAULT=@{HOME}/.local/share
+XDG_CONFIG_HOME            DEFAULT=@{HOME}/.config
+XDG_CACHE_HOME             DEFAULT=@{HOME}/.cache
+DVDCSS_CACHE               DEFAULT=${XDG_CACHE_HOME}/dvdcss
+TMUX_TMPDIR                DEFAULT=${XDG_RUNTIME_DIR}
+PUTTYDIR                   DEFAULT=${XDG_CACHE_HOME}/putty
+WGETRC                     DEFAULT=${XDG_CONFIG_HOME}/wgetrc
+ATOM_HOME                  DEFAULT=${XDG_DATA_HOME}/atom
+NPM_CONFIG_USERCONFIG      DEFAULT=${XDG_CONFIG_HOME}/npm/npmrc
+GTK2_RC_FILES              DEFAULT=${XDG_CONFIG_HOME}/gtk-2.0/gtkrc
+CARGO_HOME                 DEFAULT=${XDG_DATA_HOME}/cargo
+CCACHE_CONFIGPATH          DEFAULT=${XDG_CONFIG_HOME}/ccache.conf
+CCACHE_DIR                 DEFAULT=${XDG_CACHE_HOME}/ccache
+NUGET_PACKAGES             DEFAULT=${XDG_CACHE_HOME}/NuGetPackages
+MPD_HOST                   DEFAULT=${XDG_RUNTIME_DIR}/mpd/socket
+GNUPGHOME                  DEFAULT=${XDG_DATA_HOME}/gnupg
+HISTFILE                   DEFAULT=${XDG_DATA_HOME}/zsh/history
+LESSHISTFILE               DEFAULT=${XDG_CACHE_HOME}/less/history
+PROXYCHAINS_CONF_FILE      DEFAULT=${XDG_CONFIG_HOME}/proxychains.conf
+ANDROID_SDK_HOME           DEFAULT=${XDG_CONFIG_HOME}/android
+_JAVA_OPTIONS              DEFAULT=-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java
 # https://github.com/ihaveamac/ninfs#setup
-BOOT9_PATH                              DEFAULT=${HOME}/sync/main/Documents/3ds/boot9.bin
-SEEDDB_PATH                             DEFAULT=${HOME}/sync/main/Documents/3ds/seeddb.bin
-
-# https://github.com/grawity/dotfiles/blob/master/.dotfiles.notes#L64
-# /run/dbus/system_bus_socket 
-# /run/user/1000/bus
-#DBUS_SESSION_BUS_ADDRESS	DEFAULT=unix:path=${XDG_RUNTIME_DIR}/bus
+BOOT9_PATH                 DEFAULT=${HOME}/sync/main/Documents/3ds/boot9.bin
+SEEDDB_PATH                DEFAULT=${HOME}/sync/main/Documents/3ds/seeddb.bin
 
 # https://github.com/doitsujin/dxvk/wiki/Configuration
-DXVK_CONFIG_FILE		DEFAULT=${XDG_CONFIG_HOME}/dxvk.conf
+DXVK_CONFIG_FILE          DEFAULT=${XDG_CONFIG_HOME}/dxvk.conf
 
 # mesa
 VAAPI_MPEG4_ENABLED=1
@@ -57,3 +51,7 @@ TLDR_OS=linux
 # https://github.com/Tk-Glitch/PKGBUILDS/issues/312
 # https://www.phoronix.com/scan.php?page=news_item&px=Mesa-19.3-Lands-RADV-ACO
 RADV_PERFTEST=aco
+
+# fix atom file delete
+# https://wiki.archlinux.org/index.php/Atom#Unable_to_delete_files
+ELECTRON_TRASH=kioclient5

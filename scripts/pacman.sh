@@ -189,7 +189,6 @@ packages=(
   innoextract
   iotop
   itch
-  jdownloader2
   meld
   jdupes
   jpegoptim
@@ -341,11 +340,10 @@ games=(
   colobot-gold
   colobot-gold-music
   freej2me
-  gamemode
+  gamemode lib32-gamemode
   gb-studio-git
   gltron
   jstest-gtk-git
-  lib32-gamemode
   lutris-battlenet-meta
   lutris-git
   lutris-wine-meta
@@ -372,7 +370,7 @@ games=(
   winetricks-git
   xboxdrv
   xdg-utils
-  yuzu-canary-git
+  yuzu-mainline-git
   # https://wiki.archlinux.org/index.php/CDemu
   kde-cdemu-manager-kf5 cdemu-client vhba-module-dkms
   flips-git
@@ -399,7 +397,7 @@ virtualbox=(
 )
 
 # Upgrade any already-installed packages.
-yay -Syu
+yay -Syuu
 
 # Install optdeps
 yay -S --asdeps "${optdeps[@]}"
