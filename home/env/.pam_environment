@@ -10,6 +10,7 @@ WINEDLLOVERRIDES=winemenubuilder.exe=d
 XDG_DATA_HOME              DEFAULT=@{HOME}/.local/share
 XDG_CONFIG_HOME            DEFAULT=@{HOME}/.config
 XDG_CACHE_HOME             DEFAULT=@{HOME}/.cache
+#SSH_AUTH_SOCK              DEFAULT=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
 DVDCSS_CACHE               DEFAULT=${XDG_CACHE_HOME}/dvdcss
 TMUX_TMPDIR                DEFAULT=${XDG_RUNTIME_DIR}
 PUTTYDIR                   DEFAULT=${XDG_CACHE_HOME}/putty
