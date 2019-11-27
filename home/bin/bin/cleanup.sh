@@ -9,7 +9,6 @@ rmlist=(
   "$HOMEDIR"/.pulse-cookie
   #$HOMEDIR/.*sh_history
   "$HOMEDIR"/.cache/{ranger,thumbnails,gstreamer-1.0,less,wine,youtube-dl,qt_compose_cache*}
-  #"$HOMEDIR/.dbus"
   "$XDD/{xorg,RecentDocuments}"
   "$XDD/*.xbel*"
 )

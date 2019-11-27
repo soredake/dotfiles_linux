@@ -1,4 +1,4 @@
-#
+# vim: ft=properties
 # Minimal torrc so tor will work out of the box
 #
 #AvoidDiskWrites 1

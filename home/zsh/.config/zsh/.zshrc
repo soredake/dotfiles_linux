@@ -20,7 +20,7 @@ if [[ "$ZPLUG" == true ]]; then
   # Install plugins if there are plugins that have not been installed
   if ! zplug check --verbose; then
     printf "Install? [y/N]: "
-    if read -q; then
+    if read -rq; then
         echo; zplug install
     fi
   fi
@@ -96,6 +96,7 @@ pathadd() {
 pathadd "$HOME/bin"
 pathadd /sbin
 pathadd /usr/sbin
+pathadd "$(yarn global bin)"
 
 # enable completion for hidden f{iles,olders}
 # https://unix.stackexchange.com/questions/308315/how-can-i-configure-zsh-completion-to-show-hidden-files-and-folders

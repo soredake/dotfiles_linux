@@ -100,12 +100,12 @@ px() {
 
 j() {
 case "$1" in
-  g) cd "$HOME/git" ;;
-  s) cd "$HOME/sync" ;;
-  t) cd /media/disk0/torrents ;;
-  d) cd "$HOME/sync/main/Documents" ;;
   b) cd "$HOME/sync/system-data" ;;
+  d) cd "$HOME/sync/main/Documents" ;;
+  g) cd "$HOME/git" ;;
   m) cd "$HOME/media" ;;
+  s) cd "$HOME/sync/main" ;;
+  t) cd /media/disk0/torrents ;;
   *) echo "No folder defined for this alias." ;;
 esac
 }
@@ -219,7 +219,6 @@ update-grub() {
 # workaround for https://github.com/citra-emu/citra/issues/3862
 yuzu-binary() {
   [[ ! -f "libsndio.so.6.1" ]] && ln -sfv /usr/lib/libsndio.so.7.0 libsndio.so.6.1
-  #KDE_DEBUG=1
   LD_LIBRARY_PATH=$PWD strangle 60 gamemoderun ./yuzu
 }
 
@@ -245,7 +244,7 @@ man() {
 }
 
 # ukr nalogi
-# https://3g2upl4pq6kufc4m.onion/?q=(400+-+165)+*+35%25&ia=calculator
+# https://duckduckgo.com/?q=(400+-+165)+*+35%25&ia=calculator
 ukr_nalogi() { echo Tax is: $(bc -l <<< "($1 - 165) * 0.35") USD; }
 
 checkvk() {

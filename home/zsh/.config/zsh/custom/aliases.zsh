@@ -9,12 +9,18 @@ alias s='sudo '
 alias curl='curl -K $XDG_CONFIG_HOME/curlrc'
 alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 
-alias badlinks='find . -type l -exec test ! -e {} \; -print' # find broken symlinks
-alias ls='ls --color=auto -ah --quoting-style=escape --group-directories-first' # Color ls.
-alias timer="echo 'Timer started. Stop with Ctrl-D.' && date && time cat && date" # Timer.
-alias myip='dig +short myip.opendns.com @resolver1.opendns.com' # What's my IP address.
-alias whois='whois -h whois.internic.net' # Enhanced WHOIS lookups.
-alias usd='cconv 1 usd uah' # Currency conversions.
+# find broken symlinks
+alias badlinks='find . -type l -exec test ! -e {} \; -print'
+# ls with settings
+alias ls='ls --color=auto -ah --quoting-style=escape --group-directories-first'
+# Timer
+alias timer="echo 'Timer started. Stop with Ctrl-D.' && date && time cat && date"
+# What's my IP address
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
+# Enhanced WHOIS lookups
+alias whois='whois -h whois.internic.net'
+# Currency conversions
+alias usd='cconv 1 usd uah'
 
 # Confirm before overwriting
 # I know it is bad practice to override the default commands, but this is for
@@ -37,13 +43,13 @@ alias cps='mrsync --update --delete'
 # Folder size
 alias fosize='du -sh'
 
-# perms quick-fix
+# permissions quick-fix
 alias dir755='find . -type d -exec chmod 755 {} +'
 alias dir700='find . -type d -exec chmod 700 {} +'
 alias files644='find . -type f -exec chmod 644 {} +'
 alias files600='find . -type f -exec chmod 600 {} +'
 
-# owner quick-fix
+# ownership quick-fix
 alias owneruser='chown -R $(id -u):$(id -g) .'
 
 # git aliases
@@ -55,7 +61,7 @@ alias gitpullall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.g
 # Shorter
 alias back='cd $OLDPWD'
 alias clearterm='printf "\033c"'
-alias e='atom'
+alias e='code'
 alias flush_caches='sync && sudo sync && sudo sysctl -qw vm.drop_caches=3' # https://www.opennet.ru/tips/1455_linux_kernel_cache.shtml?skip=10 
 alias g='git'
 # https://forum.manjaro.org/t/best-commands-to-shutdown-reboot-via-terminal/40955/8
@@ -71,7 +77,7 @@ alias ob='bkg xdg-open'
 alias sc='systemctl'
 alias scu='sc --user'
 alias sl='streamlink'
-alias sudoedit='SUDO_EDITOR="atom -w" sudo -e'
+alias sudoedit='SUDO_EDITOR="code -w" sudo -e'
 alias rpcs3='gamemoderun rpcs3'
 alias play-emu='gamemoderun ./play-emu*'
 alias yuzu='strangle 60 gamemoderun yuzu'

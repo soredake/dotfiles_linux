@@ -1,3 +1,4 @@
+# vim: ft=properties
 # https://git.archlinux.org/svntogit/packages.git/tree/trunk/grub.default?h=packages/grub
 # GRUB boot loader configuration
 

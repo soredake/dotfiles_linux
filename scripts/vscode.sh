@@ -9,26 +9,23 @@ packages=(
   ulthes.theme-firewatch
   mads-hartmann.bash-ide-vscode
   timonwong.shellcheck
-  git-time-machine
-  language-babel
-  language-diff
-  language-fish-shell
-  language-generic-config
-  language-systemd
-  language-tmux
-  linter
+  #git-time-machine
+  mgmcdermott.vscode-language-babel
+  #language-generic-config
+  coolbear.systemd-unit-file
+  malmaud.tmux
+  deerawan.vscode-dash
+  bungcip.better-toml
   https://github.com/microsoft/vscode/issues/33110
-  linter-bootlint
-  linter-shellcheck
   https://github.com/microsoft/vscode/issues/84151
-  pigments
+  #pigments
   https://github.com/Microsoft/vscode/issues/12622
-  prettier-atom
+  #prettier-atom
   Tyriar.sort-lines
   jeff-hykin.code-eol
-  source-preview
-  tree-view-git-status
-  tree-view-search-bar
+  #source-preview
+  #tree-view-git-status
+  #tree-view-search-bar
   chrislajoie.vscode-modelines
 )
 

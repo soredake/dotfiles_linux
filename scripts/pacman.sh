@@ -122,6 +122,8 @@ optdeps=(
   atomicparsley
   # kde-service-menu-reimage
   jhead
+  # vscode dep
+  #bash-language-server
 )
 
 packages=(
@@ -404,6 +406,9 @@ yay -S --asdeps "${optdeps[@]}"
 
 # Install my packages
 yay -S "${packages[@]}" "${fonts[@]}" "${mesa[@]}" "${plasma[@]}" "${lang[@]}" "${games[@]}" "${wine[@]}" "${bluetooth[@]}"
+
+# not in use anymore
+yay -S "${i3[@]}" "${virtualbox[@]}"
 
 # Remove outdated versions from the pacman.
 yay -c

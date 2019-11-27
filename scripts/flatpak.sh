@@ -1,5 +1,5 @@
 #!/bin/bash
-# https://github.com/TingPing/flatpak-packages/issues/11
+# https://github.com/TingPing/flatpak-packages
 #flatpak --user remote-add tingping https://dl.tingping.se/flatpak/tingping.flatpakrepo
 #flatpak --user install tingping net.lutris.Lutris
 #flatpak --user install tingping net.rpcs3.RPCS3

@@ -1,3 +1,4 @@
+# vim: ft=properties
 # /etc/fstab: static file system information.
 #
 # noatime turns off atimes for increased performance (atimes normally aren't
