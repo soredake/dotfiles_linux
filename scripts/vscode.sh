@@ -1,32 +1,27 @@
 #!/bin/bash
 
 packages=(
-  advanced-open-file
-  atom-beautify
-  anseki.vscode-color
+  #https://github.com/Microsoft/vscode/issues/12622
+  #https://github.com/microsoft/vscode/issues/33110
+  #https://github.com/microsoft/vscode/issues/84151
   EditorConfig.EditorConfig
-  file-icons.file-icons
-  ulthes.theme-firewatch
-  mads-hartmann.bash-ide-vscode
-  timonwong.shellcheck
-  #git-time-machine
-  mgmcdermott.vscode-language-babel
-  #language-generic-config
-  coolbear.systemd-unit-file
-  malmaud.tmux
-  deerawan.vscode-dash
-  bungcip.better-toml
-  https://github.com/microsoft/vscode/issues/33110
-  https://github.com/microsoft/vscode/issues/84151
-  #pigments
-  https://github.com/Microsoft/vscode/issues/12622
-  #prettier-atom
   Tyriar.sort-lines
-  jeff-hykin.code-eol
-  #source-preview
-  #tree-view-git-status
-  #tree-view-search-bar
+  advanced-open-file
+  anseki.vscode-color
+  atom-beautify
+  bungcip.better-toml
   chrislajoie.vscode-modelines
+  coolbear.systemd-unit-file
+  deerawan.vscode-dash
+  eamodio.gitlens
+  file-icons.file-icons
+  jaspernorth.vscode-pigments
+  jeff-hykin.code-eol
+  mads-hartmann.bash-ide-vscode
+  malmaud.tmux
+  mgmcdermott.vscode-language-babel
+  timonwong.shellcheck
+  ulthes.theme-firewatch
 )
 
 code --install-extension "${packages[@]}"

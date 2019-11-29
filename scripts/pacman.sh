@@ -18,6 +18,8 @@ plasma=(
   kate
   kcalc
   kcharselect
+  kde-service-menu-reimage
+  kde-servicemenus-rootactions
   kde-thumbnailer-apk
   kde-thumbnailer-epub
   kdegraphics-meta
@@ -33,8 +35,6 @@ plasma=(
   khelpcenter
   kimageformats
   knotes
-  kde-servicemenus-rootactions
-  kde-service-menu-reimage
   kompare
   kontact
   korganizer
@@ -59,14 +59,14 @@ i3=(
   fe
   kbdd-git
   links
-  pavucontrol
   maim
+  network-manager-applet
   pamix-git
+  pavucontrol
   pulsemixer
   rofi
   scrot
   sct
-  network-manager-applet
   vifm
   wmctrl
   xautolock
@@ -88,13 +88,13 @@ lang=(
 
 mesa=(
   libva-mesa-driver lib32-libva-mesa-driver
+  llvm lib32-llvm
   mesa lib32-mesa
   mesa-demos lib32-mesa-demos
   opencl-mesa
   vulkan-mesa-layer lib32-vulkan-mesa-layer
   vulkan-radeon lib32-vulkan-radeon
   xf86-video-amdgpu
-  llvm lib32-llvm
 )
 
 optdeps=(
@@ -127,23 +127,26 @@ optdeps=(
 )
 
 packages=(
-  # proton from tkg
-  # wine from tkg
-  #media-video/dvd_info
-  aespresso
+  # proton/wine from tkg
+  #flashplugin pepper-flash
+  # displaycal
+  # https://wiki.archlinux.org/index.php/GRUB/Tips_and_tricks#Theme
+  grub breeze-grub grub-customizer
   # alsamixer
   alsa-utils
+  # https://www.archlinux.org/news/base-group-replaced-by-mandatory-base-package-manual-intervention-required/
+  base
+  # mkfs.fat mkfs.exfat
+  dosfstools exfat-utils
+  aespresso
   android-file-transfer
   android-tools
   aria2
   asf
   atom
   atool
-  linux-tkg-pds-zen linux-tkg-pds-zen-headers
   audacity
   balena-etcher
-  # https://www.archlinux.org/news/base-group-replaced-by-mandatory-base-package-manual-intervention-required/
-  base
   bleachbit
   blender
   btfs
@@ -151,28 +154,25 @@ packages=(
   ccache
   cloc
   code
+  colord-kde oyranos
   colordiff
   cpupower
   curlie
   dasht
   discord
   dnscrypt-proxy
-  docker
-  docker-compose
+  docker docker-compose
   dosbox
-  # mkfs.fat mkfs.exfat
-  dosfstools exfat-utils
+  downgrade
   dupeguru
   electronmail-bin
   etc-update
   evtest
-  falkon
+  falkon firefox
+  fatrace
   fd
-  firefox
   firejail
-  pkgtop
   firmware-manager-git
-  flashplugin
   flatpak
   fwupd
   gimp
@@ -182,8 +182,6 @@ packages=(
   go-pie
   godot-pulse godot-blender-exporter
   gparted
-  # https://wiki.archlinux.org/index.php/GRUB/Tips_and_tricks#Theme
-  grub breeze-grub grub-customizer
   guiscrcpy
   haguichi
   htop
@@ -191,25 +189,31 @@ packages=(
   innoextract
   iotop
   itch
-  meld
   jdupes
+  joyutils
   jpegoptim
   jq
   kdeconnect
+  kdocker
   keepassxc
   kitty
   kompare
+  krename
   lector
   lesspipe 
   libreoffice
   libstrangle-git
   linux linux-firmware amd-ucode
+  linux-tkg-pds-zen linux-tkg-pds-zen-headers
   lostfiles
   lshw
+  usbutils
   lxrandr
+  man-db man-pages
   mc
   mediainfo
   megasync
+  meld
   mirrorlist-manager
   mkvtoolnix-gui
   mpc mpd
@@ -226,14 +230,10 @@ packages=(
   obs-studio obs-linuxbrowser-bin obs-glcapture-git
   octopi-notifier-frameworks
   os-prober
-  oyranos
-  krename
-  fatrace
-  p7zip
-  p7zip-zstd-codec
+  p7zip p7zip-zstd-codec
   partitionmanager
-  pepper-flash
   piper
+  pkgtop
   progress
   proxychains
   ps_mem
@@ -256,10 +256,7 @@ packages=(
   shellcheck
   skanlite
   smartmontools
-  downgrade
-  man-db man-pages
   spotify
-  joyutils
   sqlitebrowser
   sshfs
   stow
@@ -267,7 +264,6 @@ packages=(
   sudo
   syncplay
   syncthing syncthingtray
-  #displaycal colord-kde
   systemdgenie
   teamviewer
   telegram-desktop
@@ -282,10 +278,8 @@ packages=(
   torrentinfo
   traceroute
   trackma-git
-  kdocker
   translate-shell
   trash-cli
-  downgrade
   trebleshot
   twitch-indicator
   unarchiver
@@ -302,8 +296,8 @@ packages=(
   zsh zsh-completions
 )
 fonts=(
-  # https://gpo.zugaina.org/media-fonts/infinality-ultimate-meta
-  # https://gpo.zugaina.org/www-client/chromium
+  # https://github.com/gentoo/gentoo/tree/master/media-fonts/infinality-ultimate-meta
+  # https://github.com/gentoo/gentoo/tree/master/www-client/chromium
   cantarell-fonts
   font-bh-ttf
   mplus-font
@@ -339,8 +333,7 @@ fonts=(
 games=(
   boxtron
   cataclysm-dda-tiles
-  colobot-gold
-  colobot-gold-music
+  colobot-gold colobot-gold-music
   freej2me
   gamemode lib32-gamemode
   gb-studio-git
@@ -379,14 +372,15 @@ games=(
 )
 
 wine=(
+  #wine-nine
   gst-plugins-bad lib32-gst-plugins-bad
-  gst-plugins-ugly lib32-gst-plugins-ugly
   gst-plugins-base lib32-gst-plugins-base
+  gst-plugins-base-libs lib32-gst-plugins-base-libs
   gst-plugins-good lib32-gst-plugins-good
+  gst-plugins-ugly lib32-gst-plugins-ugly
   vkd3d lib32-vkd3d
-  wine_gecko
   wine-mono
-  wine-nine
+  wine_gecko
 )
 
 virtualbox=(

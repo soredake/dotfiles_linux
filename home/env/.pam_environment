@@ -37,9 +37,6 @@ SEEDDB_PATH                DEFAULT=${HOME}/sync/main/Documents/3ds/seeddb.bin
 # https://github.com/doitsujin/dxvk/wiki/Configuration
 DXVK_CONFIG_FILE          DEFAULT=${XDG_CONFIG_HOME}/dxvk.conf
 
-# mesa
-VAAPI_MPEG4_ENABLED=1
-
 # https://pointieststick.wordpress.com/2018/12/16/this-week-in-usability-productivity-part-49/
 GTK_USE_PORTAL=1
 
@@ -50,10 +47,16 @@ MOZ_ACCELERATED=1
 # https://github.com/isacikgoz/tldr#use-for-different-os
 TLDR_OS=linux
 
+# mesa
 # https://github.com/Tk-Glitch/PKGBUILDS/issues/312
 # https://www.phoronix.com/scan.php?page=news_item&px=Mesa-19.3-Lands-RADV-ACO
 RADV_PERFTEST=aco
+VAAPI_MPEG4_ENABLED=1
 
 # fix atom file delete
 # https://wiki.archlinux.org/index.php/Atom#Unable_to_delete_files
 ELECTRON_TRASH=kioclient5
+
+# https://steamcommunity.com/app/221410/discussions/0/1638675549018366706/
+# TODO: enable this when https://github.com/ValveSoftware/steam-runtime/issues/204 and https://github.com/ValveSoftware/steam-runtime/issues/192 is fixed
+#PRESSURE_VESSEL_SHARE_HOME=0

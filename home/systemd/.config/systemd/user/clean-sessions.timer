@@ -1,5 +1,5 @@
 [Unit]
-Description=daily tmp cleanup
+Description=daily clean tab sessions files
 
 [Timer]
 OnCalendar=daily

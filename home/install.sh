@@ -5,6 +5,7 @@ cd "$SD" || exit 1
 
 # create initial folders
 [[ ! -d "$XDG_DATA_HOME/atom" ]] && mkdir -p "$XDG_DATA_HOME/atom"
+[[ ! -d "$XDG_CONFIG_HOME/Code - OSS/User" ]] && mkdir -p "$XDG_CONFIG_HOME/Code - OSS/User"
 [[ ! -d "$XDG_CONFIG_HOME/kitty" ]] && mkdir -p "$XDG_CONFIG_HOME/kitty"
 
 # remove if non-link

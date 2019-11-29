@@ -86,7 +86,7 @@ alias ll='ls -lh'
 alias la='ls -lAh'
 
 # shellcheck disable=1090
-for f in "$XDG_CONFIG_HOME/zsh/custom"/*; do . $f; done
+for f in "$XDG_CONFIG_HOME/zsh/custom"/*; do . "$f"; done
 
 # Add additional directories to the path.
 # https://github.com/yarnpkg/yarn/issues/5353
@@ -103,15 +103,17 @@ pathadd "$(yarn global bin)"
 _comp_options+=(globdots)
 
 # shellcheck disable=1090
-for f in $HOME/.private/*; do . $f; done
+for f in "$HOME"/.private/*; do . "$f"; done
 
 # read profile files
 for sh in /etc/profile.d/*.sh ; do
+        #shellcheck disable=1090
         [ -r "$sh" ] && . "$sh"
 done
 unset sh
 
 # use language set from plasma
+# shellcheck disable=1090
 . "$HOME/.config/plasma-locale-settings.sh"
 
 # Don't hash directories on the path a time, which allows new

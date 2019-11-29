@@ -1,0 +1,10 @@
+{
+    "editor.fontSize": 15,
+    "editor.fontFamily": "'Hack'",
+    "editor.renderWhitespace": "boundary",
+    "window.zoomLevel": 0,
+    "workbench.iconTheme": "file-icons",
+    "editor.wordWrap": "on",
+    "editor.lineHeight": 21,
+    "workbench.colorTheme": "Firewatch Theme"
+}
