@@ -151,58 +151,47 @@ alias -g upload="rclone sync --transfers 8 --delete-excluded --fast-list -P --de
 backup() {
   # local
   cps -L "$HOME/sync" /media/disk0/backup
-  cps "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" "/media/disk2/Users/User/Desktop/"
-  cps "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" "$HOME/sync/share/"
+  cps "$HOME/sync/main/Documents/NewDatabase.kdbx" "/media/disk2/Users/User/Desktop/"
+  cps "$HOME/sync/main/Documents/NewDatabase.kdbx" "$HOME/sync/share/"
   # fix errors like `some-file.jpg: Duplicate object found in destination - ignoring` https://github.com/rclone/rclone/issues/2131#issuecomment-372459713
-  rclone dedupe --dedupe-mode newest mega_nz:/
   rclone dedupe --dedupe-mode newest 50gbmega:/
+  rclone dedupe --dedupe-mode newest mega_nz:/
   # dropbox
   # 2gb
   # TODO: https://plati.ru/search/DROPBOX
   echo -e "\e[1;31m Uploading to Dropbox \033[0m"
   upload "$HOME/sync/main/Documents" dropbox:/Documents
-  upload "$HOME/sync/main/Screens" dropbox:/Screens
   upload "$HOME/sync/system-data" dropbox:/system-data
   # opendrive
   # 5gb
   echo -e "\e[1;31m Uploading to OpenDrive \033[0m"
   upload "$HOME/sync/main/Documents" opendrive:/Documents
-  upload "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" opendrive:/
-  upload "$HOME/sync/main/Screens" opendrive:/Screens
   # google drive
   # 15gb
   echo -e "\e[1;31m Google Drive \033[0m"
   upload "$HOME/sync/main/Documents" google_drive:/Documents
-  upload "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" google_drive:/
-  upload "$HOME/sync/main/me" google_drive:/me
   upload "$HOME/sync/main/Media" google_drive:/Media
-  upload "$HOME/sync/main/Screens" google_drive:/Screens
+  upload "$HOME/sync/main/me" google_drive:/me
   upload "$HOME/sync/system-data" google_drive:/system-data
   # mega.nz
   # 50gb
   echo -e "\e[1;31m Uploading to MEGA 50gb \033[0m"
   upload "$HOME/sync/main/Documents" 50gbmega:/Documents
-  upload "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" 50gbmega:/
-  upload "$HOME/sync/main/me" 50gbmega:/me
   upload "$HOME/sync/main/Media" 50gbmega:/Media
-  upload "$HOME/sync/main/Screens" 50gbmega:/Screens
+  upload "$HOME/sync/main/me" 50gbmega:/me
   upload "$HOME/sync/system-data" 50gbmega:/system-data
   # mega.nz
   # 15gb
   echo -e "\e[1;31m Uploading to MEGA 15gb \033[0m"
   upload "$HOME/sync/main/Documents" mega_nz:/Documents
-  upload "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" mega_nz:/
-  upload "$HOME/sync/main/me" mega_nz:/me
   upload "$HOME/sync/main/Media" mega_nz:/Media
-  upload "$HOME/sync/main/Screens" mega_nz:/Screens
+  upload "$HOME/sync/main/me" mega_nz:/me
   upload "$HOME/sync/system-data" mega_nz:/system-data
   # yandex.disk
   # 10gb
   echo -e "\e[1;31m Uploading to Yandex.Disk \033[0m"
   upload "$HOME/sync/main/Documents" yandex:/Documents
-  upload "$HOME/sync/main/Documents/keepass/NewDatabase.kdbx" yandex:/
   upload "$HOME/sync/main/me" yandex:/me
-  upload "$HOME/sync/main/Screens" yandex:/Screens
   upload "$HOME/sync/system-data" yandex:/system-data
 }
 

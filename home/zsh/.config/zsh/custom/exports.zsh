@@ -16,7 +16,7 @@ export PROMPT_EOL_MARK=""
 export RANGER_LOAD_DEFAULT_RC=false
 
 # Set default editor
-export EDITOR="code"
+export EDITOR="codium"
 
 # for xdg-open
 export BROWSER="firefox"

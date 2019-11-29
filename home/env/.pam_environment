@@ -53,10 +53,11 @@ TLDR_OS=linux
 RADV_PERFTEST=aco
 VAAPI_MPEG4_ENABLED=1
 
-# fix atom file delete
+# fix atom and vscode file delete
+# https://wiki.archlinux.org/index.php/Visual_Studio_Code#Unable_to_move_items_to_trash
 # https://wiki.archlinux.org/index.php/Atom#Unable_to_delete_files
 ELECTRON_TRASH=kioclient5
 
 # https://steamcommunity.com/app/221410/discussions/0/1638675549018366706/
 # TODO: enable this when https://github.com/ValveSoftware/steam-runtime/issues/204 and https://github.com/ValveSoftware/steam-runtime/issues/192 is fixed
-#PRESSURE_VESSEL_SHARE_HOME=0
+PRESSURE_VESSEL_SHARE_HOME=0

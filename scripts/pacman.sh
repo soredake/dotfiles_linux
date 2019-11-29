@@ -153,7 +153,7 @@ packages=(
   cantata
   ccache
   cloc
-  code
+  vscodium-bin
   colord-kde oyranos
   colordiff
   cpupower

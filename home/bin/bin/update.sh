@@ -9,7 +9,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 yay -Syuu --combinedupgrade --answerclean y --answerdiff y --answerupgrade y
 sudo etc-update
 apm update --confirm false
-flatpak --user update
+flatpak --user update --noninteractive
 yarn global upgrade
 fwupdmgr refresh
 fwupdmgr update

@@ -61,7 +61,7 @@ alias gitpullall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.g
 # Shorter
 alias back='cd $OLDPWD'
 alias clearterm='printf "\033c"'
-alias e='code'
+alias e='codium'
 alias flush_caches='sync && sudo sync && sudo sysctl -qw vm.drop_caches=3' # https://www.opennet.ru/tips/1455_linux_kernel_cache.shtml?skip=10 
 alias g='git'
 # https://forum.manjaro.org/t/best-commands-to-shutdown-reboot-via-terminal/40955/8
@@ -77,7 +77,7 @@ alias ob='bkg xdg-open'
 alias sc='systemctl'
 alias scu='sc --user'
 alias sl='streamlink'
-alias sudoedit='SUDO_EDITOR="code -w" sudo -e'
+alias sudoedit='SUDO_EDITOR="codium -w" sudo -e'
 alias rpcs3='gamemoderun rpcs3'
 alias play-emu='gamemoderun ./play-emu*'
 alias yuzu='strangle 60 gamemoderun yuzu'

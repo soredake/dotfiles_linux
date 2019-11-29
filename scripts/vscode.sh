@@ -24,4 +24,4 @@ packages=(
   ulthes.theme-firewatch
 )
 
-code --install-extension "${packages[@]}"
+codium --install-extension "${packages[@]}"
