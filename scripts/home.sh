@@ -80,7 +80,7 @@ else
   passwd root || die "setting root password failed"
   red "Creating user dirs"
   sudo -u "soredake" -s xdg-user-dirs-update
-  sudo -u "soredake" -s mkdir -p media tmp git .{config,cache,local/share/applications/custom}
+  sudo -u "soredake" -s mkdir -p media tmp git .config .cache .local/share/{less,xsel,tig,applications/custom}
   red "Cloning repository"
   git clone https://notabug.org/soredake/dotfiles_home.git "${dotpath}/dotfiles_home"
   cp "$SD"/../home/env/.pam_environment /home/soredake

@@ -15,9 +15,11 @@
 
 # NOTE: If your BOOT partition is ReiserFS, add the notail option to opts.
 # https://wiki.debian.org/fstab
+# https://wiki.archlinux.org/index.php/Fstab#Automount_with_systemd
+# https://unix.stackexchange.com/questions/347006/systemd-how-do-i-automount-a-usb-filesystem-using-etc-fstab
 UUID=1f3185be-0f23-4468-87cb-e8d125815f02		/boot		ext4		defaults	1 2
 # man ext4
-UUID=c6739e34-4380-4fd9-a843-0f2514aee9c0		/media/disk0		ext4		defaults,noatime
+UUID=c6739e34-4380-4fd9-a843-0f2514aee9c0		/media/disk0		ext4		defaults,noatime,noauto,nofail,x-systemd.automount,x-systemd.mount-timeout=30,x-systemd.device-timeout=2
 #UUID=c6739e34-4380-4fd9-a843-0f2514aee9c0		/media/disk0		ext4		defaults,noatime,data=writeback,commit=60,noacl,nouser_xattr,journal_ioprio=7,journal_async_commit
 UUID=24EF-DC65               /boot/efi       vfat            defaults,noauto        1 2
 #/swapfile                none            swap             defaults       0 0

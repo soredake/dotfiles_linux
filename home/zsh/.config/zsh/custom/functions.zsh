@@ -1,14 +1,5 @@
 # shellcheck disable=2034,2148
 
-# play all in mpv
-mpa() { if [[ -d "${PWD}/VIDEO_TS" ]]; then
-    mpv "${PWD}"
-  else
-    files=( $(ls -b ${PWD}/*.{mp4,mkv,webm,avi,wmv} 2>/dev/null) )
-    mpv "${PWD}"/"${1:-${files[@]}}" "$2"
-  fi
-}
-
 # Create a new directory and enter it.
 # In oh-my-zsh take function is identical to this
 mkd() {
@@ -22,11 +13,6 @@ mkd() {
 tre() {
   tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
-
-# Convert currencies; cconv {amount} {from} {to}
-#cconv() {
-#  curl --socks5-hostname 127.0.0.1:9250 -s "https://finance.google.com/finance/converter?a=$1&from=$2&to=$3&hl=es" | sed '/res/!d;s/<[^>]*>//g';
-#}
 
 # Convert currencies; cconv {amount} {from} {to}
 # https://stackoverflow.com/questions/13242469/how-to-use-sed-grep-to-extract-text-between-two-words
@@ -195,16 +181,6 @@ backup() {
   upload "$HOME/sync/system-data" yandex:/system-data
 }
 
-update-grub() {
-  # mount esp
-  #[[ ! $(grep /boot/efi /proc/mounts) ]] && sudo mount /boot/efi
-  # copy microcode
-  #sudo cp /boot/amd-ucode.img /boot/efi
-  # generate config
-  sudo grub-mkconfig -o /boot/grub/grub.cfg
-  #sudo umount /boot/efi
-}
-
 # workaround for https://github.com/citra-emu/citra/issues/3862
 yuzu-binary() {
   [[ ! -f "libsndio.so.6.1" ]] && ln -sfv /usr/lib/libsndio.so.7.0 libsndio.so.6.1
@@ -234,7 +210,9 @@ man() {
 
 # ukr nalogi
 # https://duckduckgo.com/?q=(400+-+165)+*+35%25&ia=calculator
-ukr_nalogi() { echo Tax is: $(bc -l <<< "($1 - 165) * 0.35") USD; }
+ukr_nalogi() { 
+  echo Tax is: $(bc -l <<< "($1 - 165) * 0.35") USD 
+}
 
 checkvk() {
   Estatus=$(proxychains -q curl --http2 -sS "https://api.vk.com/method/users.get?user_id=$1&fields=last_seen,online&v=5.8" || exit)
@@ -258,3 +236,7 @@ speedfox() {
     sudo ionice -c realtime -p "$pid" && echo "Changed io priority to realtime for pid $pid"
   done
 }
+
+# https://www.checkyourmath.com/convert/length/inches_cm.php
+cmtoinch() { echo $(bc -l <<< "$1 / 2.54"); }
+inchtocm() { echo $(bc -l <<< "$1 * 2.54"); }

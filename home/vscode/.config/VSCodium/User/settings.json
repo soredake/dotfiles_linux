@@ -6,5 +6,6 @@
     "workbench.iconTheme": "file-icons",
     "editor.wordWrap": "on",
     "editor.lineHeight": 21,
-    "workbench.colorTheme": "Firewatch Theme"
+    "workbench.colorTheme": "Firewatch Theme",
+    "bashIde.path": "/usr/bin/bash-language-server"
 }

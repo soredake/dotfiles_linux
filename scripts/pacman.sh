@@ -123,7 +123,7 @@ optdeps=(
   # kde-service-menu-reimage
   jhead
   # vscode dep
-  #bash-language-server
+  bash-language-server
 )
 
 packages=(
@@ -153,7 +153,6 @@ packages=(
   cantata
   ccache
   cloc
-  vscodium-bin
   colord-kde oyranos
   colordiff
   cpupower
@@ -172,15 +171,13 @@ packages=(
   fatrace
   fd
   firejail
-  firmware-manager-git
+  firmware-manager-git gnome-firmware fwupd
   flatpak
-  fwupd
   gimp
   git-cola
   gnome-disk-utility
-  gnome-firmware
   go-pie
-  godot-pulse godot-blender-exporter
+  godot-mono-bin godot-blender-exporter
   gparted
   guiscrcpy
   haguichi
@@ -207,7 +204,6 @@ packages=(
   linux-tkg-pds-zen linux-tkg-pds-zen-headers
   lostfiles
   lshw
-  usbutils
   lxrandr
   man-db man-pages
   mc
@@ -277,14 +273,16 @@ packages=(
   tor-browser
   torrentinfo
   traceroute
-  trackma-git
+  trackma-git adl-git
   translate-shell
   trash-cli
   trebleshot
   twitch-indicator
   unarchiver
   unrar zip
+  usbutils
   viber
+  vscodium-bin
   wget
   whois
   woeusb
@@ -333,10 +331,13 @@ fonts=(
 games=(
   boxtron
   cataclysm-dda-tiles
+  citra-canary-git
   colobot-gold colobot-gold-music
+  decaf-emu-git
+  flips-git
   freej2me
   gamemode lib32-gamemode
-  gb-studio-git
+  gb-studio-bin
   gltron
   jstest-gtk-git
   lutris-battlenet-meta
@@ -351,11 +352,11 @@ games=(
   pcsx2-git
   pcsx2-plugin-usbqemu-wheel
   protonfixes-git
-  protontricks-git
-  residualvm-git
+  protontricks
+  residualvm
   retroarch
   rpcs3-git
-  scummvm-git
+  scummvm
   steam
   steam-fonts
   steam-native-runtime
@@ -368,7 +369,6 @@ games=(
   yuzu-mainline-git
   # https://wiki.archlinux.org/index.php/CDemu
   kde-cdemu-manager-kf5 cdemu-client vhba-module-dkms
-  flips-git
 )
 
 wine=(
@@ -378,6 +378,7 @@ wine=(
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   gst-plugins-good lib32-gst-plugins-good
   gst-plugins-ugly lib32-gst-plugins-ugly
+  mingw-w64-gcc
   vkd3d lib32-vkd3d
   wine-mono
   wine_gecko

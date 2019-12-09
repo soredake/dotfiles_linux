@@ -8,7 +8,7 @@
 flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # https://flatpak.citra-emu.org/
-flatpak install https://flatpak.citra-emu.org/citra-canary.flatpakref
+#flatpak install https://flatpak.citra-emu.org/citra-canary.flatpakref
 
 #flatpak --user install flathub jp.yvt.OpenSpades
 

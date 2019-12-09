@@ -17,7 +17,7 @@ KEYMAP="ru-utf"
 END
 
 # limit ccache size
-ccache -M 5G
+ccache -M 2G
 
 # xdg zsh
 sudo tee /etc/zsh/zshenv >/dev/null <<< 'ZDOTDIR=$XDG_CONFIG_HOME/zsh'
@@ -55,6 +55,7 @@ sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j16"/g' /etc/makepkg.conf
 ln -sfv "$XDG_CONFIG_HOME/retroarch/cores" "$XDG_DATA_HOME/lutris/runners/retroarch/cores"
 # lutris: use system winetricks
 # https://github.com/lutris/lutris/issues/2445
+# https://github.com/lutris/lutris/pull/2494
 rm -f "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks"
 ln -sfv /usr/bin/winetricks "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks"
 chmod 555 "$XDG_DATA_HOME/lutris/runtime/winetricks"
@@ -86,5 +87,3 @@ sudo sed -i "s|#AutoEnable=false|AutoEnable=true|g" /etc/bluetooth/main.conf
 # https://github.com/MultiMC/MultiMC5/wiki/FAQ#not-the-right-java-version
 # sudo archlinux-java status
 sudo archlinux-java set java-8-openjdk
-# vscode dep
-yarn global add bash-language-server

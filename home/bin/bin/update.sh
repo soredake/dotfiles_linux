@@ -6,12 +6,13 @@ sudo -v
 # Keep-alive: update existing `sudo` timestamp until we're done.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-yay -Syuu --combinedupgrade --answerclean y --answerdiff y --answerupgrade y
+yay -Syuu --combinedupgrade --answerclean y --answerdiff y --answerupgrade y --noconfirm
 sudo etc-update
 apm update --confirm false
 flatpak --user update --noninteractive
 yarn global upgrade
 fwupdmgr refresh
 fwupdmgr update
-zplugin update --all
+zplugin self-update
+zplugin update
 tldr --update

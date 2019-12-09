@@ -2,6 +2,7 @@
 # about this file: https://github.com/linux-pam/linux-pam/issues/7
 # https://github.com/ayekat/dotfiles/issues/7
 # https://github.com/grawity/dotfiles/blob/master/.dotfiles.notes
+# https://github.com/grawity/dotfiles/blob/master/.environ.notes
 # https://wiki.archlinux.org/index.php/XDG_Base_Directory
 
 # https://wiki.archlinux.org/index.php/wine#Prevent_new_Wine_file_associations
@@ -26,7 +27,7 @@ NUGET_PACKAGES             DEFAULT=${XDG_CACHE_HOME}/NuGetPackages
 MPD_HOST                   DEFAULT=${XDG_RUNTIME_DIR}/mpd/socket
 GNUPGHOME                  DEFAULT=${XDG_DATA_HOME}/gnupg
 HISTFILE                   DEFAULT=${XDG_DATA_HOME}/zsh/history
-LESSHISTFILE               DEFAULT=${XDG_CACHE_HOME}/less/history
+LESSHISTFILE               DEFAULT=${XDG_DATA_HOME}/less/history
 PROXYCHAINS_CONF_FILE      DEFAULT=${XDG_CONFIG_HOME}/proxychains.conf
 ANDROID_SDK_HOME           DEFAULT=${XDG_CONFIG_HOME}/android
 _JAVA_OPTIONS              DEFAULT=-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java
@@ -42,7 +43,7 @@ GTK_USE_PORTAL=1
 
 # https://wiki.mozilla.org/Platform/GFX/Quantum_Render
 MOZ_ACCELERATED=1
-#MOZ_WEBRENDER=1
+MOZ_WEBRENDER=1
 
 # https://github.com/isacikgoz/tldr#use-for-different-os
 TLDR_OS=linux

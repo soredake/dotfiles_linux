@@ -21,6 +21,7 @@ packages=(
   malmaud.tmux
   mgmcdermott.vscode-language-babel
   timonwong.shellcheck
+  wayou.vscode-todo-highlight
   ulthes.theme-firewatch
 )
 

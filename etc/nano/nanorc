@@ -1,4 +1,3 @@
-# vim: ft=properties
 ## Sample initialization file for GNU nano.
 ##
 ## This file should not be in DOS or Mac format, and characters
@@ -9,10 +8,8 @@
 ## For the options that take parameters, the default value is given.
 ## Other options are unset by default.
 ##
-## Quotes inside string parameters don't have to be escaped with
-## backslashes.  The last double quote in the string will be treated as
-## its end.  For example, for the "brackets" option, ""')>]}" will match
-## ", ', ), >, ], and }.
+## Inside string parameters, quotes should not be escaped.  The last
+## double quote on the line will be seen as the closing quote.
 
 ## Make the 'nextword' function (Ctrl+Right) stop at word ends
 ## instead of at beginnings.
@@ -20,7 +17,7 @@
 
 ## When soft line wrapping is enabled, make it wrap lines at blanks
 ## (tabs and spaces) instead of always at the edge of the screen.
-set atblanks
+# set atblanks
 
 ## Automatically indent a newly created line to the same number of
 ## tabs and/or spaces as the preceding line -- or as the next line
@@ -81,9 +78,6 @@ set atblanks
 ## come before the latter set, and both must be in the same order.
 # set matchbrackets "(<[{)>]}"
 
-## Use the blank line below the title bar as extra editing space.
-# set morespace
-
 ## Enable mouse support, if available for your system.  When enabled,
 ## mouse clicks can be used to place the cursor, set the mark (with a
 ## double click), and execute shortcuts.  The mouse will work in the X
@@ -102,13 +96,6 @@ set atblanks
 
 ## Don't automatically add a newline when a file does not end with one.
 # set nonewlines
-
-## Don't pause between warnings at startup.  Which means that only the
-## last one will be readable (when there are multiple ones).
-# set nopauses
-
-## Do not automatically hard-wrap text.
-set nowrap
 
 ## Set operating directory.  nano will not read or write files outside
 ## this directory and its subdirectories.  Also, the current directory
@@ -134,7 +121,7 @@ set nowrap
 
 ## The regular expression that matches quoting characters in email
 ## or line-comment introducers in source code.  The default is:
-# set quotestr "^([ 	]*([!#%:;>|}]|//|--))+"
+# set quotestr "^([ 	]*([!#%:;>|}]|//))+"
 
 ## Try to work around a mismatching terminfo terminal description.
 # set rawsequences
@@ -142,10 +129,8 @@ set nowrap
 ## Fix Backspace/Delete confusion problem.
 # set rebinddelete
 
-## Fix numeric keypad key confusion problem.
-# set rebindkeypad
-
-## Do extended regular expression searches by default.
+## Do regular-expression searches by default.
+## Regular expressions are of the extended type (ERE).
 # set regexp
 
 ## Put the cursor on the highlighted item in the file browser, and show
@@ -160,11 +145,8 @@ set nowrap
 ## beginning of the line.
 # set smarthome
 
-## Use line-by-line scrolling instead of chunk-by-chunk.
-# set smooth
-
 ## Enable soft line wrapping (AKA full-line display).
-set softwrap
+# set softwrap
 
 ## Use this spelling checker instead of the internal one.  This option
 ## does not have a default value.
@@ -211,66 +193,63 @@ set softwrap
 
 ## Paint the interface elements of nano.  These are examples;
 ## by default there are no colors, except for errorcolor.
-set titlecolor brightwhite,blue
-set statuscolor brightwhite,green
-set errorcolor brightwhite,red
-set selectedcolor brightwhite,magenta
-set numbercolor cyan
-set keycolor cyan
-set functioncolor green
+# set titlecolor brightwhite,blue
+# set statuscolor brightwhite,green
+# set errorcolor brightwhite,red
+# set selectedcolor brightwhite,magenta
+# set stripecolor ,yellow
+# set numbercolor cyan
+# set keycolor cyan
+# set functioncolor green
 ## In root's .nanorc you might want to use:
-#set titlecolor brightwhite,magenta
-#set statuscolor brightwhite,magenta
-#set errorcolor brightwhite,red
-#set selectedcolor brightwhite,cyan
-#set numbercolor magenta
-#set keycolor brightmagenta
-#set functioncolor magenta
+# set titlecolor brightwhite,magenta
+# set statuscolor brightwhite,magenta
+# set errorcolor brightwhite,red
+# set selectedcolor brightwhite,cyan
+# set stripecolor ,yellow
+# set numbercolor magenta
+# set keycolor brightmagenta
+# set functioncolor magenta
 
 
 ## Setup of syntax coloring.
 ##
-## Format:
+##   syntax "name" ["filename regex" ...]
 ##
-## syntax "short description" ["filename regex" ...]
+##   color|icolor foreground,background "regex" ["regex"...]
+##   [...]
 ##
-## The "none" syntax is reserved; specifying it on the command line is
-## the same as not having a syntax at all.  The "default" syntax is
-## special: it takes no filename regexes, and applies to files that
-## don't match any other syntax's filename regexes.
-##
-## color foreground,background "regex" ["regex"...]
-## or
-## icolor foreground,background "regex" ["regex"...]
-##
-## "color" will do case-sensitive matches, while "icolor" will do
+## 'color' will do case-sensitive matches, while 'icolor' will do
 ## case-insensitive matches.
 ##
-## Valid color names ares: white, black, normal, red, blue, green,
-## yellow, magenta, cyan.  For foreground colors, you may use the
-## prefix "bright" to get a stronger highlight.
+## All color commands are applied in the order in which they are specified,
+## meaning that later commands can recolor stuff that was colored earlier.
 ##
-## To use multi-line regexes, use the start="regex" end="regex"
-## [start="regex" end="regex"...] format.
+## Valid color names for foreground and background are: white, black, normal,
+## red, blue, green, yellow, magenta, cyan.  For foreground colors, you may
+## use the prefix "bright" to get a stronger highlight.
 ##
-## If your system supports transparency, not specifying a background
-## color will use a transparent color.  If you don't want this, be sure
-## to set the background color to black or white.
+## All regexes (regular expressions) are of the extended type (ERE).
 ##
-## All regexes should be extended regular expressions.
+## If the coloring rule should span multiple lines, use the following format:
+##
+##   color fg,bg  start="regex" end="regex"
 ##
 ## If you wish, you may put your syntax definitions in separate files.
 ## You can make use of such files as follows:
 ##
-## include "/path/to/syntax_file.nanorc"
-##
-## Unless otherwise noted, the name of the syntax file (without the
-## ".nanorc" extension) should be the same as the "short description"
-## name inside that file.  These names are kept fairly short to make
-## them easier to remember and faster to type using nano's -Y option.
+##   include "/path/to/syntax_file.nanorc"
 
 ## To include all existing syntax definitions, you can do:
 # include "/usr/share/nano/*.nanorc"
+
+
+## If <Tab> should always produce four spaces when editing a Python file,
+## independent of the settings of 'tabsize' and 'tabstospaces':
+# extendsyntax python tabgives "    "
+
+## If <Tab> should always produce an actual TAB when editing a Makefile:
+# extendsyntax makefile tabgives "	"
 
 
 ## Key bindings.
@@ -283,7 +262,7 @@ set functioncolor green
 ## keycode, which is hard-bound to the backspace function.  So, if you
 ## normally use <Backspace> for backspacing and not ^H, you can make
 ## <Ctrl+Backspace> delete the word to the left of the cursor with:
-# bind ^H cutwordleft main
+# bind ^H chopwordleft main
 
 ## If you would like nano to have keybindings that are more "usual",
 ## such as ^O for Open, ^F for Find, ^H for Help, and ^Q for Quit,

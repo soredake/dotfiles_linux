@@ -1,25 +1,22 @@
 /* http://kb.mozillazine.org/index.php?title=UserChrome.css&printable=yes */
 /* https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Tutorial/Modifying_the_Default_Skin */
 
-/* trying to fix es.booru */
-@-moz-document url-prefix("http://es.booru.org/index.php?page=post&s=view&id=") {
-  img {
-    height: 100%;
-    width: 100%;
-  }
-}
-
+/* https://github.com/piroor/treestyletab/wiki/Code-snippets-for-custom-style-rules */
 /* For only Tree Style Tab sidebar #1397 */
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
   display: none;
 }
-
 /* Hide horizontal tabs at the top of the window #1349 */
-#TabsToolbar {
-  visibility: collapse !important;
+#main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar > .toolbar-items {
+  opacity: 0;
+  pointer-events: none;
+}
+#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
+    visibility: collapse !important;
 }
 
 /* try https://github.com/piroor/treestyletab/issues/1384#issuecomment-349811370 */
+/*
 .throbber {
   display: none !important;
 }
@@ -27,18 +24,11 @@
 .throbber::before {
   animation: unset !important;
 }
-
-
-
-
-
-
-
+*/
 
 
 /* https://www.e2app.com/memories/how-to-get-multirow-bookmarks-back-in-firefox-57-and-newer/ */
 /* https://www.reddit.com/r/FirefoxCSS/comments/aipl0y/new_firefox_developer_edition_update_broke/ */
-
 #PersonalToolbar {
   max-height: 104px !important;
 }
@@ -58,17 +48,6 @@
   padding-top: 0px !important;
   padding-bottom: 0px !important;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* hide tracking protection icon https://www.reddit.com/r/FirefoxCSS/comments/czevqa/hiding_the_tracking_protection_icon/ */

@@ -7,6 +7,7 @@ cd "$SD" || exit 1
 [[ ! -d "$XDG_DATA_HOME/atom" ]] && mkdir -p "$XDG_DATA_HOME/atom"
 [[ ! -d "$XDG_CONFIG_HOME/Code - OSS/User" ]] && mkdir -p "$XDG_CONFIG_HOME/Code - OSS/User"
 [[ ! -d "$XDG_CONFIG_HOME/kitty" ]] && mkdir -p "$XDG_CONFIG_HOME/kitty"
+[[ ! -d "$XDG_CONFIG_HOME/systemd/user" ]] && mkdir -p "$XDG_CONFIG_HOME/systemd/user"
 
 # remove if non-link
 [[ ! -L "$HOME/.pam_environment" ]] && rm "$HOME/.pam_environment"
