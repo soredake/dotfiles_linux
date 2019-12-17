@@ -210,8 +210,14 @@ man() {
 
 # ukr nalogi
 # https://duckduckgo.com/?q=(400+-+165)+*+35%25&ia=calculator
-ukr_nalogi() { 
-  echo Tax is: $(bc -l <<< "($1 - 165) * 0.35") USD 
+# https://rozetka.com.ua/news-articles-promotions/promotions/261738.html
+ukr_nalogi() {
+  if [[ "$1" -ge "151" ]]; then
+    poshlina=$(bc -l <<< "($1 - 150) * 0.10")
+    echo Tax is: $(bc -l <<< "($1 - 100 + $poshlina) * 0.20 + $poshlina") EUR
+  else
+    echo Tax is: $(bc -l <<< "($1 - 100) * 0.20") EUR
+  fi
 }
 
 checkvk() {
@@ -240,3 +246,17 @@ speedfox() {
 # https://www.checkyourmath.com/convert/length/inches_cm.php
 cmtoinch() { echo $(bc -l <<< "$1 / 2.54"); }
 inchtocm() { echo $(bc -l <<< "$1 * 2.54"); }
+
+# update everything
+update() {
+  yay -Syuu --combinedupgrade --answerclean n --answerdiff n --answerupgrade y --noconfirm
+  sudo etc-update
+  #apm update --confirm false
+  flatpak --user update --noninteractive
+  #yarn global upgrade
+  #fwupdmgr refresh
+  #fwupdmgr update
+  zplugin self-update
+  zplugin update
+  tldr --update
+}

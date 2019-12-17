@@ -18,6 +18,7 @@ packages=(
   jaspernorth.vscode-pigments
   jeff-hykin.code-eol
   mads-hartmann.bash-ide-vscode
+  jaydenlin.ctags-support
   malmaud.tmux
   mgmcdermott.vscode-language-babel
   timonwong.shellcheck

@@ -1,5 +1,5 @@
 #!/bin/bash
-# http://www.michaelabrahamsen.com/posts/arch-linux-iso-zfs/
+# https://web.archive.org/web/20181102011252/http://www.michaelabrahamsen.com/posts/arch-linux-iso-zfs/
 if [[ "${2}" == "docker" ]]; then
   sudo docker pull base/devel
   sudo docker run --privileged -it -v "${1}"/archiso:/archiso base/devel
@@ -19,6 +19,8 @@ sed -e "s/MinimumUid=1000/MinimumUid=0/g" -e "s/MaximumUid=60000/MaximumUid=0/g"
 ZFS="false"
 KDE="true"
 
+# https://wiki.archlinux.org/index.php/Frequently_asked_questions#When_will_the_new_release_be_made_available?
+# https://git.archlinux.org/archiso.git/tree/configs/releng/packages.x86_64
 tee -a packages.x86_64 >/dev/null <<END
 firefox
 gparted

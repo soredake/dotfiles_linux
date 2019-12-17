@@ -23,35 +23,46 @@ die() {
 
 swap_setup() {
   red "Creating swap"
-  dd if=/dev/zero of=/swapfile bs=1M count=8000
-  chmod 600 /swapfile
-  mkswap /swapfile
-  swapon /swapfile
-  printf "/swapfile none swap defaults 0 0" >> /etc/fstab
+  fallocate -l 8G /media/disk1/swapfile
+  chmod 600 /media/disk1/swapfile
+  mkswap /media/disk1/swapfile
+  swapon /media/disk1/swapfile
+  #printf "/media/disk1/swapfile none swap defaults 0 0" >> /etc/fstab
 }
 
+# https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate#Hibernation
+# https://wiki.archlinux.org/index.php/Swap#Manually
 resume_swap_file_setup() {
   red "Creating swapfile for hibernation"
+  fallocate -l 16G /media/disk1/swapfile
+  chmod 600 /media/disk1/swapfile
+  mkswap /media/disk1/swapfile
+  #printf "/media/disk1/swapfile none swap defaults 0 0" >> /etc/fstab
 }
 
 main() {
-# Install packages
-./pacman.sh
-
 # stow work
 ../etc/install.sh
+../etc_cp/install.sh
 ../home/install.sh
+../home_cp/install.sh
 ../root/install.sh
 ../service.conf/install.sh
+
+# Install packages
+./pacman.sh
 
 # systemd
 ./systemd.sh
 
 # default progs
-./default-progs.sh
+./defaults.sh
 
 # Setup linux
 ./linux.sh
+
+# vscode
+./vscode.sh
 
 # mpv scripts
 ./mpv-scripts.sh
@@ -70,17 +81,17 @@ else
   timedatectl set-timezone Europe/Kiev
   cp "$SD"/../etc/arch/pacman.conf /etc/pacman.conf
   pacman -Syuu yay base stow zsh networkmanager xdg-user-dirs || die "pacman failed"
-  hostnamectl set-hostname archlinux/main
+  hostnamectl set-hostname archlinux-main
   sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
   red "Creating user"
-  useradd -s /bin/zsh "soredake"
+  useradd -G wheel -s /bin/zsh --skel /dev/null "soredake"
   red "Password for user"
   passwd "soredake" || die "setting user password failed"
   red "Password for root"
   passwd root || die "setting root password failed"
   red "Creating user dirs"
   sudo -u "soredake" -s xdg-user-dirs-update
-  sudo -u "soredake" -s mkdir -p media tmp git .config .cache .local/share/{less,xsel,tig,applications/custom}
+  sudo -u "soredake" -s mkdir -p tmp git .config .cache .local/share/{tig,applications}
   red "Cloning repository"
   git clone https://notabug.org/soredake/dotfiles_home.git "${dotpath}/dotfiles_home"
   cp "$SD"/../home/env/.pam_environment /home/soredake

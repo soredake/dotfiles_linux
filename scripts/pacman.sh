@@ -1,57 +1,67 @@
 #!/bin/bash
 
-# Ask for the administrator password upfront.
-sudo -v
-
-# Keep-alive: update existing `sudo` timestamp until we're done.
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
+# https://www.archlinux.org/packages/extra/any/kde-applications-meta/
 plasma=(
+  # kdeadmin-meta start
+  ksystemlog
+  # kdeadmin-meta end
+  # kdebase-meta start
+  dolphin
+  kdialog
+  kfind
+  khelpcenter
+  # kdebase-meta end
+  # kdegraphics-meta start
+  kdegraphics-meta
+  # kdegraphics-meta end
+  # kdemultimedia-meta start
+  ffmpegthumbs
+  # kdemultimedia-meta end
+  # kdenetwork-meta start
+  kdenetwork-filesharing
+  kio-extras
+  krdc
+  krfb
+  telepathy-kde-meta
+  zeroconf-ioslave
+  # kdenetwork-meta end
+  # kdepim-meta start
   akonadi-calendar-tools
   akonadiconsole
-  ark
-  dolphin
-  dolphin-plugins
-  ffmpegthumbs
-  filelight
   kaddressbook
-  kate
+  kalarm
+  kdepim-addons
+  knotes
+  kontact
+  korganizer
+  # kdepim-meta end
+  # kdesdk-meta start
+  dolphin-plugins
+  kompare
+  # kdesdk-meta end
+  # kdeutils-meta start
+  ark
+  filelight
   kcalc
   kcharselect
+  kdf
+  kgpg
+  kteatime
+  ktimer
+  kwalletmanager
+  sweeper
+  # kdeutils-meta end
   kde-service-menu-reimage
   kde-servicemenus-rootactions
   kde-thumbnailer-apk
   kde-thumbnailer-epub
-  kdegraphics-meta
-  kdegraphics-thumbnailers
-  kdenetwork-filesharing
-  kdenetwork-meta
-  kdepim-addons
-  kdepim-meta
-  kdeutils-meta
-  kdf
-  kdialog
-  kfind
-  khelpcenter
-  kimageformats
-  knotes
-  kompare
-  kontact
-  korganizer
-  ksystemlog
-  ktimer
-  kwalletmanager
   kwin-lowlatency
-  packagekit-qt5
   plasma-meta
   plasma-nm
   plasma-wayland-session
   plasma5-applets-redshift-control
   plasma5-applets-weather-widget
   powerdevil
-  print-manager
-  telepathy-kde-meta
-  zeroconf-ioslave
 )
 
 i3=(
@@ -68,6 +78,7 @@ i3=(
   scrot
   sct
   vifm
+  mc
   wmctrl
   xautolock
   xsel
@@ -95,6 +106,7 @@ mesa=(
   vulkan-mesa-layer lib32-vulkan-mesa-layer
   vulkan-radeon lib32-vulkan-radeon
   xf86-video-amdgpu
+  radeon-profile radeon-profile-daemon-git
 )
 
 optdeps=(
@@ -106,8 +118,6 @@ optdeps=(
   speech-dispatcher espeak-ng festival
   # plasma-meta
   kde-gtk-config
-  # jdownloader2
-  phantomjs-bin
   # ranger
   ffmpegthumbnailer
   # kio-extras kfilemetadata
@@ -116,7 +126,7 @@ optdeps=(
   lsof
   # yuzu binary dep
   sndio
-  # atom
+  # vscodimum
   ctags
   # youtube-dl
   atomicparsley
@@ -124,122 +134,100 @@ optdeps=(
   jhead
   # vscode dep
   bash-language-server
+  # minecraft-launcher
+  flite
+  # pulseaudio
+  pulseaudio-alsa
+  # discover
+  packagekit-qt5
+  # kio-extras gwenview
+  kimageformats
 )
 
 packages=(
   # proton/wine from tkg
-  #flashplugin pepper-flash
-  # displaycal
-  # https://wiki.archlinux.org/index.php/GRUB/Tips_and_tricks#Theme
-  grub breeze-grub grub-customizer
-  # alsamixer
-  alsa-utils
-  # https://www.archlinux.org/news/base-group-replaced-by-mandatory-base-package-manual-intervention-required/
-  base
   # mkfs.fat mkfs.exfat
   dosfstools exfat-utils
-  aespresso
-  android-file-transfer
   android-tools
   aria2
-  asf
-  atom
-  atool
-  audacity
-  balena-etcher
+  base
   bleachbit
   blender
   btfs
   cantata
   ccache
+  chntpw
   cloc
   colord-kde oyranos
   colordiff
   cpupower
   curlie
-  dasht
   discord
   dnscrypt-proxy
-  docker docker-compose
-  dosbox
+  docker-compose
   downgrade
   dupeguru
   electronmail-bin
   etc-update
+  etcher-bin
   evtest
   falkon firefox
   fatrace
   fd
-  firejail
   firmware-manager-git gnome-firmware fwupd
   flatpak
   gimp
   git-cola
   gnome-disk-utility
-  go-pie
   godot-mono-bin godot-blender-exporter
-  gparted
+  gparted partitionmanager
+  grub grub-theme-vimix os-prober
   guiscrcpy
   haguichi
   htop
-  httpie
   innoextract
-  iotop
   itch
   jdupes
   joyutils
-  jpegoptim
   jq
+  jre8-openjdk-headless jre8-openjdk
   kdeconnect
-  kdocker
   keepassxc
+  kernel-modules-hook kexec-tools
   kitty
   kompare
   krename
-  lector
-  lesspipe 
-  libreoffice
+  lector 
+  libreoffice-still
+  seahorse
   libstrangle-git
   linux linux-firmware amd-ucode
   linux-tkg-pds-zen linux-tkg-pds-zen-headers
   lostfiles
   lshw
-  lxrandr
   man-db man-pages
-  mc
-  mediainfo
   megasync
   meld
-  mirrorlist-manager
-  mkvtoolnix-gui
-  mpc mpd
+  reflector-timer
+  mpd
   mpv mpv-mpris-git
-  multimc5
   namespaced-openvpn-git
   nano
   neofetch
   networkmanager networkmanager-pptp networkmanager-openvpn
-  nmap
   nodejs yarn
-  ntfs-3g
-  nvme-cli
-  obs-studio obs-linuxbrowser-bin obs-glcapture-git
-  octopi-notifier-frameworks
-  os-prober
+  ntfs-3g nvme-cli
+  obs-studio obs-glcapture-git
   p7zip p7zip-zstd-codec
-  partitionmanager
   piper
   pkgtop
-  progress
+  profile-sync-daemon
   proxychains
   ps_mem
-  pulseaudio-alsa
   pulseeffects
-  pv
   qalculate-gtk
   qbittorrent  
   qdirstat
-  radeon-profile radeon-profile-daemon-git
   ranger
   rclone
   redshift
@@ -250,13 +238,13 @@ packages=(
   safeeyes
   samrewritten-git
   shellcheck
-  skanlite
   smartmontools
+  localepurge
   spotify
-  sqlitebrowser
   sshfs
+  ancient-packages
   stow
-  streamlink
+  streamlink youtube-dl
   sudo
   syncplay
   syncthing syncthingtray
@@ -266,19 +254,14 @@ packages=(
   thrash-protect
   thunderbird
   tig
-  time
   tldr++
   tmux
-  tor
-  tor-browser
-  torrentinfo
-  traceroute
+  tor tor-browser
   trackma-git adl-git
   translate-shell
-  trash-cli
   trebleshot
+  tutanota-desktop-linux
   twitch-indicator
-  unarchiver
   unrar zip
   usbutils
   viber
@@ -344,9 +327,11 @@ games=(
   lutris-git
   lutris-wine-meta
   lutris-world-of-warcraft-dependencies-amd
+  minecraft-launcher multimc5
   ninfs-gui
   openmw
   openttd
+  vkbasalt
   osu-lazer
   oversteer
   pcsx2-git
@@ -372,7 +357,6 @@ games=(
 )
 
 wine=(
-  #wine-nine
   gst-plugins-bad lib32-gst-plugins-bad
   gst-plugins-base lib32-gst-plugins-base
   gst-plugins-base-libs lib32-gst-plugins-base-libs

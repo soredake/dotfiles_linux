@@ -17,7 +17,7 @@ DVDCSS_CACHE               DEFAULT=${XDG_CACHE_HOME}/dvdcss
 TMUX_TMPDIR                DEFAULT=${XDG_RUNTIME_DIR}
 PUTTYDIR                   DEFAULT=${XDG_CACHE_HOME}/putty
 WGETRC                     DEFAULT=${XDG_CONFIG_HOME}/wgetrc
-ATOM_HOME                  DEFAULT=${XDG_DATA_HOME}/atom
+#ATOM_HOME                  DEFAULT=${XDG_DATA_HOME}/atom
 NPM_CONFIG_USERCONFIG      DEFAULT=${XDG_CONFIG_HOME}/npm/npmrc
 GTK2_RC_FILES              DEFAULT=${XDG_CONFIG_HOME}/gtk-2.0/gtkrc
 CARGO_HOME                 DEFAULT=${XDG_DATA_HOME}/cargo
@@ -27,16 +27,17 @@ NUGET_PACKAGES             DEFAULT=${XDG_CACHE_HOME}/NuGetPackages
 MPD_HOST                   DEFAULT=${XDG_RUNTIME_DIR}/mpd/socket
 GNUPGHOME                  DEFAULT=${XDG_DATA_HOME}/gnupg
 HISTFILE                   DEFAULT=${XDG_DATA_HOME}/zsh/history
-LESSHISTFILE               DEFAULT=${XDG_DATA_HOME}/less/history
+LESSHISTFILE               DEFAULT=${XDG_DATA_HOME}/less_history.log
 PROXYCHAINS_CONF_FILE      DEFAULT=${XDG_CONFIG_HOME}/proxychains.conf
 ANDROID_SDK_HOME           DEFAULT=${XDG_CONFIG_HOME}/android
 _JAVA_OPTIONS              DEFAULT=-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java
+ZDOTDIR                    DEFAULT=${XDG_CONFIG_HOME}/zsh
 # https://github.com/ihaveamac/ninfs#setup
 BOOT9_PATH                 DEFAULT=${HOME}/sync/main/Documents/3ds/boot9.bin
 SEEDDB_PATH                DEFAULT=${HOME}/sync/main/Documents/3ds/seeddb.bin
 
 # https://github.com/doitsujin/dxvk/wiki/Configuration
-DXVK_CONFIG_FILE          DEFAULT=${XDG_CONFIG_HOME}/dxvk.conf
+DXVK_CONFIG_FILE           DEFAULT=${XDG_CONFIG_HOME}/dxvk.conf
 
 # https://pointieststick.wordpress.com/2018/12/16/this-week-in-usability-productivity-part-49/
 GTK_USE_PORTAL=1
@@ -60,5 +61,6 @@ VAAPI_MPEG4_ENABLED=1
 ELECTRON_TRASH=kioclient5
 
 # https://steamcommunity.com/app/221410/discussions/0/1638675549018366706/
-# TODO: enable this when https://github.com/ValveSoftware/steam-runtime/issues/204 and https://github.com/ValveSoftware/steam-runtime/issues/192 is fixed
 PRESSURE_VESSEL_SHARE_HOME=0
+
+SUDO_EDITOR DEFAULT="codium -w"

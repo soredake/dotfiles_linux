@@ -27,13 +27,11 @@ alias bmv='mrsync --remove-source-files'
 alias cpu='mrsync --update'
 alias cps='mrsync --update --delete'
 
-# permissions quick-fix
+# ownership and permissions quick-fix
 alias dir755='find . -type d -exec chmod 755 {} +'
 alias dir700='find . -type d -exec chmod 700 {} +'
 alias files644='find . -type f -exec chmod 644 {} +'
 alias files600='find . -type f -exec chmod 600 {} +'
-
-# ownership quick-fix
 alias owneruser='chown -R $(id -u):$(id -g) .'
 
 # git aliases
@@ -50,10 +48,6 @@ alias gitpullall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.g
 alias badlinks='find . -type l -exec test ! -e {} \; -print'
 # ls with settings
 alias ls='ls --color=auto -ah --quoting-style=escape --group-directories-first'
-# Timer
-alias timer="echo 'Timer started. Stop with Ctrl-D.' && date && time cat && date"
-# What's my IP address
-alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 # Enhanced WHOIS lookups
 alias whois='whois -h whois.internic.net'
 # Currency conversions
@@ -68,32 +62,33 @@ alias flush_caches='sync && sudo sync && sudo sysctl -qw vm.drop_caches=3'
 alias goodnight='qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 2 2 '
 # https://unix.stackexchange.com/questions/78776/characters-encodings-supported-by-more-cat-and-less
 alias ecat='iconv -f WINDOWS-1251 -t UTF-8'
-# https://github.com/pi-hole/docker-pi-hole/issues/312#issuecomment-412254618
-alias internal-ip="ip -o route get to 9.9.9.9 | sed -rn 's/.*src (([0-9]{1,3}\.){3}[0-9]{1,3}).*/\1/p'"
 # https://www.lifewire.com/kubuntu-p2-2202573
 alias restart-plasma="kquitapp5 plasmashell; nohup plasmashell &>/dev/null &"
-# https://wiki.archlinux.org/index.php/Mirrors#List_by_speed
-alias archmirrorlist='curl -s https://www.archlinux.org/mirrorlist/\?country\=UA\&country\=RU\&country\=FR\&protocol\=https\&use_mirror_status\=on | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 10 -'
+# https://wiki.archlinux.org/index.php/Kexec
+alias kernelup="sudo kexec -l /boot/vmlinuz-linux-tkg-pds-zen --initrd=/boot/initramfs-linux-tkg-pds-zen.img --reuse-cmdline && systemctl kexec"
 alias back='cd $OLDPWD'
 alias build_all='build_wine; build_proton'
 alias build_proton='tkgup; cd $HOME/git/PKGBUILDS/proton-tkg && ./proton-tkg.sh'
 alias build_wine='tkgup; cd $HOME/git/PKGBUILDS/wine-tkg-git && makepkg -si'
 alias clearterm='printf "\033c"'
 alias e='code'
+alias exip='curl https://ident.me'
+alias fixres="xrandr --output HDMI-A-0 --auto"
 alias g='git'
+alias inip="hostname -i"
 alias jc='journalctl'
 alias jcu='journalctl --user'
 alias linkmusic='ln -sfv /media/disk0/torrents/Music/OST/* "$HOME/Music"'
-alias mountandroidfs='sshfs -o kernel_cache -oport=2222 ssh@192.168.1.234:/ /media/android'
+alias mountandroidfs='sshfs -o kernel_cache android:/ /media/android'
 alias mus='mpv --profile=novid'
 alias play-emu='gamemoderun ./play-emu*'
 alias rpcs3='gamemoderun rpcs3'
 alias sc='systemctl'
-alias scu='sc --user'
-alias sudoedit='SUDO_EDITOR="codium -w" sudo -e'
+alias scu='systemctl --user'
+alias timer="echo 'Timer started. Stop with Ctrl-D.' && date && time cat && date"
 alias tkgup='cd $HOME/git/PKGBUILDS; git reset --hard origin/master; git pull'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
-alias vts='echo vitetris --connect $(myip):27015 && vitetris -listen 27015'
+alias vts='echo vitetris --connect $(exip):27015 && vitetris -listen 27015'
 alias yuzu='strangle 60 gamemoderun yuzu'
 
 # color

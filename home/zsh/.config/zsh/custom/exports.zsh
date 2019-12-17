@@ -1,8 +1,5 @@
 # shellcheck disable=2034,2148
 
-# no valid MANPAGER pager is set lead to https://bbs.archlinux.org/viewtopic.php?id=178730 
-export MANPAGER=less
-
 # When executing the same command twice or more in a row, only store it once.
 # Ignore commands that start with spaces and duplicates
 export HISTCONTROL=ignoreboth
@@ -15,10 +12,12 @@ export PROMPT_EOL_MARK=""
 # Ranger settings
 export RANGER_LOAD_DEFAULT_RC=false
 
-# Set default editor
+# Set default programs
+# no valid MANPAGER pager is set lead to https://bbs.archlinux.org/viewtopic.php?id=178730 
+#export MANPAGER=less
+# editor
 export EDITOR=codium
-
-# for xdg-open
+# browser for xdg-open
 export BROWSER=firefox
 
 # zsh-autosuggest plugin settings
