@@ -80,7 +80,8 @@ else
   localectl set-locale LANG=en_US.UTF-8
   timedatectl set-timezone Europe/Kiev
   cp "$SD"/../etc/arch/pacman.conf /etc/pacman.conf
-  pacman -Syuu yay base stow zsh networkmanager xdg-user-dirs || die "pacman failed"
+  cp "$SD"/../etc/arch/makepkg.conf /etc/makepkg.conf
+  pacman -Syuu yay base stow zsh xdg-user-dirs || die "pacman failed"
   hostnamectl set-hostname archlinux-main
   sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
   red "Creating user"
@@ -91,7 +92,7 @@ else
   passwd root || die "setting root password failed"
   red "Creating user dirs"
   sudo -u "soredake" -s xdg-user-dirs-update
-  sudo -u "soredake" -s mkdir -p tmp git .config .cache .local/share/{tig,applications}
+  sudo -u "soredake" -s mkdir -p git .config .cache .local/share/tig
   red "Cloning repository"
   git clone https://notabug.org/soredake/dotfiles_home.git "${dotpath}/dotfiles_home"
   cp "$SD"/../home/env/.pam_environment /home/soredake

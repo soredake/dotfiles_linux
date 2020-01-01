@@ -142,12 +142,15 @@ optdeps=(
   packagekit-qt5
   # kio-extras gwenview
   kimageformats
+  # dolphin
+  konsole
 )
 
 packages=(
   # proton/wine from tkg
   # mkfs.fat mkfs.exfat
   dosfstools exfat-utils
+  ancient-packages
   android-tools
   aria2
   base
@@ -162,6 +165,7 @@ packages=(
   colordiff
   cpupower
   curlie
+  disable-c6-systemd
   discord
   dnscrypt-proxy
   docker-compose
@@ -179,6 +183,7 @@ packages=(
   gimp
   git-cola
   gnome-disk-utility
+  gnome-maps
   godot-mono-bin godot-blender-exporter
   gparted partitionmanager
   grub grub-theme-vimix os-prober
@@ -197,18 +202,17 @@ packages=(
   kitty
   kompare
   krename
-  lector 
+  lector
   libreoffice-still
-  seahorse
   libstrangle-git
   linux linux-firmware amd-ucode
   linux-tkg-pds-zen linux-tkg-pds-zen-headers
+  localepurge
   lostfiles
   lshw
   man-db man-pages
   megasync
   meld
-  reflector-timer
   mpd
   mpv mpv-mpris-git
   namespaced-openvpn-git
@@ -231,18 +235,20 @@ packages=(
   ranger
   rclone
   redshift
+  reflector-timer
   remotely-git
+  riot-desktop
   ripgrep
   ripme-git
   rssguard
   safeeyes
   samrewritten-git
+  seahorse
   shellcheck
+  sirikali cryfs
   smartmontools
-  localepurge
   spotify
   sshfs
-  ancient-packages
   stow
   streamlink youtube-dl
   sudo
@@ -276,6 +282,7 @@ packages=(
   zeal
   zsh zsh-completions
 )
+
 fonts=(
   # https://github.com/gentoo/gentoo/tree/master/media-fonts/infinality-ultimate-meta
   # https://github.com/gentoo/gentoo/tree/master/www-client/chromium
@@ -331,12 +338,11 @@ games=(
   ninfs-gui
   openmw
   openttd
-  vkbasalt
   osu-lazer
   oversteer
   pcsx2-git
   pcsx2-plugin-usbqemu-wheel
-  protonfixes-git
+  protonfixes
   protontricks
   residualvm
   retroarch
@@ -348,6 +354,7 @@ games=(
   syobon
   taisei
   vitetris
+  vkbasalt
   winetricks-git
   xboxdrv
   xdg-utils

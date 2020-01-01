@@ -15,9 +15,9 @@ alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 # use "command rm", "\rm", or "/bin/rm" inside your own commands, aliases, or
 # shell functions. Note that separate scripts are not affected by the aliases
 # defined here.
-alias mv='/bin/mv -i'
-alias rm='/bin/rm -i'
-alias cp='/bin/cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias cp='cp -ia'
 
 # Better copy, move, copy with update and synchronize folder aliases
 # --archive = archive mode; equals -rlptgoD (no -H,-A,-X)
@@ -41,13 +41,8 @@ alias gitpushall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.g
 alias gitpullall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.git --work-tree=$PWD/{} pull \;'
 
 # Shorter
-#alias build_mingw='tkgup; cd $HOME/git/PKGBUILDS/mingw && sed -i "s/sudo pacman/yay/g" ./mingw-on-arch-automator.sh; ./mingw-on-arch-automator.sh -f'
-#alias build_kernel='tkgup; cd $HOME/git/PKGBUILDS/linux53-tkg && makepkg -si'
-#alias build_all_m='build_mingw; build_all'
 # find broken symlinks
 alias badlinks='find . -type l -exec test ! -e {} \; -print'
-# ls with settings
-alias ls='ls --color=auto -ah --quoting-style=escape --group-directories-first'
 # Enhanced WHOIS lookups
 alias whois='whois -h whois.internic.net'
 # Currency conversions
@@ -60,25 +55,23 @@ alias aurup='makepkg --printsrcinfo > .SRCINFO; updpkgsums'
 alias flush_caches='sync && sudo sync && sudo sysctl -qw vm.drop_caches=3'
 # https://forum.manjaro.org/t/best-commands-to-shutdown-reboot-via-terminal/40955/8
 alias goodnight='qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 2 2 '
-# https://unix.stackexchange.com/questions/78776/characters-encodings-supported-by-more-cat-and-less
-alias ecat='iconv -f WINDOWS-1251 -t UTF-8'
 # https://www.lifewire.com/kubuntu-p2-2202573
 alias restart-plasma="kquitapp5 plasmashell; nohup plasmashell &>/dev/null &"
 # https://wiki.archlinux.org/index.php/Kexec
 alias kernelup="sudo kexec -l /boot/vmlinuz-linux-tkg-pds-zen --initrd=/boot/initramfs-linux-tkg-pds-zen.img --reuse-cmdline && systemctl kexec"
 alias back='cd $OLDPWD'
-alias build_all='build_wine; build_proton'
-alias build_proton='tkgup; cd $HOME/git/PKGBUILDS/proton-tkg && ./proton-tkg.sh'
-alias build_wine='tkgup; cd $HOME/git/PKGBUILDS/wine-tkg-git && makepkg -si'
-alias clearterm='printf "\033c"'
+alias build_all='build_wine && build_proton'
+alias build_proton='tkgup; cd proton-tkg && ./proton-tkg.sh'
+alias build_wine='tkgup; cd wine-tkg-git && makepkg -si'
 alias e='code'
-alias exip='curl https://ident.me'
-alias fixres="xrandr --output HDMI-A-0 --auto"
+alias exip='curl -s https://ident.me'
+alias fixres='xrandr --output HDMI-A-0 --auto'
 alias g='git'
-alias inip="hostname -i"
+alias inip='hostname -i'
 alias jc='journalctl'
 alias jcu='journalctl --user'
 alias linkmusic='ln -sfv /media/disk0/torrents/Music/OST/* "$HOME/Music"'
+alias ls='ls --color=auto -ah --quoting-style=escape --group-directories-first'
 alias mountandroidfs='sshfs -o kernel_cache android:/ /media/android'
 alias mus='mpv --profile=novid'
 alias play-emu='gamemoderun ./play-emu*'
@@ -98,9 +91,9 @@ alias grep='grep --color'
 
 # extract initramfs
 # xzcat /boot/initramfs-linux.img | cpio -idmv --no-absolute-filenames
-alias 2ch-vpn="namespaced-openvpn --config $HOME/tmp/vpn/nl-free-01.protonvpn.com.udp1194.ovpn"
+alias 2ch-vpn="namespaced-openvpn --config $HOME/Documents/vpn/nl-free-01.protonvpn.com.udp1194.ovpn"
 alias 2ch-browser="sudo ip netns exec protected sudo -u $USER $HOME/bin/fxlowmem -p $HOME/Documents/fxprofiles/2ch"
-alias vpn-pass="sudo ip netns exec protected sudo -u $USER "
+alias vpn-pass="sudo ip netns exec protected sudo -u $USER"
 alias vpn-proton="namespaced-openvpn --config $HOME/Documents/vpn/nl-free-01.protonvpn.com.udp1194.ovpn"
 
 # Mounts.

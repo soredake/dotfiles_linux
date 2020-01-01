@@ -74,48 +74,5 @@ user_pref("dom.forms.selectSearch", true);
 // pac file
 user_pref("network.proxy.autoconfig_url", "file:///home//bausch/sync/main/Documents/proxy.pac");
 
-// disable logging sync errors
-user_pref("services.sync.log.appender.file.logOnError", true);
-
-
-
-
-
 // ssd settings
 user_pref("browser.bookmarks.max_backups", 5);
-
-// https://github.com/ghacksuserjs/ghacks-user.js/blob/master/user.js#L262-L268
-/* 0350: disable Crash Reports ***/
-user_pref("breakpad.reportURL", "");
-user_pref("browser.tabs.crashReporting.sendReport", false); // [FF44+]
-user_pref("browser.crashReports.unsubmittedCheck.enabled", false); // [FF51+]
-/* 0351: disable backlogged Crash Reports
- * [SETTING] Privacy & Security>Firefox Data Collection & Use>Allow Firefox to send backlogged crash reports  ***/
-user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false); // [FF58+]
-// https://github.com/ghacksuserjs/ghacks-user.js/blob/master/user.js#L247-L253
-/* 0340: disable Health Reports
- * [SETTING] Privacy & Security>Firefox Data Collection & Use>Allow Firefox to send technical... data ***/
-user_pref("datareporting.healthreport.uploadEnabled", false);
-/* 0341: disable new data submission, master kill switch [FF41+]
- * If disabled, no policy is shown or upload takes place, ever
- * [1] https://bugzilla.mozilla.org/1195552 ***/
-user_pref("datareporting.policy.dataSubmissionEnabled", false);
-/* 0309: disable sending Flash crash reports ***/
-user_pref("dom.ipc.plugins.flash.subprocess.crashreporter.enabled", false);
-/* 0310: disable sending the URL of the website where a plugin crashed ***/
-user_pref("dom.ipc.plugins.reportCrashURL", false);
-user_pref("toolkit.telemetry.unified", false);
-user_pref("toolkit.telemetry.enabled", false); // see [NOTE] above FF58+
-user_pref("toolkit.telemetry.server", "data:,");
-user_pref("toolkit.telemetry.archive.enabled", false);
-user_pref("toolkit.telemetry.newProfilePing.enabled", false); // [FF55+]
-user_pref("toolkit.telemetry.shutdownPingSender.enabled", false); // [FF55+]
-user_pref("toolkit.telemetry.updatePing.enabled", false); // [FF56+]
-user_pref("toolkit.telemetry.bhrPing.enabled", false); // [FF57+] Background Hang Reporter
-user_pref("toolkit.telemetry.firstShutdownPing.enabled", false); // [FF57+]
-user_pref("toolkit.telemetry.hybridContent.enabled", false); // [FF59+]
-/* 0331: disable Telemetry Coverage
- * [1] https://blog.mozilla.org/data/2018/08/20/effectively-measuring-search-in-firefox/ ***/
-user_pref("toolkit.telemetry.coverage.opt-out", true); // [HIDDEN PREF]
-user_pref("toolkit.coverage.opt-out", true); // [FF64+] [HIDDEN PREF]
-user_pref("toolkit.coverage.endpoint.base", "");

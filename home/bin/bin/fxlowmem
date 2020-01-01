@@ -1,7 +1,7 @@
 #!/bin/bash
 
 _os="linux64"
-_lang="ru"
+_lang="en"
 AUTODOWNLOAD="release"
 
 die() {
@@ -27,7 +27,7 @@ download() {
   fi
   # download
   echo "Downloading firefox version: $AUTODOWNLOAD"
-  [[ ! -e "${cdir}/$_base" ]] && wget -O "${cdir}/$_base" "https://download.mozilla.org/?product=firefox${URL}-latest-ssl&os=${_os}&lang=${_lang}"
+  [[ ! -e "${cdir}/$_base" ]] && curl -o "${cdir}/$_base" "https://download.mozilla.org/?product=firefox${URL}-latest-ssl&os=${_os}&lang=${_lang}"
   [[ ! -z "$CLEAN" ]] && rm "${cdir}/$AUTODOWNLOAD.version"
   if [[ ! -f "${cdir}/$AUTODOWNLOAD.version" ]]; then
     tar xvf "${cdir}/$_base" firefox/application.ini -O | grep -Po '(?<=^Version=).*' >"${cdir}/$AUTODOWNLOAD.version"
@@ -68,7 +68,6 @@ user_pref("media.autoplay.enabled", false);
 user_pref("media.default_volume", "0.1");
 user_pref("media.volume_scale", "0.1");
 user_pref("browser.startup.page", 3);
-user_pref("xpinstall.signatures.required", false);
 END
   #cp "${XDG_CACHE_HOME:-${HOME}/.cache}/search.json.mozlz4" "$profile" || die "for now, search.json.mozlz4 file is the only way to set the default search engine"
   if [[ ! -z "${INFO}" ]]; then

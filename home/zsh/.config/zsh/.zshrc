@@ -1,42 +1,39 @@
 # shellcheck disable=2034,2148
 
+# https://github.com/zdharma/zplugin#customizing-paths
+declare -A ZPLGM  # initial Zplugin's hash definition, if configuring before loading Zplugin, and then:
+ZPLGM[BIN_DIR]="$XDG_DATA_HOME/zplugin/bin"
+ZPLGM[HOME_DIR]="$XDG_DATA_HOME/zplugin"
+ZPFX="$XDG_DATA_HOME/zplugin/polaris"
+ZPLGM[COMPINIT_OPTS]=-C
+[[ ! -d "${ZPLGM[BIN_DIR]}" ]] && git clone --depth 10 https://github.com/zdharma/zplugin.git "${ZPLGM[BIN_DIR]}"
+### Added by Zplugin's installer
+# shellcheck disable=1090
+source "${ZPLGM[BIN_DIR]}/zplugin.zsh"
+autoload -Uz _zplugin
 # shellcheck disable=2154
-if [[ "$zplugin" == true ]]; then
-  # https://github.com/zdharma/zplugin#customizing-paths
-  declare -A ZPLGM  # initial Zplugin's hash definition, if configuring before loading Zplugin, and then:
-  ZPLGM[BIN_DIR]="$XDG_DATA_HOME/zplugin/bin"
-  ZPLGM[HOME_DIR]="$XDG_DATA_HOME/zplugin"
-  ZPFX="$XDG_DATA_HOME/zplugin/polaris"
-  ZPLGM[COMPINIT_OPTS]=-C
-  [[ ! -d "${ZPLGM[BIN_DIR]}" ]] && git clone --depth 10 https://github.com/zdharma/zplugin.git "${ZPLGM[BIN_DIR]}"
-  ### Added by Zplugin's installer
-  # shellcheck disable=1090
-  source "${ZPLGM[BIN_DIR]}/zplugin.zsh"
-  autoload -Uz _zplugin
-  # shellcheck disable=2154
-  (( ${+_comps} )) && _comps[zplugin]=_zplugin
-  ### End of Zplugin's installer chunk
-  # shellcheck disable=1090
-  zplugin light zsh-users/zsh-autosuggestions
-  zplugin snippet OMZ::lib/completion.zsh
-  zplugin snippet OMZ::lib/directories.zsh
-  zplugin snippet OMZ::lib/history.zsh
-  zplugin snippet OMZ::lib/key-bindings.zsh
-  zplugin snippet OMZ::lib/theme-and-appearance.zsh
-  zplugin snippet OMZ::plugins/extract/extract.plugin.zsh
-  # Load the pure theme, with zsh-async library that's bundled with it
-  zplugin ice pick"async.zsh" src"pure.zsh"; zplugin light sindresorhus/pure
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin's installer chunk
+# shellcheck disable=1090
+zplugin light zsh-users/zsh-autosuggestions
+zplugin snippet OMZ::lib/completion.zsh
+zplugin snippet OMZ::lib/directories.zsh
+zplugin snippet OMZ::lib/history.zsh
+zplugin snippet OMZ::lib/key-bindings.zsh
+zplugin snippet OMZ::lib/theme-and-appearance.zsh
+zplugin snippet OMZ::plugins/extract/extract.plugin.zsh
+# Load the pure theme, with zsh-async library that's bundled with it
+zplugin ice pick"async.zsh" src"pure.zsh"; zplugin light sindresorhus/pure
   
-  # https://github.com/zdharma/zplugin#calling-compinit-without-turbo-mode
-  # https://unix.stackexchange.com/a/178054
-  unsetopt complete_aliases
-  autoload -Uz compinit
-  compinit
-  # shellcheck disable=1090
-  zplugin cdreplay -q
-  # syntax-highlighting plugins (like fast-syntax-highlighting or zsh-syntax-highlighting) expect to be loaded last
-  zplugin light zdharma/fast-syntax-highlighting
-fi
+# https://github.com/zdharma/zplugin#calling-compinit-without-turbo-mode
+# https://unix.stackexchange.com/a/178054
+unsetopt complete_aliases
+autoload -Uz compinit
+compinit
+# shellcheck disable=1090
+zplugin cdreplay -q
+# syntax-highlighting plugins (like fast-syntax-highlighting or zsh-syntax-highlighting) expect to be loaded last
+zplugin light zdharma/fast-syntax-highlighting
 
 # shellcheck disable=1090
 for f in "$XDG_CONFIG_HOME/zsh/custom"/*; do . "$f"; done

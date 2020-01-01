@@ -1,9 +1,6 @@
 #!/bin/bash
 # shellcheck disable=2016,2162
 
-# limit ccache size
-ccache -M 2G
-
 # generate locales
 sudo locale-gen
 
@@ -17,16 +14,7 @@ END
 
 # lutris: use system libretro cores
 # https://github.com/lutris/lutris/issues/2444
-ln -sfv "$XDG_CONFIG_HOME/retroarch/cores" "$XDG_DATA_HOME/lutris/runners/retroarch/cores"
-# lutris: use system winetricks
-# https://github.com/lutris/lutris/issues/2445
-# https://github.com/lutris/lutris/pull/2494
-rm -f "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks"
-ln -sfv /usr/bin/winetricks "$XDG_DATA_HOME/lutris/runtime/winetricks/winetricks"
-chmod 555 "$XDG_DATA_HOME/lutris/runtime/winetricks"
-
-# use main profile, not dev edition dedicated
-touch "$HOME/.mozilla/firefox/ignore-dev-edition-profile"
+#ln -sfv "$XDG_CONFIG_HOME/retroarch/cores" "$XDG_DATA_HOME/lutris/runners/retroarch/cores"
 
 # disable tty motd
 touch "$HOME/.hushlogin"
@@ -37,13 +25,22 @@ sudo sed -i "s/; shm-size-bytes.*/shm-size-bytes=1048576/" /etc/pulse/daemon.con
 # needed for "open with" firefox addon
 mkdir "$XDG_DATA_HOME/open_with_addon"
 cd "$XDG_DATA_HOME/open_with_addon" || exit 1
-wget https://github.com/darktrojan/openwith/raw/master/webextension/native/open_with_linux.py
+curl -O https://github.com/darktrojan/openwith/raw/master/webextension/native/open_with_linux.py
 chmod u+x open_with_linux.py
 ./open_with_linux.py install
+
+# needed for "open with" firefox addon
+mkdir "$XDG_DATA_HOME/kget_integrator"
+cd "$XDG_DATA_HOME/kget_integrator" || exit 1
+curl -o "$HOME/.mozilla/native-messaging-hosts/com.kgetdm.firefox.json" https://github.com/NicolasGuilloux/KGet-Integrator/raw/master/Conf/com.kgetdm.firefox.json
+sed -i "s|/usr/bin/kget-integrator|/home/bausch/.local/share/kget_integrator/kget-integrator|" "$HOME/.mozilla/native-messaging-hosts/com.kgetdm.firefox.json"
+curl -O https://github.com/NicolasGuilloux/KGet-Integrator/raw/master/kget-integrator
+
 
 # fix distorted/crackling/robotized audio in discord and some games
 # https://askubuntu.com/questions/1102738/crackling-static-in-discord-with-default-audio-output-port-pulseaudio
 # https://www.reddit.com/r/discordapp/comments/7si7s3/linux_crackling_sound_in_application/
+# https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting#Glitches,_skips_or_crackling
 sudo sed -i "s|load-module module-udev-detect|load-module module-udev-detect tsched=0|g" /etc/pulse/default.pa
 
 # https://wiki.archlinux.org/index.php/Bluetooth#Auto_power-on_after_boot
@@ -64,6 +61,7 @@ curl -L https://github.com/dreamer/roberta/releases/download/v0.1.0/roberta.tar.
 # copy vimix theme
 [[ ! -d /boot/grub/themes/Vimix ]]; sudo cp -r /usr/share/grub/themes/Vimix /boot/grub/themes/Vimix
 
+# psd
 sudo tee /etc/sudoers.d/psd <<< "bausch ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper"
 
 # relocate fontconfig cache to global dir until xorg is not run as user
@@ -71,3 +69,7 @@ sudo tee /etc/sudoers.d/psd <<< "bausch ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay
 sudo chmod 777 /var/cache/fontconfig
 ln -sfv /var/cache/fontconfig "$XDG_CACHE_HOME/fontconfig_11"
 ln -sfv /var/cache/fontconfig "$XDG_CACHE_HOME/fontconfig"
+
+# aur packages
+sudo mkdir /var/cache/pacman/aur-pkg
+sudo chown -R "$USER:$USER" /var/cache/pacman/aur-pkg

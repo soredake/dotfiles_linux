@@ -60,11 +60,6 @@ cockfile() {
    eval "${prefix:-true}" | curl --fail -L --progress-bar -F name="${2:-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 20 | head -n 1 | grep -i '[a-zA-Z0-9]').${1##*.}}" -F file=@"${suffix:--}" https://cockfile.com/api.php?d=upload-tool
 }
 
-# Validate tar archives
-tarval() {
-  tar -tJf "$@" >/dev/null
-}
-
 # Automatically cd to the directory you were in when quitting ranger if you haven't already:
 ranger() {
     tempfile="$(mktemp -t ranger-tmp.XXXXXX)"
@@ -74,6 +69,18 @@ ranger() {
         cd -- "$(cat "$tempfile")"
     fi
     rm -f -- "$tempfile"
+}
+
+# https://www.pixelstech.net/article/1352825068-Use-rsync-to-delete-mass-files-quickly-in-Linux
+# https://unix.stackexchange.com/a/277205
+# https://www.slashroot.in/which-is-the-fastest-method-to-delete-files-in-linux
+# https://serverfault.com/questions/183821/rm-on-a-directory-with-millions-of-files/328305#328305
+# https://github.com/edannenberg/kubler/blob/master/engine/docker/bob-core/portage-git-sync.sh#L12
+fastdelete() {
+  _tmp=$(mktemp -d /tmp/XXX)
+  [[ "$2" = "s" ]] && s=sudo
+  eval "${s}" rsync -a --delete "$_tmp"/ "$1" || exit 1
+  eval "${s}" rmdir "$1" "$_tmp"
 }
 
 px() {
@@ -86,18 +93,14 @@ px() {
 
 j() {
 case "$1" in
-  b) cd "$HOME/sync/system-data" ;;
+  b) cd "$HOME/sync/main/Documents/system-data" ;;
   d) cd "$HOME/sync/main/Documents" ;;
   g) cd "$HOME/git" ;;
-  m) cd "$HOME/media" ;;
+  m) cd "/media" ;;
   s) cd "$HOME/sync/main" ;;
   t) cd /media/disk0/torrents ;;
   *) echo "No folder defined for this alias." ;;
 esac
-}
-
-random() {
-  shuf -i "${1}-${2}" -n "${3:-1}"
 }
 
 linuxsteamgames() {
@@ -122,11 +125,6 @@ linuxsteamgames() {
   curl -F"${prefix}${1}" https://0x0.st
 }
 
-# https://github.com/chrippa/livestreamer/issues/550#issuecomment-222061982
-streamnodown() {
-  streamlink --loglevel debug --player-external-http --player-no-close --player-external-http-port "5555" --retry-streams 1 --retry-open 100 --stream-segment-attempts 20 --stream-timeout 180 --ringbuffer-size 64M --rtmp-timeout 240 "$1" "${2}"
-}
-
 # rclone alias
 # https://stackoverflow.com/questions/45601589/zsh-not-recognizing-alias-from-within-function
 # https://stackoverflow.com/questions/25532050/newly-defined-alias-not-working-inside-a-function-zsh
@@ -147,38 +145,35 @@ backup() {
   # TODO: https://plati.ru/search/DROPBOX
   echo -e "\e[1;31m Uploading to Dropbox \033[0m"
   upload "$HOME/sync/main/Documents" dropbox:/Documents
-  upload "$HOME/sync/system-data" dropbox:/system-data
   # opendrive
   # 5gb
   echo -e "\e[1;31m Uploading to OpenDrive \033[0m"
   upload "$HOME/sync/main/Documents" opendrive:/Documents
+  upload "$HOME/sync/main/Media" opendrive:/Media
   # google drive
   # 15gb
   echo -e "\e[1;31m Google Drive \033[0m"
   upload "$HOME/sync/main/Documents" google_drive:/Documents
   upload "$HOME/sync/main/Media" google_drive:/Media
   upload "$HOME/sync/main/me" google_drive:/me
-  upload "$HOME/sync/system-data" google_drive:/system-data
   # mega.nz
   # 50gb
   echo -e "\e[1;31m Uploading to MEGA 50gb \033[0m"
   upload "$HOME/sync/main/Documents" 50gbmega:/Documents
   upload "$HOME/sync/main/Media" 50gbmega:/Media
   upload "$HOME/sync/main/me" 50gbmega:/me
-  upload "$HOME/sync/system-data" 50gbmega:/system-data
   # mega.nz
   # 15gb
   echo -e "\e[1;31m Uploading to MEGA 15gb \033[0m"
   upload "$HOME/sync/main/Documents" mega_nz:/Documents
   upload "$HOME/sync/main/Media" mega_nz:/Media
   upload "$HOME/sync/main/me" mega_nz:/me
-  upload "$HOME/sync/system-data" mega_nz:/system-data
   # yandex.disk
   # 10gb
   echo -e "\e[1;31m Uploading to Yandex.Disk \033[0m"
   upload "$HOME/sync/main/Documents" yandex:/Documents
+  upload "$HOME/sync/main/Media" yandex:/Media
   upload "$HOME/sync/main/me" yandex:/me
-  upload "$HOME/sync/system-data" yandex:/system-data
 }
 
 # workaround for https://github.com/citra-emu/citra/issues/3862
@@ -218,20 +213,6 @@ ukr_nalogi() {
   else
     echo Tax is: $(bc -l <<< "($1 - 100) * 0.20") EUR
   fi
-}
-
-checkvk() {
-  Estatus=$(proxychains -q curl --http2 -sS "https://api.vk.com/method/users.get?user_id=$1&fields=last_seen,online&v=5.8" || exit)
-  case "$(jq '.response[0].last_seen.platform' <<< "$Estatus")" in
-    1) platform="мобильная версия" ;;
-    4) platform="приложение для Android" ;;
-    7) platform="полная версия сайта" ;;
-    8) platform="VK Mobile" ;;
-    *) platform="Unknown"
-  esac
-  echo "Онлайн ли сейчас: $(jq '.response[0].online' <<< "$Estatus")"
-  echo "Последний раз в сети: $(date -d @$(jq '.response[0].last_seen.time' <<< "$Estatus"))"
-  echo "Платформа: $platform"
 }
 
 speedfox() {
