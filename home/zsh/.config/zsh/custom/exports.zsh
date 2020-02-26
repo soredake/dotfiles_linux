@@ -23,7 +23,3 @@ export BROWSER=firefox
 # zsh-autosuggest plugin settings
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-
-# some old env
-export containter1="$HOME/sync/arch/1"
-export containter1l="$HOME/media/veracrypt1"

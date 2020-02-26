@@ -18,13 +18,14 @@ autoload -Uz _zplugin
 zplugin light zsh-users/zsh-autosuggestions
 zplugin snippet OMZ::lib/completion.zsh
 zplugin snippet OMZ::lib/directories.zsh
+zplugin snippet OMZ::lib/clipboard.zsh
 zplugin snippet OMZ::lib/history.zsh
 zplugin snippet OMZ::lib/key-bindings.zsh
 zplugin snippet OMZ::lib/theme-and-appearance.zsh
 zplugin snippet OMZ::plugins/extract/extract.plugin.zsh
 # Load the pure theme, with zsh-async library that's bundled with it
 zplugin ice pick"async.zsh" src"pure.zsh"; zplugin light sindresorhus/pure
-  
+
 # https://github.com/zdharma/zplugin#calling-compinit-without-turbo-mode
 # https://unix.stackexchange.com/a/178054
 unsetopt complete_aliases

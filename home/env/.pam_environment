@@ -13,13 +13,14 @@ XDG_DATA_HOME              DEFAULT=@{HOME}/.local/share
 XDG_CONFIG_HOME            DEFAULT=@{HOME}/.config
 XDG_CACHE_HOME             DEFAULT=@{HOME}/.cache
 #SSH_AUTH_SOCK              DEFAULT=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
-DVDCSS_CACHE               DEFAULT=${XDG_CACHE_HOME}/dvdcss
+#DVDCSS_CACHE               DEFAULT=${XDG_CACHE_HOME}/dvdcss
 TMUX_TMPDIR                DEFAULT=${XDG_RUNTIME_DIR}
 PUTTYDIR                   DEFAULT=${XDG_CACHE_HOME}/putty
 WGETRC                     DEFAULT=${XDG_CONFIG_HOME}/wgetrc
-#ATOM_HOME                  DEFAULT=${XDG_DATA_HOME}/atom
+# https://nodejs.org/api/repl.html#repl_environment_variable_options
+NODE_REPL_HISTORY          DEFAULT=""
 NPM_CONFIG_USERCONFIG      DEFAULT=${XDG_CONFIG_HOME}/npm/npmrc
-GTK2_RC_FILES              DEFAULT=${XDG_CONFIG_HOME}/gtk-2.0/gtkrc
+GTK2_RC_FILES              DEFAULT=${XDG_CONFIG_HOME}/gtkrc-2.0
 CARGO_HOME                 DEFAULT=${XDG_DATA_HOME}/cargo
 CCACHE_CONFIGPATH          DEFAULT=${XDG_CONFIG_HOME}/ccache.conf
 CCACHE_DIR                 DEFAULT=${XDG_CACHE_HOME}/ccache
@@ -33,6 +34,8 @@ ANDROID_SDK_HOME           DEFAULT=${XDG_CONFIG_HOME}/android
 _JAVA_OPTIONS              DEFAULT=-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java
 ZDOTDIR                    DEFAULT=${XDG_CONFIG_HOME}/zsh
 SUDO_EDITOR                DEFAULT="codium -w"
+# https://github.com/golang/go/wiki/SettingGOPATH
+GOPATH                     DEFAULT=${XDG_CACHE_HOME}/go
 # https://github.com/ihaveamac/ninfs#setup
 BOOT9_PATH                 DEFAULT=${HOME}/sync/main/Documents/3ds/boot9.bin
 SEEDDB_PATH                DEFAULT=${HOME}/sync/main/Documents/3ds/seeddb.bin
@@ -41,11 +44,12 @@ SEEDDB_PATH                DEFAULT=${HOME}/sync/main/Documents/3ds/seeddb.bin
 DXVK_CONFIG_FILE           DEFAULT=${XDG_CONFIG_HOME}/dxvk.conf
 
 # https://pointieststick.wordpress.com/2018/12/16/this-week-in-usability-productivity-part-49/
+# https://wiki.archlinux.org/index.php/Firefox#KDE/GNOME_integration
 GTK_USE_PORTAL=1
 
 # https://wiki.mozilla.org/Platform/GFX/Quantum_Render
-MOZ_ACCELERATED=1
-#MOZ_WEBRENDER=1
+#MOZ_ACCELERATED=1
+MOZ_WEBRENDER=1
 
 # https://github.com/isacikgoz/tldr#use-for-different-os
 TLDR_OS=linux
@@ -62,4 +66,7 @@ VAAPI_MPEG4_ENABLED=1
 ELECTRON_TRASH=kioclient5
 
 # https://steamcommunity.com/app/221410/discussions/0/1638675549018366706/
-PRESSURE_VESSEL_SHARE_HOME=0
+# TODO: https://github.com/ValveSoftware/steam-runtime/issues/214
+# TODO: https://github.com/ValveSoftware/steam-runtime/issues/217
+#PRESSURE_VESSEL_SHARE_HOME=0
+#STEAM_RUNTIME_CONTAINER_ALWAYS=1

@@ -1,8 +1,5 @@
 # vim: ft=properties
 --prefer-free-formats
 --external-downloader aria2c
-# https://github.com/rg3/youtube-dl/issues/350#issuecomment-256621096
-# https://github.com/rg3/youtube-dl/issues/1498#issuecomment-25508886
-# https://github.com/rg3/youtube-dl/issues/4772#issuecomment-71390927
-# https://github.com/termux/termux-packages/pull/998
---external-downloader-args "-x 14 -s 6 -m 3"
+# https://wiki.archlinux.org/index.php/Youtube-dl#Faster_downloads
+--external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M"

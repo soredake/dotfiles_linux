@@ -6,7 +6,8 @@ GRUB_DEFAULT=0
 GRUB_TIMEOUT=5
 GRUB_DISTRIBUTOR="Arch"
 # resume_offset: filefrag -v /media/disk1/swapfile | awk '{ if($1=="0:"){print $4} }'
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet raid=noautodetect resume=UUID="54282f79-a6dc-4c4f-9674-a03e85dc1a76" resume_offset=48181482 kernel.sysrq=1 module_blacklist=pcspkr"
+# mitigations=off
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet raid=noautodetect resume=UUID="54282f79-a6dc-4c4f-9674-a03e85dc1a76" resume_offset=48181482 idle=halt kernel.sysrq=1 module_blacklist=pcspkr"
 GRUB_CMDLINE_LINUX=""
 
 # Preload both GPT and MBR modules so that they are not missed

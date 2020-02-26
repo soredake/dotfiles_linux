@@ -1,7 +1,7 @@
 #!/bin/bash
 
 _os="linux64"
-_lang="en"
+_lang="en-US"
 AUTODOWNLOAD="release"
 
 die() {
@@ -27,7 +27,7 @@ download() {
   fi
   # download
   echo "Downloading firefox version: $AUTODOWNLOAD"
-  [[ ! -e "${cdir}/$_base" ]] && curl -o "${cdir}/$_base" "https://download.mozilla.org/?product=firefox${URL}-latest-ssl&os=${_os}&lang=${_lang}"
+  [[ ! -e "${cdir}/$_base" ]] && wget -O "${cdir}/$_base" "https://download.mozilla.org/?product=firefox${URL}-latest-ssl&os=${_os}&lang=${_lang}"
   [[ ! -z "$CLEAN" ]] && rm "${cdir}/$AUTODOWNLOAD.version"
   if [[ ! -f "${cdir}/$AUTODOWNLOAD.version" ]]; then
     tar xvf "${cdir}/$_base" firefox/application.ini -O | grep -Po '(?<=^Version=).*' >"${cdir}/$AUTODOWNLOAD.version"

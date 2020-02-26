@@ -3,30 +3,31 @@
 HOMEDIR="/home/bausch"
 XDD="$HOMEDIR/.local/share"
 rmlist=(
-  "$HOMEDIR"/.cache/{ranger,thumbnails,wine}
+  "$HOMEDIR"/.cache/ranger
   # https://wiki.archlinux.org/index.php/default_applications#Default_mimeapps.list_files
-  #"$XDG_DATA_HOME/applications/"{mimeapps.list,mimeinfo.cache} "$XDG_CONFIG_HOME/mimeapps.list" "$XDG_DATA_HOME/mime" "$XDG_DATA_HOME/icons"
+  # "$XDG_DATA_HOME/mime" "$XDG_DATA_HOME/icons"
   # /var/lib/sddm/.cache/
 )
 /bin/rm -r "${rmlist[@]}"
-#/usr/bin/find "$HOMEDIR"/.{config,cache} ! -path "*/syncthing/*" ! -path "*/zplug/*" -empty -delete
-#/usr/bin/find "$XDD" ! -path "*/Steam/*" ! -path "*/systemd/*" ! -path "*/lutris/*" -empty -delete
-#/usr/bin/fd -t f -H -I "^\.[0-9][0-9][0-9][0-9]?[0-9]?$" "$HOMEDIR" -x "rm" {}
 /usr/bin/fd -t d -H ".unwanted" /media/disk0/torrents -x rm -r {}
 /usr/bin/fd -t f -H ".\!qB" /media/disk0/torrents -x rm -r {}
-/usr/bin/fd -t f -H -I -e .tar.zst --search-path /home/bausch/git/PKGBUILDS -x "rm" {}
+#/usr/bin/fd -t f -H -I -e .tar.zst --search-path /home/bausch/git/PKGBUILDS -x "rm" {}
 # https://wiki.manjaro.org/System_Maintenance#Home_Cache
 # https://bugs.kde.org/show_bug.cgi?id=79943
 # https://bugs.launchpad.net/ubuntu/+source/kio-extras/+bug/1782613
-find ~/.cache/thumbnails -type f -atime +100 -delete
+find $HOMEDIR/.cache/thumbnails -type f -atime +100 -delete
 #/usr/lib/systemd/system/shadow.service
 sudo /usr/bin/pwck
 sudo /usr/bin/grpck
 /usr/bin/localepurge
+yay -Qkk
 /usr/bin/yay -Sc
 /usr/bin/yay -c
+# https://wiki.archlinux.org/index.php/pacman#Cleaning_the_package_cache
 paccache --cachedir="/var/cache/pacman/aur-pkg" -rv
+paccache --cachedir="/var/cache/pacman/aur-pkg" --uninstalled --keep 0 -rv
 sudo paccache --cachedir="/var/cache/pacman/pkg" -rv
+sudo paccache --cachedir="/var/cache/pacman/pkg" --uninstalled --keep 0 -rv
 # psd c
 #/usr/bin/yay -Scc
 ancient-packages
@@ -37,5 +38,9 @@ ancient-packages
 # https://wiki.archlinux.org/index.php/System_maintenance#Check_for_orphans_and_dropped_packages
 #https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Removing_unused_packages_(orphans)
 #/usr/bin/yay -Rns $(/usr/bin/yay -Qtdq)
-find /home/bausch/.config/lutris/games -type f -mtime +200 -delete
-find /home/bausch/.local/share/lutris/banners -type f -mtime +200 -delete
+find "$HOMEDIR/.config/lutris/games" -type f -mtime +200 -delete
+find "$HOMEDIR/.local/share/lutris/banners" -type f -mtime +200 -delete
+find "$XDD/icons" -type f -mtime +200 -delete
+
+find $HOMEDIR/.config -maxdepth 1 -empty -delete
+find $XDD -maxdepth 2 -empty -delete

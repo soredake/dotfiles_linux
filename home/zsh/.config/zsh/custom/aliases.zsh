@@ -4,6 +4,7 @@
 # last character of the alias value is a space or tab character, then the next
 # command word following the alias is also checked for alias expansion."
 alias s='sudo '
+alias px='proxychains '
 
 # xdg
 alias curl='curl -K $XDG_CONFIG_HOME/curlrc'
@@ -21,7 +22,7 @@ alias cp='cp -ia'
 
 # Better copy, move, copy with update and synchronize folder aliases
 # --archive = archive mode; equals -rlptgoD (no -H,-A,-X)
-alias mrsync='rsync --archive --hard-links --acls --xattrs --compress --progress --verbose --executability -h'
+alias mrsync='rsync --archive --hard-links --acls --xattrs -zz --progress --verbose --executability -h'
 alias bcp='mrsync'
 alias bmv='mrsync --remove-source-files'
 alias cpu='mrsync --update'
@@ -34,6 +35,11 @@ alias files644='find . -type f -exec chmod 644 {} +'
 alias files600='find . -type f -exec chmod 600 {} +'
 alias owneruser='chown -R $(id -u):$(id -g) .'
 
+# color
+alias egrep='grep -E --color'
+alias diff='diff --color'
+alias grep='grep --color'
+
 # git aliases
 # {push,pull} all repositories in current dir
 # https://stackoverflow.com/questions/3497123/run-git-pull-over-all-subdirectories
@@ -43,12 +49,8 @@ alias gitpullall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.g
 # Shorter
 # find broken symlinks
 alias badlinks='find . -type l -exec test ! -e {} \; -print'
-# Enhanced WHOIS lookups
-alias whois='whois -h whois.internic.net'
 # Currency conversions
 alias usd='cconv 1 usd uah'
-# Folder size
-alias fosize='du -sh'
 # https://wiki.archlinux.org/index.php/.SRCINFO https://wiki.archlinux.org/index.php/Arch_package_guidelines
 alias aurup='makepkg --printsrcinfo > .SRCINFO; updpkgsums'
 # https://www.opennet.ru/tips/1455_linux_kernel_cache.shtml?skip=10 
@@ -60,7 +62,10 @@ alias restart-plasma="kquitapp5 plasmashell; nohup plasmashell &>/dev/null &"
 # https://wiki.archlinux.org/index.php/Kexec
 alias kernelup="sudo kexec -l /boot/vmlinuz-linux-tkg-pds-zen --initrd=/boot/initramfs-linux-tkg-pds-zen.img --reuse-cmdline && systemctl kexec"
 alias back='cd $OLDPWD'
-alias build_all='build_wine && build_proton'
+alias link_wine_patches='cd $HOME/git/wine-tkg-userpatches; git pull; ln -sfv $PWD/*.mypatch $HOME/git/PKGBUILDS/wine-tkg-git/wine-tkg-userpatches'
+alias build_all='goggalaxy && build_faudio && build_wine && build_proton'
+alias goggalaxy='cd $HOME/git/PKGBUILDS/wine-tkg-git/wine-tkg-userpatches; wget https://raw.githubusercontent.com/lutris/buildbot/master/runners/wine/build-preparation/patches/GalaxyFix-AddSetEnvironmentStringsW-stub.mypatch'
+alias build_faudio='tkgup; cd faudio-git && makepkg -si' # https://github.com/Tk-Glitch/PKGBUILDS/issues/458#issuecomment-575811620 and https://git.archlinux.org/svntogit/community.git/tree/trunk/PKGBUILD?h=packages/lib32-faudio#n30
 alias build_proton='tkgup; cd proton-tkg && ./proton-tkg.sh'
 alias build_wine='tkgup; cd wine-tkg-git && makepkg -si'
 alias e='code'
@@ -78,36 +83,7 @@ alias play-emu='gamemoderun ./play-emu*'
 alias rpcs3='gamemoderun rpcs3'
 alias sc='systemctl'
 alias scu='systemctl --user'
-alias timer="echo 'Timer started. Stop with Ctrl-D.' && date && time cat && date"
 alias tkgup='cd $HOME/git/PKGBUILDS; git reset --hard origin/master; git pull'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias vts='echo vitetris --connect $(exip):27015 && vitetris -listen 27015'
-alias yuzu='strangle 60 gamemoderun yuzu'
-
-# color
-alias egrep='grep -E --color'
-alias diff='diff --color'
-alias grep='grep --color'
-
-# extract initramfs
-# xzcat /boot/initramfs-linux.img | cpio -idmv --no-absolute-filenames
-alias 2ch-vpn="namespaced-openvpn --config $HOME/Documents/vpn/nl-free-01.protonvpn.com.udp1194.ovpn"
-alias 2ch-browser="sudo ip netns exec protected sudo -u $USER $HOME/bin/fxlowmem -p $HOME/Documents/fxprofiles/2ch"
-alias vpn-pass="sudo ip netns exec protected sudo -u $USER"
-alias vpn-proton="namespaced-openvpn --config $HOME/Documents/vpn/nl-free-01.protonvpn.com.udp1194.ovpn"
-
-# Mounts.
-#alias m1='test ! -d $HOME/media/server_torrents && mkdir $HOME/media/server_torrents; sshfs -o big_writes,auto_unmount s:mdata/torrents $HOME/media/server_torrents'
-#alias m1a='test ! -d $HOME/media/server_torrents && mkdir $HOME/media/server_torrents; sshfs -o big_writes,auto_unmount s:mdata/stream $HOME/media/stream'
-alias m1ro='test ! -d $containter1l && mkdir $containter1l; veracrypt -v -m=ro -k "" --protect-hidden=no $containter1 $containter1l'
-alias m1rw='test ! -d $containter1l && mkdir $containter1l; veracrypt -v  -k "" --protect-hidden=no $containter1 $containter1l'
-# Mount veracrypt throught cryptsetup
-alias m3test='sudo cryptsetup --veracrypt open --type tcrypt "$containter1" veracrypt; sudo mount /dev/mapper/veracrypt "$containter1l"'
-
-#alias find2chimages='array=( $(fd "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]?[0-9]?[0-9]?[0-9]?\.(png|jpeg|jpg|JPG|jpeg|JPEG|JPE|PNG)$") ); mvi "${array[@]}"'
-#alias fixtearing="xrandr --output HDMI-A-0 --mode 1920x1080; xrandr --output HDMI-A-0 --auto"
-#alias perf='sudo cpupower frequency-set -g performance'
-#alias checksomething='vl -s 2 -t 10 --whitelist example.com file.txt'
-#alias checksomething2='awesome_bot -t 10 -w example.com --skip-save-results'
-#alias checksomething3='linkcheck'
-#cat bookmarks/multimedia/music.txt | sed -e "s/ .*\[.*//g" | fpp -nfc -ai -c firefox --allow-remote
+alias yuzu='gamemoderun yuzu'

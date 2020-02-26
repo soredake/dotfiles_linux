@@ -60,17 +60,6 @@ cockfile() {
    eval "${prefix:-true}" | curl --fail -L --progress-bar -F name="${2:-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 20 | head -n 1 | grep -i '[a-zA-Z0-9]').${1##*.}}" -F file=@"${suffix:--}" https://cockfile.com/api.php?d=upload-tool
 }
 
-# Automatically cd to the directory you were in when quitting ranger if you haven't already:
-ranger() {
-    tempfile="$(mktemp -t ranger-tmp.XXXXXX)"
-    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-    test -f "$tempfile" &&
-    if [ "$(cat -- "$tempfile")" != "$(echo -n "$(pwd)")" ]; then
-        cd -- "$(cat "$tempfile")"
-    fi
-    rm -f -- "$tempfile"
-}
-
 # https://www.pixelstech.net/article/1352825068-Use-rsync-to-delete-mass-files-quickly-in-Linux
 # https://unix.stackexchange.com/a/277205
 # https://www.slashroot.in/which-is-the-fastest-method-to-delete-files-in-linux
@@ -83,14 +72,6 @@ fastdelete() {
   eval "${s}" rmdir "$1" "$_tmp"
 }
 
-px() {
-  # https://stackoverflow.com/questions/23258413/expand-aliases-in-non-interactive-shells/23259088#23259088
-  setopt aliases
-  _command="$(which "$1" | sed 's/.*: aliased to //g' )"
-  # http://wiki.bash-hackers.org/syntax/pe#substring_expansion
-  eval proxychains -q "$_command" ${@:2}
-}
-
 j() {
 case "$1" in
   b) cd "$HOME/sync/main/Documents/system-data" ;;
@@ -101,19 +82,6 @@ case "$1" in
   t) cd /media/disk0/torrents ;;
   *) echo "No folder defined for this alias." ;;
 esac
-}
-
-linuxsteamgames() {
-  _url="https://store.steampowered.com/search/?category1=998&os="
-  for os in win linux mac; do
-    local ${os}games="$(curl --http2 -s "${_url}${os}" | grep -o "showing 1 - 25 of [0-9]*" | sed "s/showing 1 - 25 of //")"
-  done
-  echo "Windows steam games: ${wingames}"
-  echo "Mac steam games: ${macgames}"
-  echo "Linux steam games: ${linuxgames}"
-  # https://stackoverflow.com/a/41265735
-  echo "Percentage of linux games compared to windows:" $(echo "scale = 2; ($linuxgames / $wingames)" | bc -l | awk -F '.' '{print $2}')%
-  echo "Percentage of linux games compared to macOS:" $(echo "scale = 2; ($linuxgames / $macgames)" | bc -l | awk -F '.' '{print $2}')%
 }
 
 # https://stackoverflow.com/a/10060342
@@ -176,12 +144,6 @@ backup() {
   upload "$HOME/sync/main/me" yandex:/me
 }
 
-# workaround for https://github.com/citra-emu/citra/issues/3862
-yuzu-binary() {
-  [[ ! -f "libsndio.so.6.1" ]] && ln -sfv /usr/lib/libsndio.so.7.0 libsndio.so.6.1
-  LD_LIBRARY_PATH=$PWD strangle 60 gamemoderun ./yuzu
-}
-
 # https://shapeshed.com/zsh-corrupt-history-file/
 # https://dev.to/rishibaldawa/fixing-corrupt-zsh-history-4nf4
 fix_zsh_history() {
@@ -232,12 +194,20 @@ inchtocm() { echo $(bc -l <<< "$1 * 2.54"); }
 update() {
   yay -Syuu --combinedupgrade --answerclean n --answerdiff n --answerupgrade y --noconfirm
   sudo etc-update
+  #DIFFPROG=meld pacdiff
   #apm update --confirm false
   flatpak --user update --noninteractive
+  snap refresh
   #yarn global upgrade
   #fwupdmgr refresh
   #fwupdmgr update
   zplugin self-update
   zplugin update
   tldr --update
+}
+
+speak() {
+  trans -speak -s ru "$1" -download-audio-as "$XDG_RUNTIME_DIR/trans-speak.ts"
+  ffmpeg -y -i "$XDG_RUNTIME_DIR/trans-speak.ts" "$XDG_RUNTIME_DIR/trans-speak.ogg"
+  echo "$XDG_RUNTIME_DIR/trans-speak.ogg" | clipcopy
 }

@@ -54,10 +54,11 @@ tee -a pacman.conf >/dev/null <<END
 [archzfs]
 SigLevel = Optional TrustAll
 Server = https://archzfs.com/\$repo/x86_64
+[archzfs-kernels]
+Server = http://end.re/\$repo/
 END
 tee -a packages.x86_64 >/dev/null <<END
-archzfs-dkms
-linux-headers
+archzfs
 END
 fi
 

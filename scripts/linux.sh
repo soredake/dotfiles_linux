@@ -14,7 +14,7 @@ END
 
 # lutris: use system libretro cores
 # https://github.com/lutris/lutris/issues/2444
-#ln -sfv "$XDG_CONFIG_HOME/retroarch/cores" "$XDG_DATA_HOME/lutris/runners/retroarch/cores"
+ln -sfv "$XDG_CONFIG_HOME/retroarch/cores" "$XDG_DATA_HOME/lutris/runners/retroarch/cores"
 
 # disable tty motd
 touch "$HOME/.hushlogin"
@@ -22,20 +22,12 @@ touch "$HOME/.hushlogin"
 # https://github.com/kakra/wine-proton/blob/rebase/proton_3.16/README.md#hints-to-32-bit-users-applies-also-to-syswow64
 sudo sed -i "s/; shm-size-bytes.*/shm-size-bytes=1048576/" /etc/pulse/daemon.conf
 
-# needed for "open with" firefox addon
+# helper for "open with" firefox addon
 mkdir "$XDG_DATA_HOME/open_with_addon"
 cd "$XDG_DATA_HOME/open_with_addon" || exit 1
 curl -O https://github.com/darktrojan/openwith/raw/master/webextension/native/open_with_linux.py
 chmod u+x open_with_linux.py
 ./open_with_linux.py install
-
-# needed for "open with" firefox addon
-mkdir "$XDG_DATA_HOME/kget_integrator"
-cd "$XDG_DATA_HOME/kget_integrator" || exit 1
-curl -o "$HOME/.mozilla/native-messaging-hosts/com.kgetdm.firefox.json" https://github.com/NicolasGuilloux/KGet-Integrator/raw/master/Conf/com.kgetdm.firefox.json
-sed -i "s|/usr/bin/kget-integrator|/home/bausch/.local/share/kget_integrator/kget-integrator|" "$HOME/.mozilla/native-messaging-hosts/com.kgetdm.firefox.json"
-curl -O https://github.com/NicolasGuilloux/KGet-Integrator/raw/master/kget-integrator
-
 
 # fix distorted/crackling/robotized audio in discord and some games
 # https://askubuntu.com/questions/1102738/crackling-static-in-discord-with-default-audio-output-port-pulseaudio
@@ -49,20 +41,25 @@ sudo sed -i "s|#AutoEnable=false|AutoEnable=true|g" /etc/bluetooth/main.conf
 # set java version for multimc https://aur.archlinux.org/packages/multimc5/#pinned-700404
 # https://github.com/MultiMC/MultiMC5/wiki/FAQ#not-the-right-java-version
 # sudo archlinux-java status
-sudo archlinux-java set java-8-openjdk
+#sudo archlinux-java set java-8-openjdk
 
 # install some steam play tools
 cd "$XDG_DATA_HOME/Steam/compatibilitytools.d" || exit 1
 # https://github.com/dreamer/luxtorpeda
+# TODO: package this
 curl -L https://luxtorpeda.gitlab.io/luxtorpeda/master/luxtorpeda.tar.xz | tar xJf -
 # https://github.com/dreamer/roberta
-curl -L https://github.com/dreamer/roberta/releases/download/v0.1.0/roberta.tar.xz | tar xJf -
+# TODO: package this
+#curl -L https://github.com/dreamer/roberta/releases/download/v0.1.0/roberta.tar.xz | tar xJf -
+# https://github.com/GloriousEggroll/proton-ge-custom
+# TODO: package this
+#curl -L https://github.com/GloriousEggroll/proton-ge-custom/releases/download/5.2-GE-1/Proton-5.2-GE-1.tar.gz | tar zxvf -
 
 # copy vimix theme
 [[ ! -d /boot/grub/themes/Vimix ]]; sudo cp -r /usr/share/grub/themes/Vimix /boot/grub/themes/Vimix
 
 # psd
-sudo tee /etc/sudoers.d/psd <<< "bausch ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper"
+sudo tee /etc/sudoers.d/psd <<< "$USER ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper"
 
 # relocate fontconfig cache to global dir until xorg is not run as user
 # TODO: https://github.com/sddm/sddm/issues/246
@@ -71,5 +68,15 @@ ln -sfv /var/cache/fontconfig "$XDG_CACHE_HOME/fontconfig_11"
 ln -sfv /var/cache/fontconfig "$XDG_CACHE_HOME/fontconfig"
 
 # aur packages
-sudo mkdir /var/cache/pacman/aur-pkg
-sudo chown -R "$USER:$USER" /var/cache/pacman/aur-pkg
+sudo install -o "$USER" -g "$USER" -d /var/cache/pacman/aur-pkg
+
+# mpv scripts
+ln -svf /usr/lib/mpv/mpris.so /usr/share/mpv/scripts/{pause-when-minimize,autodeint,autocrop,webm}.lua "$XDG_CONFIG_HOME/mpv/scripts"
+
+# disk is slow
+#balooctl config add excludeFolders /media/disk0 /media/disk2
+# balooctl is broken and accepts only one argument
+sed -i "s|exclude folders.*|exclude folders[\$e]=/media/disk0/,/media/disk1/,/media/disk2/|" "$HOME/.config/baloofilerc"
+
+# snap
+sudo snap set system refresh.retain=2

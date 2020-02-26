@@ -14,3 +14,4 @@ Log warn stdout
 ExcludeExitNodes {RU},{UA}
 
 HardwareAccel 1 
+Sandbox 1

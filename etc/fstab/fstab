@@ -24,6 +24,7 @@ UUID=c6739e34-4380-4fd9-a843-0f2514aee9c0    /media/disk0  ext4      defaults,no
 UUID=24EF-DC65                               /efi          vfat      defaults,noauto 0 2
 # https://wiki.archlinux.org/index.php/NTFS-3G
 # https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows
-UUID=48A2065DA206503C                        /media/disk2  ntfs-3g   rw,exec,nodev,nosuid,big_writes,windows_names,hide_hid_files,uid=1000,gid=1000,uhelper=udisks2 0 0
+# hide_hid_files
+UUID=48A2065DA206503C                        /media/disk2  ntfs-3g   rw,exec,nodev,nosuid,big_writes,windows_names,uid=1000,gid=1000,uhelper=udisks2 0 0
 UUID=54282f79-a6dc-4c4f-9674-a03e85dc1a76    /media/disk1  ext4      defaults 0 2
-/media/disk1/swapfile                        none          swap      defaults 0 0
+#/media/disk1/swapfile                        none          swap      defaults 0 0

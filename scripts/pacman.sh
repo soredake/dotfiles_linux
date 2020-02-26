@@ -61,38 +61,18 @@ plasma=(
   plasma-wayland-session
   plasma5-applets-redshift-control
   plasma5-applets-weather-widget
+  plasma5-applets-eventcalendar
   powerdevil
 )
 
-i3=(
-  dragon-drag-and-drop-git
-  fe
-  kbdd-git
-  links
-  maim
-  network-manager-applet
-  pamix-git
-  pavucontrol
-  pulsemixer
-  rofi
-  scrot
-  sct
-  vifm
-  mc
-  wmctrl
-  xautolock
-  xsel
-)
-
 bluetooth=(
-  bluedevil
-  bluez
   bluez-plugins
   bluez-utils
   pulseaudio-modules-bt-git
 )
 
 lang=(
+  aspell-ru
   hunspell-ru-aot
   kbd-ru-keymaps
 )
@@ -106,7 +86,7 @@ mesa=(
   vulkan-mesa-layer lib32-vulkan-mesa-layer
   vulkan-radeon lib32-vulkan-radeon
   xf86-video-amdgpu
-  radeon-profile radeon-profile-daemon-git
+  radeon-profile-git radeon-profile-daemon-git
 )
 
 optdeps=(
@@ -124,8 +104,6 @@ optdeps=(
   libappimage
   # htop
   lsof
-  # yuzu binary dep
-  sndio
   # vscodimum
   ctags
   # youtube-dl
@@ -144,6 +122,10 @@ optdeps=(
   kimageformats
   # dolphin
   konsole
+  # workaround for https://github.com/telegramdesktop/tdesktop/issues/6907#issuecomment-570836260
+  enchant-pure
+  # kio
+  kio-fuse
 )
 
 packages=(
@@ -152,7 +134,9 @@ packages=(
   dosfstools exfat-utils
   ancient-packages
   android-tools
+  archiso
   aria2
+  balena-etcher
   base
   bleachbit
   blender
@@ -171,20 +155,20 @@ packages=(
   docker-compose
   downgrade
   dupeguru
+  dust
   electronmail-bin
   etc-update
-  etcher-bin
   evtest
   falkon firefox
   fatrace
   fd
-  firmware-manager-git gnome-firmware fwupd
   flatpak
+  fwupd
   gimp
   git-cola
   gnome-disk-utility
   gnome-maps
-  godot-mono-bin godot-blender-exporter
+  godot-bin godot-blender-exporter
   gparted partitionmanager
   grub grub-theme-vimix os-prober
   guiscrcpy
@@ -192,10 +176,10 @@ packages=(
   htop
   innoextract
   itch
+  jdk8
   jdupes
   joyutils
   jq
-  jre8-openjdk-headless jre8-openjdk
   kdeconnect
   keepassxc
   kernel-modules-hook kexec-tools
@@ -214,14 +198,12 @@ packages=(
   megasync
   meld
   mpd
-  mpv mpv-mpris-git
-  namespaced-openvpn-git
+  mpv mpv-mpris mpv-webm-git
   nano
   neofetch
   networkmanager networkmanager-pptp networkmanager-openvpn
-  nodejs yarn
   ntfs-3g nvme-cli
-  obs-studio obs-glcapture-git
+  obs-studio
   p7zip p7zip-zstd-codec
   piper
   pkgtop
@@ -236,7 +218,7 @@ packages=(
   rclone
   redshift
   reflector-timer
-  remotely-git
+  remotely
   riot-desktop
   ripgrep
   ripme-git
@@ -247,6 +229,7 @@ packages=(
   shellcheck
   sirikali cryfs
   smartmontools
+  snapd
   spotify
   sshfs
   stow
@@ -266,19 +249,18 @@ packages=(
   trackma-git adl-git
   translate-shell
   trebleshot
-  tutanota-desktop-linux
-  twitch-indicator
+  tutanota-desktop-bin
   unrar zip
   usbutils
   viber
   vscodium-bin
   wget
-  whois
   woeusb
   wxhexeditor
   xclip xdotool
   xdg-user-dirs
-  xorg
+  xorg-server xorg-server-xwayland xorg-xgamma xorg-xhost xorg-xinput
+  yarn
   zeal
   zsh zsh-completions
 )
@@ -325,39 +307,37 @@ games=(
   colobot-gold colobot-gold-music
   decaf-emu-git
   flips-git
-  freej2me
   gamemode lib32-gamemode
   gb-studio-bin
   gltron
-  jstest-gtk-git
-  lutris-battlenet-meta
   lutris-git
   lutris-wine-meta
   lutris-world-of-warcraft-dependencies-amd
+  mame
   minecraft-launcher multimc5
   ninfs-gui
-  openmw
+  openmw-git
   openttd
   osu-lazer
   oversteer
   pcsx2-git
   pcsx2-plugin-usbqemu-wheel
-  protonfixes
+  proton-ge-custom-bin
+  protonfixes-git
   protontricks
   residualvm
   retroarch
+  roberta
   rpcs3-git
   scummvm
-  steam
   steam-fonts
   steam-native-runtime
   syobon
   taisei
+  vita3k-git
   vitetris
   vkbasalt
   winetricks-git
-  xboxdrv
-  xdg-utils
   yuzu-mainline-git
   # https://wiki.archlinux.org/index.php/CDemu
   kde-cdemu-manager-kf5 cdemu-client vhba-module-dkms
@@ -371,17 +351,7 @@ wine=(
   gst-plugins-ugly lib32-gst-plugins-ugly
   mingw-w64-gcc
   vkd3d lib32-vkd3d
-  wine-mono
-  wine_gecko
-)
-
-virtualbox=(
-  virtualbox
-  virtualbox-ext-oracle
-  virtualbox-guest-dkms
-  virtualbox-guest-iso
-  virtualbox-guest-utils
-  virtualbox-host-dkms
+  wine-mono-bin mono wine-gecko
 )
 
 # Upgrade any already-installed packages.
@@ -392,9 +362,6 @@ yay -S --asdeps "${optdeps[@]}"
 
 # Install my packages
 yay -S "${packages[@]}" "${fonts[@]}" "${mesa[@]}" "${plasma[@]}" "${lang[@]}" "${games[@]}" "${wine[@]}" "${bluetooth[@]}"
-
-# not in use anymore
-yay -S "${i3[@]}" "${virtualbox[@]}"
 
 # Remove outdated versions from the pacman.
 yay -c

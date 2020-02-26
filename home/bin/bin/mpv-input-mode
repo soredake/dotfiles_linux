@@ -1,5 +1,5 @@
 #!/bin/bash
-file="/tmp/mpv-input"
+file="$XDG_RUNTIME_DIR/mpv-input"
 load() { exec echo "loadfile ${1}" >"${file}"; }
 if [[ ! $(pgrep -f "mpv --profile=input-mode") ]]; then
   [[ ! -e "${file}" ]] && mkfifo "${file}"
