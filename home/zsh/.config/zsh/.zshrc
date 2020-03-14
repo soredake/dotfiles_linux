@@ -1,40 +1,42 @@
 # shellcheck disable=2034,2148
-
-# https://github.com/zdharma/zplugin#customizing-paths
-declare -A ZPLGM  # initial Zplugin's hash definition, if configuring before loading Zplugin, and then:
-ZPLGM[BIN_DIR]="$XDG_DATA_HOME/zplugin/bin"
-ZPLGM[HOME_DIR]="$XDG_DATA_HOME/zplugin"
-ZPFX="$XDG_DATA_HOME/zplugin/polaris"
-ZPLGM[COMPINIT_OPTS]=-C
-[[ ! -d "${ZPLGM[BIN_DIR]}" ]] && git clone --depth 10 https://github.com/zdharma/zplugin.git "${ZPLGM[BIN_DIR]}"
-### Added by Zplugin's installer
+# https://github.com/zdharma/zinit#customizing-paths
+declare -A ZINIT  # initial Zinit's hash definition, if configuring before loading Zinit, and then:
+ZINIT[BIN_DIR]="$XDG_DATA_HOME/zinit/bin"
+ZINIT[HOME_DIR]="$XDG_DATA_HOME/zinit"
+ZPFX="$XDG_DATA_HOME/zinit/polaris"
+ZINIT[COMPINIT_OPTS]=-C
+[[ ! -d "${ZINIT[BIN_DIR]}" ]] && git clone --depth 10 https://github.com/zdharma/zinit.git "${ZINIT[BIN_DIR]}"
+### Added by ZINIT's installer
 # shellcheck disable=1090
-source "${ZPLGM[BIN_DIR]}/zplugin.zsh"
-autoload -Uz _zplugin
+source "${ZINIT[BIN_DIR]}/zinit.zsh"
+autoload -Uz _zinit
 # shellcheck disable=2154
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin's installer chunk
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of zinit's installer chunk
 # shellcheck disable=1090
-zplugin light zsh-users/zsh-autosuggestions
-zplugin snippet OMZ::lib/completion.zsh
-zplugin snippet OMZ::lib/directories.zsh
-zplugin snippet OMZ::lib/clipboard.zsh
-zplugin snippet OMZ::lib/history.zsh
-zplugin snippet OMZ::lib/key-bindings.zsh
-zplugin snippet OMZ::lib/theme-and-appearance.zsh
-zplugin snippet OMZ::plugins/extract/extract.plugin.zsh
+zinit light zsh-users/zsh-autosuggestions
+zinit snippet OMZ::lib/clipboard.zsh
+zinit snippet OMZ::lib/completion.zsh
+zinit snippet OMZ::lib/directories.zsh
+zinit snippet OMZ::lib/grep.zsh
+zinit snippet OMZ::lib/history.zsh
+zinit snippet OMZ::lib/key-bindings.zsh
+zinit snippet OMZ::lib/theme-and-appearance.zsh
+zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
+zinit snippet OMZ::plugins/extract/extract.plugin.zsh
+zinit snippet OMZ::plugins/rsync/rsync.plugin.zsh
 # Load the pure theme, with zsh-async library that's bundled with it
-zplugin ice pick"async.zsh" src"pure.zsh"; zplugin light sindresorhus/pure
+zinit ice pick"async.zsh" src"pure.zsh"; zinit light sindresorhus/pure
 
-# https://github.com/zdharma/zplugin#calling-compinit-without-turbo-mode
+# https://github.com/zdharma/zinit#calling-compinit-without-turbo-mode
 # https://unix.stackexchange.com/a/178054
 unsetopt complete_aliases
 autoload -Uz compinit
 compinit
 # shellcheck disable=1090
-zplugin cdreplay -q
+zinit cdreplay -q
 # syntax-highlighting plugins (like fast-syntax-highlighting or zsh-syntax-highlighting) expect to be loaded last
-zplugin light zdharma/fast-syntax-highlighting
+zinit light zdharma/fast-syntax-highlighting
 
 # shellcheck disable=1090
 for f in "$XDG_CONFIG_HOME/zsh/custom"/*; do . "$f"; done
@@ -44,7 +46,7 @@ for f in "$XDG_CONFIG_HOME/zsh/custom"/*; do . "$f"; done
 pathadd() {
   [[ -d "$1" ]] && [[ ":$PATH:" != *":$1:"* ]] && PATH="${PATH:+"$PATH:"}$1"
 }
-pathadd "$HOME/bin"
+pathadd "$XDG_DATA_HOME/bin"
 pathadd /sbin
 pathadd /usr/sbin
 #pathadd "$(yarn global bin)"
@@ -55,7 +57,7 @@ _comp_options+=(globdots)
 
 # read private and global profile files
 # shellcheck disable=1090
-for f in "$XDG_DATA_HOME"/private/*; do . "$f"; done
+. "$HOME/main/Documents/private.zsh"
 for sh in /etc/profile.d/*.sh ; do
         #shellcheck disable=1090
         [[ -r "$sh" ]] && . "$sh"

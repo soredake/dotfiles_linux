@@ -5,28 +5,13 @@
 [core]
   # Use atom as the default editor.
   editor = $EDITOR -w
-  # global gitignore
-  excludesfile = ~/.config/git/gitignore-global
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold # line info
-  old = red # deletions
-  new = green # additions
-[color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
 [help]
   # Automatically correct and execute mistyped commands.
   autocorrect = 1
 [diff]
   # Use more time to create better diffs. E.g. matching opening/closing braces
   # from neighbour functions.
-  algorithm = patience
+  algorithm = histogram
   # Tells Git to detect renames. If set to "true", it will enable basic
   # rename detection. If set to "copies", it will detect copies, as well.
   renames = copies
@@ -80,8 +65,6 @@
 [credential]
   # https://git-scm.com/docs/gitcredentials
   helper = cache --timeout=3600 --socket=$XDG_RUNTIME_DIR/git-credential-cache/socket
-[include]
-  path = ~/.local/share/gitconfig_local
 [cola]
   spellcheck = false
 [feature]

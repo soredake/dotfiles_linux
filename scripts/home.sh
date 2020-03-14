@@ -43,58 +43,62 @@ resume_swap_file_setup() {
 main() {
 # stow work
 ../etc/install.sh
-../etc_cp/install.sh
+#../etc_cp/install.sh
 ../home/install.sh
 ../home_cp/install.sh
-../root/install.sh
-../service.conf/install.sh
+#../service.conf/install.sh
 
 # Install packages
-./pacman.sh
+./packages.sh
 
-# systemd
-./systemd.sh
-
-# default progs
-./defaults.sh
-
-# Setup linux
-./linux.sh
-
-# vscode
-./vscode.sh
-
-# mpv scripts
-./mpv-scripts.sh
+# settings
+./settings.sh
 }
 
 export -f main
 
 #BASE=$(basename "$(realpath "$SD"/..)")
-dotpath="/home/soredake/git"
-if grep --quiet "soredake" /etc/passwd; then
+dotpath="/home/danet/git"
+if userdbctl user danet; then
   red "User exists, starting stage2"
   main
 else
   red "User not exists, starting stage1"
-  localectl set-locale LANG=en_US.UTF-8
-  timedatectl set-timezone Europe/Kiev
-  cp "$SD"/../etc/arch/pacman.conf /etc/pacman.conf
-  cp "$SD"/../etc/arch/makepkg.conf /etc/makepkg.conf
-  pacman -Syuu yay base stow zsh xdg-user-dirs || die "pacman failed"
-  hostnamectl set-hostname archlinux-main
+  systemd-firstboot --locale=en_US.UTF-8 --timezone=Europe/Kiev --hostname=archlinux-main  --setup-machine-id --prompt-root-password
+  pacman -U https://repo.kitsuna.net/x86_64/yay-9.4.6-2-x86_64.pkg.tar.zst
+  yay -Syuu base stow zsh xdg-user-dirs || die "pacman failed"
   sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
   red "Creating user"
-  useradd -G wheel -s /bin/zsh --skel /dev/null "soredake"
-  red "Password for user"
-  passwd "soredake" || die "setting user password failed"
-  red "Password for root"
-  passwd root || die "setting root password failed"
+  # https://wiki.archlinux.org/index.php/Systemd-homed
+  sudo tee /etc/pam.d/system-auth >/dev/null <<END
+#%PAM-1.0
+
+auth      sufficient pam_unix.so
+-auth     sufficient pam_systemd_home.so
+auth      required   pam_deny.so
+
+account   required   pam_nologin.so
+-account  sufficient pam_systemd_home.so
+account   sufficient pam_unix.so
+account   required   pam_permit.so
+
+-password sufficient pam_systemd_home.so
+password  sufficient pam_unix.so sha512 shadow try_first_pass try_authtok
+password  required   pam_deny.so
+
+-session  optional   pam_keyinit.so revoke
+-session  optional   pam_loginuid.so
+-session  optional   pam_systemd_home.so
+-session  optional   pam_systemd.so
+session   required   pam_unix.so 
+END
+  homectl create danet --uid=1000 --shell=/bin/zsh -G wheel --storage=fscrypt
+  homectl activate danet
   red "Creating user dirs"
-  sudo -u "soredake" -s xdg-user-dirs-update
-  sudo -u "soredake" -s mkdir -p git .config .cache .local/share/tig
+  #homectl with danet xdg-user-dirs-update # TODO:
+  homectl with danet mkdir -p git .config .cache .local/share
   red "Cloning repository"
   git clone https://notabug.org/soredake/dotfiles_home.git "${dotpath}/dotfiles_home"
-  cp "$SD"/../home/env/.pam_environment /home/soredake
-  sudo -u "soredake" -s "${dotpath}/dotfiles_home/scripts/home.sh"
+  cp "$SD"/../home/env/.pam_environment /home/danet
+  homectl with danet "${dotpath}/dotfiles_home/scripts/home.sh"
 fi

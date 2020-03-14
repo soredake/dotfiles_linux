@@ -4,6 +4,8 @@ _os="linux64"
 _lang="en-US"
 AUTODOWNLOAD="release"
 
+#[[ ! -d "$XDG_CACHE_HOME/fxlowmem" ]] && mkdir -p "$XDG_CACHE_HOME/fxlowmem"
+
 die() {
   echo "$1"
   exit 1
@@ -21,20 +23,20 @@ download() {
   _base="$AUTODOWNLOAD-latest.tar.bz2"
   [[ ! -d "$cdir" ]] && mkdir -p "${cdir}"
   # cleanup
-  if [[ ! -z "$CLEAN" ]]; then
+  if [[ -n "$CLEAN" ]]; then
     rm -f "${cdir}/$_base"
     rm -f "${cdir}/${AUTODOWNLOAD}*"
   fi
   # download
   echo "Downloading firefox version: $AUTODOWNLOAD"
-  [[ ! -e "${cdir}/$_base" ]] && wget -O "${cdir}/$_base" "https://download.mozilla.org/?product=firefox${URL}-latest-ssl&os=${_os}&lang=${_lang}"
-  [[ ! -z "$CLEAN" ]] && rm "${cdir}/$AUTODOWNLOAD.version"
+  [[ ! -e "${cdir}/$_base" ]] && curl -Lo "${cdir}/$_base" "https://download.mozilla.org/?product=firefox${URL}-latest-ssl&os=${_os}&lang=${_lang}"
+  [[ -n "$CLEAN" ]] && rm "${cdir}/$AUTODOWNLOAD.version"
   if [[ ! -f "${cdir}/$AUTODOWNLOAD.version" ]]; then
     tar xvf "${cdir}/$_base" firefox/application.ini -O | grep -Po '(?<=^Version=).*' >"${cdir}/$AUTODOWNLOAD.version"
   fi
   version="$(cat "${cdir}/$AUTODOWNLOAD".version)"
   LOCATION="${cdir}/${AUTODOWNLOAD}-${version}"
-  [[ ! -z "$CLEAN" ]] && rm -r "${LOCATION}"
+  [[ -n "$CLEAN" ]] && rm -r "${LOCATION}"
   if ! test -d "${LOCATION}"; then
     mkdir "${LOCATION}"
     # unpack
@@ -51,7 +53,7 @@ download() {
 }
 
 start() {
-  if [[ ! -z "${AUTODOWNLOAD}" ]]; then
+  if [[ -n "${AUTODOWNLOAD}" ]]; then
     download "${AUTODOWNLOAD}"
   fi
   fxbranch="${AUTODOWNLOAD}"-
@@ -61,16 +63,10 @@ start() {
   location=${LOCATION:-/usr/lib/firefox}
   logfile=${LOGFILE:-$(mktemp -t -p "${cdir}" "firefox-${fxbranch}${fxver}${date}"-XXX.log)}
   cat > "${profile}/user.js" <<END
-user_pref("browser.cache.disk.parent_directory",  "/dev/shm/firefox-cache");
-user_pref("browser.download.useDownloadDir", false);
 user_pref("browser.shell.checkDefaultBrowser", false);
-user_pref("media.autoplay.enabled", false);
-user_pref("media.default_volume", "0.1");
-user_pref("media.volume_scale", "0.1");
 user_pref("browser.startup.page", 3);
 END
-  #cp "${XDG_CACHE_HOME:-${HOME}/.cache}/search.json.mozlz4" "$profile" || die "for now, search.json.mozlz4 file is the only way to set the default search engine"
-  if [[ ! -z "${INFO}" ]]; then
+  if [[ -n "${INFO}" ]]; then
     echo "Using date: ${date}"
     echo "Using profile dir: ${profile}"
     echo "Using firefox location: ${location}"
@@ -80,16 +76,17 @@ END
   nohup "${location}"/firefox --new-instance --profile "${profile}" &>"${logfile}" &
 }
 
-while getopts "p:l:lg:a:wd:ihc" opt; do
+while getopts "p:l:g:a:d:c:i:h:c" opt; do
   case $opt in
     p) PROFILE="${OPTARG}" ;;
     l) LOCATION="${OPTARG}" ;;
-    lg) LOGFILE="${OPTARG}" ;;
+    g) LOGFILE="${OPTARG}" ;;
     a) AUTODOWNLOAD=${OPTARG} ;;
-    wd) WORKDIR=${OPTARG} ;;
+    d) WORKDIR=${OPTARG} ;;
     c) CLEAN=true ;;
     i) INFO=true ;;
-    h) ACTION="help"
+    h) ACTION="help" ;;
+    *) echo "no such action"
   esac
 done
 
@@ -104,9 +101,9 @@ case "${ACTION}" in
     help) echo "usage: ${0} [-p, -l, -lg, -a, -i, -h]
     -p use custom profile path
     -l use custom firefox location (such as firefox from your package manager or other)
-    -lg use custom log location
+    -g use custom log location
     -a autodownload one of this versions: esr, release, beta, devedition, nightly
-    -wd where to store logs and versions
+    -d where to store logs and versions
     -i output some info
     -c remove cached downloaded version
     -h help" ;;

@@ -51,18 +51,14 @@ plasma=(
   kwalletmanager
   sweeper
   # kdeutils-meta end
+  colord-kde
   kde-service-menu-reimage
   kde-servicemenus-rootactions
-  kde-thumbnailer-apk
-  kde-thumbnailer-epub
   kwin-lowlatency
   plasma-meta
-  plasma-nm
   plasma-wayland-session
-  plasma5-applets-redshift-control
+  plasma5-applets-redshift-control-git
   plasma5-applets-weather-widget
-  plasma5-applets-eventcalendar
-  powerdevil
 )
 
 bluetooth=(
@@ -79,35 +75,22 @@ lang=(
 
 mesa=(
   libva-mesa-driver lib32-libva-mesa-driver
-  llvm lib32-llvm
   mesa lib32-mesa
-  mesa-demos lib32-mesa-demos
-  opencl-mesa
+  radeon-profile-git radeon-profile-daemon-git
   vulkan-mesa-layer lib32-vulkan-mesa-layer
   vulkan-radeon lib32-vulkan-radeon
   xf86-video-amdgpu
-  radeon-profile-git radeon-profile-daemon-git
 )
 
 optdeps=(
-  # bleachbit-git
-  cleanerml-git
   # plasma-workspace
   appmenu-gtk-module
-  # firefox
-  speech-dispatcher espeak-ng festival
-  # plasma-meta
-  kde-gtk-config
-  # ranger
-  ffmpegthumbnailer
   # kio-extras kfilemetadata
   libappimage
   # htop
   lsof
-  # vscodimum
+  # vscodium
   ctags
-  # youtube-dl
-  atomicparsley
   # kde-service-menu-reimage
   jhead
   # vscode dep
@@ -116,22 +99,17 @@ optdeps=(
   flite
   # pulseaudio
   pulseaudio-alsa
-  # discover
-  packagekit-qt5
   # kio-extras gwenview
   kimageformats
   # dolphin
   konsole
-  # workaround for https://github.com/telegramdesktop/tdesktop/issues/6907#issuecomment-570836260
-  enchant-pure
   # kio
   kio-fuse
+  # python-internetarchive
+  python-ujson python-gevent
 )
 
 packages=(
-  # proton/wine from tkg
-  # mkfs.fat mkfs.exfat
-  dosfstools exfat-utils
   ancient-packages
   android-tools
   archiso
@@ -139,47 +117,29 @@ packages=(
   balena-etcher
   base
   bleachbit
-  blender
-  btfs
   cantata
   ccache
-  chntpw
-  cloc
-  colord-kde oyranos
-  colordiff
   cpupower
-  curlie
-  disable-c6-systemd
   discord
   dnscrypt-proxy
-  docker-compose
   downgrade
   dupeguru
-  dust
   electronmail-bin
   etc-update
-  evtest
-  falkon firefox
   fatrace
   fd
+  firefox
   flatpak
   fwupd
   gimp
   git-cola
-  gnome-disk-utility
-  gnome-maps
-  godot-bin godot-blender-exporter
-  gparted partitionmanager
-  grub grub-theme-vimix os-prober
-  guiscrcpy
-  haguichi
+  godot-bin
+  gparted
+  grub grub-hook os-prober
   htop
   innoextract
-  itch
-  jdk8
   jdupes
-  joyutils
-  jq
+  jre11-openjdk
   kdeconnect
   keepassxc
   kernel-modules-hook kexec-tools
@@ -189,39 +149,34 @@ packages=(
   lector
   libreoffice-still
   libstrangle-git
-  linux linux-firmware amd-ucode
-  linux-tkg-pds-zen linux-tkg-pds-zen-headers
-  localepurge
+  linux-firmware amd-ucode
+  # TODO: switch back to plain kernel when fsync is merged
+  linux-tkg-bmq-zen linux-tkg-bmq-zen-headers
   lostfiles
-  lshw
   man-db man-pages
+  mdf2iso
   megasync
   meld
   mpd
   mpv mpv-mpris mpv-webm-git
   nano
-  neofetch
   networkmanager networkmanager-pptp networkmanager-openvpn
-  ntfs-3g nvme-cli
+  ntfs-3g
   obs-studio
-  p7zip p7zip-zstd-codec
+  p7zip
+  paccache-hook
   piper
   pkgtop
   profile-sync-daemon
-  proxychains
-  ps_mem
-  pulseeffects
-  qalculate-gtk
-  qbittorrent  
+  proxychains-ng
+  python-internetarchive
+  qbittorrent
   qdirstat
   ranger
   rclone
   redshift
-  reflector-timer
-  remotely
   riot-desktop
   ripgrep
-  ripme-git
   rssguard
   safeeyes
   samrewritten-git
@@ -233,34 +188,29 @@ packages=(
   spotify
   sshfs
   stow
-  streamlink youtube-dl
   sudo
   syncplay
-  syncthing syncthingtray
+  syncthing
   systemdgenie
-  teamviewer
   telegram-desktop
   thrash-protect
   thunderbird
-  tig
   tldr++
-  tmux
   tor tor-browser
   trackma-git adl-git
   translate-shell
-  trebleshot
   tutanota-desktop-bin
   unrar zip
-  usbutils
   viber
   vscodium-bin
   wget
-  woeusb
+  woeusb # https://github.com/balena-io/etcher/issues/210
   wxhexeditor
   xclip xdotool
   xdg-user-dirs
   xorg-server xorg-server-xwayland xorg-xgamma xorg-xhost xorg-xinput
   yarn
+  youtube-dl
   zeal
   zsh zsh-completions
 )
@@ -272,10 +222,7 @@ fonts=(
   font-bh-ttf
   mplus-font
   noto-fonts
-  otf-ipaexfont
-  otf-takao
   terminus-font
-  tex-gyre-fonts
   ttf-baekmuk
   ttf-bitstream-vera
   ttf-courier-prime
@@ -283,21 +230,15 @@ fonts=(
   ttf-droid
   ttf-hack
   ttf-inconsolata
-  ttf-kochi-substitute
   ttf-koruri
   ttf-liberation
-  ttf-mikachan
   ttf-ms-fonts
   ttf-opensans
   ttf-paratype
-  ttf-sazanami
   ttf-signika
   ttf-symbola
   ttf-ubuntu-font-family
-  ttf-unfonts-core-ibx
   ttf-vlgothic
-  wqy-microhei
-  wqy-zenhei
 )
 
 games=(
@@ -307,31 +248,26 @@ games=(
   colobot-gold colobot-gold-music
   decaf-emu-git
   flips-git
-  gamemode lib32-gamemode
   gb-studio-bin
-  gltron
+  itch
+  lib32-gamemode
   lutris-git
   lutris-wine-meta
   lutris-world-of-warcraft-dependencies-amd
+  luxtorpeda
   mame
-  minecraft-launcher multimc5
+  minecraft-launcher
   ninfs-gui
   openmw-git
-  openttd
-  osu-lazer
-  oversteer
   pcsx2-git
-  pcsx2-plugin-usbqemu-wheel
-  proton-ge-custom-bin
-  protonfixes-git
+  protonfixes-updated-git
   protontricks
   residualvm
   retroarch
   roberta
   rpcs3-git
   scummvm
-  steam-fonts
-  steam-native-runtime
+  steam
   syobon
   taisei
   vita3k-git
@@ -346,12 +282,11 @@ games=(
 wine=(
   gst-plugins-bad lib32-gst-plugins-bad
   gst-plugins-base lib32-gst-plugins-base
-  gst-plugins-base-libs lib32-gst-plugins-base-libs
   gst-plugins-good lib32-gst-plugins-good
   gst-plugins-ugly lib32-gst-plugins-ugly
   mingw-w64-gcc
   vkd3d lib32-vkd3d
-  wine-mono-bin mono wine-gecko
+  wine-mono-bin wine-gecko
 )
 
 # Upgrade any already-installed packages.
@@ -363,5 +298,36 @@ yay -S --asdeps "${optdeps[@]}"
 # Install my packages
 yay -S "${packages[@]}" "${fonts[@]}" "${mesa[@]}" "${plasma[@]}" "${lang[@]}" "${games[@]}" "${wine[@]}" "${bluetooth[@]}"
 
-# Remove outdated versions from the pacman.
-yay -c
+# https://wiki.archlinux.org/index.php/Flatpak#Add_a_repository
+flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+flatpak --user install flathub org.jdownloader.JDownloader
+sudo snap install copay
+
+vspackages=(
+  #https://github.com/Microsoft/vscode/issues/12622
+  #https://github.com/microsoft/vscode/issues/33110
+  #https://github.com/microsoft/vscode/issues/84151
+  EditorConfig.EditorConfig
+  HookyQR.beautify
+  Tyriar.sort-lines
+  anseki.vscode-color
+  bungcip.better-toml
+  chrislajoie.vscode-modelines
+  coolbear.systemd-unit-file
+  deerawan.vscode-dash
+  eamodio.gitlens
+  file-icons.file-icons
+  jaspernorth.vscode-pigments
+  jaydenlin.ctags-support
+  jeff-hykin.code-eol
+  jit-y.vscode-advanced-open-file
+  mads-hartmann.bash-ide-vscode
+  malmaud.tmux
+  mgmcdermott.vscode-language-babel
+  timonwong.shellcheck
+  ulthes.theme-firewatch
+  wayou.vscode-todo-highlight
+)
+
+codium --install-extension "${vspackages[@]}"

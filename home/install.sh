@@ -4,8 +4,9 @@ SD="$(cd "$(dirname "$0")" > /dev/null || exit 1; pwd)";
 cd "$SD" || exit 1
 
 # create initial folders
-[[ ! -d "$XDG_DATA_HOME/atom" ]] && mkdir -p "$XDG_DATA_HOME/atom"
-[[ ! -d "$XDG_CONFIG_HOME/Code - OSS/User" ]] && mkdir -p "$XDG_CONFIG_HOME/Code - OSS/User"
+[[ ! -d "$XDG_CONFIG_HOME/VSCodium" ]] && mkdir -p "$XDG_CONFIG_HOME/VSCodium"
+[[ ! -d "$XDG_CONFIG_HOME/git" ]] && mkdir -p "$XDG_CONFIG_HOME/git"
+[[ ! -d "$XDG_CONFIG_HOME/mpv" ]] && mkdir -p "$XDG_CONFIG_HOME/mpv"
 [[ ! -d "$XDG_CONFIG_HOME/kitty" ]] && mkdir -p "$XDG_CONFIG_HOME/kitty"
 [[ ! -d "$XDG_CONFIG_HOME/systemd/user" ]] && mkdir -p "$XDG_CONFIG_HOME/systemd/user"
 

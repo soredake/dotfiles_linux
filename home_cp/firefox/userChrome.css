@@ -1,10 +1,16 @@
 /* https://www.userchrome.org/ */
 
-/* https://github.com/piroor/treestyletab/wiki/Code-snippets-for-custom-style-rules */
+/* https://github.com/piroor/treestyletab/wiki/Code-snippets-for-custom-style-rules 
+https://bugzilla.mozilla.org/show_bug.cgi?id=1408077 */
 /* For only Tree Style Tab sidebar #1397 */
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
   display: none;
 }
+/* https://bugzilla.mozilla.org/show_bug.cgi?id=1332447
+https://bugzilla.mozilla.org/show_bug.cgi?id=1410548
+https://bugzilla.mozilla.org/show_bug.cgi?id=1333837
+https://bugzilla.mozilla.org/show_bug.cgi?id=1339561
+https://bugzilla.mozilla.org/show_bug.cgi?id=1410548 */
 /* Hide horizontal tabs at the top of the window #1349 */
 #main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar > .toolbar-items {
   opacity: 0;
@@ -12,37 +18,4 @@
 }
 #main-window:not([tabsintitlebar="true"]) #TabsToolbar {
     visibility: collapse !important;
-}
-
-/* https://www.e2app.com/memories/how-to-get-multirow-bookmarks-back-in-firefox-57-and-newer/ */
-/* https://www.reddit.com/r/FirefoxCSS/comments/aipl0y/new_firefox_developer_edition_update_broke/ */
-#PersonalToolbar {
-  max-height: 104px !important;
-}
-
-#PlacesToolbarItems>box {
-  display: block !important;
-  overflow-y: visible !important;
-}
-
-#PersonalToolbar #PlacesToolbarItems {
-  display: block !important;
-  overflow-x: visible !important;
-  overflow-y: visible !important;
-}
-
-#PersonalToolbar #PlacesToolbarItems .bookmark-item {
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-}
-
-
-/* hide tracking protection icon https://www.reddit.com/r/FirefoxCSS/comments/czevqa/hiding_the_tracking_protection_icon/ */
-/* Always hide the tracking protection icon */
-/* https://www.reddit.com/r/firefox/comments/cbukwc/hide_content_blocking_shield_icon_from_address_bar/etidgz2/ */
-#tracking-protection-icon-box {
-    display: none;
-}
-#tracking-protection-icon-container {
-    display: none;
 }
