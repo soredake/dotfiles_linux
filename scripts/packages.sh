@@ -138,6 +138,7 @@ packages=(
   grub grub-hook os-prober
   htop
   innoextract
+  ripme-git
   jdupes
   jre11-openjdk
   kdeconnect
@@ -204,7 +205,7 @@ packages=(
   viber
   vscodium-bin
   wget
-  woeusb # https://github.com/balena-io/etcher/issues/210
+  woeusb # TODO: https://github.com/balena-io/etcher/issues/210
   wxhexeditor
   xclip xdotool
   xdg-user-dirs
@@ -236,7 +237,7 @@ fonts=(
   ttf-opensans
   ttf-paratype
   ttf-signika
-  ttf-symbola
+  #ttf-symbola
   ttf-ubuntu-font-family
   ttf-vlgothic
 )
@@ -244,14 +245,15 @@ fonts=(
 games=(
   boxtron
   cataclysm-dda-tiles
-  citra-canary-git
+  citra-canary-git # TODO: move to bin
   colobot-gold colobot-gold-music
   decaf-emu-git
+  dosbox-staging
   flips-git
   gb-studio-bin
   itch
   lib32-gamemode
-  lutris-git
+  lutris-git # TODO: non-git after 0.5.6 is out
   lutris-wine-meta
   lutris-world-of-warcraft-dependencies-amd
   luxtorpeda
@@ -259,7 +261,7 @@ games=(
   minecraft-launcher
   ninfs-gui
   openmw-git
-  pcsx2-git
+  pcsx2-git # TODO: move to bin
   protonfixes-updated-git
   protontricks
   residualvm
@@ -273,10 +275,10 @@ games=(
   vita3k-git
   vitetris
   vkbasalt
-  winetricks-git
+  winetricks-git # TODO: move to bin
   yuzu-mainline-git
   # https://wiki.archlinux.org/index.php/CDemu
-  kde-cdemu-manager-kf5 cdemu-client vhba-module-dkms
+  kde-cdemu-manager-kf5 cdemu-client vhba-module-dkms # TODO:
 )
 
 wine=(
@@ -292,11 +294,8 @@ wine=(
 # Upgrade any already-installed packages.
 yay -Syuu
 
-# Install optdeps
-yay -S --asdeps "${optdeps[@]}"
-
 # Install my packages
-yay -S "${packages[@]}" "${fonts[@]}" "${mesa[@]}" "${plasma[@]}" "${lang[@]}" "${games[@]}" "${wine[@]}" "${bluetooth[@]}"
+yay -S "${packages[@]}" "${fonts[@]}" "${mesa[@]}" "${plasma[@]}" "${lang[@]}" "${games[@]}" "${wine[@]}" "${bluetooth[@]}" "${optdeps[@]}"
 
 # https://wiki.archlinux.org/index.php/Flatpak#Add_a_repository
 flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -328,6 +327,7 @@ vspackages=(
   timonwong.shellcheck
   ulthes.theme-firewatch
   wayou.vscode-todo-highlight
+  bmalehorn.vscode-fish
 )
 
 codium --install-extension "${vspackages[@]}"

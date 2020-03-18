@@ -1,10 +1,7 @@
 #!/bin/bash
-
 _os="linux64"
 _lang="en-US"
 AUTODOWNLOAD="release"
-
-#[[ ! -d "$XDG_CACHE_HOME/fxlowmem" ]] && mkdir -p "$XDG_CACHE_HOME/fxlowmem"
 
 die() {
   echo "$1"
@@ -19,7 +16,8 @@ download() {
     nightly) URL=-nightly ;;
     *) URL=
   esac
-  cdir="${XDG_CACHE_HOME:-$WORKDIR}/fxlowmem"
+  [[ -d "$HOME/.cache" ]] && ccache="$HOME/.cache"
+  cdir="${ccache:-$WORKDIR}/fxlowmem"
   _base="$AUTODOWNLOAD-latest.tar.bz2"
   [[ ! -d "$cdir" ]] && mkdir -p "${cdir}"
   # cleanup

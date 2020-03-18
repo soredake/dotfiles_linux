@@ -3,20 +3,13 @@
   name = soredake
   email = fdsfgs@krutt.org
 [core]
-  # Use atom as the default editor.
   editor = $EDITOR -w
 [help]
-  # Automatically correct and execute mistyped commands.
   autocorrect = 1
 [diff]
-  # Use more time to create better diffs. E.g. matching opening/closing braces
-  # from neighbour functions.
   algorithm = histogram
-  # Tells Git to detect renames. If set to "true", it will enable basic
-  # rename detection. If set to "copies", it will detect copies, as well.
   renames = copies
 [merge]
-  # Include summaries of merged commits in newly created merge commit messages.
   log = true
 [alias]
   # Verbose branches info.

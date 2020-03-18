@@ -66,39 +66,36 @@ else
   red "User not exists, starting stage1"
   systemd-firstboot --locale=en_US.UTF-8 --timezone=Europe/Kiev --hostname=archlinux-main  --setup-machine-id --prompt-root-password
   pacman -U https://repo.kitsuna.net/x86_64/yay-9.4.6-2-x86_64.pkg.tar.zst
-  yay -Syuu base stow zsh xdg-user-dirs || die "pacman failed"
+  yay -Syuu base stow zsh || die "yay failed"
   sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
   red "Creating user"
   # https://wiki.archlinux.org/index.php/Systemd-homed
   sudo tee /etc/pam.d/system-auth >/dev/null <<END
 #%PAM-1.0
 
-auth      sufficient pam_unix.so
+auth      sufficient pam_unix.so     try_first_pass nullok
 -auth     sufficient pam_systemd_home.so
+auth      optional   pam_permit.so
+auth      required   pam_env.so
 auth      required   pam_deny.so
 
-account   required   pam_nologin.so
--account  sufficient pam_systemd_home.so
 account   sufficient pam_unix.so
-account   required   pam_permit.so
+-account  sufficient pam_systemd_home.so
+account   optional   pam_permit.so
+account   required   pam_time.so
 
 -password sufficient pam_systemd_home.so
-password  sufficient pam_unix.so sha512 shadow try_first_pass try_authtok
-password  required   pam_deny.so
+password  sufficient pam_unix.so     try_first_pass nullok sha512 shadow
+password  optional   pam_permit.so
 
--session  optional   pam_keyinit.so revoke
--session  optional   pam_loginuid.so
--session  optional   pam_systemd_home.so
--session  optional   pam_systemd.so
-session   required   pam_unix.so 
+session   required  pam_limits.so
+-session  optional  pam_systemd_home.so
+session   required  pam_unix.so
+session   optional  pam_permit.so
 END
-  homectl create danet --uid=1000 --shell=/bin/zsh -G wheel --storage=fscrypt
+  homectl create danet --uid=1000 --shell=/bin/fish -G wheel --storage=fscrypt
   homectl activate danet
-  red "Creating user dirs"
-  #homectl with danet xdg-user-dirs-update # TODO:
-  homectl with danet mkdir -p git .config .cache .local/share
   red "Cloning repository"
   git clone https://notabug.org/soredake/dotfiles_home.git "${dotpath}/dotfiles_home"
-  cp "$SD"/../home/env/.pam_environment /home/danet
   homectl with danet "${dotpath}/dotfiles_home/scripts/home.sh"
 fi

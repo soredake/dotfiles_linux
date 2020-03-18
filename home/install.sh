@@ -4,14 +4,12 @@ SD="$(cd "$(dirname "$0")" > /dev/null || exit 1; pwd)";
 cd "$SD" || exit 1
 
 # create initial folders
-[[ ! -d "$XDG_CONFIG_HOME/VSCodium" ]] && mkdir -p "$XDG_CONFIG_HOME/VSCodium"
-[[ ! -d "$XDG_CONFIG_HOME/git" ]] && mkdir -p "$XDG_CONFIG_HOME/git"
-[[ ! -d "$XDG_CONFIG_HOME/mpv" ]] && mkdir -p "$XDG_CONFIG_HOME/mpv"
-[[ ! -d "$XDG_CONFIG_HOME/kitty" ]] && mkdir -p "$XDG_CONFIG_HOME/kitty"
-[[ ! -d "$XDG_CONFIG_HOME/systemd/user" ]] && mkdir -p "$XDG_CONFIG_HOME/systemd/user"
-
-# remove if non-link
-[[ ! -L "$HOME/.pam_environment" ]] && rm "$HOME/.pam_environment"
+[[ ! -d "$HOME/.config/VSCodium" ]] && mkdir -p "$HOME/.config/VSCodium"
+[[ ! -d "$HOME/.config/git" ]] && mkdir -p "$HOME/.config/git"
+[[ ! -d "$HOME/.config/mpv" ]] && mkdir -p "$HOME/.config/mpv"
+[[ ! -d "$HOME/.config/kitty" ]] && mkdir -p "$HOME/.config/kitty"
+[[ ! -d "$HOME/.config/fish/functions" ]] && mkdir -p "$HOME/.config/fish/functions"
+[[ ! -d "$HOME/.config/systemd/user" ]] && mkdir -p "$HOME/.config/systemd/user"
 
 for d in $(echo */);
 do
