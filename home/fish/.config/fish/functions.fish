@@ -31,19 +31,13 @@ function 0x0
   curl -F"$prefix$1" https://0x0.st
 end
 
-# rclone alias
-# https://stackoverflow.com/questions/45601589/zsh-not-recognizing-alias-from-within-function
-# https://stackoverflow.com/questions/25532050/newly-defined-alias-not-working-inside-a-function-zsh
-# TODO remove when https://github.com/rclone/rclone/issues/2697 is done
-#alias -g uploadd="rclone sync --transfers 8 --delete-excluded --fast-list -P --delete-before"
-
 # backup
 function backup
   # local
-  rsync-synchronize "$HOME/main" /media/disk0/backup
-  rsync-synchronize -L "$HOME/share" /media/disk0/backup
-  rsync-synchronize "$HOME/main/Documents/NewDatabase.kdbx" "/media/disk2/Users/User/Desktop"
-  rsync-synchronize "$HOME/main/Documents/NewDatabase.kdbx" "$HOME/share"
+  cps "$HOME/main" /media/disk0/backup
+  cps -L "$HOME/share" /media/disk0/backup
+  cps "$HOME/main/Documents/NewDatabase.kdbx" "/media/disk2/Users/User/Desktop"
+  cps "$HOME/main/Documents/NewDatabase.kdbx" "$HOME/share"
   # fix errors like `some-file.jpg: Duplicate object found in destination - ignoring` https://github.com/rclone/rclone/issues/2131#issuecomment-372459713
   rclone dedupe --dedupe-mode newest 50gbmega:/
   rclone dedupe --dedupe-mode newest 15gbmega:/

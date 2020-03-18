@@ -2,12 +2,12 @@ if not functions -q fisher
   curl https://git.io/fisher --create-dirs -sLo $HOME/.config/fish/functions/fisher.fish
   fish -c fisher
 end
-source "$HOME/main/Documents/private.zsh"
-for sh in /etc/profile.d/*.sh
-  test -r $sh && bass source $sh
-end
-source $HOME/.config/fish/{aliases,functions}.fish
-source "$HOME/main/Documents/private.zsh"
+#for sh in /etc/profile.d/*.sh
+#  test -r $sh && bass source $sh
+#end
+source $HOME/.config/fish/aliases.fish
+source $HOME/.config/fish/functions.fish
+source $HOME/main/Documents/private.shell
 
 # path
 set PATH $PATH $HOME/.local/bin /usr/sbin /sbin

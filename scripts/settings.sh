@@ -15,5 +15,5 @@ systemctl --user enable --now syncthing mpd.socket pulseaudio.socket
 # https://wiki.archlinux.org/index.php/AMDGPU#ACO_compiler
 # https://wiki.archlinux.org/index.php/Firefox#KDE/GNOME_integration
 homectl update mannyf --setenv=GTK_USE_PORTAL=1 --setenv=RADV_PERFTEST=aco
+# TODO: https://github.com/ValveSoftware/steam-runtime/issues/243
 #--setenv=PRESSURE_VESSEL_SHARE_HOME=0 --setenv=STEAM_RUNTIME_CONTAINER_ALWAYS=1
-#--setenv=SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh

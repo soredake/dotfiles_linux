@@ -1,3 +1,15 @@
+# rclone alias
+# https://stackoverflow.com/questions/45601589/zsh-not-recognizing-alias-from-within-function
+# https://stackoverflow.com/questions/25532050/newly-defined-alias-not-working-inside-a-function-zsh
+# TODO remove when https://github.com/rclone/rclone/issues/2697 is done
+alias uploadd "rclone sync --transfers 8 --delete-excluded --fast-list -P --delete-before"
+# Better copy, move, copy with update and synchronize folder aliases
+# --archive = archive mode; equals -rlptgoD (no -H,-A,-X)
+alias mrsync='rsync --archive --hard-links --acls --xattrs --compress --progress --verbose --executability -h'
+alias bcp='mrsync'
+alias bmv='mrsync --remove-source-files'
+alias cpu='mrsync --update'
+alias cps='mrsync --update --delete'
 # Shorter
 # https://wiki.archlinux.org/index.php/Kexec
 alias kernelup "sudo kexec -l /boot/vmlinuz-linux-tkg-bmq-zen --initrd=/boot/initramfs-linux-tkg-bmq-zen.img --reuse-cmdline && systemctl kexec"
