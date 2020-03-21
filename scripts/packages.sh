@@ -107,6 +107,8 @@ optdeps=(
   kio-fuse
   # python-internetarchive
   python-ujson python-gevent
+  # syncplay
+  python-certifi python-service_identity
 )
 
 packages=(
@@ -114,7 +116,7 @@ packages=(
   android-tools
   archiso
   aria2
-  balena-etcher
+  etcher-bin
   base
   bleachbit
   cantata
@@ -131,6 +133,7 @@ packages=(
   firefox
   flatpak
   fwupd
+  ghex
   gimp
   git-cola
   godot-bin
@@ -138,24 +141,18 @@ packages=(
   grub grub-hook os-prober
   htop
   innoextract
-  ripme-git
   jdupes
-  jre11-openjdk
+  jre-openjdk jdk-openjdk
   kdeconnect
   keepassxc
-  kernel-modules-hook kexec-tools
   kitty
   kompare
   krename
   lector
-  libreoffice-still
   libstrangle-git
-  linux-firmware amd-ucode
-  # TODO: switch back to plain kernel when fsync is merged
-  linux-tkg-bmq-zen linux-tkg-bmq-zen-headers
+  linux linux-firmware amd-ucode kernel-modules-hook kexec-tools
   lostfiles
   man-db man-pages
-  mdf2iso
   megasync
   meld
   mpd
@@ -168,7 +165,6 @@ packages=(
   paccache-hook
   piper
   pkgtop
-  profile-sync-daemon
   proxychains-ng
   python-internetarchive
   qbittorrent
@@ -178,6 +174,7 @@ packages=(
   redshift
   riot-desktop
   ripgrep
+  ripme-git
   rssguard
   safeeyes
   samrewritten-git
@@ -194,7 +191,6 @@ packages=(
   syncthing
   systemdgenie
   telegram-desktop
-  thrash-protect
   thunderbird
   tldr++
   tor tor-browser
@@ -205,8 +201,6 @@ packages=(
   viber
   vscodium-bin
   wget
-  woeusb # TODO: https://github.com/balena-io/etcher/issues/210
-  wxhexeditor
   xclip xdotool
   xdg-user-dirs
   xorg-server xorg-server-xwayland xorg-xgamma xorg-xhost xorg-xinput
@@ -237,7 +231,6 @@ fonts=(
   ttf-opensans
   ttf-paratype
   ttf-signika
-  #ttf-symbola
   ttf-ubuntu-font-family
   ttf-vlgothic
 )
@@ -245,7 +238,7 @@ fonts=(
 games=(
   boxtron
   cataclysm-dda-tiles
-  citra-canary-git # TODO: move to bin
+  citra-canary-git
   colobot-gold colobot-gold-music
   decaf-emu-git
   dosbox-staging
@@ -253,21 +246,20 @@ games=(
   gb-studio-bin
   itch
   lib32-gamemode
-  lutris-git # TODO: non-git after 0.5.6 is out
+  lutris-git # TODO: non-git after 0.5.5 is out
   lutris-wine-meta
   lutris-world-of-warcraft-dependencies-amd
   luxtorpeda
   mame
-  minecraft-launcher
+  multimc5
   ninfs-gui
   openmw-git
-  pcsx2-git # TODO: move to bin
   protonfixes-updated-git
   protontricks
   residualvm
   retroarch
   roberta
-  rpcs3-git
+  rpcs3-bin
   scummvm
   steam
   syobon
@@ -275,10 +267,11 @@ games=(
   vita3k-git
   vitetris
   vkbasalt
+  wine-tkg-staging-fsync-vkd3d-git
   winetricks-git # TODO: move to bin
   yuzu-mainline-git
   # https://wiki.archlinux.org/index.php/CDemu
-  kde-cdemu-manager-kf5 cdemu-client vhba-module-dkms # TODO:
+  kde-cdemu-manager-kf5 cdemu-client vhba-module
 )
 
 wine=(
@@ -286,7 +279,6 @@ wine=(
   gst-plugins-base lib32-gst-plugins-base
   gst-plugins-good lib32-gst-plugins-good
   gst-plugins-ugly lib32-gst-plugins-ugly
-  mingw-w64-gcc
   vkd3d lib32-vkd3d
   wine-mono-bin wine-gecko
 )
@@ -301,7 +293,8 @@ yay -S "${packages[@]}" "${fonts[@]}" "${mesa[@]}" "${plasma[@]}" "${lang[@]}" "
 flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 flatpak --user install flathub org.jdownloader.JDownloader
-sudo snap install copay
+flatpak --user install flathub net.pcsx2.PCSX2
+snap install copay
 
 vspackages=(
   #https://github.com/Microsoft/vscode/issues/12622
@@ -311,6 +304,7 @@ vspackages=(
   HookyQR.beautify
   Tyriar.sort-lines
   anseki.vscode-color
+  bmalehorn.vscode-fish
   bungcip.better-toml
   chrislajoie.vscode-modelines
   coolbear.systemd-unit-file
@@ -327,7 +321,6 @@ vspackages=(
   timonwong.shellcheck
   ulthes.theme-firewatch
   wayou.vscode-todo-highlight
-  bmalehorn.vscode-fish
 )
 
 codium --install-extension "${vspackages[@]}"

@@ -1,6 +1,5 @@
 #!/bin/bash
 # shellcheck disable=2016,2162
-
 systemctl enable --now snapd.socket fstrim.timer linux-modules-cleanup bluetooth dnscrypt-proxy nscd NetworkManager tor sddm
 systemctl --user enable --now syncthing mpd.socket pulseaudio.socket
 

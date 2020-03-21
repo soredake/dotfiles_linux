@@ -96,6 +96,6 @@ END
   homectl create danet --uid=1000 --shell=/bin/fish -G wheel --storage=fscrypt
   homectl activate danet
   red "Cloning repository"
-  git clone https://notabug.org/soredake/dotfiles_home.git "${dotpath}/dotfiles_home"
+  git clone https://github.com/soredake/dotfiles_home.git "${dotpath}/dotfiles_home"
   homectl with danet "${dotpath}/dotfiles_home/scripts/home.sh"
 fi
