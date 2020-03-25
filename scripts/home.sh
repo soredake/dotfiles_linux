@@ -21,15 +21,6 @@ die() {
   exit 1
 }
 
-swap_setup() {
-  red "Creating swap"
-  fallocate -l 8G /media/disk1/swapfile
-  chmod 600 /media/disk1/swapfile
-  mkswap /media/disk1/swapfile
-  swapon /media/disk1/swapfile
-  #printf "/media/disk1/swapfile none swap defaults 0 0" >> /etc/fstab
-}
-
 # https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate#Hibernation
 # https://wiki.archlinux.org/index.php/Swap#Manually
 resume_swap_file_setup() {
@@ -42,8 +33,8 @@ resume_swap_file_setup() {
 
 main() {
 # stow work
-../etc/install.sh
-#../etc_cp/install.sh
+#../etc/install.sh
+../etc_cp/install.sh
 ../home/install.sh
 ../home_cp/install.sh
 #../service.conf/install.sh
@@ -64,32 +55,43 @@ if userdbctl user danet; then
   main
 else
   red "User not exists, starting stage1"
-  systemd-firstboot --locale=en_US.UTF-8 --timezone=Europe/Kiev --hostname=archlinux-main  --setup-machine-id --prompt-root-password
+  systemd-firstboot --locale=en_US.UTF-8 --timezone=Europe/Kiev --hostname=archlinux-main --setup-machine-id --prompt-root-password
   pacman -U https://repo.kitsuna.net/x86_64/yay-9.4.6-2-x86_64.pkg.tar.zst
-  yay -Syuu base stow zsh || die "yay failed"
+  yay -Syuu base stow fish || die "yay failed"
   sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
   red "Creating user"
   # https://wiki.archlinux.org/index.php/Systemd-homed
+  sudo tee /etc/pam.d/nss-auth >/dev/null <<END
+#%PAM-1.0
+
+auth     sufficient pam_unix.so try_first_pass nullok
+auth     sufficient pam_systemd_home.so
+auth     required   pam_deny.so
+
+account  sufficient pam_unix.so
+account  sufficient pam_systemd_home.so
+account  required   pam_deny.so
+
+password sufficient pam_unix.so try_first_pass nullok sha512 shadow
+password sufficient pam_systemd_home.so
+password required   pam_deny.so
+END
   sudo tee /etc/pam.d/system-auth >/dev/null <<END
 #%PAM-1.0
 
-auth      sufficient pam_unix.so     try_first_pass nullok
--auth     sufficient pam_systemd_home.so
+auth      substack   nss-auth
 auth      optional   pam_permit.so
 auth      required   pam_env.so
-auth      required   pam_deny.so
 
-account   sufficient pam_unix.so
--account  sufficient pam_systemd_home.so
+account   substack   nss-auth
 account   optional   pam_permit.so
 account   required   pam_time.so
 
--password sufficient pam_systemd_home.so
-password  sufficient pam_unix.so     try_first_pass nullok sha512 shadow
+password  substack   nss-auth
 password  optional   pam_permit.so
 
 session   required  pam_limits.so
--session  optional  pam_systemd_home.so
+session   optional  pam_systemd_home.so
 session   required  pam_unix.so
 session   optional  pam_permit.so
 END

@@ -57,29 +57,16 @@ plasma=(
   kwin-lowlatency
   plasma-meta
   plasma-wayland-session
-  plasma5-applets-redshift-control-git
   plasma5-applets-weather-widget
 )
 
-bluetooth=(
-  bluez-plugins
-  bluez-utils
-  pulseaudio-modules-bt-git
-)
-
-lang=(
-  aspell-ru
-  hunspell-ru-aot
-  kbd-ru-keymaps
-)
-
-mesa=(
-  libva-mesa-driver lib32-libva-mesa-driver
-  mesa lib32-mesa
-  radeon-profile-git radeon-profile-daemon-git
-  vulkan-mesa-layer lib32-vulkan-mesa-layer
-  vulkan-radeon lib32-vulkan-radeon
+drv=(
+  radeon-profile{,-daemon}-git
   xf86-video-amdgpu
+  {lib32-,}libva-mesa-driver
+  {lib32-,}mesa
+  {lib32-,}vulkan-mesa-layer
+  {lib32-,}vulkan-radeon
 )
 
 optdeps=(
@@ -89,14 +76,12 @@ optdeps=(
   libappimage
   # htop
   lsof
-  # vscodium
+  # code
   ctags
   # kde-service-menu-reimage
   jhead
   # vscode dep
   bash-language-server
-  # minecraft-launcher
-  flite
   # pulseaudio
   pulseaudio-alsa
   # kio-extras gwenview
@@ -116,11 +101,13 @@ packages=(
   android-tools
   archiso
   aria2
-  etcher-bin
+  aspell-ru
   base
-  bleachbit
+  bluez-plugins
+  bluez-utils
   cantata
   ccache
+  code
   cpupower
   discord
   dnscrypt-proxy
@@ -128,6 +115,7 @@ packages=(
   dupeguru
   electronmail-bin
   etc-update
+  etcher-bin
   fatrace
   fd
   firefox
@@ -140,9 +128,9 @@ packages=(
   gparted
   grub grub-hook os-prober
   htop
+  hunspell-ru-aot
   innoextract
   jdupes
-  jre-openjdk jdk-openjdk
   kdeconnect
   keepassxc
   kitty
@@ -150,15 +138,15 @@ packages=(
   krename
   lector
   libstrangle-git
-  linux linux-firmware amd-ucode kernel-modules-hook kexec-tools
+  linux-{firmware,tkg-pds-zen{,-headers}} amd-ucode kernel-modules-hook kexec-tools
   lostfiles
   man-db man-pages
-  megasync
+  megasync # https://bugzilla.mozilla.org/show_bug.cgi?id=1401469
   meld
   mpd
-  mpv mpv-mpris mpv-webm-git
+  mpv{,-mpris,-webm-git}
   nano
-  networkmanager networkmanager-pptp networkmanager-openvpn
+  networkmanager{,-pptp,-openvpn}
   ntfs-3g
   obs-studio
   p7zip
@@ -166,15 +154,14 @@ packages=(
   piper
   pkgtop
   proxychains-ng
+  pulseaudio-modules-bt-git
   python-internetarchive
   qbittorrent
   qdirstat
   ranger
   rclone
-  redshift
   riot-desktop
   ripgrep
-  ripme-git
   rssguard
   safeeyes
   samrewritten-git
@@ -196,43 +183,40 @@ packages=(
   tor tor-browser
   trackma-git adl-git
   translate-shell
-  tutanota-desktop-bin
   unrar zip
   viber
-  vscodium-bin
   wget
-  xclip xdotool
+  xclip
   xdg-user-dirs
-  xorg-server xorg-server-xwayland xorg-xgamma xorg-xhost xorg-xinput
+  xorg-{server,server-xwayland,xgamma}
   yarn
   youtube-dl
   zeal
-  zsh zsh-completions
 )
 
 fonts=(
   # https://github.com/gentoo/gentoo/tree/master/media-fonts/infinality-ultimate-meta
   # https://github.com/gentoo/gentoo/tree/master/www-client/chromium
+  #mplus-font
+  #ttf-baekmuk
+  #ttf-bitstream-vera
+  #ttf-courier-prime
+  #ttf-koruri
+  #ttf-paratype
+  #ttf-signika
+  #ttf-vlgothic
   cantarell-fonts
-  font-bh-ttf
-  mplus-font
+  #font-bh-ttf
   noto-fonts
   terminus-font
-  ttf-baekmuk
-  ttf-bitstream-vera
-  ttf-courier-prime
   ttf-dejavu
   ttf-droid
   ttf-hack
   ttf-inconsolata
-  ttf-koruri
   ttf-liberation
   ttf-ms-fonts
   ttf-opensans
-  ttf-paratype
-  ttf-signika
   ttf-ubuntu-font-family
-  ttf-vlgothic
 )
 
 games=(
@@ -240,7 +224,6 @@ games=(
   cataclysm-dda-tiles
   citra-canary-git
   colobot-gold colobot-gold-music
-  decaf-emu-git
   dosbox-staging
   flips-git
   gb-studio-bin
@@ -253,7 +236,7 @@ games=(
   mame
   multimc5
   ninfs-gui
-  openmw-git
+  openmw
   protonfixes-updated-git
   protontricks
   residualvm
@@ -267,27 +250,24 @@ games=(
   vita3k-git
   vitetris
   vkbasalt
+  wine-mono-bin wine-gecko
   wine-tkg-staging-fsync-vkd3d-git
   winetricks-git # TODO: move to bin
   yuzu-mainline-git
+  {lib32-,}gst-plugins-bad
+  {lib32-,}gst-plugins-base
+  {lib32-,}gst-plugins-good
+  {lib32-,}gst-plugins-ugly
+  {lib32-,}vkd3d
   # https://wiki.archlinux.org/index.php/CDemu
-  kde-cdemu-manager-kf5 cdemu-client vhba-module
-)
-
-wine=(
-  gst-plugins-bad lib32-gst-plugins-bad
-  gst-plugins-base lib32-gst-plugins-base
-  gst-plugins-good lib32-gst-plugins-good
-  gst-plugins-ugly lib32-gst-plugins-ugly
-  vkd3d lib32-vkd3d
-  wine-mono-bin wine-gecko
+  kde-cdemu-manager-kf5 cdemu-client vhba-module-dkms
 )
 
 # Upgrade any already-installed packages.
 yay -Syuu
 
 # Install my packages
-yay -S "${packages[@]}" "${fonts[@]}" "${mesa[@]}" "${plasma[@]}" "${lang[@]}" "${games[@]}" "${wine[@]}" "${bluetooth[@]}" "${optdeps[@]}"
+yay -S "${packages[@]}" "${fonts[@]}" "${drv[@]}" "${plasma[@]}" "${games[@]}" "${optdeps[@]}"
 
 # https://wiki.archlinux.org/index.php/Flatpak#Add_a_repository
 flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo

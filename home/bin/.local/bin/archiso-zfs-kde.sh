@@ -1,8 +1,8 @@
 #!/bin/bash
 # https://web.archive.org/web/20181102011252/http://www.michaelabrahamsen.com/posts/arch-linux-iso-zfs/
 if [[ "${2}" == "docker" ]]; then
-  sudo docker pull base/devel
-  sudo docker run --privileged -it -v "${1}"/archiso:/archiso base/devel
+  docker pull base/devel
+  docker run --privileged -it -v "${1}"/archiso:/archiso base/devel
 fi
 
 [[ ! -d "${1}/archiso" ]] && mkdir -p "${1}/archiso"
@@ -62,4 +62,5 @@ archzfs
 END
 fi
 
-sudo ./build.sh -v -o "${1}" -N archiso -V none
+#sudo 
+./build.sh -v -o "${1}" -N archiso -V none
