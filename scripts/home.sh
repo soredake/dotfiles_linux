@@ -1,5 +1,4 @@
 #!/bin/bash
-# shellcheck disable=2162
 # Ask for the administrator password upfront.
 sudo -v
 

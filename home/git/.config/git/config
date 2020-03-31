@@ -2,8 +2,6 @@
 [user]
   name = soredake
   email = fdsfgs@krutt.org
-[core]
-  editor = $EDITOR -w
 [help]
   autocorrect = 1
 [diff]

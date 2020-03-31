@@ -1,5 +1,5 @@
 function mkd
-  mkdir -p $argv && cd $_ || exit 1;
+  mkdir -p $argv && cd $argv || exit 1;
 end
 
 # Convert currencies; cconv {amount} {from} {to}
@@ -77,6 +77,15 @@ function update
   fisher
   fisher self-update
   tldr --update
+end
+
+function cleanup
+  ancient-packages
+  fd -t d -H ".unwanted" /media/disk0/torrents -x rm -r {}
+  fd -t f -H -I -e .tar.zst --search-path $HOME/git/PKGBUILDS -x "rm" {}
+  flatpak --user uninstall --unused
+  yay -Sc
+  yay -c
 end
 
 function speak

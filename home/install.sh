@@ -9,7 +9,7 @@ cd "$SD" || exit 1
 [[ ! -d "$HOME/.config/git" ]] && mkdir -p "$HOME/.config/git"
 [[ ! -d "$HOME/.config/kitty" ]] && mkdir -p "$HOME/.config/kitty"
 [[ ! -d "$HOME/.config/mpv" ]] && mkdir -p "$HOME/.config/mpv"
-[[ ! -d "$HOME/.config/systemd/user" ]] && mkdir -p "$HOME/.config/systemd/user"
+#[[ ! -d "$HOME/.config/systemd/user" ]] && mkdir -p "$HOME/.config/systemd/user"
 
 for d in $(echo */);
 do

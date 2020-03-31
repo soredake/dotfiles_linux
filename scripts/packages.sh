@@ -61,11 +61,10 @@ plasma=(
 )
 
 drv=(
+  # {lib32-,}vulkan-mesa-layer
   radeon-profile{,-daemon}-git
   xf86-video-amdgpu
   {lib32-,}libva-mesa-driver
-  {lib32-,}mesa
-  {lib32-,}vulkan-mesa-layer
   {lib32-,}vulkan-radeon
 )
 
@@ -77,11 +76,9 @@ optdeps=(
   # htop
   lsof
   # code
-  ctags
+  ctags bash-language-server
   # kde-service-menu-reimage
   jhead
-  # vscode dep
-  bash-language-server
   # pulseaudio
   pulseaudio-alsa
   # kio-extras gwenview
@@ -94,6 +91,8 @@ optdeps=(
   python-ujson python-gevent
   # syncplay
   python-certifi python-service_identity
+  # ark okular
+  unrar
 )
 
 packages=(
@@ -141,7 +140,7 @@ packages=(
   linux-{firmware,tkg-pds-zen{,-headers}} amd-ucode kernel-modules-hook kexec-tools
   lostfiles
   man-db man-pages
-  megasync # https://bugzilla.mozilla.org/show_bug.cgi?id=1401469
+  megatools-git # https://bugzilla.mozilla.org/show_bug.cgi?id=1401469
   meld
   mpd
   mpv{,-mpris,-webm-git}
@@ -149,7 +148,6 @@ packages=(
   networkmanager{,-pptp,-openvpn}
   ntfs-3g
   obs-studio
-  p7zip
   paccache-hook
   piper
   pkgtop
@@ -183,7 +181,6 @@ packages=(
   tor tor-browser
   trackma-git adl-git
   translate-shell
-  unrar zip
   viber
   wget
   xclip
@@ -197,17 +194,8 @@ packages=(
 fonts=(
   # https://github.com/gentoo/gentoo/tree/master/media-fonts/infinality-ultimate-meta
   # https://github.com/gentoo/gentoo/tree/master/www-client/chromium
-  #mplus-font
-  #ttf-baekmuk
-  #ttf-bitstream-vera
-  #ttf-courier-prime
-  #ttf-koruri
-  #ttf-paratype
-  #ttf-signika
-  #ttf-vlgothic
   cantarell-fonts
-  #font-bh-ttf
-  noto-fonts
+  noto-fonts{,-cjk,-emoji,-extra}
   terminus-font
   ttf-dejavu
   ttf-droid
@@ -229,15 +217,16 @@ games=(
   gb-studio-bin
   itch
   lib32-gamemode
-  lutris-git # TODO: non-git after 0.5.5 is out
+  lutris
   lutris-wine-meta
-  lutris-world-of-warcraft-dependencies-amd
   luxtorpeda
   mame
+  mingw-w64-gcc
   multimc5
   ninfs-gui
   openmw
-  protonfixes-updated-git
+  proton-tkg-git
+  protonfixes-git
   protontricks
   residualvm
   retroarch
@@ -303,4 +292,4 @@ vspackages=(
   wayou.vscode-todo-highlight
 )
 
-codium --install-extension "${vspackages[@]}"
+code --install-extension "${vspackages[@]}"
