@@ -156,6 +156,7 @@ packages=(
   python-internetarchive
   qbittorrent
   qdirstat
+  earlyoom # TODO: https://github.com/systemd/systemd/pull/15206
   ranger
   rclone
   riot-desktop

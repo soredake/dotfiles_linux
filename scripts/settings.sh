@@ -1,6 +1,6 @@
 #!/bin/bash
 systemctl mask lvm2-monitor.service
-systemctl enable --now snapd.socket fstrim.timer linux-modules-cleanup bluetooth dnscrypt-proxy nscd NetworkManager tor sddm
+systemctl enable --now snapd.socket fstrim.timer linux-modules-cleanup bluetooth dnscrypt-proxy nscd NetworkManager tor sddm systemd-homed earlyoom
 systemctl --user enable --now syncthing mpd.socket pulseaudio
 # TODO: https://github.com/ValveSoftware/steam-runtime/issues/214
 # TODO: https://github.com/ValveSoftware/steam-runtime/issues/217
