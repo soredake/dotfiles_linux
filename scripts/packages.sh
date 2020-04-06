@@ -226,6 +226,7 @@ games=(
   multimc5
   ninfs-gui
   openmw
+  proton-ge-custom-bin
   proton-tkg-git
   protonfixes-git
   protontricks

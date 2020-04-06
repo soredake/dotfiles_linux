@@ -9,7 +9,7 @@ homectl update mannyf --setenv=GTK_USE_PORTAL=1 --setenv=RADV_PERFTEST=aco
 #--setenv=PRESSURE_VESSEL_SHARE_HOME=0 --setenv=STEAM_RUNTIME_CONTAINER_ALWAYS=1
 
 # https://wiki.archlinux.org/index.php/Bluetooth#Auto_power-on_after_boot
-sudo -i "s|#AutoEnable=false|AutoEnable=true|g" /etc/bluetooth/main.conf
+#sudo -i "s|#AutoEnable=false|AutoEnable=true|g" /etc/bluetooth/main.conf
 # lutris: use system libretro cores
 # https://github.com/lutris/lutris/issues/2444
 ln -sfv "$HOME/.config/retroarch/cores" "$HOME/.local/share/lutris/runners/retroarch/cores"
