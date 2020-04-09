@@ -1,6 +1,6 @@
 # rclone alias
 # TODO: remove when https://github.com/rclone/rclone/issues/2697 is done
-alias uploadd 'rclone sync --transfers 8 --delete-excluded --fast-list -P --delete-before'
+alias uploadd 'rclone sync --transfers 8 --delete-excluded --fast-list --delete-before'
 # Better copy, move, copy with update and synchronize folder aliases
 # --archive = archive mode; equals -rlptgoD (no -H,-A,-X)
 alias mrsync='rsync --archive --hard-links --acls --xattrs --compress --progress --verbose --executability -h'
@@ -33,5 +33,5 @@ alias ls 'ls --color=auto -ah --quoting-style=escape --group-directories-first'
 alias sc 'systemctl'
 alias scu 'systemctl --user'
 alias t_danet2 'telegram-desktop -many -workdir $HOME/.local/share/TelegramDesktop_danet2'
-alias tkgup 'cd $HOME/git/PKGBUILDS; git reset --hard origin/frogging-family; git pull'
+alias tkgup 'cd $HOME/git/PKGBUILDS; git reset --hard origin/frogging-family; git submodule foreach --recursive git reset --hard origin; git pull'
 alias vts 'echo vitetris --connect (exip):27015 && vitetris -listen 27015'

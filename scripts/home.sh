@@ -55,7 +55,9 @@ if userdbctl user danet; then
 else
   red "User not exists, starting stage1"
   systemd-firstboot --locale=en_US.UTF-8 --timezone=Europe/Kiev --hostname=archlinux-main --setup-machine-id --prompt-root-password
-  pacman -U https://repo.kitsuna.net/x86_64/yay-9.4.6-2-x86_64.pkg.tar.zst
+  cp "$SD"/../etc_cp/etc/pacman.conf /etc/pacman.conf
+  cp "$SD"/../etc_cp/etc/makepkg.conf /etc/makepkg.conf
+  pacman -S yay
   yay -Syuu base stow fish || die "yay failed"
   sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
   red "Creating user"

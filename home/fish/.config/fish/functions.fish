@@ -43,6 +43,8 @@ end
 
 # backup
 function backup
+  $HOME/main/Documents/system-data/backup.sh -f
+  $HOME/main/Documents/system-data/clean.sh
   # local
   cps $HOME/main /media/disk0/backup
   cps -L $HOME/share /media/disk0/backup
@@ -80,12 +82,16 @@ function update
 end
 
 function cleanup
-  ancient-packages
-  fd -t d -H ".unwanted" /media/disk0/torrents -x rm -r {}
+  if string match -q m $argv
+    ancient-packages -q
+    fd -t d -H ".unwanted" /media/disk0/torrents -x rm -r {}
+    return
+  end
   fd -t f -H -I -e .tar.zst --search-path $HOME/git/PKGBUILDS -x "rm" {}
   flatpak --user uninstall --unused
-  yay -Sc
-  yay -c
+  yay -Sc --noconfirm
+  # TODO: https://github.com/Jguer/yay/issues/1112
+  #yay -c --noconfirm
 end
 
 function speak

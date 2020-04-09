@@ -112,7 +112,6 @@ packages=(
   dnscrypt-proxy
   downgrade
   dupeguru
-  electronmail-bin
   etc-update
   etcher-bin
   fatrace
@@ -159,7 +158,6 @@ packages=(
   earlyoom # TODO: https://github.com/systemd/systemd/pull/15206
   ranger
   rclone
-  riot-desktop
   ripgrep
   rssguard
   safeeyes
@@ -243,7 +241,7 @@ games=(
   vkbasalt
   wine-mono-bin wine-gecko
   wine-tkg-staging-fsync-vkd3d-git
-  winetricks-git # TODO: move to bin
+  winetricks-git # TODO: move to bin https://github.com/Winetricks/winetricks/issues/1263
   yuzu-mainline-git
   {lib32-,}gst-plugins-bad
   {lib32-,}gst-plugins-base

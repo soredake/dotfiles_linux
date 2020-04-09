@@ -5,6 +5,7 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 // https://wiki.mozilla.org/Platform/GFX/Quantum_Render
 // https://wiki.mozilla.org/Platform/GFX/WebRender_Where
 // https://bugzilla.mozilla.org/show_bug.cgi?id=wr-amd
-user_pref("gfx.webrender.all", true);
+//user_pref("gfx.webrender.all", true);
+user_pref("layers.acceleration.force-enabled", true);
 // pac file
 user_pref("network.proxy.autoconfig_url", "file:///home//mannyf/main/Documents/proxy.pac");

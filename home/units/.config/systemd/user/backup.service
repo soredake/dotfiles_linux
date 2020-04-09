@@ -1,0 +1,6 @@
+[Unit]
+Description=Backup everything
+
+[Service]
+Type=oneshot
+ExecStart=/bin/fish -c backup
