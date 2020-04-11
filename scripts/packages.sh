@@ -240,7 +240,7 @@ games=(
   vitetris
   vkbasalt
   wine-mono-bin wine-gecko
-  wine-tkg-staging-fsync-vkd3d-git
+  wine-tkg-staging-fsync-vkd3d-git # TODO: move to staging when fsync, mingw and fs{hack,bypass} is merged
   winetricks-git # TODO: move to bin https://github.com/Winetricks/winetricks/issues/1263
   yuzu-mainline-git
   {lib32-,}gst-plugins-bad

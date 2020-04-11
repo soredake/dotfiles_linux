@@ -43,8 +43,8 @@ end
 
 # backup
 function backup
-  $HOME/main/Documents/system-data/backup.sh -f
-  $HOME/main/Documents/system-data/clean.sh
+  #$HOME/main/Documents/system-data/backup.sh -f
+  #$HOME/main/Documents/system-data/clean.sh
   # local
   cps $HOME/main /media/disk0/backup
   cps -L $HOME/share /media/disk0/backup
@@ -58,7 +58,7 @@ function backup
   echo "Uploading to Dropbox"
   uploadd $HOME/main/Documents dropbox:/Documents
   # google drive 15gb
-  echo "Google Drive"
+  echo "Uploading to Google Drive"
   uploadd $HOME/main gdrive:/
   # mega.nz 50gb
   echo "Uploading to MEGA 50gb"
