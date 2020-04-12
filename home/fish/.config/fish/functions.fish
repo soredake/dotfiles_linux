@@ -84,11 +84,11 @@ end
 function cleanup
   if string match -q m $argv
     ancient-packages -q
-    fd -t d -H ".unwanted" /media/disk0/torrents -x rm -r {}
+    #fd -t d -H ".unwanted" /media/disk0/torrents -x rm -r {}
     return
   end
-  fd -t f -H -I -e .tar.zst --search-path $HOME/git/PKGBUILDS -x "rm" {}
-  flatpak --user uninstall --unused
+  #fd -t f -H -I -e .tar.zst --search-path $HOME/git/PKGBUILDS -x "rm" {}
+  flatpak --user uninstall --unused # https://github.com/flatpak/flatpak/issues/2639
   yay -Sc --noconfirm
   # TODO: https://github.com/Jguer/yay/issues/1112
   #yay -c --noconfirm

@@ -136,7 +136,7 @@ packages=(
   krename
   lector
   libstrangle-git
-  linux-{firmware,tkg-pds-zen{,-headers}} amd-ucode kernel-modules-hook kexec-tools
+  linux-{firmware,tkg-pds-zen{,-headers}} amd-ucode kernel-modules-hook
   lostfiles
   man-db man-pages
   megatools-git # https://bugzilla.mozilla.org/show_bug.cgi?id=1401469
@@ -243,6 +243,7 @@ games=(
   wine-tkg-staging-fsync-vkd3d-git # TODO: move to staging when fsync, mingw and fs{hack,bypass} is merged
   winetricks-git # TODO: move to bin https://github.com/Winetricks/winetricks/issues/1263
   yuzu-mainline-git
+  {lib32-,}faudio-git
   {lib32-,}gst-plugins-bad
   {lib32-,}gst-plugins-base
   {lib32-,}gst-plugins-good
@@ -290,6 +291,7 @@ vspackages=(
   timonwong.shellcheck
   ulthes.theme-firewatch
   wayou.vscode-todo-highlight
+  geekidos.vdf
 )
 
 code --install-extension "${vspackages[@]}"
