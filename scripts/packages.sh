@@ -112,6 +112,7 @@ packages=(
   dnscrypt-proxy
   downgrade
   dupeguru
+  earlyoom # TODO: https://github.com/systemd/systemd/pull/15206
   etc-update
   etcher-bin
   fatrace
@@ -122,7 +123,6 @@ packages=(
   ghex
   gimp
   git-cola
-  godot-bin
   gparted
   grub grub-hook os-prober
   htop
@@ -148,6 +148,7 @@ packages=(
   ntfs-3g
   obs-studio
   paccache-hook
+  parallel
   piper
   pkgtop
   proxychains-ng
@@ -155,11 +156,10 @@ packages=(
   python-internetarchive
   qbittorrent
   qdirstat
-  earlyoom # TODO: https://github.com/systemd/systemd/pull/15206
   ranger
   rclone
   ripgrep
-  rssguard
+  ripme
   safeeyes
   samrewritten-git
   seahorse
@@ -195,7 +195,6 @@ fonts=(
   # https://github.com/gentoo/gentoo/tree/master/www-client/chromium
   cantarell-fonts
   noto-fonts{,-cjk,-emoji,-extra}
-  terminus-font
   ttf-dejavu
   ttf-droid
   ttf-hack
@@ -219,13 +218,11 @@ games=(
   lutris
   lutris-wine-meta
   luxtorpeda
-  mame
   mingw-w64-gcc
   multimc5
   ninfs-gui
   openmw
   proton-ge-custom-bin
-  proton-tkg-git
   protonfixes-git
   protontricks
   residualvm
@@ -234,6 +231,7 @@ games=(
   rpcs3-bin
   scummvm
   steam
+  steascree
   syobon
   taisei
   vita3k-git

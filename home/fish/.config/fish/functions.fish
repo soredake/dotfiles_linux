@@ -43,13 +43,9 @@ end
 
 # backup
 function backup
-  #$HOME/main/Documents/system-data/backup.sh -f
-  #$HOME/main/Documents/system-data/clean.sh
   # local
-  cps $HOME/main /media/disk0/backup
-  cps -L $HOME/share /media/disk0/backup
-  cps $HOME/main/Documents/NewDatabase.kdbx /media/disk2/Users/User/Desktop
-  cps $HOME/main/Documents/NewDatabase.kdbx $HOME/share
+  cps $HOME/main /media/disk1/share /media/disk0
+  parallel cps $HOME/main/Documents/NewDatabase.kdbx ::: /media/disk2/Users/User/Desktop /media/disk1/share
   # fix errors like `some-file.jpg: Duplicate object found in destination - ignoring` https://github.com/rclone/rclone/issues/2131#issuecomment-372459713
   rclone dedupe --dedupe-mode newest 50gbmega:/
   rclone dedupe --dedupe-mode newest 15gbmega:/
