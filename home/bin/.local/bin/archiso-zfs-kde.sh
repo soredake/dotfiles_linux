@@ -29,7 +29,6 @@ keepassxc
 lsof
 p7zip
 pulseaudio-alsa
-ranger
 sddm
 ttf-dejavu
 ttf-hack

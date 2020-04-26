@@ -95,3 +95,11 @@ function speak
   ffmpeg -y -i $XDG_RUNTIME_DIR/trans-speak.ts $XDG_RUNTIME_DIR/trans-speak.ogg
   echo $XDG_RUNTIME_DIR/trans-speak.ogg | xclip -i -selection clipboard
 end
+
+# sync kde5 places to gtk3 bookmarks
+# https://askubuntu.com/questions/694283/how-do-i-sync-kde-5-places-folder-bookmarks-to-gtk-3
+function syncgtkbmarks
+  awk -F\" '/<bookmark href=\"file/ {print $2}' < "$SD/kde5_places/user-places.xbel" > "$XDG_CONFIG_HOME/gtk-3.0/bookmarks"
+  # replace space with %20 to fix bookmarks
+  sed -i "s/ /%20/g" "$XDG_CONFIG_HOME/gtk-3.0/bookmarks"
+end
