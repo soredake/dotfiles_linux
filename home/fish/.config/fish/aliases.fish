@@ -29,3 +29,4 @@ alias t_danet2 'telegram-desktop -many -workdir $HOME/.local/share/TelegramDeskt
 alias t_danet3 'telegram-desktop -many -workdir $HOME/.local/share/TelegramDesktop_danet3'
 alias tkgup 'cd $HOME/git/PKGBUILDS; git reset --hard origin/frogging-family; git submodule foreach --recursive git reset --hard origin; git pull'
 alias vts 'echo vitetris --connect (exip):27015 && vitetris -listen 27015'
+alias nvmestats 'sudo smartctl -A /dev/nvme0'

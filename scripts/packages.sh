@@ -61,8 +61,6 @@ plasma=(
 )
 
 drv=(
-  # {lib32-,}vulkan-mesa-layer
-  radeon-profile{,-daemon}-git
   xf86-video-amdgpu
   {lib32-,}libva-mesa-driver
   {lib32-,}vulkan-radeon
@@ -115,21 +113,18 @@ packages=(
   earlyoom # TODO: https://github.com/systemd/systemd/pull/15206
   etc-update
   etcher-bin
-  fatrace
   fd
   firefox
   flatpak
   fwupd
   ghex
-  gimp
+  gimp # TODO: next release will switch to gtk3
   git-cola
   gparted
   grub grub-hook os-prober
   htop
   hunspell-ru-aot
-  innoextract
   jdupes
-  kdeconnect
   keepassxc
   kitty
   kompare
@@ -137,7 +132,6 @@ packages=(
   lector
   libstrangle-git
   linux-{firmware,tkg-pds-zen{,-headers}} amd-ucode kernel-modules-hook
-  lostfiles
   man-db man-pages
   megatools-git # https://bugzilla.mozilla.org/show_bug.cgi?id=1401469
   meld
@@ -156,7 +150,6 @@ packages=(
   python-internetarchive
   qbittorrent
   qdirstat
-  ranger
   rclone
   ripgrep
   ripme
@@ -167,7 +160,6 @@ packages=(
   sirikali cryfs
   smartmontools
   snapd
-  spotify
   sshfs
   stow
   sudo
@@ -213,7 +205,7 @@ games=(
   dosbox-staging
   flips-git
   gb-studio-bin
-  itch
+  itch # TODO: switch to lutris
   lib32-gamemode
   lutris
   lutris-wine-meta
@@ -230,7 +222,7 @@ games=(
   roberta
   rpcs3-bin
   scummvm
-  steam
+  steam # TODO: gtk2 can be dropped https://www.gamingonlinux.com/articles/valve-have-a-new-beta-installer-for-the-linux-steam-client-for-the-brave-tester.16312
   steascree
   syobon
   taisei
@@ -238,7 +230,7 @@ games=(
   vitetris
   vkbasalt
   wine-mono-bin wine-gecko
-  wine-tkg-staging-fsync-vkd3d-git # TODO: move to staging when fsync, mingw and fs{hack,bypass} is merged
+  wine-tkg-staging-fsync-vkd3d-git # TODO: move to staging when mingw and fs{-hack,-bypass,-scaling,ync} is merged
   winetricks-git # TODO: move to bin https://github.com/Winetricks/winetricks/issues/1263
   yuzu-mainline-git
   {lib32-,}faudio-git
