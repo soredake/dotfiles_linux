@@ -1,0 +1,106 @@
+# rclone alias
+# TODO: remove when https://github.com/rclone/rclone/issues/2697 is done
+alias uploadd 'rclone sync --fast-list --delete-before'
+# Better copy, move, copy with update and synchronize folder aliases
+# --archive = archive mode; equals -rlptgoD (no -H,-A,-X)
+alias mrsync='rsync --archive --hard-links --acls --xattrs --compress --progress --verbose --executability -h'
+alias bcp='mrsync'
+alias bmv='mrsync --remove-source-files'
+alias cpu='mrsync --update'
+alias cps='mrsync --update --delete'
+# Shorter
+# find broken symlinks
+alias badlinks 'find . -type l -exec test ! -e {} \; -print'
+# https://wiki.archlinux.org/index.php/.SRCINFO https://wiki.archlinux.org/index.php/Arch_package_guidelines
+alias aurup 'makepkg --printsrcinfo > .SRCINFO; updpkgsums'
+alias build_mainline 'tkgup; cd wine-tkg-git/wine-tkg-git && timeout 2 ./non-makepkg-build.sh $HOME/.config/frogminer/wine-tkg-mainline.cfg; ./non-makepkg-build.sh $HOME/.config/frogminer/wine-tkg-mainline.cfg'
+alias build_staging 'tkgup; cd wine-tkg-git/wine-tkg-git && timeout 2 ./non-makepkg-build.sh $HOME/.config/frogminer/wine-tkg-staging.cfg; ./non-makepkg-build.sh $HOME/.config/frogminer/wine-tkg-staging.cfg'
+alias e 'code'
+alias exip 'curl -s https://ipecho.net/plain'
+alias finddupes 'jdupes -R -Nd1Ap'
+alias g 'git'
+alias jc 'journalctl'
+alias jcu 'journalctl --user'
+alias linkmusic 'ln -sfv /media/disk0/torrents/Music/* $HOME/Music'
+alias ls 'ls --color=auto -ah --quoting-style=escape --group-directories-first'
+alias sc 'systemctl'
+alias scu 'systemctl --user'
+alias t_danet2 'telegram-desktop -many -workdir $HOME/.local/share/TelegramDesktop_danet2'
+alias t_danet3 'telegram-desktop -many -workdir $HOME/.local/share/TelegramDesktop_danet3'
+alias tkgup 'cd $HOME/git/PKGBUILDS; git reset --hard origin/frogging-family; git submodule foreach --recursive git reset --hard origin; git pull'
+alias vts 'echo vitetris --connect (exip):27015 && vitetris -listen 27015'
+alias nvmestats 'sudo smartctl -A /dev/nvme0'
+
+function mkd
+  mkdir -p $argv && cd $argv || exit 1;
+end
+
+# Convert currencies; cconv {amount} {from} {to}
+function cconv
+  #| grep '&#8372;</strong>'
+  set result (curl -s "https://exchangerate.guru/$argv[2]/$argv[3]/$argv[1]/" | grep --color=never -o -P '(?<=<input data-role="secondary-input" type="text" class="form-control" value=").*(?=" required>)')
+  echo "$argv[1] $argv[2] = $result $argv[3]"
+end
+
+# backup
+function backup
+  # local
+  cps $HOME/{main,share} /media/disk0
+  parallel cps $HOME/main/Documents/NewDatabase.kdbx ::: /media/disk2/Users/User/Desktop $HOME/share
+  # fix errors like `some-file.jpg: Duplicate object found in destination - ignoring` https://github.com/rclone/rclone/issues/2131#issuecomment-372459713
+  rclone dedupe --dedupe-mode newest 50gbmega:/
+  rclone dedupe --dedupe-mode newest 15gbmega:/
+  # dropbox 2gb
+  # TODO: https://plati.ru/search/DROPBOX
+  echo "Uploading to Dropbox"
+  uploadd $HOME/main/Documents dropbox:/Documents
+  # google drive 15gb
+  echo "Uploading to Google Drive"
+  uploadd $HOME/main gdrive:/
+  # mega.nz 50gb
+  echo "Uploading to MEGA 50gb"
+  uploadd $HOME/main 50gbmega:/
+  # mega.nz 15gb
+  echo "Uploading to MEGA 15gb"
+  uploadd $HOME/main 15gbmega:/
+end
+
+# update everything
+function update
+  yay -Syuu --combinedupgrade --answerclean n --answerdiff n --answerupgrade y --noconfirm
+  sudo etc-update
+  flatpak --user update --noninteractive
+  snap refresh
+  fwupdmgr refresh
+  fwupdmgr update
+  fisher
+  fisher self-update
+  tldr --update
+end
+
+function cleanup
+  if string match -q m $argv
+    ancient-packages -q
+    #fd -t d -H ".unwanted" /media/disk0/torrents -x rm -r {}
+    return
+  end
+  #fd -t f -H -I -e .tar.zst --search-path $HOME/git/PKGBUILDS -x "rm" {}
+  flatpak --user uninstall --unused # https://github.com/flatpak/flatpak/issues/2639
+  yay -Sc --noconfirm
+  # TODO: https://github.com/Jguer/yay/issues/1112
+  #yay -c --noconfirm
+end
+
+function speak
+  trans -speak -s ru $argv -download-audio-as $XDG_RUNTIME_DIR/trans-speak.ts
+  ffmpeg -y -i $XDG_RUNTIME_DIR/trans-speak.ts $XDG_RUNTIME_DIR/trans-speak.ogg
+  echo $XDG_RUNTIME_DIR/trans-speak.ogg | xclip -i -selection clipboard
+end
+
+# sync kde5 places to gtk3 bookmarks
+# https://askubuntu.com/questions/694283/how-do-i-sync-kde-5-places-folder-bookmarks-to-gtk-3
+function syncgtkbmarks
+  awk -F\" '/<bookmark href=\"file/ {print $2}' < "$HOME/.local/share/user-places.xbel" > "$HOME/.config/gtk-3.0/bookmarks"
+  # replace space with %20 to fix bookmarks
+  sed -i "s/ /%20/g" "$HOME/.config/gtk-3.0/bookmarks"
+end

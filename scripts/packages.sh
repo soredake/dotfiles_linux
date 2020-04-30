@@ -88,7 +88,7 @@ optdeps=(
   # python-internetarchive
   python-ujson python-gevent
   # syncplay
-  python-certifi python-service_identity
+  python-certifi python-service-identity
   # ark okular
   unrar
 )
@@ -116,9 +116,10 @@ packages=(
   fd
   firefox
   flatpak
+  hdparm
   fwupd
   ghex
-  gimp # TODO: next release will switch to gtk3
+  gimp
   git-cola
   gparted
   grub grub-hook os-prober
@@ -205,7 +206,7 @@ games=(
   dosbox-staging
   flips-git
   gb-studio-bin
-  itch # TODO: switch to lutris
+  itch
   lib32-gamemode
   lutris
   lutris-wine-meta
@@ -222,7 +223,7 @@ games=(
   roberta
   rpcs3-bin
   scummvm
-  steam # TODO: gtk2 can be dropped https://www.gamingonlinux.com/articles/valve-have-a-new-beta-installer-for-the-linux-steam-client-for-the-brave-tester.16312
+  steam
   steascree
   syobon
   taisei

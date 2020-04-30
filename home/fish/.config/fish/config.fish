@@ -10,8 +10,7 @@ end
 # path
 set PATH $PATH $HOME/.local/bin
 end
-source $__fish_config_dir/aliases.fish
-source $__fish_config_dir/functions.fish
+source $__fish_config_dir/stuff.fish
 
 # editor, for sudo
 set -gx EDITOR code -w
