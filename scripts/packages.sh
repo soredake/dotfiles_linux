@@ -110,19 +110,18 @@ packages=(
   dnscrypt-proxy
   downgrade
   dupeguru
-  earlyoom # TODO: https://github.com/systemd/systemd/pull/15206
+  earlyoom
   etc-update
   etcher-bin
   fd
   firefox
   flatpak
-  hdparm
   fwupd
-  ghex
   gimp
   git-cola
   gparted
   grub grub-hook os-prober
+  hdparm
   htop
   hunspell-ru-aot
   jdupes
@@ -134,7 +133,7 @@ packages=(
   libstrangle-git
   linux-{firmware,tkg-pds-zen{,-headers}} amd-ucode kernel-modules-hook
   man-db man-pages
-  megatools-git # https://bugzilla.mozilla.org/show_bug.cgi?id=1401469
+  megatools
   meld
   mpd
   mpv{,-mpris,-webm-git}
@@ -232,7 +231,7 @@ games=(
   vkbasalt
   wine-mono-bin wine-gecko
   wine-tkg-staging-fsync-vkd3d-git # TODO: move to staging when mingw and fs{-hack,-bypass,-scaling,ync} is merged
-  winetricks-git # TODO: move to bin https://github.com/Winetricks/winetricks/issues/1263
+  winetricks
   yuzu-mainline-git
   {lib32-,}faudio-git
   {lib32-,}gst-plugins-bad
