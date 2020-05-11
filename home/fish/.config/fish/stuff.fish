@@ -22,7 +22,6 @@ alias g 'git'
 alias jc 'journalctl'
 alias jcu 'journalctl --user'
 alias linkmusic 'ln -sfv /media/disk0/torrents/Music/* $HOME/Music'
-alias ls 'ls --color=auto -ah --quoting-style=escape --group-directories-first'
 alias sc 'systemctl'
 alias scu 'systemctl --user'
 alias t_danet2 'telegram-desktop -many -workdir $HOME/.local/share/TelegramDesktop_danet2'
@@ -44,25 +43,15 @@ end
 
 # backup
 function backup
-  # local
   cps $HOME/{main,share} /media/disk0
-  parallel cps $HOME/main/Documents/NewDatabase.kdbx ::: /media/disk2/Users/User/Desktop $HOME/share
+  cps $HOME/main/NewDatabase.kdbx /media/disk2/Users/User/Desktop
   # fix errors like `some-file.jpg: Duplicate object found in destination - ignoring` https://github.com/rclone/rclone/issues/2131#issuecomment-372459713
-  rclone dedupe --dedupe-mode newest 50gbmega:/
-  rclone dedupe --dedupe-mode newest 15gbmega:/
-  # dropbox 2gb
-  # TODO: https://plati.ru/search/DROPBOX
-  echo "Uploading to Dropbox"
-  uploadd $HOME/main/Documents dropbox:/Documents
-  # google drive 15gb
-  echo "Uploading to Google Drive"
-  uploadd $HOME/main gdrive:/
-  # mega.nz 50gb
-  echo "Uploading to MEGA 50gb"
-  uploadd $HOME/main 50gbmega:/
-  # mega.nz 15gb
-  echo "Uploading to MEGA 15gb"
-  uploadd $HOME/main 15gbmega:/
+  parallel rclone dedupe --dedupe-mode newest ::: {15,50}gbmega:/
+  # upload
+  parallel uploadd $HOME/.ssh ::: {dropbox,gdrive,{15,50}gbmega}:/ssh
+  parallel uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
+  parallel uploadd $HOME/main ::: {gdrive,{15,50}gbmega}:/
+  uploadd $HOME/main/me dropbox:/me
 end
 
 # update everything
@@ -79,12 +68,7 @@ function update
 end
 
 function cleanup
-  if string match -q m $argv
-    ancient-packages -q
-    #fd -t d -H ".unwanted" /media/disk0/torrents -x rm -r {}
-    return
-  end
-  #fd -t f -H -I -e .tar.zst --search-path $HOME/git/PKGBUILDS -x "rm" {}
+  ancient-packages -q
   flatpak --user uninstall --unused # https://github.com/flatpak/flatpak/issues/2639
   yay -Sc --noconfirm
   # TODO: https://github.com/Jguer/yay/issues/1112

@@ -53,11 +53,9 @@ plasma=(
   # kdeutils-meta end
   colord-kde
   kde-service-menu-reimage
-  kde-servicemenus-rootactions
   kwin-lowlatency
   plasma-meta
   plasma-wayland-session
-  plasma5-applets-weather-widget
 )
 
 drv=(
@@ -127,7 +125,6 @@ packages=(
   jdupes
   keepassxc
   kitty
-  kompare
   krename
   lector
   libstrangle-git
@@ -136,7 +133,7 @@ packages=(
   megatools
   meld
   mpd
-  mpv{,-mpris,-webm-git}
+  mpv{,-webm-git}
   nano
   networkmanager{,-pptp,-openvpn}
   ntfs-3g
@@ -165,7 +162,8 @@ packages=(
   sudo
   syncplay
   syncthing
-  systemdgenie
+  systemd-kcm
+  fancontrol-kcm
   telegram-desktop
   thunderbird
   tldr++
@@ -220,6 +218,7 @@ games=(
   residualvm
   retroarch
   roberta
+  pcsx2
   rpcs3-bin
   scummvm
   steam
@@ -253,7 +252,6 @@ yay -S "${packages[@]}" "${fonts[@]}" "${drv[@]}" "${plasma[@]}" "${games[@]}" "
 flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 flatpak --user install flathub org.jdownloader.JDownloader
-flatpak --user install flathub net.pcsx2.PCSX2
 snap install copay
 
 vspackages=(

@@ -17,4 +17,6 @@ set -gx EDITOR code -w
 # browser, for xdg-open
 set -gx BROWSER firefox
 
-echo Hi sempai~
+if status is-interactive
+  echo Hi sempai~
+end
