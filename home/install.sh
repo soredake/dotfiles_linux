@@ -4,7 +4,7 @@ SD="$(cd "$(dirname "$0")" > /dev/null || exit 1; pwd)";
 cd "$SD" || exit 1
 
 # create initial folders
-[[ ! -d "$HOME/.config/Code - OSS" ]] && mkdir -p "$HOME/.config/Code - OSS"
+[[ ! -d "$HOME/.config/Code - OSS" ]] && mkdir -p "$HOME/.config/Code"
 [[ ! -d "$HOME/.config/fish" ]] && mkdir -p "$HOME/.config/fish"
 [[ ! -d "$HOME/.config/git" ]] && mkdir -p "$HOME/.config/git"
 [[ ! -d "$HOME/.config/kitty" ]] && mkdir -p "$HOME/.config/kitty"
