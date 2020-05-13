@@ -1,3 +1,12 @@
+# Confirm before overwriting
+# I know it is bad practice to override the default commands, but this is for
+# my own safety. If you really want the original "instakill" versions, you can
+# use "command rm", "\rm", or "/bin/rm" inside your own commands, aliases, or
+# shell functions. Note that separate scripts are not affected by the aliases
+# defined here.
+alias mv='/bin/mv -i'
+alias rm='/bin/rm -i'
+alias cp='/bin/cp -i'
 # rclone alias
 # TODO: remove when https://github.com/rclone/rclone/issues/2697 is done
 alias uploadd 'rclone sync --fast-list --delete-before'
@@ -12,7 +21,7 @@ alias cps='mrsync --update --delete'
 #alias build_mainline 'tkgup; cd wine-tkg-git/wine-tkg-git && timeout 2 ./non-makepkg-build.sh $HOME/.config/frogminer/wine-tkg-mainline.cfg; ./non-makepkg-build.sh $HOME/.config/frogminer/wine-tkg-mainline.cfg'
 #alias build_staging 'tkgup; cd wine-tkg-git/wine-tkg-git && timeout 2 ./non-makepkg-build.sh $HOME/.config/frogminer/wine-tkg-staging.cfg; ./non-makepkg-build.sh $HOME/.config/frogminer/wine-tkg-staging.cfg'
 #alias tkgup 'cd $HOME/git/PKGBUILDS; git reset --hard origin/frogging-family; git submodule foreach --recursive git reset --hard origin; git pull'
-alias badlinks 'find . -type l -exec test ! -e {} \; -print'
+#alias badlinks 'find . -type l -exec test ! -e {} \; -print'
 alias e 'code'
 alias exip 'curl -s https://ipecho.net/plain'
 alias finddupes 'jdupes -R -Nd1Ap'
@@ -40,11 +49,13 @@ end
 
 # backup
 function backup
+  echo "===Local backup==="
   cps $HOME/{main,share} /media/danet/Bigdisk
   cps $HOME/main/NewDatabase.kdbx "/media/danet/Windows 10/Users/User/Desktop"
   # fix errors like `some-file.jpg: Duplicate object found in destination - ignoring` https://github.com/rclone/rclone/issues/2131#issuecomment-372459713
   parallel rclone dedupe --dedupe-mode newest ::: {15,50}gbmega:/
   # upload
+  echo "===Cloud backup==="
   parallel uploadd $HOME/.ssh ::: {dropbox,gdrive,{15,50}gbmega}:/ssh
   parallel uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
   parallel uploadd $HOME/main ::: {gdrive,{15,50}gbmega}:/

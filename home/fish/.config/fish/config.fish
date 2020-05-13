@@ -8,7 +8,7 @@ for sh in /etc/profile.d/*.sh
   test -r $sh && bass source $sh
 end
 # path
-set PATH $PATH $HOME/.local/bin
+#set PATH $PATH $HOME/.local/bin
 end
 source $__fish_config_dir/stuff.fish
 

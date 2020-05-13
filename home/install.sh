@@ -4,12 +4,13 @@ SD="$(cd "$(dirname "$0")" > /dev/null || exit 1; pwd)";
 cd "$SD" || exit 1
 
 # create initial folders
-[[ ! -d "$HOME/.config/Code - OSS" ]] && mkdir -p "$HOME/.config/Code"
+#[[ ! -d "$HOME/.config/Code" ]] && mkdir -p "$HOME/.config/Code"
 [[ ! -d "$HOME/.config/fish" ]] && mkdir -p "$HOME/.config/fish"
 [[ ! -d "$HOME/.config/git" ]] && mkdir -p "$HOME/.config/git"
 [[ ! -d "$HOME/.config/kitty" ]] && mkdir -p "$HOME/.config/kitty"
 [[ ! -d "$HOME/.config/mpv" ]] && mkdir -p "$HOME/.config/mpv"
 [[ ! -d "$HOME/.config/systemd/user" ]] && mkdir -p "$HOME/.config/systemd/user"
+[[ ! -d "$HOME/.local/bin" ]] && mkdir -p "$HOME/.local/bin"
 
 for d in $(echo */);
 do
