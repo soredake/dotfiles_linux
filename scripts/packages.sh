@@ -5,6 +5,7 @@ sudo add-apt-repository -y ppa:kisak/kisak-mesa
 sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:lutris-team/lutris
 sudo add-apt-repository -y ppa:cdemu/ppa
+sudo add-apt-repository -y ppa:jonaski/strawberry
 sudo add-apt-repository -y ppa:samoilov-lex/retrogames
 sudo add-apt-repository -y ppa:gerbilsoft/ppa
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
@@ -33,6 +34,8 @@ optdeps=(
   dolphin-plugins
   # kde
   colord-kde
+  # pulseaudio
+  pulseaudio-module-gsettings
 )
 
 packages=(
@@ -40,7 +43,6 @@ packages=(
   aria2
   aspell-ru
   balena-etcher-electron
-  cantata
   cryfs
   earlyoom
   fd-find
@@ -61,7 +63,6 @@ packages=(
   linux-xanmod
   megatools
   meld
-  mpd
   mpv
   myspell-ru
   obs-studio
@@ -82,6 +83,7 @@ packages=(
   sirikali
   smartmontools
   stow
+  strawberry
   sweeper
   syncthing
   telegram-desktop
@@ -109,24 +111,25 @@ games=(
   vitetris
 )
 
-sudo apt install --install-recommends wine-staging steam
+sudo apt install --install-recommends winehq-staging steam winetricks
 
 # Install my packages
 sudo apt install "${packages[@]}" "${games[@]}" "${optdeps[@]}"
 
 flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak --user install flathub com.viber.Viber
-flatpak --user install flathub org.jdownloader.JDownloader
-flatpak --user install flathub org.taisei_project.Taisei
+flatpak --user install flathub com.viber.Viber org.jdownloader.JDownloader org.taisei_project.Taisei
 snap install copay
 snap install dosbox-staging
 snap install open-syobon-action
-pip3 install git+https://github.com/simons-public/protonfixes@master
-pip3 install internetarchive
-pip3 install protontricks
-pip3 install anime-downloader
-pip3 install Trackma
-pip3 install https://github.com/ihaveamac/ninfs/archive/2.0.zip#egg=ninfs[gui] # TODO: https://github.com/ihaveamac/ninfs/issues/57
+pip=(
+  git+https://github.com/simons-public/protonfixes@master
+  internetarchive
+  protontricks
+  anime-downloader
+  Trackma
+  "https://github.com/ihaveamac/ninfs/archive/2.0.zip#egg=ninfs[gui]" # TODO: https://github.com/ihaveamac/ninfs/issues/57
+)
+pip3 install -U "${pip[@]}"
 ninfs --install-desktop-entry
 
 vspackages=(

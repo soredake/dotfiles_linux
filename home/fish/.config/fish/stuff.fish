@@ -18,17 +18,12 @@ alias bmv='mrsync --remove-source-files'
 alias cpu='mrsync --update'
 alias cps='mrsync --update --delete'
 # Shorter
-#alias build_mainline 'tkgup; cd wine-tkg-git/wine-tkg-git && timeout 2 ./non-makepkg-build.sh $HOME/.config/frogminer/wine-tkg-mainline.cfg; ./non-makepkg-build.sh $HOME/.config/frogminer/wine-tkg-mainline.cfg'
-#alias build_staging 'tkgup; cd wine-tkg-git/wine-tkg-git && timeout 2 ./non-makepkg-build.sh $HOME/.config/frogminer/wine-tkg-staging.cfg; ./non-makepkg-build.sh $HOME/.config/frogminer/wine-tkg-staging.cfg'
-#alias tkgup 'cd $HOME/git/PKGBUILDS; git reset --hard origin/frogging-family; git submodule foreach --recursive git reset --hard origin; git pull'
-#alias badlinks 'find . -type l -exec test ! -e {} \; -print'
 alias e 'code'
 alias exip 'curl -s https://ipecho.net/plain'
 alias finddupes 'jdupes -R -Nd1Ap'
 alias g 'git'
 alias jc 'journalctl'
 alias jcu 'journalctl --user'
-alias linkmusic 'ln -sfv /media/danet/Bigdisk/torrents/Music/* $HOME/Music'
 alias nvmestats 'sudo smartctl -A /dev/nvme0'
 alias sc 'systemctl'
 alias scu 'systemctl --user'
@@ -71,14 +66,13 @@ function update
   #snap refresh
   #fwupdmgr refresh
   #fwupdmgr update
-  fisher
   fisher self-update
+  fisher
 end
 
 function cleanup
   flatpak --user uninstall --unused # https://github.com/flatpak/flatpak/issues/2639
   sudo apt-get autoremove
-  sudo apt-get autoclean
   sudo apt-get clean
 end
 
