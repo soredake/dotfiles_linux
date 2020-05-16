@@ -40,17 +40,13 @@ optdeps=(
 
 packages=(
   android-tools-adb
-  aria2
-  aspell-ru
   balena-etcher-electron
   cryfs
   earlyoom
   fd-find
   filelight
   fish
-  flatpak
   gimp
-  git
   git-cola
   gitk
   htop
@@ -58,36 +54,29 @@ packages=(
   keepassxc
   kitty
   kompare
-  krename
   kubuntu-restricted-extras
   linux-xanmod
   megatools
-  meld
   mpv
-  myspell-ru
   obs-studio
   parallel
   plasma-discover-backend-flatpak
-  plasma-workspace-wayland
   proxychains4
   pulseaudio-modules-bt
   python3-pip
   qbittorrent
-  qdirstat
   rclone
   ripgrep
   rom-properties-all # TODO: https://github.com/GerbilSoft/rom-properties/issues/218
   safeeyes
-  seahorse
   shellcheck
   sirikali
   smartmontools
   stow
   strawberry
-  sweeper
+  bleachbit
   syncthing
   telegram-desktop
-  thunderbird
   tor
   torbrowser-launcher
   translate-shell
@@ -99,16 +88,18 @@ packages=(
 
 games=(
   cataclysm-dda-sdl
+  citra
   colobot
   gamemode
   gcdemu
   lutris
   openmw
-  pcsx2 citra yuzu
+  pcsx2
   residualvm
   retroarch
   scummvm
   vitetris
+  yuzu
 )
 
 sudo apt install --install-recommends winehq-staging steam winetricks
@@ -117,7 +108,7 @@ sudo apt install --install-recommends winehq-staging steam winetricks
 sudo apt install "${packages[@]}" "${games[@]}" "${optdeps[@]}"
 
 flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak --user install flathub com.viber.Viber org.jdownloader.JDownloader org.taisei_project.Taisei
+flatpak --user install flathub org.jdownloader.JDownloader org.taisei_project.Taisei
 snap install copay
 snap install dosbox-staging
 snap install open-syobon-action

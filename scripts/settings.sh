@@ -2,7 +2,6 @@
 chsh -s /usr/bin/fish
 systemctl enable --now amdgpu
 systemctl --user enable --now syncthing backup.timer
-sudo update-alternatives --set editor /usr/bin/code
 
 # lutris: use system libretro cores
 # https://github.com/lutris/lutris/issues/2444

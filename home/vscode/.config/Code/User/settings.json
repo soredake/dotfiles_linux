@@ -7,7 +7,6 @@
     "editor.wordWrap": "on",
     "editor.lineHeight": 21,
     "workbench.colorTheme": "Firewatch Theme",
-    "bashIde.path": "/usr/bin/bash-language-server",
     "files.autoSave": "afterDelay",
     "todohighlight.isEnable": true,
     "git.autofetch": true
