@@ -7,7 +7,6 @@ sudo add-apt-repository -y ppa:lutris-team/lutris
 sudo add-apt-repository -y ppa:cdemu/ppa
 sudo add-apt-repository -y ppa:jonaski/strawberry
 sudo add-apt-repository -y ppa:samoilov-lex/retrogames
-sudo add-apt-repository -y ppa:gerbilsoft/ppa
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
 wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
@@ -41,7 +40,7 @@ optdeps=(
 packages=(
   android-tools-adb
   balena-etcher-electron
-  cryfs
+  bleachbit
   earlyoom
   fd-find
   filelight
@@ -54,31 +53,23 @@ packages=(
   keepassxc
   kitty
   kompare
-  kubuntu-restricted-extras
   linux-xanmod
-  megatools
   mpv
   obs-studio
   parallel
-  plasma-discover-backend-flatpak
   proxychains4
   pulseaudio-modules-bt
   python3-pip
   qbittorrent
   rclone
   ripgrep
-  rom-properties-all # TODO: https://github.com/GerbilSoft/rom-properties/issues/218
   safeeyes
   shellcheck
-  sirikali
   smartmontools
   stow
   strawberry
-  bleachbit
   syncthing
   telegram-desktop
-  tor
-  torbrowser-launcher
   translate-shell
   xclip
   yarn
@@ -90,7 +81,6 @@ games=(
   cataclysm-dda-sdl
   citra
   colobot
-  gamemode
   gcdemu
   lutris
   openmw
@@ -102,7 +92,8 @@ games=(
   yuzu
 )
 
-sudo apt install --install-recommends winehq-staging steam winetricks
+sudo apt install --install-recommends --install-suggests lutris winetricks
+sudo apt install --install-recommends winehq-stable steam torbrowser-launcher sirikali kubuntu-restricted-extras
 
 # Install my packages
 sudo apt install "${packages[@]}" "${games[@]}" "${optdeps[@]}"
@@ -113,15 +104,12 @@ snap install copay
 snap install dosbox-staging
 snap install open-syobon-action
 pip=(
+  anime-downloader
   git+https://github.com/simons-public/protonfixes@master
   internetarchive
   protontricks
-  anime-downloader
-  Trackma
-  "https://github.com/ihaveamac/ninfs/archive/2.0.zip#egg=ninfs[gui]" # TODO: https://github.com/ihaveamac/ninfs/issues/57
 )
 pip3 install -U "${pip[@]}"
-ninfs --install-desktop-entry
 
 vspackages=(
   EditorConfig.EditorConfig

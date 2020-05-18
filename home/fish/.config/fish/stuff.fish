@@ -18,10 +18,8 @@ alias bmv='mrsync --remove-source-files'
 alias cpu='mrsync --update'
 alias cps='mrsync --update --delete'
 # Shorter
-alias e 'code'
 alias exip 'curl -s https://ipecho.net/plain'
 alias finddupes 'jdupes -R -Nd1Ap'
-alias g 'git'
 alias jc 'journalctl'
 alias jcu 'journalctl --user'
 alias nvmestats 'sudo smartctl -A /dev/nvme0'
@@ -31,23 +29,12 @@ alias t_danet2 'telegram-desktop -many -workdir $HOME/.local/share/TelegramDeskt
 alias t_danet3 'telegram-desktop -many -workdir $HOME/.local/share/TelegramDesktop_danet3'
 alias vts 'echo vitetris --connect (exip):27015 && vitetris -listen 27015'
 
-function mkd
-  mkdir -p $argv && cd $argv || exit 1;
-end
-
-# Convert currencies; cconv {amount} {from} {to}
-function cconv
-  #| grep '&#8372;</strong>'
-  set result (curl -s "https://exchangerate.guru/$argv[2]/$argv[3]/$argv[1]/" | grep --color=never -o -P '(?<=<input data-role="secondary-input" type="text" class="form-control" value=").*(?=" required>)')
-  echo "$argv[1] $argv[2] = $result $argv[3]"
-end
-
 # backup
 function backup
   echo "===Local backup==="
-  cps $HOME/{main,share} /media/danet/Bigdisk
+  cps $HOME/main /media/danet/Bigdisk
   cps $HOME/main/NewDatabase.kdbx "/media/danet/Windows 10/Users/User/Desktop"
-  # fix errors like `some-file.jpg: Duplicate object found in destination - ignoring` https://github.com/rclone/rclone/issues/2131#issuecomment-372459713
+  # TODO: https://github.com/rclone/rclone/issues/3683
   parallel rclone dedupe --dedupe-mode newest ::: {15,50}gbmega:/
   # upload
   echo "===Cloud backup==="
@@ -72,8 +59,8 @@ end
 
 function cleanup
   flatpak --user uninstall --unused # https://github.com/flatpak/flatpak/issues/2639
-  sudo apt-get autoremove
-  sudo apt-get clean
+  #sudo apt-get autoremove
+  #sudo apt-get clean
 end
 
 function speak
