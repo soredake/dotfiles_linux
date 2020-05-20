@@ -35,24 +35,20 @@ function backup
   cps $HOME/main /media/danet/Bigdisk
   cps $HOME/main/NewDatabase.kdbx "/media/danet/Windows 10/Users/User/Desktop"
   # TODO: https://github.com/rclone/rclone/issues/3683
-  parallel rclone dedupe --dedupe-mode newest ::: {15,50}gbmega:/
+  parallel rclone dedupe --dedupe-mode newest ::: {15,50}gbmega:/main
   # upload
   echo "===Cloud backup==="
-  parallel uploadd $HOME/.ssh ::: {dropbox,gdrive,{15,50}gbmega}:/ssh
   parallel uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
-  parallel uploadd $HOME/main ::: {gdrive,{15,50}gbmega}:/
-  uploadd $HOME/main/me dropbox:/me
+  parallel uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
+  parallel uploadd $HOME/.ssh ::: {dropbox,gdrive,{15,50}gbmega}:/ssh
+  parallel uploadd $HOME/main ::: {gdrive,{15,50}gbmega}:/main
+  parallel uploadd gdrive:/aegis_export.json ::: {dropbox,{15,50}gbmega}:/
+  parallel uploadd gphoto:/ ::: dropbox:/gphotos_backup
+  #uploadd $HOME/main/me dropbox:/me
 end
 
 # update everything
 function update
-  #sudo apt update
-  #sudo apt full-upgrade
-  #sudo etc-update
-  #flatpak --user update --noninteractive
-  #snap refresh
-  #fwupdmgr refresh
-  #fwupdmgr update
   fisher self-update
   fisher
 end

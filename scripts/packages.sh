@@ -5,6 +5,7 @@ sudo add-apt-repository -y ppa:kisak/kisak-mesa
 sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:lutris-team/lutris
 sudo add-apt-repository -y ppa:cdemu/ppa
+sudo add-apt-repository -y ppa:kubuntu-ppa/backports
 sudo add-apt-repository -y ppa:jonaski/strawberry
 sudo add-apt-repository -y ppa:samoilov-lex/retrogames
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
@@ -15,16 +16,17 @@ echo "deb https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.
 sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
 
 sudo apt update
-sudo apt full-upgrade
+sudo apt upgrade -y
 
 wget --content-disposition 'https://go.microsoft.com/fwlink/?LinkID=760868'
-sudo apt install ./code*.deb
+sudo apt install -y ./code*.deb
 wget --content-disposition 'https://discord.com/api/download?platform=linux&format=deb'
-sudo apt install ./discord*.deb
+sudo apt install -y ./discord*.deb
 wget --content-disposition https://files.multimc.org/downloads/multimc_1.4-1.deb
-sudo apt install ./multimc*.deb
+sudo apt install -y ./multimc*.deb
 wget --content-disposition https://github.com/chrismaltby/gb-studio/releases/download/v1.2.1/GB-Studio-Linux-DEB-1.2.1.zip
-sudo apt install ./gb-studio*.deb
+unzip GB-Studio*.zip
+sudo apt install -y ./gb-studio*.deb
 
 optdeps=(
   # kde-service-menu-reimage
@@ -51,6 +53,7 @@ packages=(
   htop
   jdupes
   keepassxc
+  chromium-browser
   kitty
   kompare
   linux-xanmod
@@ -92,11 +95,11 @@ games=(
   yuzu
 )
 
-sudo apt install --install-recommends --install-suggests lutris winetricks
-sudo apt install --install-recommends winehq-stable steam torbrowser-launcher sirikali kubuntu-restricted-extras
+sudo apt install --install-recommends --install-suggests -y lutris winetricks
+sudo apt install --install-recommends -y winehq-stable steam torbrowser-launcher sirikali kubuntu-restricted-extras
 
 # Install my packages
-sudo apt install "${packages[@]}" "${games[@]}" "${optdeps[@]}"
+sudo apt install -y "${packages[@]}" "${games[@]}" "${optdeps[@]}"
 
 flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak --user install flathub org.jdownloader.JDownloader org.taisei_project.Taisei
