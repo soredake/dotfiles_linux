@@ -38,12 +38,13 @@ function backup
   parallel rclone dedupe --dedupe-mode newest ::: {15,50}gbmega:/main
   # upload
   echo "===Cloud backup==="
+  parallel uploadd $HOME/.config/rclone/rclone.conf ::: {dropbox,gdrive,{15,50}gbmega}:/
   parallel uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
   parallel uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
   parallel uploadd $HOME/.ssh ::: {dropbox,gdrive,{15,50}gbmega}:/ssh
   parallel uploadd $HOME/main ::: {gdrive,{15,50}gbmega}:/main
   parallel uploadd gdrive:/aegis_export.json ::: {dropbox,{15,50}gbmega}:/
-  parallel uploadd gphoto:/ ::: dropbox:/gphotos_backup
+  parallel uploadd gphoto:/media/all ::: dropbox:/gphotos_backup
   #uploadd $HOME/main/me dropbox:/me
 end
 

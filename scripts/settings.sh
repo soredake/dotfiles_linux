@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir -p "$HOME"/.config/{fish,git,kitty,mpv,systemd/user} "$HOME/.local/bin"
+#mkdir -p "$HOME"/.config/{fish,git,kitty,mpv,systemd/user} "$HOME/.local/bin"
 chsh -s /usr/bin/fish
 systemctl enable --now amdgpu
 systemctl --user enable --now backup.timer

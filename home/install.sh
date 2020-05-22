@@ -5,5 +5,5 @@ cd "$SD" || exit 1
 
 for d in $(echo */);
 do
-  stow $1 -v 2 -d "$SD" -t "$HOME" "$d"
+  stow --no-folding $1 -v 2 -d "$SD" -t "$HOME" "$d"
 done
