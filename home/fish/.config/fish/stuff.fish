@@ -18,6 +18,9 @@ alias bmv='mrsync --remove-source-files'
 alias cpu='mrsync --update'
 alias cps='mrsync --update --delete'
 # Shorter
+alias fd 'fdfind'
+alias g 'git'
+alias e 'code'
 alias exip 'curl -s https://ipecho.net/plain'
 alias finddupes 'jdupes -R -Nd1Ap'
 alias jc 'journalctl'
@@ -38,14 +41,14 @@ function backup
   parallel rclone dedupe --dedupe-mode newest ::: {15,50}gbmega:/main
   # upload
   echo "===Cloud backup==="
+  rclone cleanup gdrive:/
   parallel uploadd $HOME/.config/rclone/rclone.conf ::: {dropbox,gdrive,{15,50}gbmega}:/
   parallel uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
-  parallel uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
+  #parallel uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
   parallel uploadd $HOME/.ssh ::: {dropbox,gdrive,{15,50}gbmega}:/ssh
   parallel uploadd $HOME/main ::: {gdrive,{15,50}gbmega}:/main
   parallel uploadd gdrive:/aegis_export.json ::: {dropbox,{15,50}gbmega}:/
   parallel uploadd gphoto:/media/all ::: dropbox:/gphotos_backup
-  #uploadd $HOME/main/me dropbox:/me
 end
 
 # update everything

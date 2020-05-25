@@ -47,11 +47,10 @@ optdeps=(
 
 packages=(
   android-tools-adb
-  balena-etcher-electron
+  balena-etcher-electron # TODO: remove after removing windows
   bleachbit
   earlyoom
   fd-find
-  filelight
   fish
   gimp
   git-cola
@@ -59,22 +58,22 @@ packages=(
   htop
   jdupes
   keepassxc
-  chromium-browser
   kitty
   kompare
-  linux-xanmod
+  linux-xanmod # TODO: fsync mainline
   mpv
   obs-studio
   parallel
   proxychains4
   pulseaudio-modules-bt
   python3-pip
+  python3-venv # TODO: dupeguru ppa mainline
   qbittorrent
   rclone
   ripgrep
   safeeyes
   shellcheck
-  smartmontools
+  smartmontools # TODO: fix kde partitionmanager s.m.a.r.t. report
   stow
   strawberry
   syncthing
@@ -91,7 +90,6 @@ games=(
   citra
   colobot
   gcdemu
-  lutris
   openmw
   pcsx2
   residualvm
@@ -101,7 +99,7 @@ games=(
   yuzu
 )
 
-sudo apt install --install-recommends --install-suggests -y lutris winetricks
+sudo apt install --install-recommends --install-sugggests -y lutris winetricks
 sudo apt install --install-recommends -y winehq-stable steam torbrowser-launcher sirikali kubuntu-restricted-extras
 
 # Install my packages
@@ -112,7 +110,7 @@ snap install copay
 snap install dosbox-staging
 snap install open-syobon-action
 pip=(
-  anime-downloader
+  git+https://github.com/vn-ki/anime-downloader.git
   git+https://github.com/simons-public/protonfixes@master
   internetarchive
   protontricks
