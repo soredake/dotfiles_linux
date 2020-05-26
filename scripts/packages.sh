@@ -144,3 +144,8 @@ vspackages=(
 )
 
 parallel -j 1 code --install-extension ::: "${vspackages[@]}"
+
+# vmware https://itsfoss.com/install-vmware-player-ubuntu-1310/
+sudo apt install build-essential
+sudo add-apt-repository -y ppa:ubuntu-toolchain-r/ppa
+sudo apt install gcc-10

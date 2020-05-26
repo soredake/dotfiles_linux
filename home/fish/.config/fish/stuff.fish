@@ -9,18 +9,18 @@ alias rm='/bin/rm -i'
 alias cp='/bin/cp -i'
 # rclone alias
 # TODO: remove when https://github.com/rclone/rclone/issues/2697 is done
-alias uploadd 'rclone sync --fast-list --delete-before'
+alias uploadd 'rclone sync (status is-interactive-job-control && echo -P) --fast-list --delete-before'
 # Better copy, move, copy with update and synchronize folder aliases
-# --archive = archive mode; equals -rlptgoD (no -H,-A,-X)
-alias mrsync='rsync --archive --hard-links --acls --xattrs --compress --progress --verbose --executability -h'
-alias bcp='mrsync'
-alias bmv='mrsync --remove-source-files'
-alias cpu='mrsync --update'
-alias cps='mrsync --update --delete'
+alias mrsync 'rsync --archive --compress --progress --verbose --executability -h'
+alias bcp 'mrsync'
+alias bmv 'mrsync --remove-source-files'
+alias cpu 'mrsync --update'
+alias cps 'mrsync --update --delete'
 # Shorter
 alias fd 'fdfind'
 alias g 'git'
 alias e 'code'
+alias vm 'gamemoderun vmplayer'
 alias exip 'curl -s https://ipecho.net/plain'
 alias finddupes 'jdupes -R -Nd1Ap'
 alias jc 'journalctl'
@@ -43,10 +43,10 @@ function backup
   echo "===Cloud backup==="
   rclone cleanup gdrive:/
   parallel uploadd $HOME/.config/rclone/rclone.conf ::: {dropbox,gdrive,{15,50}gbmega}:/
-  parallel uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
+  parallel -j 2 uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
   #parallel uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
   parallel uploadd $HOME/.ssh ::: {dropbox,gdrive,{15,50}gbmega}:/ssh
-  parallel uploadd $HOME/main ::: {gdrive,{15,50}gbmega}:/main
+  parallel -j 2 uploadd $HOME/main ::: {gdrive,{15,50}gbmega}:/main
   parallel uploadd gdrive:/aegis_export.json ::: {dropbox,{15,50}gbmega}:/
   parallel uploadd gphoto:/media/all ::: dropbox:/gphotos_backup
 end
