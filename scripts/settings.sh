@@ -15,3 +15,15 @@ python "$a" install
 # SBC HD
 # https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583
 sudo sed -i 's|load-module module-bluetooth-discover|load-module module-bluetooth-discover a2dp_config="sbc_min_bp=47 sbc_max_bp=47 sbc_freq=44k sbc_cmode=dual sbc_alloc=loudness sbc_sbands=8 sbc_blen=16"|g' /etc/pulse/default.pa
+
+# mpv scripts
+cd "$HOME/.config/mpv/scripts" || exit 1
+curl https://raw.githubusercontent.com/ElegantMonkey/mpv-webm/master/build/webm.lua -LO
+7z x /usr/share/doc/mpv/tools/lua/autodeint.lua.gz
+
+# vkbasalt
+cd "$(mktemp -d)" || exit 1
+curl -OL https://github.com/DadSchoorse/vkBasalt/releases/download/v0.3.1/vkBasalt.tar.gz
+tar -xf vkBasalt.tar.gz
+cd vkBasalt || exit 1
+make install

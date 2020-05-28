@@ -43,6 +43,10 @@ optdeps=(
   colord-kde
   # pulseaudio
   pulseaudio-module-gsettings
+  # kio
+  kio-gdrive
+  # boxtron
+  inotify-tools timidity fluid-soundfont-gm
 )
 
 packages=(
@@ -83,6 +87,7 @@ packages=(
   yarn
   youtube-dl
   zeal
+  devscripts
 )
 
 games=(
@@ -109,6 +114,7 @@ flatpak install flathub org.jdownloader.JDownloader org.taisei_project.Taisei
 snap install copay
 snap install dosbox-staging
 snap install open-syobon-action
+snap install gallery-dl
 pip=(
   git+https://github.com/vn-ki/anime-downloader.git
   git+https://github.com/simons-public/protonfixes@master
