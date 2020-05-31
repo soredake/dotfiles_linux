@@ -1,11 +1,11 @@
 #!/bin/bash
-
 sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
 sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:lutris-team/lutris
 sudo add-apt-repository -y ppa:cdemu/ppa
 sudo add-apt-repository -y ppa:kubuntu-ppa/backports
+sudo add-apt-repository -y ppa:apandada1/foliate
 sudo add-apt-repository -y ppa:jonaski/strawberry
 sudo add-apt-repository -y ppa:samoilov-lex/retrogames
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
@@ -24,6 +24,9 @@ sudo add-apt-repository -y "deb [arch=amd64] https://ppa.javinator9889.com/ all 
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+# ungoogled-chromium
+echo 'deb http://download.opensuse.org/repositories/home:/ungoogled_chromium/Ubuntu_Focal/ /' | sudo tee /etc/apt/sources.list.d/home:ungoogled_chromium.list
+sudo wget -nv https://download.opensuse.org/repositories/home:ungoogled_chromium/Ubuntu_Focal/Release.key -O "/etc/apt/trusted.gpg.d/home:ungoogled_chromium.asc"
 
 sudo apt update
 sudo apt upgrade -y
@@ -43,19 +46,20 @@ optdeps=(
   colord-kde
   # pulseaudio
   pulseaudio-module-gsettings
-  # kio
+  # kio TODO: https://bazaar.launchpad.net/~kubuntu-dev/ubuntu-seeds/kubuntu.groovy/view/head:/desktop#L93
   kio-gdrive
   # boxtron
   inotify-tools timidity fluid-soundfont-gm
 )
 
 packages=(
-  android-tools-adb
-  balena-etcher-electron # TODO: remove after removing windows
+  balena-etcher-electron
   bleachbit
+  cheese
   earlyoom
   fd-find
   fish
+  foliate
   gimp
   git-cola
   gitk
@@ -83,11 +87,11 @@ packages=(
   syncthing
   telegram-desktop
   translate-shell
+  ungoogled-chromium
   xclip
   yarn
   youtube-dl
   zeal
-  devscripts
 )
 
 games=(
@@ -110,11 +114,10 @@ sudo apt install --install-recommends -y winehq-stable steam torbrowser-launcher
 # Install my packages
 sudo apt install -y "${packages[@]}" "${games[@]}" "${optdeps[@]}"
 
-flatpak install flathub org.jdownloader.JDownloader org.taisei_project.Taisei
+flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.bilelmoussaoui.Authenticator
 snap install copay
 snap install dosbox-staging
 snap install open-syobon-action
-snap install gallery-dl
 pip=(
   git+https://github.com/vn-ki/anime-downloader.git
   git+https://github.com/simons-public/protonfixes@master
@@ -133,12 +136,12 @@ vspackages=(
   chrislajoie.vscode-modelines
   coolbear.systemd-unit-file
   deerawan.vscode-dash
+  dpkristensen-garmin.udev-rules
   eamodio.gitlens
   file-icons.file-icons
   geekidos.vdf
   jaspernorth.vscode-pigments
   jaydenlin.ctags-support
-  dpkristensen-garmin.udev-rules
   jeff-hykin.code-eol
   jit-y.vscode-advanced-open-file
   mads-hartmann.bash-ide-vscode
@@ -155,3 +158,20 @@ parallel -j 1 code --install-extension ::: "${vspackages[@]}"
 sudo apt install build-essential
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/ppa
 sudo apt install gcc-10
+
+# mpv scripts
+cd "$HOME/.config/mpv/scripts" || exit 1
+curl https://raw.githubusercontent.com/ElegantMonkey/mpv-webm/master/build/webm.lua -LO
+7z x /usr/share/doc/mpv/tools/lua/autodeint.lua.gz
+
+# vkbasalt
+cd "$(mktemp -d)" || exit 1
+curl -OL https://github.com/DadSchoorse/vkBasalt/releases/download/v0.3.1/vkBasalt.tar.gz
+tar -xf vkBasalt.tar.gz
+cd vkBasalt || exit 1
+make install
+
+# helper for "open with" firefox addon
+a="$HOME/.local/share/open_with_addon/open_with_linux.py"
+curl https://github.com/darktrojan/openwith/raw/master/webextension/native/open_with_linux.py --create-dirs -sLo "$a"
+python "$a" install

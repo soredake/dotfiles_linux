@@ -35,16 +35,15 @@ alias vts 'echo vitetris --connect (exip):27015 && vitetris -listen 27015'
 # backup
 function backup
   echo "===Local backup==="
-  cps $HOME/main /media/danet/Bigdisk
-  cps $HOME/main/NewDatabase.kdbx "/media/danet/Windows 10/Users/User/Desktop"
+  parallel cps $HOME/main ::: /media/danet/{Data,Bigdisk}
   # TODO: https://github.com/rclone/rclone/issues/3683
   parallel rclone dedupe --dedupe-mode newest ::: {15,50}gbmega:/main
   # upload
   echo "===Cloud backup==="
   rclone cleanup gdrive:/
+  rclone -P --fast-list move gdrive:/phone-stuff/ $HOME/main/unsorted
   parallel uploadd $HOME/.config/rclone/rclone.conf ::: {dropbox,gdrive,{15,50}gbmega}:/
   parallel -j 2 uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
-  #parallel uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
   parallel uploadd $HOME/.ssh ::: {dropbox,gdrive,{15,50}gbmega}:/ssh
   parallel -j 2 uploadd $HOME/main ::: {gdrive,{15,50}gbmega}:/main
   parallel uploadd gdrive:/aegis_export.json ::: {dropbox,{15,50}gbmega}:/
@@ -59,8 +58,6 @@ end
 
 function cleanup
   flatpak --user uninstall --unused # https://github.com/flatpak/flatpak/issues/2639
-  #sudo apt-get autoremove
-  #sudo apt-get clean
 end
 
 function speak
