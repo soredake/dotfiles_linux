@@ -1,6 +1,8 @@
 #!/bin/bash
 sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
-sudo add-apt-repository -y ppa:kisak/kisak-mesa
+#sudo add-apt-repository -y ppa:kisak/kisak-mesa
+# https://launchpad.net/~oibaf/+archive/ubuntu/graphics-drivers?field.series_filter=focal
+sudo add-apt-repository -y ppa:oibaf/graphics-drivers
 sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:lutris-team/lutris
 sudo add-apt-repository -y ppa:cdemu/ppa
@@ -72,6 +74,7 @@ packages=(
   mpv
   obs-studio
   parallel
+  ppa-purge
   proxychains4
   pulseaudio-modules-bt
   python3-pip
