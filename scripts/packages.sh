@@ -33,11 +33,15 @@ sudo wget -nv https://download.opensuse.org/repositories/home:ungoogled_chromium
 sudo apt update
 sudo apt upgrade -y
 
+cd /tmp || exit 1
 wget --content-disposition https://files.multimc.org/downloads/multimc_1.4-1.deb
 sudo apt install -y ./multimc*.deb
 wget --content-disposition https://github.com/chrismaltby/gb-studio/releases/download/v1.2.1/GB-Studio-Linux-DEB-1.2.1.zip
 unzip GB-Studio*.zip
 sudo apt install -y ./gb-studio*.deb
+# https://www.gamingonlinux.com/articles/valve-have-a-new-beta-installer-for-the-linux-steam-client-for-the-brave-tester.16312
+wget --content-disposition https://repo.steampowered.com/steam/archive/precise/steam-launcher_latest-beta_all.deb
+sudo apt install -y ./steam*.deb
 
 optdeps=(
   # kde-service-menu-reimage
@@ -112,20 +116,21 @@ games=(
 )
 
 sudo apt install --install-recommends --install-sugggests -y lutris winetricks
-sudo apt install --install-recommends -y winehq-stable steam torbrowser-launcher sirikali kubuntu-restricted-extras
+sudo apt install --install-recommends -y winehq-staging torbrowser-launcher sirikali kubuntu-restricted-extras
 
 # Install my packages
 sudo apt install -y "${packages[@]}" "${games[@]}" "${optdeps[@]}"
 
-flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.bilelmoussaoui.Authenticator
+flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber
 snap install copay
 snap install dosbox-staging
 snap install open-syobon-action
 pip=(
-  git+https://github.com/vn-ki/anime-downloader.git
   git+https://github.com/simons-public/protonfixes@master
+  git+https://github.com/vn-ki/anime-downloader.git
   internetarchive
   protontricks
+  vdf
 )
 pip3 install -U "${pip[@]}"
 

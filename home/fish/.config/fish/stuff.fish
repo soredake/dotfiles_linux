@@ -9,7 +9,7 @@ alias rm='/bin/rm -i'
 alias cp='/bin/cp -i'
 # rclone alias
 # TODO: remove when https://github.com/rclone/rclone/issues/2697 is done
-alias uploadd 'rclone sync (status is-interactive-job-control && echo -P) --fast-list --delete-before'
+alias uploadd 'rclone sync (status is-interactive && echo -P) --fast-list --delete-before'
 # Better copy, move, copy with update and synchronize folder aliases
 alias mrsync 'rsync --archive --compress --progress --verbose --executability -h'
 alias bcp 'mrsync'
@@ -31,6 +31,7 @@ alias scu 'systemctl --user'
 alias t_danet2 'telegram-desktop -many -workdir $HOME/.local/share/TelegramDesktop_danet2'
 alias t_danet3 'telegram-desktop -many -workdir $HOME/.local/share/TelegramDesktop_danet3'
 alias vts 'echo vitetris --connect (exip):27015 && vitetris -listen 27015'
+alias iaupload 'ia upload --checksum --verify --retries 10 -H x-archive-keep-old-version:0'
 
 # backup
 function backup
@@ -42,12 +43,11 @@ function backup
   echo "===Cloud backup==="
   rclone cleanup gdrive:/
   rclone -P --fast-list move gdrive:/phone-stuff/ $HOME/main/unsorted
-  parallel uploadd $HOME/.config/rclone/rclone.conf ::: {dropbox,gdrive,{15,50}gbmega}:/
-  parallel -j 2 uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
-  parallel uploadd $HOME/.ssh ::: {dropbox,gdrive,{15,50}gbmega}:/ssh
-  parallel -j 2 uploadd $HOME/main ::: {gdrive,{15,50}gbmega}:/main
-  parallel uploadd gdrive:/aegis_export.json ::: {dropbox,{15,50}gbmega}:/
   parallel uploadd gphoto:/media/all ::: dropbox:/gphotos_backup
+  parallel -j 2 uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
+  parallel -j 2 uploadd $HOME/main ::: {gdrive,{15,50}gbmega}:/main
+  parallel uploadd $HOME/.config/rclone/rclone.conf ::: {dropbox,gdrive,{15,50}gbmega}:/
+  parallel uploadd $HOME/.ssh ::: {dropbox,gdrive,{15,50}gbmega}:/ssh
 end
 
 # update everything

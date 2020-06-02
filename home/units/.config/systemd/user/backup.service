@@ -1,5 +1,7 @@
 [Unit]
 Description=Backup everything
+ConditionPathExists=/media/danet/Data
+ConditionPathExists=/media/danet/Bigdisk
 
 [Service]
 Type=oneshot
