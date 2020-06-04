@@ -1,8 +1,8 @@
 [Unit]
-Description=Backup everything weekly
+Description=Backup everything daily
 
 [Timer]
-OnCalendar=weekly
+OnCalendar=daily
 Persistent=true
 
 [Install]

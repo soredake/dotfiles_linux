@@ -44,6 +44,7 @@ wget --content-disposition https://repo.steampowered.com/steam/archive/precise/s
 sudo apt install -y ./steam*.deb
 
 optdeps=(
+  network-manager-openvpn
   # kde-service-menu-reimage
   jhead
   # dolphin

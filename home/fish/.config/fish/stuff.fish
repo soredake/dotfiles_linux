@@ -9,7 +9,7 @@ alias rm='/bin/rm -i'
 alias cp='/bin/cp -i'
 # rclone alias
 # TODO: remove when https://github.com/rclone/rclone/issues/2697 is done
-alias uploadd 'rclone sync (status is-interactive && echo -P) --fast-list --delete-before'
+alias uploadd 'rclone sync (status is-interactive && echo -P) --transfers 6 --fast-list --delete-before'
 # Better copy, move, copy with update and synchronize folder aliases
 alias mrsync 'rsync --archive --compress --progress --verbose --executability -h'
 alias bcp 'mrsync'
