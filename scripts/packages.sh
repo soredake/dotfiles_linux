@@ -16,37 +16,29 @@ wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
 # linux-kernel
 echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
-# etcher
-echo "deb https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.d/balena-etcher.list
-sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
-# discord
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5890E288F7ED6702
-sudo add-apt-repository -y "deb [arch=amd64] https://ppa.javinator9889.com/ all main"
-# code
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
-sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 # ungoogled-chromium
 echo 'deb http://download.opensuse.org/repositories/home:/ungoogled_chromium/Ubuntu_Focal/ /' | sudo tee /etc/apt/sources.list.d/home:ungoogled_chromium.list
 sudo wget -nv https://download.opensuse.org/repositories/home:ungoogled_chromium/Ubuntu_Focal/Release.key -O "/etc/apt/trusted.gpg.d/home:ungoogled_chromium.asc"
 
-sudo apt update
 sudo apt upgrade -y
 
 cd /tmp || exit 1
+# TODO: https://github.com/lutris/lutris/issues/1790
 wget --content-disposition https://files.multimc.org/downloads/multimc_1.4-1.deb
 sudo apt install -y ./multimc*.deb
+# vscode
+wget --content-disposition 'https://go.microsoft.com/fwlink/?LinkID=760868'
+sudo apt install -y ./code*.deb
+# https://github.com/chrismaltby/gb-studio/issues/429
+# https://github.com/flathub/flathub/pull/1553
+# https://github.com/chrismaltby/gb-studio/issues/21
 wget --content-disposition https://github.com/chrismaltby/gb-studio/releases/download/v1.2.1/GB-Studio-Linux-DEB-1.2.1.zip
 unzip GB-Studio*.zip
 sudo apt install -y ./gb-studio*.deb
-# https://www.gamingonlinux.com/articles/valve-have-a-new-beta-installer-for-the-linux-steam-client-for-the-brave-tester.16312
-wget --content-disposition https://repo.steampowered.com/steam/archive/precise/steam-launcher_latest-beta_all.deb
-sudo apt install -y ./steam*.deb
 
-optdeps=(
+packages=(
+  # optdeps
   network-manager-openvpn
-  # kde-service-menu-reimage
-  jhead
   # dolphin
   dolphin-plugins
   # kde
@@ -55,77 +47,74 @@ optdeps=(
   pulseaudio-module-gsettings
   # kio TODO: https://bazaar.launchpad.net/~kubuntu-dev/ubuntu-seeds/kubuntu.groovy/view/head:/desktop#L93
   kio-gdrive
-  # boxtron
+  # boxtron TODO: https://github.com/dosbox-staging/dosbox-staging/issues/418
   inotify-tools timidity fluid-soundfont-gm
-)
-
-packages=(
-  balena-etcher-electron
+  # not deps
   bleachbit
+  cataclysm-dda-sdl
   cheese
+  citra # lutris
+  colobot
   earlyoom
   fd-find
   fish
   foliate
+  gamemode
+  gcdemu
   gimp
   git-cola
-  gitk
   htop
-  jdupes
+  jdupes #
   keepassxc
-  kitty
+  kitty #
   kompare
+  kubuntu-restricted-extras
   linux-xanmod # TODO: fsync mainline
+  lutris
   mpv
   obs-studio
+  openmw
   parallel
+  pcsx2 # lutris & play! core
   ppa-purge
-  proxychains4
-  pulseaudio-modules-bt
+  proxychains4 #
+  pulseaudio-modules-bt # TODO: https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/227
   python3-pip
   python3-venv # TODO: dupeguru ppa mainline
   qbittorrent
   rclone
+  residualvm # lutris
+  retroarch
   ripgrep
   safeeyes
+  scummvm # lutris
   shellcheck
+  sirikali
   smartmontools # TODO: fix kde partitionmanager s.m.a.r.t. report
+  steam-installer
   stow
   strawberry
   syncthing
   telegram-desktop
+  torbrowser-launcher
   translate-shell
   ungoogled-chromium
+  vitetris
+  winehq-staging
+  winetricks
   xclip
   yarn
-  youtube-dl
+  yuzu # lutris
   zeal
 )
 
-games=(
-  cataclysm-dda-sdl
-  citra
-  colobot
-  gcdemu
-  openmw
-  pcsx2
-  residualvm
-  retroarch
-  scummvm
-  vitetris
-  yuzu
-)
-
-sudo apt install --install-recommends --install-sugggests -y lutris winetricks
-sudo apt install --install-recommends -y winehq-staging torbrowser-launcher sirikali kubuntu-restricted-extras
+# bye
+sudo apt purge snapd
 
 # Install my packages
-sudo apt install -y "${packages[@]}" "${games[@]}" "${optdeps[@]}"
+sudo apt install --install-recommends -y --reinstall "${packages[@]}"
 
-flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber
-snap install copay
-snap install dosbox-staging
-snap install open-syobon-action
+flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.discordapp.Discord
 pip=(
   git+https://github.com/simons-public/protonfixes@master
   git+https://github.com/vn-ki/anime-downloader.git
@@ -171,16 +160,3 @@ sudo apt install gcc-10
 # mpv scripts
 cd "$HOME/.config/mpv/scripts" || exit 1
 curl https://raw.githubusercontent.com/ElegantMonkey/mpv-webm/master/build/webm.lua -LO
-7z x /usr/share/doc/mpv/tools/lua/autodeint.lua.gz
-
-# vkbasalt
-cd "$(mktemp -d)" || exit 1
-curl -OL https://github.com/DadSchoorse/vkBasalt/releases/download/v0.3.1/vkBasalt.tar.gz
-tar -xf vkBasalt.tar.gz
-cd vkBasalt || exit 1
-make install
-
-# helper for "open with" firefox addon
-a="$HOME/.local/share/open_with_addon/open_with_linux.py"
-curl https://github.com/darktrojan/openwith/raw/master/webextension/native/open_with_linux.py --create-dirs -sLo "$a"
-python "$a" install

@@ -4,6 +4,7 @@ Description=Backup everything daily
 [Timer]
 OnCalendar=daily
 Persistent=true
+OnActiveSec=5m
 
 [Install]
 WantedBy=timers.target
