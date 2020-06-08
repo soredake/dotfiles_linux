@@ -16,9 +16,9 @@ wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
 # linux-kernel
 echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
-# ungoogled-chromium
-echo 'deb http://download.opensuse.org/repositories/home:/ungoogled_chromium/Ubuntu_Focal/ /' | sudo tee /etc/apt/sources.list.d/home:ungoogled_chromium.list
-sudo wget -nv https://download.opensuse.org/repositories/home:ungoogled_chromium/Ubuntu_Focal/Release.key -O "/etc/apt/trusted.gpg.d/home:ungoogled_chromium.asc"
+# dosbox-staging
+curl https://raw.githubusercontent.com/feignint/dosbox-staging-apt-repo-POC/master/feignint.gpg | sudo apt-key add -
+sudo add-apt-repository -s 'deb https://raw.githubusercontent.com/feignint/dosbox-staging-apt-repo-POC/master/generic unstable otherosfs'
 
 sudo apt upgrade -y
 
@@ -55,6 +55,7 @@ packages=(
   cheese
   citra # lutris
   colobot
+  dosbox-staging
   earlyoom
   fd-find
   fish
@@ -72,7 +73,7 @@ packages=(
   linux-xanmod # TODO: fsync mainline
   lutris
   mpv
-  obs-studio
+  obs-studio # https://github.com/obsproject/obs-studio/pull/2868
   openmw
   parallel
   pcsx2 # lutris & play! core
@@ -98,7 +99,6 @@ packages=(
   telegram-desktop
   torbrowser-launcher
   translate-shell
-  ungoogled-chromium
   vitetris
   winehq-staging
   winetricks
@@ -112,7 +112,7 @@ packages=(
 sudo apt purge snapd
 
 # Install my packages
-sudo apt install --install-recommends -y --reinstall "${packages[@]}"
+sudo apt install --install-recommends -y "${packages[@]}"
 
 flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.discordapp.Discord
 pip=(

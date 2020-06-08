@@ -37,7 +37,7 @@ alias scu 'systemctl --user'
 alias t_danet2 'telegram-desktop -many -workdir $HOME/.local/share/TelegramDesktop_danet2'
 alias t_danet3 'telegram-desktop -many -workdir $HOME/.local/share/TelegramDesktop_danet3'
 alias vts 'echo vitetris --connect (exip):27015 && vitetris -listen 27015'
-alias iaupload 'ia upload --checksum --verify --retries 10 -H x-archive-keep-old-version:0'
+alias iaupload 'ia upload --no-derive --checksum --verify --retries 10 -H x-archive-keep-old-version:0'
 
 # backup
 function backup
