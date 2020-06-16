@@ -1,16 +1,17 @@
 #!/bin/bash
-sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
+sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp # TODO: see pulseaudio-modules-bt
 #sudo add-apt-repository -y ppa:kisak/kisak-mesa
 # https://launchpad.net/~oibaf/+archive/ubuntu/graphics-drivers?field.series_filter=focal
 sudo add-apt-repository -y ppa:oibaf/graphics-drivers
 sudo add-apt-repository -y ppa:libretro/stable
-sudo add-apt-repository -y ppa:lutris-team/lutris
-sudo add-apt-repository -y ppa:cdemu/ppa
+sudo add-apt-repository -y ppa:lutris-team/lutris # TODO: https://github.com/lutris/lutris/issues/2553
+sudo add-apt-repository -y ppa:cdemu/ppa # TODO: https://bugs.launchpad.net/cdemu/+bug/105452 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=705409
 sudo add-apt-repository -y ppa:kubuntu-ppa/backports
-sudo add-apt-repository -y ppa:apandada1/foliate
-sudo add-apt-repository -y ppa:jonaski/strawberry
-sudo add-apt-repository -y ppa:samoilov-lex/retrogames
+sudo add-apt-repository -y ppa:apandada1/foliate # TODO: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=945270
+sudo add-apt-repository -y ppa:jonaski/strawberry # TODO: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=913079
+sudo add-apt-repository -y ppa:samoilov-lex/retrogames # TODO: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=947399 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=870143
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
+sudo add-apt-repository -y ppa:mymedia/telegram # TODO: remove after upgrade to groovy
 # wine
 wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
@@ -39,6 +40,8 @@ sudo apt install -y ./gb-studio*.deb
 packages=(
   # optdeps
   network-manager-openvpn
+  # partitionmanager
+  smartmontools # TODO: https://bugs.kde.org/show_bug.cgi?id=422877
   # dolphin
   dolphin-plugins
   # kde
@@ -70,7 +73,7 @@ packages=(
   kitty #
   kompare
   kubuntu-restricted-extras
-  linux-xanmod # TODO: fsync mainline
+  linux-xanmod # TODO: https://www.phoronix.com/scan.php?page=news_item&px=Futex2-System-Call-RFC https://www.gamingonlinux.com/2020/06/linux-kernel-patch-sent-in-for-comments-to-help-gaming
   lutris
   mpv
   obs-studio # https://github.com/obsproject/obs-studio/pull/2868
@@ -78,10 +81,9 @@ packages=(
   parallel
   pcsx2 # lutris & play! core
   ppa-purge
-  proxychains4 #
-  pulseaudio-modules-bt # TODO: https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/227
+  pulseaudio-modules-bt # TODO: https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/227 TODO: this pr have sbc-hq support
   python3-pip
-  python3-venv # TODO: dupeguru ppa mainline
+  python3-venv # TODO: https://github.com/arsenetar/dupeguru/pull/665
   qbittorrent
   rclone
   residualvm # lutris
@@ -91,7 +93,6 @@ packages=(
   scummvm # lutris
   shellcheck
   sirikali
-  smartmontools # TODO: fix kde partitionmanager s.m.a.r.t. report
   steam-installer
   stow
   strawberry
@@ -113,6 +114,7 @@ sudo apt purge snapd
 
 # Install my packages
 sudo apt install --install-recommends -y "${packages[@]}"
+sudo apt install --install-suggests lm-sensors
 
 flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.discordapp.Discord
 pip=(

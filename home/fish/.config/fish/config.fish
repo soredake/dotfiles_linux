@@ -44,22 +44,19 @@ function backup
   echo "===Local backup==="
   parallel cps $HOME/main ::: /media/danet/{Data,Bigdisk}
   # TODO: https://github.com/rclone/rclone/issues/3683
-  parallel rclone dedupe --dedupe-mode newest ::: {15,50}gbmega:/main
+  parallel rclone dedupe --dedupe-mode newest ::: 50gbmega:/main
   # upload
   echo "===Cloud backup==="
   rclone cleanup gdrive:/
   rclone -P --fast-list move gdrive:/phone-stuff/ $HOME/main/unsorted
   parallel uploadd gphoto:/media/all ::: dropbox:/gphotos_backup
-  parallel -j 2 uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,{15,50}gbmega}:/qbittorrent
-  parallel -j 2 uploadd $HOME/main ::: {gdrive,{15,50}gbmega}:/main
-  parallel uploadd $HOME/.config/rclone/rclone.conf ::: {dropbox,gdrive,{15,50}gbmega}:/
-  parallel uploadd $HOME/.ssh ::: {dropbox,gdrive,{15,50}gbmega}:/ssh
+  parallel -j 2 uploadd $HOME/.local/share/data/qBittorrent/BT_backup ::: {dropbox,gdrive,50gbmega}:/qbittorrent
+  parallel -j 2 uploadd $HOME/main ::: {gdrive,50gbmega}:/main
+  parallel uploadd $HOME/.config/rclone/rclone.conf ::: {dropbox,gdrive,50gbmega}:/
+  parallel uploadd $HOME/.ssh ::: {dropbox,gdrive,50gbmega}:/ssh
 end
 
-# update everything
 function updatecleanup
-  fisher self-update
-  fisher
   flatpak uninstall --unused # https://github.com/flatpak/flatpak/issues/2639
 end
 
