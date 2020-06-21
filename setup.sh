@@ -54,6 +54,7 @@ packages=(
   inotify-tools timidity fluid-soundfont-gm
   # not deps
   bleachbit
+  caffeine
   cataclysm-dda-sdl
   cheese
   citra # lutris
@@ -159,6 +160,28 @@ sudo apt install build-essential
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/ppa
 sudo apt install gcc-10
 
+# fix wine
+sudo apt-get install winehq-staging=5.7~focal wine-staging=5.7~focal wine-staging-amd64=5.7~focal wine-staging-i386=5.7~focal -V
+
 # mpv scripts
 cd "$HOME/.config/mpv/scripts" || exit 1
 curl https://raw.githubusercontent.com/ElegantMonkey/mpv-webm/master/build/webm.lua -LO
+
+# setup dofiles
+../etc_cp/install.sh
+../home/install.sh
+
+chsh -s /usr/bin/fish
+systemctl enable --now amdgpu
+systemctl --user enable --now backup.timer fisher.timer
+
+# lutris: use system libretro cores
+# https://github.com/lutris/lutris/issues/2444
+ln -sv "$HOME/.config/retroarch/cores" "$HOME/.local/share/lutris/runners/retroarch/cores"
+
+# SBC HD
+# https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583
+sudo sed -i 's|load-module module-bluetooth-discover|load-module module-bluetooth-discover a2dp_config="sbc_min_bp=47 sbc_max_bp=47 sbc_freq=44k sbc_cmode=dual sbc_alloc=loudness sbc_sbands=8 sbc_blen=16"|g' /etc/pulse/default.pa
+
+# one more automation TODO: https://bugs.launchpad.net/ubuntu/+source/software-properties/+bug/1882500 https://bugs.kde.org/show_bug.cgi?id=418577
+sudo sed -i 's|//Unattended-Upgrade::Remove-Unused-Dependencies.*|Unattended-Upgrade::Remove-Unused-Dependencies "true";|g' /etc/apt/apt.conf.d/50unattended-upgrades

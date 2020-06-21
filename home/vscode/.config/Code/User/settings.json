@@ -8,6 +8,5 @@
     "editor.lineHeight": 21,
     "files.autoSave": "afterDelay",
     "todohighlight.isEnable": true,
-    "git.autofetch": true,
     "workbench.colorTheme": "Firewatch Theme"
 }
