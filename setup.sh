@@ -1,8 +1,6 @@
 #!/bin/bash
 sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp # TODO: see pulseaudio-modules-bt
-#sudo add-apt-repository -y ppa:kisak/kisak-mesa
-# https://launchpad.net/~oibaf/+archive/ubuntu/graphics-drivers?field.series_filter=focal
-sudo add-apt-repository -y ppa:oibaf/graphics-drivers
+sudo add-apt-repository -y ppa:kisak/kisak-mesa
 sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:lutris-team/lutris # TODO: https://github.com/lutris/lutris/issues/2553
 sudo add-apt-repository -y ppa:cdemu/ppa # TODO: https://bugs.launchpad.net/cdemu/+bug/105452 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=705409
@@ -10,23 +8,24 @@ sudo add-apt-repository -y ppa:kubuntu-ppa/backports
 sudo add-apt-repository -y ppa:apandada1/foliate # TODO: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=945270
 sudo add-apt-repository -y ppa:jonaski/strawberry # TODO: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=913079
 sudo add-apt-repository -y ppa:samoilov-lex/retrogames # TODO: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=947399 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=870143
-sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
-sudo add-apt-repository -y ppa:mymedia/telegram # TODO: remove after upgrade to groovy
+sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency # https://github.com/tildearrow/kwin-lowlatency/issues/56
+sudo add-apt-repository -y ppa:openmw/openmw
 # wine
 wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
 # linux-kernel
 echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
 # dosbox-staging
-curl https://raw.githubusercontent.com/feignint/dosbox-staging-apt-repo-POC/master/feignint.gpg | sudo apt-key add -
-sudo add-apt-repository -s 'deb https://raw.githubusercontent.com/feignint/dosbox-staging-apt-repo-POC/master/generic unstable otherosfs'
+sudo add-apt-repository -y ppa:feignint/dosbox-staging
 
 sudo apt upgrade -y
 
 cd /tmp || exit 1
-# TODO: https://github.com/lutris/lutris/issues/1790
 wget --content-disposition https://files.multimc.org/downloads/multimc_1.4-1.deb
 sudo apt install -y ./multimc*.deb
+# TODO: https://github.com/rclone/rclone/issues/3980
+wget --content-disposition https://downloads.rclone.org/v1.52.2/rclone-v1.52.2-linux-amd64.deb
+sudo apt install -y ./rclone*.deb
 # vscode
 wget --content-disposition 'https://go.microsoft.com/fwlink/?LinkID=760868'
 sudo apt install -y ./code*.deb
@@ -44,57 +43,53 @@ packages=(
   smartmontools # TODO: https://bugs.kde.org/show_bug.cgi?id=422877
   # dolphin
   dolphin-plugins
-  # kde
-  colord-kde
+  # yuzu
+  libboost-context1.71-dev
   # pulseaudio
-  pulseaudio-module-gsettings
-  # kio TODO: https://bazaar.launchpad.net/~kubuntu-dev/ubuntu-seeds/kubuntu.groovy/view/head:/desktop#L93
-  kio-gdrive
-  # boxtron TODO: https://github.com/dosbox-staging/dosbox-staging/issues/418
+  pulseaudio-module-gsettings # TODO: https://bugs.launchpad.net/ubuntu/+source/ubuntu-meta/+bug/1884932
+  # boxtron
   inotify-tools timidity fluid-soundfont-gm
   # not deps
+  android-sdk-platform-tools
   bleachbit
   caffeine
   cataclysm-dda-sdl
   cheese
-  citra # lutris
+  citra
   colobot
   dosbox-staging
-  earlyoom
+  earlyoom # TODO: https://bugs.launchpad.net/ubuntu/+source/ubuntu-meta/+bug/1886314
   fd-find
   fish
   foliate
-  gamemode
+  gamemode # TODO: https://bugs.launchpad.net/ubuntu/+source/kubuntu-meta/+bug/1886315
   gcdemu
   gimp
   git-cola
   htop
-  jdupes #
   keepassxc
-  kitty #
-  kompare
   kubuntu-restricted-extras
-  linux-xanmod # TODO: https://www.phoronix.com/scan.php?page=news_item&px=Futex2-System-Call-RFC https://www.gamingonlinux.com/2020/06/linux-kernel-patch-sent-in-for-comments-to-help-gaming
+  linux-xanmod linux-libc-dev # TODO: https://www.phoronix.com/scan.php?page=news_item&px=Futex2-System-Call-RFC https://www.gamingonlinux.com/2020/06/linux-kernel-patch-sent-in-for-comments-to-help-gaming
   lutris
   mpv
-  obs-studio # https://github.com/obsproject/obs-studio/pull/2868
-  openmw
+  obs-studio
+  openmw-launcher
   parallel
-  pcsx2 # lutris & play! core
   ppa-purge
   pulseaudio-modules-bt # TODO: https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/227 TODO: this pr have sbc-hq support
   python3-pip
-  python3-venv # TODO: https://github.com/arsenetar/dupeguru/pull/665
+  python3-venv # TODO: https://github.com/arsenetar/dupeguru/issues/484
   qbittorrent
   rclone
-  residualvm # lutris
+  residualvm
   retroarch
   ripgrep
   safeeyes
-  scummvm # lutris
+  scummvm
   shellcheck
   sirikali
-  steam-installer
+  rename
+  steam
   stow
   strawberry
   syncthing
@@ -106,7 +101,7 @@ packages=(
   winetricks
   xclip
   yarn
-  yuzu # lutris
+  yuzu
   zeal
 )
 
@@ -160,9 +155,6 @@ sudo apt install build-essential
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/ppa
 sudo apt install gcc-10
 
-# fix wine
-sudo apt-get install winehq-staging=5.7~focal wine-staging=5.7~focal wine-staging-amd64=5.7~focal wine-staging-i386=5.7~focal -V
-
 # mpv scripts
 cd "$HOME/.config/mpv/scripts" || exit 1
 curl https://raw.githubusercontent.com/ElegantMonkey/mpv-webm/master/build/webm.lua -LO
@@ -173,15 +165,12 @@ curl https://raw.githubusercontent.com/ElegantMonkey/mpv-webm/master/build/webm.
 
 chsh -s /usr/bin/fish
 systemctl enable --now amdgpu
-systemctl --user enable --now backup.timer fisher.timer
+systemctl --user enable --now backup.timer
 
 # lutris: use system libretro cores
 # https://github.com/lutris/lutris/issues/2444
 ln -sv "$HOME/.config/retroarch/cores" "$HOME/.local/share/lutris/runners/retroarch/cores"
 
 # SBC HD
-# https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583
+# https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583 https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/227 https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/issues/909
 sudo sed -i 's|load-module module-bluetooth-discover|load-module module-bluetooth-discover a2dp_config="sbc_min_bp=47 sbc_max_bp=47 sbc_freq=44k sbc_cmode=dual sbc_alloc=loudness sbc_sbands=8 sbc_blen=16"|g' /etc/pulse/default.pa
-
-# one more automation TODO: https://bugs.launchpad.net/ubuntu/+source/software-properties/+bug/1882500 https://bugs.kde.org/show_bug.cgi?id=418577
-sudo sed -i 's|//Unattended-Upgrade::Remove-Unused-Dependencies.*|Unattended-Upgrade::Remove-Unused-Dependencies "true";|g' /etc/apt/apt.conf.d/50unattended-upgrades

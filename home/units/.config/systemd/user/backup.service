@@ -1,7 +1,7 @@
 [Unit]
 Description=Backup everything
-After=media-danet-Bigdisk.mount media-danet-Data.mount network-online.target
-Wants=media-danet-Bigdisk.mount media-danet-Data.mount network-online.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=oneshot
