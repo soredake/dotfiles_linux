@@ -17,6 +17,8 @@ sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal mai
 echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
 # dosbox-staging
 sudo add-apt-repository -y ppa:feignint/dosbox-staging
+# hamachi
+sudo add-apt-repository -y ppa:webupd8team/haguichi
 
 sudo apt upgrade -y
 
@@ -30,7 +32,6 @@ sudo apt install -y ./rclone*.deb
 wget --content-disposition 'https://go.microsoft.com/fwlink/?LinkID=760868'
 sudo apt install -y ./code*.deb
 # https://github.com/chrismaltby/gb-studio/issues/429
-# https://github.com/flathub/flathub/pull/1553
 # https://github.com/chrismaltby/gb-studio/issues/21
 wget --content-disposition https://github.com/chrismaltby/gb-studio/releases/download/v1.2.1/GB-Studio-Linux-DEB-1.2.1.zip
 unzip GB-Studio*.zip
@@ -66,6 +67,7 @@ packages=(
   gcdemu
   gimp
   git-cola
+  haguichi
   htop
   keepassxc
   kubuntu-restricted-extras
@@ -81,6 +83,7 @@ packages=(
   python3-venv # TODO: https://github.com/arsenetar/dupeguru/issues/484
   qbittorrent
   rclone
+  rename
   residualvm
   retroarch
   ripgrep
@@ -88,7 +91,6 @@ packages=(
   scummvm
   shellcheck
   sirikali
-  rename
   steam
   stow
   strawberry
@@ -112,7 +114,10 @@ sudo apt purge snapd
 sudo apt install --install-recommends -y "${packages[@]}"
 sudo apt install --install-suggests lm-sensors
 
-flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.discordapp.Discord
+# TODO: https://github.com/flathub/flathub/pull/1656
+# TODO: https://github.com/flathub/flathub/pull/1553
+flatpak install -y flathub com.spotify.Client org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.discordapp.Discord
+flatpak override --filesystem=home com.discordapp.Discord
 pip=(
   git+https://github.com/simons-public/protonfixes@master
   git+https://github.com/vn-ki/anime-downloader.git
