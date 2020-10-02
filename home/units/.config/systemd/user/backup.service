@@ -1,8 +1,0 @@
-[Unit]
-Description=Backup everything
-After=network-online.target
-Wants=network-online.target
-
-[Service]
-Type=oneshot
-ExecStart=/bin/fish -c backup

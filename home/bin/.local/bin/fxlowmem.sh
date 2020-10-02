@@ -51,7 +51,7 @@ download() {
 }
 
 start() {
-  if [[ -n "${AUTODOWNLOAD}" ]]; then
+  if [[ -n "${AUTODOWNLOAD}" && -z "${LOCATION}" ]]; then
     download "${AUTODOWNLOAD}"
   fi
   fxbranch="${AUTODOWNLOAD}"-
