@@ -6,11 +6,10 @@ if status --is-login
   end
   bass source /etc/profile
   bass source $HOME/.profile
+  #set -gx PATH $PATH $HOME/.local/share/npm/bin
   echo Hi sempai~
 end
 set -gx EDITOR "code -w"
-# nvme settings
-set -gx DXVK_LOG_PATH none
 # https://bugs.launchpad.net/ubuntu/+source/kubuntu-meta/+bug/1886018
 set -gx GTK_USE_PORTAL 1
 # vaapi
@@ -28,7 +27,8 @@ alias iaupload 'ia upload --no-derive --checksum --verify --retries 10 -H x-arch
 alias nvmestats 'sudo smartctl -A /dev/nvme0'
 alias sc 'systemctl'
 alias scu 'systemctl --user'
-alias letyshops 'fxlowmem.sh -p $HOME/Documents/fxprofiles/letyshops -l /usr/bin'
+alias synctomega 'rclone sync -P --exclude .overgrive\* $HOME/main 50gbmega:/main'
+alias letyshops 'firefox --profile $HOME/Documents/fxprofiles/letyshops'
 #alias tlg2 'telegram-desktop -many -workdir $HOME/.local/share/TelegramDesktop2'
 alias vts 'echo vitetris --connect (exip):27015 && vitetris -listen 27015'
 
