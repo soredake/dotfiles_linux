@@ -3,7 +3,6 @@ sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
 sudo add-apt-repository -y ppa:mymedia/telegram
 sudo add-apt-repository -y ppa:kubuntu-ppa/backports
-sudo add-apt-repository -y ppa:samoilov-lex/retrogames # citra in flatpak is bugged and yuzu is not yet packaged
 # yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
@@ -52,7 +51,6 @@ sudo apt install -y ./gb.deb
 
 packages=(
   # optdeps
-  plasma-browser-integration
   network-manager-openvpn
   # TODO: not needed in groovy
   gcc-10
@@ -67,7 +65,6 @@ packages=(
   # not deps
   adb
   bleachbit
-  citra
   colobot
   dosbox-staging
   earlyoom
@@ -110,13 +107,19 @@ packages=(
   winehq-staging
   xclip
   yarn
-  yuzu
   zeal
 )
 # wine and steam need this
 sudo dpkg --add-architecture i386
 # Install my packages
 sudo apt install --install-recommends -y "${packages[@]}"
+
+# dupeguru https://github.com/arsenetar/dupeguru/issues/484
+git clone --depth=1 https://github.com/arsenetar/dupeguru /tmp/dupeguru
+cd /tmp/dupeguru || exit 1
+bash -c "python3 -m venv --system-site-packages env && source env/bin/activate && pip install -r requirements.txt && python3 build.py --clean && python3 package.py"
+cd build || exit 1
+sudo apt install ./dupeguru*.deb
 
 # snaps
 sudo snap set system refresh.retain=2
@@ -129,6 +132,7 @@ sudo apt-mark hold linux-libc-dev
 yarn set version berry
 
 # flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.johnfactotum.Foliate com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox org.gtk.Gtk3theme.Breeze
 flatpak install -y https://flathub.org/beta-repo/appstream/com.google.Chrome.flatpakref
 flatpak install -y https://flatpak.citra-emu.org/citra-nightly.flatpakref
