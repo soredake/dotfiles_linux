@@ -3,11 +3,12 @@ sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
 sudo add-apt-repository -y ppa:mymedia/telegram
 sudo add-apt-repository -y ppa:kubuntu-ppa/backports
-# yarn
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+sudo add-apt-repository -y ppa:nilarimogard/webupd8
+# yarn, debian/ubuntu package is incomplete https://packages.debian.org/sid/yarnpkg https://packages.ubuntu.com/groovy/yarnpkg
+wget -qO - https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 # wine
-wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
 # linux-kernel for fsync
 # dkms modules need this https://sourceforge.net/projects/xanmod/files/releases/lts/
@@ -17,10 +18,8 @@ sudo add-apt-repository -y ppa:phoerious/keepassxc
 sudo add-apt-repository -y ppa:openmw/openmw
 sudo add-apt-repository -y ppa:alexlarsson/flatpak
 # syncthing https://packages.ubuntu.com/groovy/syncthing
-curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
+wget -qO - https://syncthing.net/release-key.txt | sudo apt-key add -
 echo "deb https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
-# vmware https://itsfoss.com/install-vmware-player-ubuntu-1310/
-#sudo add-apt-repository -y ppa:ubuntu-toolchain-r/ppa
 # rclone with mega backend https://github.com/rclone/rclone/issues/3980
 echo "deb https://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
 wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
@@ -31,7 +30,7 @@ sudo add-apt-repository -y ppa:lutris-team/lutris
 sudo add-apt-repository -y ppa:jonaski/strawberry # try elisa in 20.10
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
 sudo add-apt-repository -y ppa:feignint/dosbox-staging
-curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+wget -qO - https://deb.nodesource.com/setup_current.x | sudo -E bash -
 
 sudo apt upgrade -y
 
@@ -48,11 +47,14 @@ sudo apt install -y ./code*.deb
 # gb studio
 wget --content-disposition 'https://circleci.com/api/v1.1/project/github/chrismaltby/gb-studio/latest/artifacts/0/builds/gb-studio-v2beta-linux_x86_64.deb?branch=v2beta&filter=successful' -O gb.deb
 sudo apt install -y ./gb.deb
+# no libwxgtk3.0-0v5 in focal
+wget https://mirrors.kernel.org/ubuntu/pool/universe/w/wxwidgets3.0/libwxgtk3.0-0v5_3.0.4+dfsg-3_amd64.deb
+sudo apt install ./libwxgtk3.0-0v5_3.0.4+dfsg-3_amd64.deb
 
 packages=(
   # optdeps
   network-manager-openvpn
-  # TODO: not needed in groovy
+  # TODO: mark as dep in groovy, delete g++-9 gcc-9 cpp-9
   gcc-10
   # partitionmanager
   smartmontools # TODO: https://bugs.kde.org/show_bug.cgi?id=422877 https://www.phoronix.com/scan.php?page=news_item&px=Plasma-5.20-SMART-More
@@ -105,6 +107,7 @@ packages=(
   translate-shell
   vitetris
   winehq-staging
+  woeusb
   xclip
   yarn
   zeal
@@ -134,11 +137,11 @@ yarn set version berry
 # flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.johnfactotum.Foliate com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox org.gtk.Gtk3theme.Breeze
-flatpak install -y https://flathub.org/beta-repo/appstream/com.google.Chrome.flatpakref
 flatpak install -y https://flatpak.citra-emu.org/citra-nightly.flatpakref
 
 # python
-sudo pip3 install -U anime-downloader git+https://github.com/simons-public/protonfixes.git protontricks ps_mem vdf
+sudo pip3 install -U ps_mem
+pip3 install -U anime-downloader git+https://github.com/simons-public/protonfixes.git protontricks vdf
 
 # mpv scripts
 cd "$HOME/.config/mpv/scripts" || exit 1
