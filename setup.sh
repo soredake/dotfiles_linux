@@ -1,17 +1,16 @@
 #!/bin/bash
-sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
+sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp # https://github.com/EHfive/pulseaudio-modules-bt/issues/132
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
-sudo add-apt-repository -y ppa:mymedia/telegram
+sudo add-apt-repository -y ppa:mymedia/telegram # not needed in groovy
 sudo add-apt-repository -y ppa:kubuntu-ppa/backports
 sudo add-apt-repository -y ppa:nilarimogard/webupd8
-# yarn, debian/ubuntu package is incomplete https://packages.debian.org/sid/yarnpkg https://packages.ubuntu.com/groovy/yarnpkg
+# yarn, debian/ubuntu package is broken https://bugs.launchpad.net/ubuntu/+source/node-yarnpkg/+bug/1899959
 wget -qO - https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 # wine
 wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
 # linux-kernel for fsync
-# dkms modules need this https://sourceforge.net/projects/xanmod/files/releases/lts/
 echo 'deb https://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
 # newer version from ppa until groovy arrives
 sudo add-apt-repository -y ppa:phoerious/keepassxc
@@ -27,7 +26,6 @@ wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 sudo add-apt-repository -y ppa:cdemu/ppa
 sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:lutris-team/lutris
-sudo add-apt-repository -y ppa:jonaski/strawberry # try elisa in 20.10
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
 sudo add-apt-repository -y ppa:feignint/dosbox-staging
 wget -qO - https://deb.nodesource.com/setup_current.x | sudo -E bash -
@@ -35,7 +33,7 @@ wget -qO - https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo apt upgrade -y
 
 cd /tmp || exit 1
-# https://www.egregorion.net/ https://store.kde.org/p/1231579/ TODO: try dolphin services in 20.10 
+# https://www.egregorion.net/ https://store.kde.org/p/1231579/
 wget --content-disposition https://www.egregorion.net/works/kde/servicemenus/reimage/kde-service-menu-reimage_2.5_all.deb
 sudo apt install -y ./kde-service-menu-reimage*.deb
 # syncplay
@@ -54,10 +52,8 @@ sudo apt install ./libwxgtk3.0-0v5_3.0.4+dfsg-3_amd64.deb
 packages=(
   # optdeps
   network-manager-openvpn
-  # TODO: mark as dep in groovy, delete g++-9 gcc-9 cpp-9
-  gcc-10
   # partitionmanager
-  smartmontools # TODO: https://bugs.kde.org/show_bug.cgi?id=422877 https://www.phoronix.com/scan.php?page=news_item&px=Plasma-5.20-SMART-More
+  smartmontools # TODO: https://bugs.kde.org/show_bug.cgi?id=422877 https://www.phoronix.com/scan.php?page=news_item&px=Plasma-5.20-SMART-More replace with https://repology.org/project/plasma-disks/versions
   # dolphin
   dolphin-plugins
   # pulseaudio
@@ -80,7 +76,7 @@ packages=(
   internetarchive
   keepassxc
   kubuntu-restricted-extras
-  linux-xanmod-lts
+  linux-xanmod
   lutris
   mpv
   obs-studio
@@ -101,7 +97,6 @@ packages=(
   sirikali
   steam
   stow
-  strawberry
   syncthing
   telegram-desktop
   translate-shell
@@ -127,9 +122,6 @@ sudo apt install ./dupeguru*.deb
 # snaps
 sudo snap set system refresh.retain=2
 sudo snap set system refresh.timer=fri,9:00~21:00
-
-# i need to manually install this
-sudo apt-mark hold linux-libc-dev
 
 # node
 yarn set version berry
