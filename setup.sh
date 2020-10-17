@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp # https://github.com/EHfive/pulseaudio-modules-bt/issues/132
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
-sudo add-apt-repository -y ppa:mymedia/telegram # not needed in groovy
+sudo add-apt-repository -y ppa:mymedia/telegram
 sudo add-apt-repository -y ppa:kubuntu-ppa/backports
 sudo add-apt-repository -y ppa:nilarimogard/webupd8
 # yarn, debian/ubuntu package is broken https://bugs.launchpad.net/ubuntu/+source/node-yarnpkg/+bug/1899959
@@ -81,18 +81,15 @@ packages=(
   mpv
   obs-studio
   openmw-launcher
-  parallel
   plasma-discover-backend-flatpak
   ppa-purge
   pulseaudio-modules-bt
   python3-{pip,venv}
   qbittorrent
   rclone
-  residualvm
   retroarch
   ripgrep
   safeeyes
-  scummvm
   shellcheck
   sirikali
   steam
@@ -119,7 +116,7 @@ bash -c "python3 -m venv --system-site-packages env && source env/bin/activate &
 cd build || exit 1
 sudo apt install ./dupeguru*.deb
 
-# snaps
+# snaps https://snapcraft.io/docs/keeping-snaps-up-to-date
 sudo snap set system refresh.retain=2
 sudo snap set system refresh.timer=fri,9:00~21:00
 
