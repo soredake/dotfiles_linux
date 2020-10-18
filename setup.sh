@@ -42,9 +42,6 @@ sudo apt install -y ./syncplay*.deb
 # vscode # TODO: will vscode ppa be re-enabled after distro upgrade?
 wget --content-disposition 'https://go.microsoft.com/fwlink/?LinkID=760868'
 sudo apt install -y ./code*.deb
-# gb studio
-wget --content-disposition 'https://circleci.com/api/v1.1/project/github/chrismaltby/gb-studio/latest/artifacts/0/builds/gb-studio-v2beta-linux_x86_64.deb?branch=v2beta&filter=successful' -O gb.deb
-sudo apt install -y ./gb.deb
 # no libwxgtk3.0-0v5 in focal
 wget https://mirrors.kernel.org/ubuntu/pool/universe/w/wxwidgets3.0/libwxgtk3.0-0v5_3.0.4+dfsg-3_amd64.deb
 sudo apt install ./libwxgtk3.0-0v5_3.0.4+dfsg-3_amd64.deb
@@ -56,8 +53,6 @@ packages=(
   smartmontools # TODO: https://bugs.kde.org/show_bug.cgi?id=422877 https://www.phoronix.com/scan.php?page=news_item&px=Plasma-5.20-SMART-More replace with https://repology.org/project/plasma-disks/versions
   # dolphin
   dolphin-plugins
-  # pulseaudio
-  pulseaudio-module-gsettings
   # boxtron
   inotify-tools timidity fluid-soundfont-gm
   # not deps
@@ -122,6 +117,9 @@ sudo snap set system refresh.timer=fri,9:00~21:00
 
 # node
 yarn set version berry
+
+# vmware https://www.namhuy.net/227/enable-3d-hardware-graphics-acceleration-for-vmware-workstation-on-ubuntu
+echo 'mks.gl.allowBlacklistedDrivers = "TRUE"' >> "$HOME/.vmware/preferences"
 
 # flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
