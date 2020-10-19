@@ -1,9 +1,6 @@
 #!/bin/bash
 sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp # https://github.com/EHfive/pulseaudio-modules-bt/issues/132
-sudo add-apt-repository -y ppa:kisak/kisak-mesa
-sudo add-apt-repository -y ppa:mymedia/telegram
-sudo add-apt-repository -y ppa:kubuntu-ppa/backports
-sudo add-apt-repository -y ppa:nilarimogard/webupd8
+sudo add-apt-repository -y ppa:tomtomtom/woeusb
 # yarn, debian/ubuntu package is broken https://bugs.launchpad.net/ubuntu/+source/node-yarnpkg/+bug/1899959
 wget -qO - https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
@@ -22,6 +19,10 @@ echo "deb https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sourc
 # rclone with mega backend https://github.com/rclone/rclone/issues/3980
 echo "deb https://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
 wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
+# can be disabled on distro upgrade
+sudo add-apt-repository -y ppa:kisak/kisak-mesa
+sudo add-apt-repository -y ppa:mymedia/telegram
+sudo add-apt-repository -y ppa:kubuntu-ppa/backports
 # groovy is supported
 sudo add-apt-repository -y ppa:cdemu/ppa
 sudo add-apt-repository -y ppa:libretro/stable
@@ -39,12 +40,9 @@ sudo apt install -y ./kde-service-menu-reimage*.deb
 # syncplay
 wget --content-disposition https://github.com/Syncplay/syncplay/releases/download/v1.6.5/syncplay_1.6.5.deb
 sudo apt install -y ./syncplay*.deb
-# vscode # TODO: will vscode ppa be re-enabled after distro upgrade?
+# vscode
 wget --content-disposition 'https://go.microsoft.com/fwlink/?LinkID=760868'
 sudo apt install -y ./code*.deb
-# no libwxgtk3.0-0v5 in focal
-wget https://mirrors.kernel.org/ubuntu/pool/universe/w/wxwidgets3.0/libwxgtk3.0-0v5_3.0.4+dfsg-3_amd64.deb
-sudo apt install ./libwxgtk3.0-0v5_3.0.4+dfsg-3_amd64.deb
 
 packages=(
   # optdeps
@@ -123,12 +121,11 @@ echo 'mks.gl.allowBlacklistedDrivers = "TRUE"' >> "$HOME/.vmware/preferences"
 
 # flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.johnfactotum.Foliate com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox org.gtk.Gtk3theme.Breeze
+flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.johnfactotum.Foliate com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox org.freefilesync.FreeFileSync org.gtk.Gtk3theme.Breeze
 flatpak install -y https://flatpak.citra-emu.org/citra-nightly.flatpakref
 
 # python
-sudo pip3 install -U ps_mem
-pip3 install -U anime-downloader git+https://github.com/simons-public/protonfixes.git protontricks vdf
+pip3 install -U git+https://github.com/simons-public/protonfixes.git protontricks vdf
 
 # mpv scripts
 cd "$HOME/.config/mpv/scripts" || exit 1
@@ -139,7 +136,7 @@ curl -LO https://raw.githubusercontent.com/ElegantMonkey/mpv-webm/master/build/w
 ../home/install.sh
 
 systemctl enable --now amdgpu
-sudo systemctl disable --now cups-browsed cups snapd snapd.socket
+#sudo systemctl disable --now cups-browsed cups snapd snapd.socket
 systemctl --user enable --now syncthing
 chsh -s /usr/bin/fish
 
