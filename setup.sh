@@ -1,35 +1,32 @@
 #!/bin/bash
-sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp # https://github.com/EHfive/pulseaudio-modules-bt/issues/132
-sudo add-apt-repository -y ppa:tomtomtom/woeusb
 # yarn, debian/ubuntu package is broken https://bugs.launchpad.net/ubuntu/+source/node-yarnpkg/+bug/1899959
 wget -qO - https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-# wine
+# https://wiki.winehq.org/Ubuntu
 wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
 # linux-kernel for fsync
 echo 'deb https://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
 # newer version from ppa until groovy arrives
 sudo add-apt-repository -y ppa:phoerious/keepassxc
-sudo add-apt-repository -y ppa:openmw/openmw
 sudo add-apt-repository -y ppa:alexlarsson/flatpak
-# syncthing https://packages.ubuntu.com/groovy/syncthing
-wget -qO - https://syncthing.net/release-key.txt | sudo apt-key add -
-echo "deb https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
 # rclone with mega backend https://github.com/rclone/rclone/issues/3980
 echo "deb https://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
 wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 # can be disabled on distro upgrade
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
 sudo add-apt-repository -y ppa:mymedia/telegram
+sudo add-apt-repository -y ppa:tomtomtom/woeusb # https://launchpad.net/~tomtomtom/+archive/ubuntu/woeusb or https://launchpad.net/~nilarimogard/+archive/ubuntu/webupd8
 sudo add-apt-repository -y ppa:kubuntu-ppa/backports
 # groovy is supported
+sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
 sudo add-apt-repository -y ppa:cdemu/ppa
 sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:lutris-team/lutris
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
 sudo add-apt-repository -y ppa:feignint/dosbox-staging
 wget -qO - https://deb.nodesource.com/setup_current.x | sudo -E bash -
+sudo dpkg-reconfigure code # re-enable repo after upgrade
 
 sudo apt upgrade -y
 
