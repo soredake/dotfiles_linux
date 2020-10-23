@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo add-apt-repository -y ppa:libretro/stable
 # yarn, debian/ubuntu package is broken https://bugs.launchpad.net/ubuntu/+source/node-yarnpkg/+bug/1899959
 wget -qO - https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
@@ -21,10 +22,9 @@ sudo add-apt-repository -y ppa:kubuntu-ppa/backports
 # groovy is supported
 sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
 sudo add-apt-repository -y ppa:cdemu/ppa
-sudo add-apt-repository -y ppa:libretro/stable
-sudo add-apt-repository -y ppa:lutris-team/lutris
+sudo add-apt-repository -y ppa:lutris-team/lutris # https://github.com/lutris/lutris/issues/2553
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
-sudo add-apt-repository -y ppa:feignint/dosbox-staging
+sudo add-apt-repository -y ppa:feignint/dosbox-staging # https://github.com/dosbox-staging/dosbox-staging/issues/664
 wget -qO - https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo dpkg-reconfigure code # re-enable repo after upgrade
 
@@ -107,6 +107,7 @@ cd build || exit 1
 sudo apt install ./dupeguru*.deb
 
 # snaps https://snapcraft.io/docs/keeping-snaps-up-to-date
+# https://bugs.launchpad.net/snappy/+bug/1887217
 sudo snap set system refresh.retain=2
 sudo snap set system refresh.timer=fri,9:00~21:00
 
@@ -133,7 +134,6 @@ curl -LO https://raw.githubusercontent.com/ElegantMonkey/mpv-webm/master/build/w
 ../home/install.sh
 
 systemctl enable --now amdgpu
-#sudo systemctl disable --now cups-browsed cups snapd snapd.socket
 systemctl --user enable --now syncthing
 chsh -s /usr/bin/fish
 
