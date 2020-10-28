@@ -1,16 +1,17 @@
 #!/bin/bash
-sudo add-apt-repository -y ppa:libretro/stable
-# yarn, debian/ubuntu package is broken https://bugs.launchpad.net/ubuntu/+source/node-yarnpkg/+bug/1899959
-wget -qO - https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
+sudo add-apt-repository -y ppa:cdemu/ppa
+sudo add-apt-repository -y ppa:lutris-team/lutris
+sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
+sudo add-apt-repository -y ppa:kubuntu-ppa/backports
+sudo add-apt-repository -y ppa:feignint/dosbox-staging
+wget -qO - https://deb.nodesource.com/setup_current.x | sudo -E bash -
+sudo dpkg-reconfigure code # re-enable repo after upgrade
 # https://wiki.winehq.org/Ubuntu
 wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
+sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main'
 # linux-kernel for fsync
 echo 'deb https://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
-# newer version from ppa until groovy arrives
-sudo add-apt-repository -y ppa:phoerious/keepassxc
-sudo add-apt-repository -y ppa:alexlarsson/flatpak
 # rclone with mega backend https://github.com/rclone/rclone/issues/3980
 echo "deb https://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
 wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
@@ -18,15 +19,6 @@ wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
 sudo add-apt-repository -y ppa:mymedia/telegram
 sudo add-apt-repository -y ppa:tomtomtom/woeusb # https://launchpad.net/~tomtomtom/+archive/ubuntu/woeusb or https://launchpad.net/~nilarimogard/+archive/ubuntu/webupd8
-sudo add-apt-repository -y ppa:kubuntu-ppa/backports
-# groovy is supported
-sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
-sudo add-apt-repository -y ppa:cdemu/ppa
-sudo add-apt-repository -y ppa:lutris-team/lutris # https://github.com/lutris/lutris/issues/2553
-sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
-sudo add-apt-repository -y ppa:feignint/dosbox-staging # https://github.com/dosbox-staging/dosbox-staging/issues/664
-wget -qO - https://deb.nodesource.com/setup_current.x | sudo -E bash -
-sudo dpkg-reconfigure code # re-enable repo after upgrade
 
 sudo apt upgrade -y
 
@@ -43,11 +35,10 @@ sudo apt install -y ./code*.deb
 
 packages=(
   # optdeps
-  network-manager-openvpn
   # partitionmanager
-  smartmontools # TODO: https://bugs.kde.org/show_bug.cgi?id=422877 https://www.phoronix.com/scan.php?page=news_item&px=Plasma-5.20-SMART-More replace with https://repology.org/project/plasma-disks/versions
+  smartmontools # TODO: https://bugs.kde.org/show_bug.cgi?id=422877 https://www.phoronix.com/scan.php?page=news_item&px=Plasma-5.20-SMART-More replace with https://repology.org/project/plasma-disks/versions https://invent.kde.org/neon/neon/seeds/-/blob/Neon/unstable/desktop#L89
   # dolphin
-  dolphin-plugins
+  dolphin-plugins # https://invent.kde.org/neon/neon/seeds/-/blob/Neon/unstable/desktop#L94
   # boxtron
   inotify-tools timidity fluid-soundfont-gm
   # not deps
@@ -76,8 +67,7 @@ packages=(
   pulseaudio-modules-bt
   python3-{pip,venv}
   qbittorrent
-  rclone
-  retroarch
+  rclone-browser
   ripgrep
   safeeyes
   shellcheck
@@ -91,7 +81,7 @@ packages=(
   winehq-staging
   woeusb
   xclip
-  yarn
+  yarnpkg
   zeal
 )
 # wine and steam need this
@@ -114,12 +104,10 @@ sudo snap set system refresh.timer=fri,9:00~21:00
 # node
 yarn set version berry
 
-# vmware https://www.namhuy.net/227/enable-3d-hardware-graphics-acceleration-for-vmware-workstation-on-ubuntu
-echo 'mks.gl.allowBlacklistedDrivers = "TRUE"' >> "$HOME/.vmware/preferences"
-
 # flatpak
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.johnfactotum.Foliate com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox org.freefilesync.FreeFileSync org.gtk.Gtk3theme.Breeze
+# TODO: report this to flatpak https://www.omgubuntu.co.uk/2020/10/automatic-theme-installation-for-snap-apps-is-shaping-up-nicely-video
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo # test in vm if this is needed https://invent.kde.org/search?utf8=%E2%9C%93&search=flathub.flatpakrepo&group_id=1568&project_id=2665&scope=&search_code=true&snippets=false&repository_ref=master&nav_source=navbar https://invent.kde.org/neon/neon/settings/commit/6a9866159150372b3c1db21a69338e307c265c21
+flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.johnfactotum.Foliate com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox org.freefilesync.FreeFileSync org.libretro.RetroArch com.rafaelmardojai.Blanket com.uploadedlobster.peek org.gtk.Gtk3theme.Breeze
 flatpak install -y https://flatpak.citra-emu.org/citra-nightly.flatpakref
 
 # python
@@ -137,9 +125,7 @@ systemctl enable --now amdgpu
 systemctl --user enable --now syncthing
 chsh -s /usr/bin/fish
 
-# meh
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-# https://bugs.kde.org/show_bug.cgi?id=413053#c7
+# https://bugs.kde.org/show_bug.cgi?id=428094
 mkdir "$HOME/.config/autostart"
 cd "$HOME/.config/autostart" || exit 1
 sed -e '$aHidden=True' /etc/xdg/autostart/org.kde.discover.notifier.desktop > org.kde.discover.notifier.desktop
