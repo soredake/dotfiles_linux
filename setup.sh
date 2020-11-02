@@ -1,9 +1,10 @@
 #!/bin/bash
 sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
-sudo add-apt-repository -y ppa:cdemu/ppa
 sudo add-apt-repository -y ppa:lutris-team/lutris
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
 sudo add-apt-repository -y ppa:kubuntu-ppa/backports
+sudo add-apt-repository -y ppa:tomtomtom/woeusb
+sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:feignint/dosbox-staging
 wget -qO - https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo dpkg-reconfigure code # re-enable repo after upgrade
@@ -18,20 +19,13 @@ wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 # can be disabled on distro upgrade
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
 sudo add-apt-repository -y ppa:mymedia/telegram
-sudo add-apt-repository -y ppa:tomtomtom/woeusb # https://launchpad.net/~tomtomtom/+archive/ubuntu/woeusb or https://launchpad.net/~nilarimogard/+archive/ubuntu/webupd8
 
 sudo apt upgrade -y
 
 cd /tmp || exit 1
 # https://www.egregorion.net/ https://store.kde.org/p/1231579/
-wget --content-disposition https://www.egregorion.net/works/kde/servicemenus/reimage/kde-service-menu-reimage_2.5_all.deb
-sudo apt install -y ./kde-service-menu-reimage*.deb
-# syncplay
-wget --content-disposition https://github.com/Syncplay/syncplay/releases/download/v1.6.5/syncplay_1.6.5.deb
-sudo apt install -y ./syncplay*.deb
-# vscode
-wget --content-disposition 'https://go.microsoft.com/fwlink/?LinkID=760868'
-sudo apt install -y ./code*.deb
+wget --content-disposition 'https://go.microsoft.com/fwlink/?LinkID=760868' https://www.egregorion.net/works/kde/servicemenus/reimage/kde-service-menu-reimage_2.5_all.deb https://github.com/Syncplay/syncplay/releases/download/v1.6.6/syncplay_1.6.6.deb
+sudo apt install -y ./kde-service-menu-reimage*.deb ./syncplay*.deb ./code*.deb
 
 packages=(
   # optdeps
@@ -50,7 +44,6 @@ packages=(
   fd-find
   fish
   gamemode
-  gcdemu
   gimp
   git-cola
   htop
@@ -62,12 +55,14 @@ packages=(
   mpv
   obs-studio
   openmw-launcher
+  piper
   plasma-discover-backend-flatpak
   ppa-purge
   pulseaudio-modules-bt
   python3-{pip,venv}
   qbittorrent
   rclone-browser
+  retroarch
   ripgrep
   safeeyes
   shellcheck
@@ -105,13 +100,12 @@ sudo snap set system refresh.timer=fri,9:00~21:00
 yarn set version berry
 
 # flatpak
-# TODO: report this to flatpak https://www.omgubuntu.co.uk/2020/10/automatic-theme-installation-for-snap-apps-is-shaping-up-nicely-video
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo # test in vm if this is needed https://invent.kde.org/search?utf8=%E2%9C%93&search=flathub.flatpakrepo&group_id=1568&project_id=2665&scope=&search_code=true&snippets=false&repository_ref=master&nav_source=navbar https://invent.kde.org/neon/neon/settings/commit/6a9866159150372b3c1db21a69338e307c265c21
-flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.johnfactotum.Foliate com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox org.freefilesync.FreeFileSync org.libretro.RetroArch com.rafaelmardojai.Blanket com.uploadedlobster.peek org.gtk.Gtk3theme.Breeze
+flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox com.uploadedlobster.peek org.gtk.Gtk3theme.Breeze
 flatpak install -y https://flatpak.citra-emu.org/citra-nightly.flatpakref
 
 # python
-pip3 install -U git+https://github.com/simons-public/protonfixes.git protontricks vdf
+pip3 install -U git+https://github.com/mrjackv/protonfixes.git@fix_soldier protontricks vdf
 
 # mpv scripts
 cd "$HOME/.config/mpv/scripts" || exit 1
@@ -124,12 +118,6 @@ curl -LO https://raw.githubusercontent.com/ElegantMonkey/mpv-webm/master/build/w
 systemctl enable --now amdgpu
 systemctl --user enable --now syncthing
 chsh -s /usr/bin/fish
-
-# https://bugs.kde.org/show_bug.cgi?id=428094
-mkdir "$HOME/.config/autostart"
-cd "$HOME/.config/autostart" || exit 1
-sed -e '$aHidden=True' /etc/xdg/autostart/org.kde.discover.notifier.desktop > org.kde.discover.notifier.desktop
-sed -e '$aHidden=True' /etc/xdg/autostart/gcdemu.desktop > gcdemu.desktop
 
 # SBC HD
 # https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583 https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/227
