@@ -105,7 +105,7 @@ flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei
 flatpak install -y https://flatpak.citra-emu.org/citra-nightly.flatpakref
 
 # python
-pip3 install -U git+https://github.com/mrjackv/protonfixes.git@fix_soldier protontricks vdf
+pip3 install -U git+https://github.com/mrjackv/protonfixes.git@fix_soldier protontricks vdf git+https://github.com/z411/trackma
 
 # mpv scripts
 cd "$HOME/.config/mpv/scripts" || exit 1

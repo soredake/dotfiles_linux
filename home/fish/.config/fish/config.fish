@@ -41,3 +41,6 @@ function speak
   ffmpeg -y -i $XDG_RUNTIME_DIR/trans-speak.ts $XDG_RUNTIME_DIR/trans-speak.ogg
   echo $XDG_RUNTIME_DIR/trans-speak.ogg | xclip -i -selection clipboard
 end
+
+# meh
+xmodmap ~/.Xmodmap
