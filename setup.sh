@@ -2,6 +2,7 @@
 sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
 sudo add-apt-repository -y ppa:lutris-team/lutris
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
+sudo add-apt-repository -y ppa:cdemu/ppa
 sudo add-apt-repository -y ppa:kubuntu-ppa/backports
 sudo add-apt-repository -y ppa:tomtomtom/woeusb
 sudo add-apt-repository -y ppa:libretro/stable
@@ -44,6 +45,7 @@ packages=(
   fd-find
   fish
   gamemode
+  gcdemu
   gimp
   git-cola
   htop
