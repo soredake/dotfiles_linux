@@ -100,9 +100,10 @@ sudo snap set system refresh.timer=fri,9:00~21:00
 yarn set version berry
 
 # flatpak
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo # test in vm if this is needed https://invent.kde.org/search?utf8=%E2%9C%93&search=flathub.flatpakrepo&group_id=1568&project_id=2665&scope=&search_code=true&snippets=false&repository_ref=master&nav_source=navbar https://invent.kde.org/neon/neon/settings/commit/6a9866159150372b3c1db21a69338e307c265c21
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox com.uploadedlobster.peek org.gtk.Gtk3theme.Breeze
 flatpak install -y https://flatpak.citra-emu.org/citra-nightly.flatpakref
+flatpak install -y https://flathub.org/beta-repo/appstream/com.obsproject.Studio.flatpakref # for wayland
 
 # python
 pip3 install -U git+https://github.com/mrjackv/protonfixes.git@fix_soldier protontricks vdf git+https://github.com/z411/trackma

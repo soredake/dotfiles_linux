@@ -61,3 +61,5 @@
 [feature]
   manyFiles = true
   experimental = true
+[commit]
+  gpgsign = true
