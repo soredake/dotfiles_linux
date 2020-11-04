@@ -19,6 +19,8 @@ set -gx MOZ_X11_EGL 1
 #set -gx MOZ_ENABLE_WAYLAND 1
 # https://bugs.launchpad.net/debian/+source/node-yarnpkg/+bug/1899959 report this to https://github.com/nodesource/distributions
 set -gx NODE_PATH /usr/lib/nodejs:/usr/share/nodejs
+# https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/telling-git-about-your-signing-key
+#set -gx GPG_TTY (tty)
 
 # Shorter
 alias e 'code'
