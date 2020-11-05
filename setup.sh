@@ -63,6 +63,7 @@ packages=(
   pulseaudio-modules-bt
   python3-{pip,venv}
   qbittorrent
+  qdirstat
   rclone-browser
   retroarch
   ripgrep
@@ -103,7 +104,7 @@ yarn set version berry
 
 # flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox com.uploadedlobster.peek org.gtk.Gtk3theme.Breeze
+flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox com.uploadedlobster.peek  com.neatdecisions.Detwinner org.gtk.Gtk3theme.Breeze
 flatpak install -y https://flatpak.citra-emu.org/citra-nightly.flatpakref
 flatpak install -y https://flathub.org/beta-repo/appstream/com.obsproject.Studio.flatpakref # for wayland
 
