@@ -7,6 +7,8 @@ sudo add-apt-repository -y ppa:kubuntu-ppa/backports
 sudo add-apt-repository -y ppa:tomtomtom/woeusb
 sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:feignint/dosbox-staging
+sudo add-apt-repository -y ppa:kisak/kisak-mesa
+sudo add-apt-repository -y ppa:mymedia/telegram
 wget -qO - https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo dpkg-reconfigure code # re-enable repo after upgrade
 # https://wiki.winehq.org/Ubuntu
@@ -17,16 +19,13 @@ echo 'deb https://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list
 # rclone with mega backend https://github.com/rclone/rclone/issues/3980
 echo "deb https://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
 wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
-# can be disabled on distro upgrade
-sudo add-apt-repository -y ppa:kisak/kisak-mesa
-sudo add-apt-repository -y ppa:mymedia/telegram
 
 sudo apt upgrade -y
 
 cd /tmp || exit 1
 # https://www.egregorion.net/ https://store.kde.org/p/1231579/
-wget --content-disposition 'https://go.microsoft.com/fwlink/?LinkID=760868' https://www.egregorion.net/works/kde/servicemenus/reimage/kde-service-menu-reimage_2.5_all.deb https://github.com/Syncplay/syncplay/releases/download/v1.6.6/syncplay_1.6.6.deb
-sudo apt install -y ./kde-service-menu-reimage*.deb ./syncplay*.deb ./code*.deb
+wget --content-disposition 'https://go.microsoft.com/fwlink/?LinkID=760868' https://www.egregorion.net/works/kde/servicemenus/reimage/kde-service-menu-reimage_2.5_all.deb https://github.com/Syncplay/syncplay/releases/download/v1.6.6/syncplay_1.6.6.deb https://www.vpn.net/installers/logmein-hamachi_2.1.0.203-1_amd64.deb 'https://www.thefanclub.co.za/sites/all/modules/pubdlcnt/pubdlcnt.php?file=https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive_3.3.9_all.deb&nid=168'
+sudo apt install -y ./kde-service-menu-reimage*.deb ./syncplay*.deb ./code*.deb ./logmein*.deb ./overgrive*.deb
 
 packages=(
   # optdeps
@@ -75,6 +74,7 @@ packages=(
   syncthing
   telegram-desktop
   translate-shell
+  virtualbox{,-guest-additions-iso}
   vitetris
   winehq-staging
   woeusb
@@ -104,7 +104,7 @@ yarn set version berry
 
 # flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox com.uploadedlobster.peek  com.neatdecisions.Detwinner org.gtk.Gtk3theme.Breeze
+flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox com.uploadedlobster.peek com.neatdecisions.Detwinner org.freefilesync.FreeFileSync net.rpcs3.RPCS3 org.gtk.Gtk3theme.Breeze
 flatpak install -y https://flatpak.citra-emu.org/citra-nightly.flatpakref
 flatpak install -y https://flathub.org/beta-repo/appstream/com.obsproject.Studio.flatpakref # for wayland
 

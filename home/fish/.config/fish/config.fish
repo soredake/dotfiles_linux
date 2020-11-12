@@ -29,7 +29,8 @@ alias fd 'fdfind'
 alias g 'git'
 alias iaupload 'ia upload --no-derive --checksum --verify --retries 10 -H x-archive-keep-old-version:0'
 alias nvmestats 'sudo smartctl -A /dev/nvme0'
-alias synctomega 'rclone sync -P --exclude .overgrive\* $HOME/main 50gbmega:/main'
+alias synctomega 'rclone dedupe --dedupe-mode rename gdrive:/
+; rclone sync -P --exclude .overgrive\* $HOME/main 50gbmega:/main'
 alias vts 'echo vitetris --connect (exip):27015 && vitetris -listen 27015'
 alias yarn 'yarnpkg'
 
