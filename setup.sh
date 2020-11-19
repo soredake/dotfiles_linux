@@ -25,7 +25,7 @@ sudo apt upgrade -y
 cd /tmp || exit 1
 # https://www.egregorion.net/ https://store.kde.org/p/1231579/
 wget --content-disposition 'https://go.microsoft.com/fwlink/?LinkID=760868' https://www.egregorion.net/works/kde/servicemenus/reimage/kde-service-menu-reimage_2.5_all.deb https://github.com/Syncplay/syncplay/releases/download/v1.6.6/syncplay_1.6.6.deb https://www.vpn.net/installers/logmein-hamachi_2.1.0.203-1_amd64.deb 'https://www.thefanclub.co.za/sites/all/modules/pubdlcnt/pubdlcnt.php?file=https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive_3.3.9_all.deb&nid=168'
-sudo apt install -y ./kde-service-menu-reimage*.deb ./syncplay*.deb ./code*.deb ./logmein*.deb ./overgrive*.deb
+sudo apt install -y ./*.deb
 
 packages=(
   # optdeps
@@ -54,13 +54,11 @@ packages=(
   linux-xanmod
   lutris
   mpv
-  obs-studio
-  openmw-launcher
   piper
   plasma-discover-backend-flatpak
   ppa-purge
   pulseaudio-modules-bt
-  python3-{pip,venv}
+  python3-pip
   qbittorrent
   qdirstat
   rclone-browser
@@ -74,7 +72,6 @@ packages=(
   syncthing
   telegram-desktop
   translate-shell
-  virtualbox{,-guest-additions-iso}
   vitetris
   winehq-staging
   woeusb
@@ -87,18 +84,6 @@ sudo dpkg --add-architecture i386
 # Install my packages
 sudo apt install --install-recommends -y "${packages[@]}"
 
-# dupeguru https://github.com/arsenetar/dupeguru/issues/484
-git clone --depth=1 https://github.com/arsenetar/dupeguru /tmp/dupeguru
-cd /tmp/dupeguru || exit 1
-bash -c "python3 -m venv --system-site-packages env && source env/bin/activate && pip install -r requirements.txt && python3 build.py --clean && python3 package.py"
-cd build || exit 1
-sudo apt install ./dupeguru*.deb
-
-# snaps https://snapcraft.io/docs/keeping-snaps-up-to-date
-# https://bugs.launchpad.net/snappy/+bug/1887217
-sudo snap set system refresh.retain=2
-sudo snap set system refresh.timer=fri,9:00~21:00
-
 # node
 yarn set version berry
 
@@ -106,10 +91,10 @@ yarn set version berry
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.vladimiry.ElectronMail com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox com.uploadedlobster.peek com.neatdecisions.Detwinner org.freefilesync.FreeFileSync net.rpcs3.RPCS3 org.gtk.Gtk3theme.Breeze
 flatpak install -y https://flatpak.citra-emu.org/citra-nightly.flatpakref
-flatpak install -y https://flathub.org/beta-repo/appstream/com.obsproject.Studio.flatpakref # for wayland
+flatpak install -y https://flathub.org/beta-repo/appstream/com.obsproject.Studio.flatpakref
 
 # python
-pip3 install -U git+https://github.com/mrjackv/protonfixes.git@fix_soldier protontricks vdf git+https://github.com/z411/trackma
+pip3 install -U git+https://github.com/simons-public/protonfixes@master protontricks
 
 # mpv scripts
 cd "$HOME/.config/mpv/scripts" || exit 1
