@@ -1,13 +1,12 @@
 #!/bin/bash
 ####
 sudo add-apt-repository -y ppa:pcsx2-team/pcsx2-daily
-#sudo add-apt-repository -y ppa:mymedia/telegram
 sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:feignint/dosbox-staging
 sudo add-apt-repository -y ppa:lutris-team/lutris # https://packages.ubuntu.com/hirsute/multiverse/lutris
+sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
 ####
 sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
-sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
 sudo add-apt-repository -y ppa:cdemu/ppa
 sudo add-apt-repository -y ppa:kubuntu-ppa/backports
 sudo add-apt-repository -y ppa:tomtomtom/woeusb
@@ -34,13 +33,12 @@ sudo apt install -y ./*.deb
 packages=(
   # optdeps
   # partitionmanager
-  smartmontools # TODO: https://bugs.kde.org/show_bug.cgi?id=422877 https://www.phoronix.com/scan.php?page=news_item&px=Plasma-5.20-SMART-More replace with https://repology.org/project/plasma-disks/versions https://invent.kde.org/neon/neon/seeds/-/blob/Neon/unstable/desktop#L89
+  smartmontools # https://salsa.debian.org/qt-kde-team/kde/plasma-disks https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=975697 https://invent.kde.org/neon/neon/seeds/-/blob/Neon/unstable/desktop#L89
   # dolphin
   dolphin-plugins # https://invent.kde.org/neon/neon/seeds/-/blob/Neon/unstable/desktop#L94
   # boxtron
   inotify-tools timidity fluid-soundfont-gm
   # not deps
-  #telegram-desktop
   adb
   bleachbit
   chntpw
