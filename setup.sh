@@ -2,6 +2,7 @@
 ####
 sudo add-apt-repository -y ppa:pcsx2-team/pcsx2-daily
 sudo add-apt-repository -y ppa:libretro/stable
+sudo add-apt-repository -y ppa:libretro/testing
 sudo add-apt-repository -y ppa:feignint/dosbox-staging
 sudo add-apt-repository -y ppa:lutris-team/lutris # https://packages.ubuntu.com/hirsute/multiverse/lutris
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
@@ -32,8 +33,6 @@ sudo apt install -y ./*.deb
 
 packages=(
   # optdeps
-  # partitionmanager
-  smartmontools # https://salsa.debian.org/qt-kde-team/kde/plasma-disks https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=975697 https://invent.kde.org/neon/neon/seeds/-/blob/Neon/unstable/desktop#L89
   # dolphin
   dolphin-plugins # https://invent.kde.org/neon/neon/seeds/-/blob/Neon/unstable/desktop#L94
   # boxtron
@@ -74,6 +73,7 @@ packages=(
   retroarch
   ripgrep
   safeeyes
+  seahorse
   shellcheck
   steam
   stow
