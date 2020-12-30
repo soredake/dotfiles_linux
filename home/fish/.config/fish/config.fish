@@ -48,7 +48,7 @@ function speak
   echo $XDG_RUNTIME_DIR/trans-speak.ogg | xclip -i -selection clipboard
 end
 
-# meh
+# esc is broken
 xmodmap ~/.Xmodmap
 
 # https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/issues/1133
@@ -56,5 +56,5 @@ function freetypecleartype
   fd -t f -H -I "libfreetype.so*" --search-path /var/lib/flatpak -x sudo cp -fv (realpath /usr/lib/x86_64-linux-gnu/libfreetype.so.6) {}
   # fix `/app/extra/viber/Viber: error while loading shared libraries: libbrotlidec.so.1: cannot open shared object file: No such file or directory`
   # will be fixed by https://github.com/flathub/com.viber.Viber/pull/27
-  sudo cp -v /var/lib/flatpak/runtime/org.kde.Platform/x86_64/5.15/active/files/lib/x86_64-linux-gnu/libbrotli* /var/lib/flatpak/runtime/org.freedesktop.Platform/x86_64/19.08/active/files/lib/x86_64-linux-gnu
+  #sudo cp -v /var/lib/flatpak/runtime/org.kde.Platform/x86_64/5.15/active/files/lib/x86_64-linux-gnu/libbrotli* /var/lib/flatpak/runtime/org.freedesktop.Platform/x86_64/19.08/active/files/lib/x86_64-linux-gnu
 end

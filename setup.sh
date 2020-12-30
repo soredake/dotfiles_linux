@@ -2,7 +2,6 @@
 ####
 sudo add-apt-repository -y ppa:pcsx2-team/pcsx2-daily
 sudo add-apt-repository -y ppa:libretro/stable
-sudo add-apt-repository -y ppa:libretro/testing
 sudo add-apt-repository -y ppa:feignint/dosbox-staging
 sudo add-apt-repository -y ppa:lutris-team/lutris # https://packages.ubuntu.com/hirsute/multiverse/lutris
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
@@ -95,11 +94,16 @@ sudo apt install --install-recommends -y "${packages[@]}"
 # node
 yarn set version berry
 
+# avoid problems like this https://github.com/flathub/com.mojang.Minecraft/issues/6
+# https://bugs.kde.org/show_bug.cgi?id=430801
+# https://bugs.kde.org/show_bug.cgi?id=422339
+#sudo update-locale --reset
+
 # flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox com.uploadedlobster.peek com.neatdecisions.Detwinner net.rpcs3.RPCS3 org.telegram.desktop org.gtk.Gtk3theme.Breeze
-#sudo flatpak override org.telegram.desktop --filesystem=xdg-config/fontconfig:ro
-sudo flatpak override org.telegram.desktop --filesystem=home
+sudo flatpak override --filesystem=xdg-config/fontconfig:ro
+sudo flatpak override org.telegram.desktop --filesystem=host
 sudo flatpak override com.discordapp.Discord --filesystem=home
 
 # python
@@ -118,5 +122,8 @@ systemctl --user enable --now syncthing
 chsh -s /usr/bin/fish
 
 # SBC HD
-# https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583 https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/227
+# https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583 https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/440
 sudo sed -i 's|load-module module-bluetooth-discover$|load-module module-bluetooth-discover a2dp_config="sbc_min_bp=47 sbc_max_bp=47 sbc_freq=44k sbc_cmode=dual sbc_alloc=loudness sbc_sbands=8 sbc_blen=16"|g' /etc/pulse/default.pa
+
+# esc is broken
+sudo tee -a /usr/share/sddm/scripts/Xsetup <<< "xmodmap /home/danet/git/dotfiles_home/home/xmodmap/.Xmodmap"
