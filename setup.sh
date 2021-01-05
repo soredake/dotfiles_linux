@@ -5,13 +5,12 @@ sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:feignint/dosbox-staging
 sudo add-apt-repository -y ppa:lutris-team/lutris # https://packages.ubuntu.com/hirsute/multiverse/lutris
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
-####
 sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
+####
 sudo add-apt-repository -y ppa:cdemu/ppa
 sudo add-apt-repository -y ppa:kubuntu-ppa/backports
 sudo add-apt-repository -y ppa:tomtomtom/woeusb
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
-sudo add-apt-repository -y ppa:obsproject/obs-studio
 wget -qO - https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo dpkg-reconfigure code # re-enable repo after upgrade
 # https://wiki.winehq.org/Ubuntu
@@ -55,10 +54,11 @@ packages=(
   keepassxc
   kubuntu-restricted-extras
   linux-xanmod
+  lm-sensors
   lutris
   mangohud
   mpv
-  network-manager-openvpn
+  network-manager-openvpn # TODO: preinstall in kde https://git.launchpad.net/~ubuntu-core-dev/ubuntu-seeds/+git/ubuntu/tree/desktop-minimal#n24
   obs-studio
   pcsx2
   piper
@@ -91,6 +91,12 @@ sudo dpkg --add-architecture i386
 # Install my packages
 sudo apt install --install-recommends -y "${packages[@]}"
 
+# https://unix.stackexchange.com/questions/421066/popup-language-support-is-incomplete-what-packages-does-it-want-to-install
+# script wrongly assumes that ru_UA is uk, or it looks into wrong locale env https://bugs.kde.org/show_bug.cgi?id=430801, report this somewhere
+# report to kde to auto run this command
+# shellcheck disable=SC2046
+sudo apt install --install-suggests --ignore-missing $(check-language-support -l ru_UA)
+
 # node
 yarn set version berry
 
@@ -119,7 +125,7 @@ curl -LO https://raw.githubusercontent.com/ElegantMonkey/mpv-webm/master/build/w
 
 systemctl enable --now amdgpu
 systemctl --user enable --now syncthing
-chsh -s /usr/bin/fish
+#chsh -s /usr/bin/fish
 
 # SBC HD
 # https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583 https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/440
