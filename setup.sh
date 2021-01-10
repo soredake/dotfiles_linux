@@ -1,6 +1,5 @@
 #!/bin/bash
 ####
-sudo add-apt-repository -y ppa:pcsx2-team/pcsx2-daily
 sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:feignint/dosbox-staging
 sudo add-apt-repository -y ppa:lutris-team/lutris # https://packages.ubuntu.com/hirsute/multiverse/lutris
@@ -25,22 +24,17 @@ wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 sudo apt upgrade -y
 
 cd /tmp || exit 1
-# https://www.egregorion.net/ https://store.kde.org/p/1231579/
-wget --content-disposition 'https://go.microsoft.com/fwlink/?LinkID=760868' https://www.egregorion.net/works/kde/servicemenus/reimage/kde-service-menu-reimage_2.5_all.deb https://github.com/Syncplay/syncplay/releases/download/v1.6.6/syncplay_1.6.6.deb https://www.vpn.net/installers/logmein-hamachi_2.1.0.203-1_amd64.deb 'https://www.thefanclub.co.za/sites/all/modules/pubdlcnt/pubdlcnt.php?file=https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive_3.3.9_all.deb&nid=168'
+wget --content-disposition 'https://go.microsoft.com/fwlink/?LinkID=760868' https://github.com/Syncplay/syncplay/releases/download/v1.6.7/syncplay_1.6.7.deb https://www.vpn.net/installers/logmein-hamachi_2.1.0.203-1_amd64.deb 'https://www.thefanclub.co.za/sites/all/modules/pubdlcnt/pubdlcnt.php?file=https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive_3.3.9_all.deb&nid=168'
 sudo apt install -y ./*.deb
 
 packages=(
   # optdeps
   # dolphin
   dolphin-plugins # https://invent.kde.org/neon/neon/seeds/-/blob/Neon/unstable/desktop#L94
-  # boxtron
-  inotify-tools timidity fluid-soundfont-gm
   # not deps
   adb
   bleachbit
   chntpw
-  colobot
-  dosbox-staging
   earlyoom
   fd-find
   fish
@@ -48,19 +42,16 @@ packages=(
   gcdemu
   gimp
   git-cola
-  goverlay
   htop
   internetarchive
   keepassxc
-  kubuntu-restricted-extras
+  language-selector-gnome # https://bugs.kde.org/show_bug.cgi?id=431292
   linux-xanmod
   lm-sensors
   lutris
-  mangohud
   mpv
   network-manager-openvpn # TODO: preinstall in kde https://git.launchpad.net/~ubuntu-core-dev/ubuntu-seeds/+git/ubuntu/tree/desktop-minimal#n24
   obs-studio
-  pcsx2
   piper
   plasma-discover-backend-flatpak
   ppa-purge
@@ -78,8 +69,8 @@ packages=(
   stow
   syncthing
   translate-shell
+  virtualbox virtualbox-guest-additions-iso
   vitetris
-  vkbasalt
   winehq-staging
   woeusb
   xclip
@@ -91,19 +82,8 @@ sudo dpkg --add-architecture i386
 # Install my packages
 sudo apt install --install-recommends -y "${packages[@]}"
 
-# https://unix.stackexchange.com/questions/421066/popup-language-support-is-incomplete-what-packages-does-it-want-to-install
-# script wrongly assumes that ru_UA is uk, or it looks into wrong locale env https://bugs.kde.org/show_bug.cgi?id=430801, report this somewhere
-# report to kde to auto run this command
-# shellcheck disable=SC2046
-sudo apt install --install-suggests --ignore-missing $(check-language-support -l ru_UA)
-
 # node
 yarn set version berry
-
-# avoid problems like this https://github.com/flathub/com.mojang.Minecraft/issues/6
-# https://bugs.kde.org/show_bug.cgi?id=430801
-# https://bugs.kde.org/show_bug.cgi?id=422339
-#sudo update-locale --reset
 
 # flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -128,7 +108,7 @@ systemctl --user enable --now syncthing
 #chsh -s /usr/bin/fish
 
 # SBC HD
-# https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583 https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/440
+# https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583
 sudo sed -i 's|load-module module-bluetooth-discover$|load-module module-bluetooth-discover a2dp_config="sbc_min_bp=47 sbc_max_bp=47 sbc_freq=44k sbc_cmode=dual sbc_alloc=loudness sbc_sbands=8 sbc_blen=16"|g' /etc/pulse/default.pa
 
 # esc is broken
