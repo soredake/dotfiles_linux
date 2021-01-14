@@ -1,12 +1,5 @@
 # https://github.com/fish-shell/fish-shell/issues/5117#issuecomment-409506135
 if status --is-login
-  if not functions -q fisher
-    curl https://git.io/fisher --create-dirs -sLo $__fish_config_dir/functions/fisher.fish
-    fish -c fisher
-  end
-  #bass source /etc/profile
-  #bass source $HOME/.profile
-  #set -gx PATH $PATH $HOME/.local/share/npm/bin
   echo Hi sempai~
 end
 #set -gx EDITOR "code -w" # https://bugs.kde.org/show_bug.cgi?id=393812
@@ -15,6 +8,7 @@ end
 # https://invent.kde.org/neon/neon/settings/-/blob/Neon/unstable/usr/sbin/firefox#L7
 #set -gx GTK_USE_PORTAL 1
 # https://github.com/nodesource/distributions/issues/1141
+# https://www.opennet.ru/opennews/art.shtml?num=54402
 set -gx NODE_PATH /usr/lib/nodejs:/usr/share/nodejs
 # ipega sdl bindings
 # https://bugzilla.libsdl.org/show_bug.cgi?id=5243
