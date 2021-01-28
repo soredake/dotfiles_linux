@@ -1,11 +1,8 @@
 #!/bin/bash
-####
-sudo add-apt-repository -y ppa:libretro/stable
-sudo add-apt-repository -y ppa:lutris-team/lutris # https://packages.ubuntu.com/hirsute/multiverse/lutris
-sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
+sudo add-apt-repository -y ppa:libretro/testing
+sudo add-apt-repository -y ppa:lutris-team/lutris
 sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
-####
-sudo add-apt-repository -y ppa:feignint/dosbox-staging
+sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
 sudo add-apt-repository -y ppa:cdemu/ppa
 sudo add-apt-repository -y ppa:kubuntu-ppa/backports
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
@@ -13,12 +10,10 @@ wget -qO - https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo dpkg-reconfigure code # re-enable repo after upgrade
 # https://wiki.winehq.org/Ubuntu
 wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main'
-# linux-kernel for fsync
-echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
+sudo add-apt-repository -y "deb https://dl.winehq.org/wine-builds/ubuntu/ $(lsb_release -cs) main"
 # rclone with mega backend https://github.com/rclone/rclone/issues/3980
-echo "deb https://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
 wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
+sudo add-apt-repository -y "deb https://packages.azlux.fr/debian/ buster main"
 
 sudo apt upgrade -y
 
@@ -41,8 +36,7 @@ packages=(
   htop
   internetarchive
   keepassxc
-  language-selector-gnome # TODO: https://bugs.kde.org/show_bug.cgi?id=431292
-  linux-xanmod
+  language-selector-gnome
   lm-sensors
   lutris
   mpv
@@ -64,12 +58,9 @@ packages=(
   steam
   stow
   syncthing
-  translate-shell
   virtualbox virtualbox-guest-additions-iso
   vitetris
   winehq-staging
-  xclip
-  xdelta3
   yarnpkg
   zeal
 )
@@ -84,6 +75,10 @@ flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei
 sudo flatpak override --filesystem=xdg-config/fontconfig:ro
 sudo flatpak override org.telegram.desktop --filesystem=host
 sudo flatpak override com.discordapp.Discord --filesystem=home
+# https://github.com/flatpak/flatpak/pull/4083
+# rpcs3 steam retroarch
+#sudo flatpak override --usb-device='input/*'
+sudo flatpak override --filesystem=/run/udev net.rpcs3.RPCS3
 
 # mpv scripts
 cd "$HOME/.config/mpv/scripts" || exit 1
@@ -95,9 +90,8 @@ curl -LO https://raw.githubusercontent.com/ElegantMonkey/mpv-webm/master/build/w
 
 # general one-liners
 fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher'
-systemctl enable --now amdgpu
 yarn set version berry
-pip3 install -U git+https://github.com/simons-public/protonfixes@master protontricks
+pip3 install -U git+https://github.com/simons-public/protonfixes protontricks
 sudo tee -a /usr/share/sddm/scripts/Xsetup <<< "xmodmap /home/danet/git/dotfiles_home/home/xmodmap/.Xmodmap" # esc is broken
 
 # SBC XQ

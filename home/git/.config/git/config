@@ -54,7 +54,6 @@
   udp = push -f origin HEAD^:master
 [credential]
   # https://git-scm.com/docs/gitcredentials
-	#helper = /usr/lib/git-core/git-credential-libsecret
   helper = cache --timeout=3600 --socket=$XDG_RUNTIME_DIR/git-credential-cache.socket
 [cola]
   spellcheck = false
