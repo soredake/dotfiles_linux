@@ -43,7 +43,8 @@ packages=(
   network-manager-openvpn
   obs-studio
   piper
-  plasma-discover-backend-flatpak
+  plasma-discover-backend-flatpak xdg-desktop-portal-gtk
+  plasma-workspace-wayland
   ppa-purge
   pulseaudio-modules-bt
   python3-pip
@@ -72,11 +73,10 @@ sudo apt install --install-recommends -y "${packages[@]}"
 
 # flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-sudo flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft io.github.antimicrox.antimicrox com.uploadedlobster.peek com.neatdecisions.Detwinner net.rpcs3.RPCS3 org.telegram.desktop org.gtk.Gtk3theme.Breeze
+sudo flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft com.uploadedlobster.peek com.neatdecisions.Detwinner net.rpcs3.RPCS3 org.telegram.desktop org.gtk.Gtk3theme.Breeze
 sudo flatpak override --filesystem=xdg-config/fontconfig:ro
 sudo flatpak override org.telegram.desktop --filesystem=host
-# rpcs3 steam retroarch needs this, https://github.com/flatpak/flatpak/pull/4083
-#sudo flatpak override --usb-device='input/*'
+# rpcs3 steam retroarch and taisei needs this https://github.com/flatpak/flatpak/pull/4083
 sudo flatpak override --filesystem=/run/udev net.rpcs3.RPCS3
 
 # mpv scripts
@@ -92,7 +92,13 @@ fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/
 yarn set version berry
 systemctl --user mask --now pipewire.socket pipewire # https://bugs.launchpad.net/ubuntu/+source/pipewire/+bug/1897965
 pip3 install -U git+https://github.com/simons-public/protonfixes protontricks
-sudo tee -a /usr/share/sddm/scripts/Xsetup <<< "xmodmap /home/danet/git/dotfiles_home/home/xmodmap/.Xmodmap" # esc is broken
+sudo tee -a /usr/share/sddm/scripts/Xsetup <<< "xmodmap /home/danet/git/dotfiles_home/home/xmodmap/.Xmodmap" # esc is broken, https://bugs.kde.org/show_bug.cgi?id=410088
 
-# SBC XQ, https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583
+# SBC XQ https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583
 sudo sed -i 's|load-module module-bluetooth-discover$|load-module module-bluetooth-discover a2dp_config="sbc_min_bp=47 sbc_max_bp=47 sbc_freq=44k sbc_cmode=dual sbc_alloc=loudness sbc_sbands=8 sbc_blen=16"|g' /etc/pulse/default.pa
+
+sudo add-apt-repository -y ppa:cappelikan/ppa
+sudo apt install mainline
+
+# wayland...
+ln -sv "$HOME/.config/xsettingsd/xsettingsd.conf" "$HOME/.xsettingsd"

@@ -1,7 +1,7 @@
 # https://github.com/fish-shell/fish-shell/issues/5117#issuecomment-409506135
-if status --is-login
-  echo Hi sempai~
-end
+#if status --is-login
+#  echo Hi sempai~
+#end
 
 # Alises
 alias e 'code'
