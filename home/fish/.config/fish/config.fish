@@ -12,8 +12,3 @@ alias iaupload 'ia upload --no-derive --checksum --verify --retries 10 -H x-arch
 alias nvmestats 'sudo smartctl -A /dev/nvme0'
 alias vts 'echo vitetris --connect (exip):27015 && vitetris -listen 27015'
 alias yarn 'yarnpkg'
-
-function updatecleanup
-  ubuntu-security-status --unavailable
-  sudo apt autoremove
-end

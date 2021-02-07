@@ -14,7 +14,7 @@ sudo add-apt-repository -y "deb https://dl.winehq.org/wine-builds/ubuntu/ $(lsb_
 # rclone with mega backend https://github.com/rclone/rclone/issues/3980
 wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 sudo add-apt-repository -y "deb https://packages.azlux.fr/debian/ buster main"
-
+[[ "$1" == "upgrade" ]] && exit 0
 sudo apt upgrade -y
 
 cd /tmp || exit 1
@@ -27,12 +27,13 @@ packages=(
   chntpw
   dolphin-plugins
   earlyoom
+  f3
   fd-find
+  filelight
   fish
   gamemode
   gcdemu
   gimp
-  git-cola
   htop
   internetarchive
   keepassxc
@@ -60,7 +61,7 @@ packages=(
   stow
   syncthing
   tor
-  virtualbox virtualbox-guest-additions-iso
+  virtualbox
   vitetris
   winehq-staging
   yarnpkg
@@ -97,8 +98,10 @@ sudo tee -a /usr/share/sddm/scripts/Xsetup <<< "xmodmap /home/danet/git/dotfiles
 # SBC XQ https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583
 sudo sed -i 's|load-module module-bluetooth-discover$|load-module module-bluetooth-discover a2dp_config="sbc_min_bp=47 sbc_max_bp=47 sbc_freq=44k sbc_cmode=dual sbc_alloc=loudness sbc_sbands=8 sbc_blen=16"|g' /etc/pulse/default.pa
 
-sudo add-apt-repository -y ppa:cappelikan/ppa
-sudo apt install mainline
+sudo sed -i 's|load-module module-bluetooth-discover$|load-module module-bluetooth-discover a2dp_config="sbc_min_bp=47 sbc_max_bp=47 sbc_freq=44k sbc_cmode=dual sbc_alloc=loudness sbc_sbands=8 sbc_blen=16"|g' /etc/pulse/default.pa
+#/dev/hda {
+#	mult_sect_io = 16
+#	write_cache = off
+#	dma = on
+#}
 
-# wayland...
-ln -sv "$HOME/.config/xsettingsd/xsettingsd.conf" "$HOME/.xsettingsd"
