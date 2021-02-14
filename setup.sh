@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo add-apt-repository -y ppa:libretro/testing
+sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
 sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
 sudo add-apt-repository -y ppa:cdemu/ppa
@@ -34,6 +34,7 @@ packages=(
   htop
   internetarchive
   keepassxc
+  kio-fuse
   language-selector-gnome
   lm-sensors
   lutris
@@ -71,7 +72,6 @@ sudo dpkg --add-architecture i386
 sudo apt install --install-recommends -y "${packages[@]}"
 
 # flatpak & snap
-sudo snap install retroarch
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft com.uploadedlobster.peek com.neatdecisions.Detwinner net.rpcs3.RPCS3 org.telegram.desktop org.gtk.Gtk3theme.Breeze
 sudo flatpak override --filesystem=xdg-config/fontconfig:ro # https://github.com/flatpak/flatpak/issues/3947
@@ -91,6 +91,7 @@ home/install.sh
 # general one-liners
 fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher'
 yarn set version berry
+systemctl enable --now hdparm
 systemctl --user mask --now pipewire.socket pipewire # https://bugs.launchpad.net/ubuntu/+source/pipewire/+bug/1897965
 pip3 install -U git+https://github.com/simons-public/protonfixes protontricks
 sudo tee -a /usr/share/sddm/scripts/Xsetup <<< "xmodmap /home/danet/git/dotfiles_home/home/xmodmap/.Xmodmap" # esc is broken, https://bugs.kde.org/show_bug.cgi?id=410088

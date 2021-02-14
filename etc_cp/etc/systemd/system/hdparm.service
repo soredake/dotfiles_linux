@@ -1,0 +1,9 @@
+[Unit]
+Description=hdparm sleep
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/hdparm -q -S 120 -y /dev/disk/by-id/ata-TOSHIBA_DT01ACA100_56TS61WFS
+
+[Install]
+WantedBy=multi-user.target
