@@ -5,9 +5,10 @@ sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
 sudo add-apt-repository -y ppa:cdemu/ppa
 sudo add-apt-repository -y ppa:kubuntu-ppa/backports
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
+sudo add-apt-repository ppa:radeon-profile/radeon-profile
 wget -qO - https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo dpkg-reconfigure code # re-enable repo after upgrade
-# https://wiki.winehq.org/Ubuntu
+# https://wiki.winehq.org/Ubuntu https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=959707 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=971032
 wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 sudo add-apt-repository -y "deb https://dl.winehq.org/wine-builds/ubuntu/ $(lsb_release -cs) main"
 # rclone with mega backend https://github.com/rclone/rclone/issues/3980
@@ -25,25 +26,18 @@ packages=(
   chntpw
   dolphin-plugins
   earlyoom
-  fd-find
   filelight
   fish
   gamemode
   gcdemu
   gimp
-  htop
   internetarchive
   keepassxc
-  kio-fuse
-  language-selector-gnome
   lm-sensors
   lutris
   mpv
   network-manager-openvpn
-  obs-studio
-  piper
-  plasma-discover-backend-flatpak xdg-desktop-portal-gtk
-  plasma-workspace-wayland xdiagnose
+  plasma-discover-backend-flatpak
   ppa-purge
   pulseaudio-modules-bt
   python3-pip
@@ -51,20 +45,18 @@ packages=(
   qdirstat
   rclone-browser
   retroarch
-  ripgrep
   safeeyes
   seahorse
-  shellcheck
   steam
   stow
   syncplay
   syncthing
-  tor
   virtualbox
   vitetris
   winehq-staging exe-thumbnailer
   yarnpkg
   zeal
+  radeon-profile
 )
 # wine and steam need this
 sudo dpkg --add-architecture i386
@@ -73,7 +65,7 @@ sudo apt install --install-recommends -y "${packages[@]}"
 
 # flatpak & snap
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-sudo flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft com.uploadedlobster.peek com.neatdecisions.Detwinner net.rpcs3.RPCS3 org.telegram.desktop org.gtk.Gtk3theme.Breeze
+sudo flatpak install -y flathub org.jdownloader.JDownloader org.taisei_project.Taisei com.viber.Viber com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft com.uploadedlobster.peek com.neatdecisions.Detwinner net.rpcs3.RPCS3 org.telegram.desktop org.citra_emu.citra
 sudo flatpak override --filesystem=xdg-config/fontconfig:ro # https://github.com/flatpak/flatpak/issues/3947
 sudo flatpak override org.telegram.desktop --filesystem=host # https://github.com/flathub/org.telegram.desktop/issues/23
 # rpcs3 steam retroarch and taisei needs this https://github.com/flatpak/flatpak/pull/4083
@@ -89,7 +81,7 @@ etc_cp/install.sh
 home/install.sh
 
 # general one-liners
-fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher'
+fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher edc/bass rafaelrinaldi/pure'
 yarn set version berry
 systemctl enable --now hdparm
 systemctl --user mask --now pipewire.socket pipewire # https://bugs.launchpad.net/ubuntu/+source/pipewire/+bug/1897965

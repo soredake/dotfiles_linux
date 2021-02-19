@@ -1,5 +1,8 @@
+# https://wiki.archlinux.org/index.php/hdparm#Putting_a_drive_to_sleep_directly_after_boot
 [Unit]
 Description=hdparm sleep
+# sddm wakes disks, so start after it
+After=sddm.service
 
 [Service]
 Type=oneshot
