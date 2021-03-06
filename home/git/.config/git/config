@@ -58,8 +58,6 @@
 [feature]
   manyFiles = true
   experimental = true
-[commit]
-  gpgsign = true
 [core]
 	editor = code -w
 [user]
