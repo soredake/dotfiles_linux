@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo add-apt-repository -y ppa:libretro/stable
-sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
-sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
+#sudo add-apt-repository -y ppa:berglh/pulseaudio-a2dp
+#sudo add-apt-repository -y ppa:maxiberta/kwin-lowlatency
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
 sudo add-apt-repository -y ppa:slgobinath/safeeyes
 # https://wiki.winehq.org/Ubuntu
@@ -34,7 +34,7 @@ etc_cp/install.sh
 home/install.sh
 
 # general settings
-#systemctl enable --now hdparm
-systemctl --user mask --now pipewire.socket pipewire # fixed in >=0.3.17
 sudo tee -a /usr/share/sddm/scripts/Xsetup <<< "xmodmap /home/danet/git/dotfiles_home/home/xmodmap/.Xmodmap"
-sudo sed -i 's|load-module module-bluetooth-discover$|load-module module-bluetooth-discover a2dp_config="sbc_min_bp=47 sbc_max_bp=47 sbc_freq=44k sbc_cmode=dual sbc_alloc=loudness sbc_sbands=8 sbc_blen=16"|g' /etc/pulse/default.pa # SBC XQ https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583
+#systemctl enable --now hdparm
+#systemctl --user mask --now pipewire.socket pipewire
+#sudo sed -i 's|load-module module-bluetooth-discover$|load-module module-bluetooth-discover a2dp_config="sbc_min_bp=47 sbc_max_bp=47 sbc_freq=44k sbc_cmode=dual sbc_alloc=loudness sbc_sbands=8 sbc_blen=16"|g' /etc/pulse/default.pa # SBC XQ https://github.com/EHfive/pulseaudio-modules-bt/issues/63#issuecomment-613432583
