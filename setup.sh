@@ -25,7 +25,7 @@ sudo flatpak override org.telegram.desktop --filesystem=host # https://github.co
 sudo flatpak override org.jdownloader.JDownloader --filesystem=host
 pip3 install -U git+https://github.com/simons-public/protonfixes protontricks
 fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher pure-fish/pure'
-aria2c -c -d "$HOME/.config/mpv/scripts" https://raw.githubusercontent.com/ekisu/mpv-webm/master/build/webm.lua
+aria2c -c -d "$HOME/.config/mpv/scripts" https://github.com/ekisu/mpv-webm/releases/download/latest/webm.lua
 
 # setup dofiles
 popd || exit 1
