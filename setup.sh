@@ -6,7 +6,7 @@ sudo add-apt-repository -y ppa:slgobinath/safeeyes
 # https://wiki.winehq.org/Ubuntu
 wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 sudo add-apt-repository -y "deb https://dl.winehq.org/wine-builds/ubuntu/ $(lsb_release -cs) main"
-# rclone with mega backend https://github.com/rclone/rclone/issues/3980
+# rclone with mega backend https://github.com/rclone/rclone/issues/3980 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=983445
 wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 sudo add-apt-repository -y "deb https://packages.azlux.fr/debian/ stable main"
 [[ "$1" == "upgrade" ]] && exit 0
@@ -31,6 +31,9 @@ aria2c -c -d "$HOME/.config/mpv/scripts" https://github.com/ekisu/mpv-webm/relea
 popd || exit 1
 etc_cp/install.sh
 home/install.sh
+
+# fix for https://bugs.launchpad.net/ubuntu/+source/muon/+bug/1865925
+sudo update-apt-xapian-index
 
 # general settings
 sudo tee -a /usr/share/sddm/scripts/Xsetup <<< "xmodmap /home/danet/git/dotfiles_home/home/xmodmap/.Xmodmap"
