@@ -15,7 +15,7 @@ sudo apt upgrade -y
 pushd /tmp || exit 1
 wget --content-disposition https://www.vpn.net/installers/logmein-hamachi_2.1.0.203-1_amd64.deb https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive_3.3.9_all.deb
 # Install my packages
-sudo apt install --install-recommends -y ./*.deb adb aria2 bleachbit chntpw dolphin-plugins earlyoom filelight fish gamemode gimp internetarchive lm-sensors lutris mpv network-manager-openvpn plasma-discover-backend-flatpak ppa-purge python3-pip qdirstat rclone-browser retroarch safeeyes seahorse steam stow syncplay virtualbox vitetris winehq-staging icoutils simplescreenrecorder gsmartcontrol
+sudo apt install --install-recommends -y ./*.deb adb aria2 bleachbit chntpw dolphin-plugins earlyoom filelight fish gamemode gimp internetarchive lm-sensors lutris mpv network-manager-openvpn plasma-discover-backend-flatpak ppa-purge python3-pip qdirstat rclone-browser retroarch safeeyes seahorse steam stow syncplay virtualbox vitetris winehq-staging icoutils simplescreenrecorder trash-cli smartcontrol
 sudo apt install `check-language-support`
 sudo snap install code --classic
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
