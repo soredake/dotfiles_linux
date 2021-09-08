@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo add-apt-repository -y ppa:libretro/stable
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
-sudo add-apt-repository -y ppa:slgobinath/safeeyes
+#sudo add-apt-repository -y ppa:slgobinath/safeeyes
 # https://wiki.winehq.org/Ubuntu
 wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 sudo add-apt-repository -y "deb https://dl.winehq.org/wine-builds/ubuntu/ $(lsb_release -cs) main"
