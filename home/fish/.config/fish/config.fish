@@ -1,4 +1,4 @@
 #alias e 'code'
 alias g 'git'
-alias iaupload 'ia upload --checksum --verify --retries 10 -H x-archive-keep-old-version:0'
+alias iaupload 'ia upload --checksum --verify --retries 10 --no-backup'
 alias vts 'vitetris -listen 27015'
