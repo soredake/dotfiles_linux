@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo add-apt-repository -y ppa:libretro/stable # https://github.com/flathub/org.libretro.RetroArch/issues/194
+sudo add-apt-repository -y ppa:libretro/stable # https://github.com/flathub/org.libretro.RetroArch/issues/194 # TODO: snap?
 sudo add-apt-repository -y ppa:kisak/kisak-mesa
 #sudo add-apt-repository -y ppa:slgobinath/safeeyes
 # https://wiki.winehq.org/Ubuntu
