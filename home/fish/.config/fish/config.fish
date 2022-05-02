@@ -2,4 +2,6 @@
 alias g 'git'
 alias iaupload 'ia upload --checksum --verify --retries 10 --no-backup'
 alias iauploadf 'ia upload --verify --retries 10 --no-backup'
+alias iauploadnd 'ia upload --checksum --verify --retries 10 --no-backup --no-derive'
+alias iauploadfnd 'ia upload --verify --retries 10 --no-backup --no-derive'
 alias vts 'vitetris -listen 27015'
