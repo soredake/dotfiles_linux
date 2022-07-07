@@ -14,11 +14,11 @@ sudo apt upgrade -y
 pushd /tmp || exit 1
 wget --content-disposition https://www.vpn.net/installers/logmein-hamachi_2.1.0.203-1_amd64.deb https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive_3.3.9_all.deb
 # Install my packages
-sudo apt install --install-recommends -y ./*.deb adb bleachbit chntpw dolphin-plugins earlyoom fish gamemode gimp internetarchive lm-sensors lutris mpv network-manager-openvpn plasma-discover-backend-flatpak ppa-purge python3-pip qdirstat rclone-browser retroarch safeeyes seahorse steam stow syncplay virtualbox vitetris winehq-staging icoutils simplescreenrecorder trash-cli smartcontrol
+sudo apt install --install-recommends -y ./*.deb adb chntpw dolphin-plugins earlyoom fish gamemode gimp internetarchive lm-sensors lutris mpv network-manager-openvpn plasma-discover-backend-flatpak ppa-purge python3-pip qdirstat rclone retroarch safeeyes seahorse steam stow syncplay vitetris winehq-staging icoutils smartcontrol
 sudo apt install `check-language-support`
 sudo snap install code --classic
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-sudo flatpak install -y flathub org.jdownloader.JDownloader com.viber.Viber com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft net.rpcs3.RPCS3 org.telegram.desktop org.freefilesync.FreeFileSync org.qbittorrent.qBittorrent org.keepassxc.KeePassXC
+sudo flatpak install -y flathub org.jdownloader.JDownloader com.viber.Viber com.github.ztefn.haguichi com.spotify.Client com.discordapp.Discord com.github.micahflee.torbrowser-launcher com.mojang.Minecraft org.qbittorrent.qBittorrent org.keepassxc.KeePassXC
 sudo flatpak override --filesystem=xdg-config/fontconfig:ro # https://github.com/flatpak/flatpak/issues/3947
 pip install -U git+https://github.com/simons-public/protonfixes protontricks
 fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher pure-fish/pure'
