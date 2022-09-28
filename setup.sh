@@ -4,8 +4,8 @@ sudo dnf copr enable batmanfeynman/syncplay -y
 sudo dnf copr enable rivenirvana/steamtinkerlaunch -y
 sudo dnf copr enable elxreno/bees -y
 sudo dnf copr enable matthickford/git-credential-manager -y
-sudo dnf copr enable zawertun/hack-fonts -y # https://bugzilla.redhat.com/show_bug.cgi?id=1258542
-# gamepad udev rules https://github.com/systemd/systemd/issues/22681, python3-dnf-plugin-system-upgrade https://pagure.io/fedora-kde/SIG/issue/247 https://pagure.io/fedora-kde/SIG/issue/3, btrfsmaintenance https://pagure.io/fedora-btrfs/project/issue/16
+sudo dnf copr enable zawertun/hack-fonts -y # https://bugzilla.redhat.com/show_bug.cgi?id=1258542 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Regular/complete
+# python3-dnf-plugin-system-upgrade https://pagure.io/fedora-kde/SIG/issue/247 https://pagure.io/fedora-kde/SIG/issue/3, btrfsmaintenance https://pagure.io/fedora-btrfs/project/issue/16
 # lutris/steam/bottles flatpak blockers: https://github.com/flathub/net.lutris.Lutris/issues/198 https://github.com/flathub/com.valvesoftware.Steam/issues/770 https://github.com/PaulCombal/SamRewritten/issues/128 https://github.com/flathub/net.lutris.Lutris/issues/200 https://github.com/bottlesdevs/Bottles/issues/1366 https://github.com/flathub/com.valvesoftware.Steam/issues/85
 sudo dnf remove -y akregator grantlee-editor dragon qt5-qdbusviewer kmahjongg kmines kpat konversation krdc krfb kamoso kaddressbook korganizer mediawriter kgpg kwrite kf5-akonadi-server # qt-remote-viewer TODO: https://russianfedora.github.io/FAQ/tips-and-tricks.html#kde
 sudo dnf install -y https://github.com/rpmsphere/noarch/raw/master/r/rpmsphere-release-36-1.noarch.rpm https://mirrors.rpmfusion.org/{free/fedora/rpmfusion-,nonfree/fedora/rpmfusion-non}free-release-$(rpm -E %fedora).noarch.rpm
@@ -14,6 +14,7 @@ sudo dnf install -y ${packages[@]}
 # sudo dnf module install -y nodejs:18/common
 sudo dnf group install -y core sound-and-video multimedia # https://rpmfusion.org/Configuration
 flatpak install -y flathub com.discordapp.Discord com.github.maoschanz.drawing com.github.micahflee.torbrowser-launcher com.github.mtkennerly.ludusavi com.github.ztefn.haguichi com.parsecgaming.parsec com.spotify.Client com.steamgriddb.steam-rom-manager com.valvesoftware.Steam.CompatibilityTool.Proton-GE com.viber.Viber io.github.philipk.boilr net.davidotek.pupgui2 net.pcsx2.PCSX2 net.rpcs3.RPCS3 org.citra_emu.citra org.gimp.GIMP org.gnome.seahorse.Application org.jdownloader.JDownloader org.keepassxc.KeePassXC org.libretro.RetroArch org.ppsspp.PPSSPP org.ppsspp.PPSSPP org.qbittorrent.qBittorrent org.yuzu_emu.yuzu space.crankshaft.Crankshaft
+sudo wget -P /etc/udev/rules.d https://gitlab.com/fabiscafe/game-devices-udev/-/raw/main/71-{8bitdo,sony}-controllers.rules # gamepad udev rules https://github.com/systemd/systemd/issues/22681
 pip install --user internetarchive
 fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher pure-fish/pure'
 #wget -P "$HOME/.config/mpv/scripts" https://github.com/ekisu/mpv-webm/releases/download/latest/webm.lua
@@ -37,11 +38,13 @@ etc_cp/install.sh
 home/install.sh
 
 # https://github.com/flathub/com.valvesoftware.Steam/issues/85#issuecomment-650597824
-flatpak --user override --filesystem=xdg-data/icons --filesystem=xdg-data/applications --filesystem=xdg-desktop com.valvesoftware.Steam
-# and for bottles
-flatpak --user override --filesystem=xdg-data/icons --filesystem=xdg-data/applications --filesystem=xdg-desktop com.usebottles.bottles
+flatpak --user override --env=APPIMAGE_EXTRACT_AND_RUN=1 --filesystem=xdg-data/icons:create --filesystem=xdg-data/applications:create --filesystem=xdg-desktop --filesystem=/media --filesystem=/run/media com.valvesoftware.Steam
+# lutris https://github.com/flathub/net.lutris.Lutris/issues/80
+flatpak --user override --env=APPIMAGE_EXTRACT_AND_RUN=1 --filesystem=xdg-data/icons:create --filesystem=xdg-data/applications:create net.lutris.Lutris
+# https://github.com/bottlesdevs/Bottles/issues/1366
+flatpak --user override --filesystem=xdg-data/icons:create --filesystem=xdg-data/applications:create --filesystem=xdg-desktop --filesystem=/media --filesystem=/run/media com.usebottles.bottles
 # https://github.com/flatpak/flatpak/issues/3947
-flatpak override --user --filesystem=xdg-config/steamtinkerlaunch:ro --filesystem=xdg-config/MangoHud:ro --filesystem=xdg-config/vkBasalt:ro --filesystem=xdg-config/fontconfig:ro
+flatpak override --user --filesystem=xdg-config/steamtinkerlaunch --filesystem=xdg-config/MangoHud:ro --filesystem=xdg-config/vkBasalt:ro --filesystem=xdg-config/fontconfig:ro
 # https://github.com/flatpak/flatpak/issues/1563
 mkdir "$HOME/.config/fontconfig/conf.d"
 cp --reflink=auto /etc/fonts/conf.d/*{noto,hack}* "$HOME/.config/fontconfig/conf.d"
