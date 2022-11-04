@@ -1,25 +1,26 @@
 #!/bin/bash
-# curl -fsSL https://rpm.nodesource.com/setup_current.x | sudo bash -
+curl -fsSL https://rpm.nodesource.com/setup_current.x | sudo bash -
 sudo dnf copr enable batmanfeynman/syncplay -y
 sudo dnf copr enable rivenirvana/steamtinkerlaunch -y
-sudo dnf copr enable elxreno/bees -y
 sudo dnf copr enable matthickford/git-credential-manager -y
 sudo dnf copr enable zawertun/hack-fonts -y # https://bugzilla.redhat.com/show_bug.cgi?id=1258542 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Regular/complete
-# python3-dnf-plugin-system-upgrade https://pagure.io/fedora-kde/SIG/issue/247 https://pagure.io/fedora-kde/SIG/issue/3, btrfsmaintenance https://pagure.io/fedora-btrfs/project/issue/16
-# lutris/steam/bottles flatpak blockers: https://github.com/flathub/net.lutris.Lutris/issues/198 https://github.com/flathub/com.valvesoftware.Steam/issues/770 https://github.com/PaulCombal/SamRewritten/issues/128 https://github.com/flathub/net.lutris.Lutris/issues/200 https://github.com/bottlesdevs/Bottles/issues/1366 https://github.com/flathub/com.valvesoftware.Steam/issues/85
-sudo dnf remove -y akregator grantlee-editor dragon qt5-qdbusviewer kmahjongg kmines kpat konversation krdc krfb kamoso kaddressbook korganizer mediawriter kgpg kwrite kf5-akonadi-server # qt-remote-viewer TODO: https://russianfedora.github.io/FAQ/tips-and-tricks.html#kde
-sudo dnf install -y https://github.com/rpmsphere/noarch/raw/master/r/rpmsphere-release-36-1.noarch.rpm https://mirrors.rpmfusion.org/{free/fedora/rpmfusion-,nonfree/fedora/rpmfusion-non}free-release-$(rpm -E %fedora).noarch.rpm
-packages=(https://www.vpn.net/installers/logmein-hamachi-2.1.0.203-1.x86_64.rpm https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.4.3.noarch.rpm nodejs git-credential-manager bottles bees btrfs-assistant chntpw code fish gamescope hack-fonts lm_sensors lutris mangohud mpv protontricks python3-dnf-plugin-system-upgrade qdirstat rclone safeeyes steam steamtinkerlaunch stow syncplay tor virt-manager vitetris vkbasalt wine) # ncdu rust-dua-cli
+# python3-dnf-plugin-system-upgrade https://pagure.io/fedora-kde/SIG/issue/247 https://pagure.io/fedora-kde/SIG/issue/3, btrfsmaintenance https://pagure.io/fedora-btrfs/project/issue/16 qt5-qdbusviewer https://pagure.io/fedora-kde/SIG/issue/115
+# flatpak blockers: https://github.com/flathub/net.lutris.Lutris/issues/198 https://github.com/flathub/com.valvesoftware.Steam/issues/770 https://github.com/PaulCombal/SamRewritten/issues/128 https://github.com/flathub/net.lutris.Lutris/issues/200 https://github.com/bottlesdevs/Bottles/issues/1366 https://github.com/flathub/com.valvesoftware.Steam/issues/85 https://github.com/virt-manager/virt-manager/issues/246 https://www.gofundme.com/f/help-us-build-a-better-linux-app https://github.com/Plagman/gamescope/issues/183 https://github.com/slgobinath/SafeEyes/issues/432 https://github.com/vicgeralds/vitetris/issues/21
+sudo dnf remove -y akregator grantlee-editor dragon qt5-qdbusviewer kmahjongg kmines kpat konversation krdc krfb kamoso kaddressbook korganizer mediawriter kgpg kwrite kf5-akonadi-server # TODO: review this list # qt-remote-viewer TODO: https://russianfedora.github.io/FAQ/tips-and-tricks.html#kde
+sudo dnf install -y https://github.com/rpmsphere/noarch/raw/master/r/rpmsphere-release-37-1.noarch.rpm https://mirrors.rpmfusion.org/{free/fedora/rpmfusion-,nonfree/fedora/rpmfusion-non}free-release-$(rpm -E %fedora).noarch.rpm
+# TODO: is lm_sensors/gamemode preinstalled in fedora? things like this https://flathub.org/apps/details/io.github.hakandundar34coding.system-monitoring-center will work OOTB with lm_sensors installed
+packages=(https://www.vpn.net/installers/logmein-hamachi-2.1.0.203-1.x86_64.rpm https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.5.0.noarch.rpm nodejs git-credential-manager bottles bees btrfs-assistant chntpw code fish gamescope hack-fonts lm_sensors lutris mangohud protontricks python3-dnf-plugin-system-upgrade qdirstat rclone safeeyes steam steamtinkerlaunch stow syncplay tor virt-manager vitetris vkbasalt wine) # ncdu rust-dua-cli
 sudo dnf install -y ${packages[@]}
 # sudo dnf module install -y nodejs:18/common
 sudo dnf group install -y core sound-and-video multimedia # https://rpmfusion.org/Configuration
-flatpak install -y flathub com.discordapp.Discord com.github.maoschanz.drawing com.github.micahflee.torbrowser-launcher com.github.mtkennerly.ludusavi com.github.ztefn.haguichi com.parsecgaming.parsec com.spotify.Client com.steamgriddb.steam-rom-manager com.valvesoftware.Steam.CompatibilityTool.Proton-GE com.viber.Viber io.github.philipk.boilr net.davidotek.pupgui2 net.pcsx2.PCSX2 net.rpcs3.RPCS3 org.citra_emu.citra org.gimp.GIMP org.gnome.seahorse.Application org.jdownloader.JDownloader org.keepassxc.KeePassXC org.libretro.RetroArch org.ppsspp.PPSSPP org.ppsspp.PPSSPP org.qbittorrent.qBittorrent org.yuzu_emu.yuzu space.crankshaft.Crankshaft
+flatpak --user install -y flathub org.prismlauncher.PrismLauncher io.mpv.Mpv com.discordapp.Discord com.github.maoschanz.drawing com.github.micahflee.torbrowser-launcher com.github.mtkennerly.ludusavi com.github.ztefn.haguichi com.parsecgaming.parsec com.spotify.Client com.steamgriddb.steam-rom-manager com.valvesoftware.Steam.CompatibilityTool.Proton-GE com.viber.Viber io.github.philipk.boilr net.davidotek.pupgui2 net.pcsx2.PCSX2 net.rpcs3.RPCS3 org.citra_emu.citra org.gimp.GIMP org.gnome.seahorse.Application org.jdownloader.JDownloader org.keepassxc.KeePassXC org.libretro.RetroArch org.ppsspp.PPSSPP org.ppsspp.PPSSPP org.qbittorrent.qBittorrent org.yuzu_emu.yuzu space.crankshaft.Crankshaft
 sudo wget -P /etc/udev/rules.d https://gitlab.com/fabiscafe/game-devices-udev/-/raw/main/71-{8bitdo,sony}-controllers.rules # gamepad udev rules https://github.com/systemd/systemd/issues/22681
 pip install --user internetarchive
 fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher pure-fish/pure'
 #wget -P "$HOME/.config/mpv/scripts" https://github.com/ekisu/mpv-webm/releases/download/latest/webm.lua
 # https://yarnpkg.com/getting-started/install https://nodejs.org/dist/latest/docs/api/corepack.html
-# TODO: create .local/bin by default in fedora?
+# TODO: create ~/.local/bin by default in fedora?
+# in opensuse microos / leap ~/bin is created automatically
 mkdir ~/.local/bin
 corepack enable --install-directory ~/.local/bin
 yarn set version stable
@@ -40,10 +41,10 @@ home/install.sh
 # https://github.com/flathub/com.valvesoftware.Steam/issues/85#issuecomment-650597824
 flatpak --user override --env=APPIMAGE_EXTRACT_AND_RUN=1 --filesystem=xdg-data/icons:create --filesystem=xdg-data/applications:create --filesystem=xdg-desktop --filesystem=/media --filesystem=/run/media com.valvesoftware.Steam
 # lutris https://github.com/flathub/net.lutris.Lutris/issues/80
-flatpak --user override --env=APPIMAGE_EXTRACT_AND_RUN=1 --filesystem=xdg-data/icons:create --filesystem=xdg-data/applications:create net.lutris.Lutris
+flatpak --user override --filesystem=xdg-data/icons:create --filesystem=xdg-data/applications:create net.lutris.Lutris
 # https://github.com/bottlesdevs/Bottles/issues/1366
 flatpak --user override --filesystem=xdg-data/icons:create --filesystem=xdg-data/applications:create --filesystem=xdg-desktop --filesystem=/media --filesystem=/run/media com.usebottles.bottles
-# https://github.com/flatpak/flatpak/issues/3947
+# https://github.com/flatpak/flatpak/issues/3947 TODO: request shared config paths for those extensions
 flatpak override --user --filesystem=xdg-config/steamtinkerlaunch --filesystem=xdg-config/MangoHud:ro --filesystem=xdg-config/vkBasalt:ro --filesystem=xdg-config/fontconfig:ro
 # https://github.com/flatpak/flatpak/issues/1563
 mkdir "$HOME/.config/fontconfig/conf.d"
@@ -54,9 +55,3 @@ sudo ln -sfv "$HOME/.config/fontconfig/fonts.conf" /etc/fonts/local.conf
 sudo tee -a /usr/share/sddm/scripts/Xsetup <<<"xmodmap $HOME/git/dotfiles_home/home/xmodmap/.Xmodmap"
 sudo sed -i -e "/^BTRFS_SCRUB_PERIOD=/s/=.*/=\"none\"/" -e "/^BTRFS_BALANCE_PERIOD=/s/=.*/=\"monthly\"/" /etc/sysconfig/btrfsmaintenance # https://stackoverflow.com/a/19567449/4207635
 sudo systemctl start btrfsmaintenance-refresh
-#sudo grubby --update-kernel=ALL --args="retbleed=off" # https://www.reddit.com/r/Amd/comments/vyaqwf/comment/ig1x0kq/
-# bees setup
-export UUID="$(blkid -o value -s UUID /dev/nvme0n1p2)"
-sudo cp /etc/bees/beesd.conf.sample /etc/bees/$UUID.conf
-sudo sed -i "s|xxxxxxxx-xx.*|$UUID|" /etc/bees/$UUID.conf
-sudo systemctl enable --now beesd@$UUID.service
