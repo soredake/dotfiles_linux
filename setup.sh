@@ -2,8 +2,8 @@
 curl -fsSL https://rpm.nodesource.com/setup_current.x | sudo bash -
 sudo dnf copr enable batmanfeynman/syncplay -y
 sudo dnf copr enable rivenirvana/steamtinkerlaunch -y
-sudo dnf copr enable matthickford/git-credential-manager -y
-sudo dnf copr enable zawertun/hack-fonts -y # https://bugzilla.redhat.com/show_bug.cgi?id=1258542 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Regular/complete
+sudo dnf copr enable matthickford/git-credential-manager -y # https://github.com/dotnet/source-build/discussions/2960 https://github.com/GitCredentialManager/git-credential-manager/issues/816
+sudo dnf copr enable zawertun/hack-fonts -y                 # https://bugzilla.redhat.com/show_bug.cgi?id=1258542 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Regular/complete
 # python3-dnf-plugin-system-upgrade https://pagure.io/fedora-kde/SIG/issue/247 https://pagure.io/fedora-kde/SIG/issue/3, btrfsmaintenance https://pagure.io/fedora-btrfs/project/issue/16 qt5-qdbusviewer https://pagure.io/fedora-kde/SIG/issue/115
 # flatpak blockers: https://github.com/flathub/net.lutris.Lutris/issues/198 https://github.com/flathub/com.valvesoftware.Steam/issues/770 https://github.com/PaulCombal/SamRewritten/issues/128 https://github.com/flathub/net.lutris.Lutris/issues/200 https://github.com/bottlesdevs/Bottles/issues/1366 https://github.com/flathub/com.valvesoftware.Steam/issues/85 https://github.com/virt-manager/virt-manager/issues/246 https://www.gofundme.com/f/help-us-build-a-better-linux-app https://github.com/Plagman/gamescope/issues/183 https://github.com/slgobinath/SafeEyes/issues/432 https://github.com/vicgeralds/vitetris/issues/21
 sudo dnf remove -y akregator grantlee-editor dragon qt5-qdbusviewer kmahjongg kmines kpat konversation krdc krfb kamoso kaddressbook korganizer mediawriter kgpg kwrite kf5-akonadi-server # TODO: review this list # qt-remote-viewer TODO: https://russianfedora.github.io/FAQ/tips-and-tricks.html#kde
