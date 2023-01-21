@@ -3,7 +3,7 @@ curl -fsSL https://rpm.nodesource.com/setup_current.x | sudo bash -
 sudo dnf copr enable batmanfeynman/syncplay -y
 sudo dnf copr enable rivenirvana/steamtinkerlaunch -y
 sudo dnf copr enable matthickford/git-credential-manager -y # https://github.com/dotnet/source-build/discussions/2960 https://github.com/GitCredentialManager/git-credential-manager/issues/816 TODO: request flatpak package of gcm core
-sudo dnf copr enable zawertun/hack-fonts -y                 # https://bugzilla.redhat.com/show_bug.cgi?id=1258542 https://bugzilla.redhat.com/show_bug.cgi?id=2149686 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Regular/complete
+sudo dnf copr enable zawertun/hack-fonts -y                 # https://bugzilla.redhat.com/show_bug.cgi?id=2149686 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Regular/complete
 # python3-dnf-plugin-system-upgrade https://pagure.io/fedora-kde/SIG/issue/247 https://pagure.io/fedora-kde/SIG/issue/3, btrfsmaintenance https://pagure.io/fedora-btrfs/project/issue/16 qt5-qdbusviewer https://pagure.io/fedora-kde/SIG/issue/115
 # flatpak blockers: https://github.com/flatpak/xdg-desktop-portal/issues/695 https://github.com/flathub/com.valvesoftware.Steam.Utility.gamescope/issues/29 https://github.com/flathub/com.valvesoftware.Steam.Utility.gamescope/issues/7 https://github.com/flatpak/xdg-desktop-portal/issues/924 https://github.com/flathub/net.lutris.Lutris/issues/198 https://github.com/flathub/com.valvesoftware.Steam/issues/770 https://github.com/PaulCombal/SamRewritten/issues/128 https://github.com/flathub/net.lutris.Lutris/issues/200 https://github.com/bottlesdevs/Bottles/issues/1366 https://github.com/flathub/com.valvesoftware.Steam/issues/85 https://github.com/virt-manager/virt-manager/issues/246 https://www.gofundme.com/f/help-us-build-a-better-linux-app https://github.com/Plagman/gamescope/issues/183 https://github.com/slgobinath/SafeEyes/issues/432 https://github.com/vicgeralds/vitetris/issues/21 https://github.com/flathub/com.valvesoftware.Steam/issues/866
 sudo dnf remove -y akregator grantlee-editor dragon qt5-qdbusviewer kmahjongg kmines kpat konversation krdc krfb kamoso kaddressbook korganizer mediawriter kgpg kwrite kf5-akonadi-server                                          # TODO: review this list # qt-remote-viewer TODO: https://russianfedora.github.io/FAQ/tips-and-tricks.html#kde
@@ -25,11 +25,11 @@ mkdir ~/.local/bin
 corepack enable --install-directory ~/.local/bin
 yarn set version stable
 # https://github.com/probonopd/go-appimage/blob/master/src/appimaged/README.md
-mkdir ~/Applications
-cd ~/Applications
-wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases -O - | grep "appimaged-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2)
-chmod +x appimaged-*.AppImage
-./appimaged-*.AppImage
+# mkdir ~/Applications
+# cd ~/Applications
+# wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases -O - | grep "appimaged-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2)
+# chmod +x appimaged-*.AppImage
+# ./appimaged-*.AppImage
 # 64gram
 wget -c https://github.com/$(wget -q https://github.com/TDesktop-x64/tdesktop/releases -O - | grep "64Gram.*_linux.zip" | head -n 1 | cut -d '"' -f 2)
 unzip 64* -d 64gram
