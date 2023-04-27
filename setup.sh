@@ -3,7 +3,6 @@
 sudo dnf copr enable batmanfeynman/syncplay -y
 sudo dnf copr enable rivenirvana/steamtinkerlaunch -y
 sudo dnf copr enable matthickford/git-credential-manager -y # https://github.com/dotnet/source-build/discussions/2960 https://github.com/GitCredentialManager/git-credential-manager/issues/816
-# flatpak blockers: https://github.com/flatpak/xdg-desktop-portal/issues/695 https://github.com/flathub/com.valvesoftware.Steam.Utility.gamescope/issues/29 https://github.com/flathub/com.valvesoftware.Steam.Utility.gamescope/issues/7 https://github.com/flatpak/xdg-desktop-portal/issues/924 https://github.com/flathub/net.lutris.Lutris/issues/198 https://github.com/flathub/com.valvesoftware.Steam/issues/770 https://github.com/PaulCombal/SamRewritten/issues/128 https://github.com/flathub/net.lutris.Lutris/issues/200 https://github.com/bottlesdevs/Bottles/issues/1366 https://github.com/flathub/com.valvesoftware.Steam/issues/85 https://github.com/virt-manager/virt-manager/issues/246 https://www.gofundme.com/f/help-us-build-a-better-linux-app https://forums.insynchq.com/t/insync-as-flatpak-linux/9615 https://github.com/Plagman/gamescope/issues/183 https://github.com/slgobinath/SafeEyes/issues/432 https://github.com/flathub/com.valvesoftware.Steam/issues/866
 sudo dnf remove -y akregator grantlee-editor dragon kmahjongg kmines kpat konversation krdc krfb kamoso kaddressbook korganizer mediawriter kgpg kwrite kf5-akonadi-server # TODO: review this list # qt-remote-viewer TODO: https://russianfedora.github.io/FAQ/tips-and-tricks.html#kde
 sudo dnf install -y https://github.com/rpmsphere/noarch/raw/master/r/rpmsphere-release-37-1.noarch.rpm https://mirrors.rpmfusion.org/{free/fedora/rpmfusion-,nonfree/fedora/rpmfusion-non}free-release-$(rpm -E %fedora).noarch.rpm
 # TODO: preinstall lm_sensors/gamemode, https://invent.kde.org/plasma/plasma-systemmonitor/-/merge_requests/179 things like this https://flathub.org/apps/details/io.github.hakandundar34coding.system-monitoring-center will work OOTB with lm_sensors installed, gamemode preinstalled in workstation https://pagure.io/fedora-comps/blob/main/f/comps-f37.xml.in
@@ -16,11 +15,9 @@ sudo wget -P /etc/udev/rules.d https://gitlab.com/fabiscafe/game-devices-udev/-/
 pip install --user internetarchive
 fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher pure-fish/pure'
 #wget -P "$HOME/.config/mpv/scripts" https://github.com/ekisu/mpv-webm/releases/download/latest/webm.lua
-# https://yarnpkg.com/getting-started/install https://nodejs.org/dist/latest/docs/api/corepack.html
 # TODO: create ~/.local/bin by default in fedora? https://gitlab.freedesktop.org/xdg/xdg-specs/-/issues/14
 # in opensuse microos / leap ~/bin is created automatically and $HOME/.local/bin added to PATH
 mkdir ~/.local/bin
-#corepack enable --install-directory ~/.local/bin; yarn set version stable
 # https://github.com/probonopd/go-appimage/blob/master/src/appimaged/README.md
 # mkdir ~/Applications
 # cd ~/Applications
