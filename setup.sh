@@ -24,6 +24,7 @@ mkdir ~/.local/bin
 # wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases -O - | grep "appimaged-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2)
 # chmod +x appimaged-*.AppImage
 # ./appimaged-*.AppImage
+# https://github.com/89luca89/distrobox/blob/e1bf3f720109323506344df5d3578c253db8715c/extras/install-podman#L112-L135
 # 64gram
 wget -c https://github.com/$(wget -q https://github.com/TDesktop-x64/tdesktop/releases -O - | grep "64Gram.*_linux.zip" | head -n 1 | cut -d '"' -f 2)
 unzip 64* -d 64gram
